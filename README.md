@@ -64,4 +64,15 @@ This is not intented to be used as an official reference of any kind. It is only
 * To protect nonfinal classes from finalizer attacks, write a final finalize method that does nothing.
 * Have your class implement `AutoCloseable`
 
-### Item 9: Prefer `try-with-resources` to` try-finally` 
+### Item 9: Prefer `try-with-resources` to` try-finally`
+
+## Chapter 3. Methods Common to All Objects
+
+### Item 10: Obey the general contract when overriding `equals`
+
+* Once you’ve violated the `equals` contract, you simply don’t know how other objects will behave when confronted with your object.
+* There is no way to extend an instantiable class and add a value component while preserving the `equals` contract, unless you’re willing to forgo the benefits of object-oriented abstraction.
+* Do not write an equals method that depends on unreliable resources.
+* When you are finished writing your equals method, ask yourself three questions: Is it symmetric? Is it transitive? Is it consistent? (create unit tests).
+* Always override `hashCode` when you override `equals`.
+* Don’t substitute another type for Object in the equals declaration.
