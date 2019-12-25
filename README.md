@@ -45,3 +45,9 @@ This is not intented to be used as an official reference of any kind. It is only
 * Autoboxing blurs but does not erase the distinction between primitive and boxed primitive types.
 * Prefer primitives to boxed primitives, and watch out for unintentional autoboxing.
 
+### Item 7: Eliminate obsolete object references
+
+* Nulling out object references should be the exception rather than the norm.
+* Whenever a class manages its own memory, the programmer should be alert for memory leaks.
+* Another common source of memory leaks is caches.
+* A third common source of memory leaks is listeners and other callbacks.
