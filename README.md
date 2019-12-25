@@ -51,3 +51,15 @@ This is not intented to be used as an official reference of any kind. It is only
 * Whenever a class manages its own memory, the programmer should be alert for memory leaks.
 * Another common source of memory leaks is caches.
 * A third common source of memory leaks is listeners and other callbacks.
+
+### Item 8: Avoid finalizers and cleaners
+
+* Finalizers are unpredictable,often dangerous,and generally unnecessary.
+* Cleaners are less dangerous than finalizers, but still unpredictable, slow, and generally unnecessary.
+* Never do anything time-critical in a finalizer or cleaner.
+* Never depend on a finalizer or cleaner to update persistent state.
+* There is a severe performance penalty for using finalizers and cleaners.
+* Finalizers have a serious security problem: they open your class up to finalizer attacks.
+* Throwing an exception from a constructor should be sufficient to prevent an object from coming into existence; in the presence of finalizers, it is not.
+* To protect nonfinal classes from finalizer attacks, write a final finalize method that does nothing.
+* Have your class implement AutoCloseable
