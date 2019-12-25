@@ -29,3 +29,8 @@ This is not intented to be used as an official reference of any kind. It is only
 
 * Making a class a singleton can make it difficult to test its clients.
 * A single-element enum type is often the best way to implement a singleton.
+
+### Item 4: Enforce noninstantiability with a private constructor
+
+* Attempting to enforce noninstantiability by making a class abstract does not work.
+* A class can be made noninstantiable by including a private constructor.
