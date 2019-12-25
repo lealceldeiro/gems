@@ -39,5 +39,9 @@ This is not intented to be used as an official reference of any kind. It is only
 
 * Static utility classes and singletons are inappropriate for classes whose behavior is parameterized by an underlying resource.
 * A better alternative to satisfy the ability to support multiple instances of the class, each of which uses the resource desired by the client, is pass the resource into the constructor when creating a new instance.
-* 
+
+### Item 6: Avoid creating unnecessary objects
+
+* Autoboxing blurs but does not erase the distinction between primitive and boxed primitive types.
+* Prefer primitives to boxed primitives, and watch out for unintentional autoboxing.
 
