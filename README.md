@@ -2,7 +2,7 @@
 
 This is not intented to be used as an official reference of any kind. It is only intended to be used as a memo for myself after reading the great book [Effective Java 3rd Edition](https://www.amazon.com/Effective-Java-Joshua-Bloch-ebook/dp/B078H61SCH). It is only made public because I think many people may find it useful as a summary, but, if you want to really learn about this, consider buying the linked book.
 
-# Effective Java Notes
+# Effective Java - Notes
 
 ## Chapter 2. Creating and Destroying Objects
 
@@ -24,3 +24,8 @@ This is not intented to be used as an official reference of any kind. It is only
 * The Builder pattern simulates named optional parameters.
 * The Builder pattern is well suited to class hierarchies.
 * The Builder pattern is a good choice when designing classes whose constructors or static factories would have more than a handful of parameters.
+
+### Item 3: Enforce the singleton property with a private constructor or an enum type
+
+* Making a class a singleton can make it difficult to test its clients.
+* A single-element enum type is often the best way to implement a singleton.
