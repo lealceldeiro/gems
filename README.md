@@ -62,4 +62,6 @@ This is not intented to be used as an official reference of any kind. It is only
 * Finalizers have a serious security problem: they open your class up to finalizer attacks.
 * Throwing an exception from a constructor should be sufficient to prevent an object from coming into existence; in the presence of finalizers, it is not.
 * To protect nonfinal classes from finalizer attacks, write a final finalize method that does nothing.
-* Have your class implement AutoCloseable
+* Have your class implement `AutoCloseable`
+
+### Item 9: Prefer `try-with-resources` to` try-finally` 
