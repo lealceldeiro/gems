@@ -34,3 +34,10 @@ This is not intented to be used as an official reference of any kind. It is only
 
 * Attempting to enforce noninstantiability by making a class abstract does not work.
 * A class can be made noninstantiable by including a private constructor.
+
+### Item 5: Prefer dependency injection to hardwiring resources
+
+* Static utility classes and singletons are inappropriate for classes whose behavior is parameterized by an underlying resource.
+* A better alternative to satisfy the ability to support multiple instances of the class, each of which uses the resource desired by the client, is pass the resource into the constructor when creating a new instance.
+* 
+
