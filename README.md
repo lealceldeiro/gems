@@ -84,8 +84,19 @@ This is not intented to be used as an official reference of any kind. It is only
 * Do not be tempted to exclude significant fields from the hash code computation to improve performance.
 * Don’t provide a detailed specification for the value returned by `hashCode`, so clients can’t reasonably depend on it; this gives you the flexibility to change it.
 
-### Item 12: Always override `toString`.
+### Item 12: Always override `toString`
+
 * Providing a good `toString` implementation makes your class much more pleasant to use and makes systems using the class easier to debug.
 * When practical, the `toString` method should return all of the interesting information contained in the object.
 * Whether or not you decide to specify the format of the returned value by the `toString`, you should clearly document your intentions.
 * Provide programmatic access to the information contained in the value returned by `toString`.
+
+### Item 13: Override `clone` judiciously
+
+* In practice, a class implementing `Cloneable` is expected to provide a properly functioning public `clone` method.
+* Immutable classes should never provide a `clone` method.
+* In effect, the `clone` method functions as a constructor; you must ensure that it does no harm to the original object and that it properly establishes invariants on the `clone`.
+* `someArray.clone()` is the preferred idiom to duplicate an array (`someArray` in this case). In fact, arrays are the sole compelling use of the clone facility.
+* The `Cloneable` architecture is incompatible with normal use of final fields referring to mutable objects.
+* Public `clone` methods should omit the throws clause.
+* A better approach to object copying is to provide a *copy constructor* or *copy factory*.
