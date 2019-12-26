@@ -100,3 +100,7 @@ This is not intented to be used as an official reference of any kind. It is only
 * The `Cloneable` architecture is incompatible with normal use of final fields referring to mutable objects.
 * Public `clone` methods should omit the throws clause.
 * A better approach to object copying is to provide a *copy constructor* or *copy factory*.
+
+### Item 14: Consider implementing Comparable
+
+* 
