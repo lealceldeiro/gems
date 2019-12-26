@@ -104,3 +104,12 @@ This is not intented to be used as an official reference of any kind. It is only
 ### Item 14: Consider implementing `Comparable`
 
 * Use of the relational operators `<` and `>` in compareTo methods is verbose and error-prone and no longer recommended.
+
+## Chapter 4. Classes and Interfaces
+
+### Item 15: Minimize the accessibility of classes and members
+
+* Make each class or member as inaccessible as possible.
+* Instance fields of public classes should rarely be public
+* Classes with public mutable fields are not generally thread-safe.
+* It is wrong for a class to have a `public` `static` `final` array field, or an accessor that returns such a field.
