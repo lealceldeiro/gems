@@ -118,3 +118,17 @@ This is not intented to be used as an official reference of any kind. It is only
 
 * If a class is accessible outside its package, provide accessor methods.
 * If a class is package-private or is a private nested class, there is nothing inherently wrong with exposing its data fields.
+
+### Item 17: Minimize mutability
+
+* Immutable objects are simple.
+* Immutable objects are inherently thread-safe; they require no synchronization.
+* Immutable objects can be shared freely.
+* Not only can you share immutable objects, but they can share their internals.
+* Immutable objects make great building blocks for other objects.
+* Immutable objects provide failure atomicity for free.
+* The major disadvantage of immutable classes is that they require a separate object for each distinct value.
+* Classes should be immutable unless there’s a very good reason to make them mutable.
+* If a class cannot be made immutable, limit its mutability as much as possible.
+* Declare every field private final unless there’s a good reason to do otherwise.
+* Constructors should create fully initialized objects with all of their invariants established.
