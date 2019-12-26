@@ -76,3 +76,16 @@ This is not intented to be used as an official reference of any kind. It is only
 * When you are finished writing your equals method, ask yourself three questions: Is it symmetric? Is it transitive? Is it consistent? (create unit tests).
 * Always override `hashCode` when you override `equals`.
 * Don’t substitute another type for Object in the equals declaration.
+
+### Item 11: Always override `hashCode` when you override `equals`
+
+* You must override `hashCode` in every class that overrides `equals`.
+* When you fail to override `hashCode` after overriding `equals` you violate the provision that equal objects must have equal hash codes.
+* Do not be tempted to exclude significant fields from the hash code computation to improve performance.
+* Don’t provide a detailed specification for the value returned by `hashCode`, so clients can’t reasonably depend on it; this gives you the flexibility to change it.
+
+### Item 12: Always override `toString`.
+* Providing a good `toString` implementation makes your class much more pleasant to use and makes systems using the class easier to debug.
+* When practical, the `toString` method should return all of the interesting information contained in the object.
+* Whether or not you decide to specify the format of the returned value by the `toString`, you should clearly document your intentions.
+* Provide programmatic access to the information contained in the value returned by `toString`.
