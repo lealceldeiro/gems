@@ -113,3 +113,8 @@ This is not intented to be used as an official reference of any kind. It is only
 * Instance fields of public classes should rarely be public
 * Classes with public mutable fields are not generally thread-safe.
 * It is wrong for a class to have a `public` `static` `final` array field, or an accessor that returns such a field.
+
+### Item 16: In public classes, use accessor methods, not public fields
+
+* If a class is accessible outside its package, provide accessor methods.
+* If a class is package-private or is a private nested class, there is nothing inherently wrong with exposing its data fields.
