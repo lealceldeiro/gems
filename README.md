@@ -101,6 +101,6 @@ This is not intented to be used as an official reference of any kind. It is only
 * Public `clone` methods should omit the throws clause.
 * A better approach to object copying is to provide a *copy constructor* or *copy factory*.
 
-### Item 14: Consider implementing Comparable
+### Item 14: Consider implementing `Comparable`
 
-* 
+* Use of the relational operators `<` and `>` in compareTo methods is verbose and error-prone and no longer recommended.
