@@ -132,3 +132,7 @@ This is not intented to be used as an official reference of any kind. It is only
 * If a class cannot be made immutable, limit its mutability as much as possible.
 * Declare every field private final unless there’s a good reason to do otherwise.
 * Constructors should create fully initialized objects with all of their invariants established.
+
+### Item 18: Favor composition over inheritance
+
+* Unlike method invocation, inheritance violates encapsulation.
