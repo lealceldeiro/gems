@@ -147,3 +147,10 @@ This is not intented to be used as an official reference of any kind. It is only
 * Neither `clone` nor `readObject` may invoke an overridable method, directly or indirectly.
 * Designing a class for inheritance requires great effort and places substantial limitations on the class.
 * The best solution to this problem is to prohibit subclassing in classes that are not designed and documented to be safely subclassed.
+
+### Item 20: Prefer interfaces to abstract classes
+
+* Existing classes can easily be retrofitted to implement a new interface.
+* Interfaces are ideal for defining mixins.
+* Interfaces allow for the construction of nonhierarchical type frameworks.
+* Good documentation is absolutely essential in a skeletal implementation.
