@@ -178,3 +178,21 @@ This is not intented to be used as an official reference of any kind. It is only
 ### Item 25: Limit source files to a single top-level class
 
 * Never put multiple top-level classes or interfaces in a single source file.
+
+## Chapter 5. Generics
+
+### Item 26: Don’t use raw types
+
+* If you use raw types, you lose all the safety and expressiveness benefits of generics.
+* You lose type safety if you use a raw type such as `List`, but not if you use a parameterized type such as `List<Object>`.
+* You can’t put any element (other than `null`) into a `Collection<?>`.
+* You must use raw types in class literals.
+* This is the preferred way to use the `instanceof` operator with generic types:
+```
+  if (o instanceof Set) {
+  // Raw type
+  Set<?> s = (Set<?>) o;
+  // Wildcard type
+  ...
+}
+```
