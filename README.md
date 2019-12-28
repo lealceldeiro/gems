@@ -246,3 +246,13 @@ private static <E> void swapHelper(List<E> list, int i, int j) {
 * Use `@SafeVarargs` on every method with a varargs parameter of a generic or parameterized type.
 
 ### Item 33: Consider typesafe heterogeneous containers
+
+## Chapter 6. Enums and Annotations
+
+### Item 34: Use enums instead of int constants
+
+* To associate data with enum constants, declare instance fields and write a constructor that takes the data and stores it in the fields.
+* If you override the `toString` method in an `enum` type, consider writing a `fromString` method to translate the custom string representation back to the corresponding enum.
+* Switches on enums are good for augmenting enum types with constant-specific behavior.
+* Use enums any time you need a set of constants whose members are known at compile time.
+* It is not necessary that the set of constants in an enum type stay fixed for all time.
