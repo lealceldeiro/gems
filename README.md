@@ -174,3 +174,7 @@ This is not intented to be used as an official reference of any kind. It is only
 ### Item 24: Favor static member classes over nonstatic
 
 * If you declare a member class that does not require access to an enclosing instance, always put the `static` modifier in its declaration.
+
+### Item 25: Limit source files to a single top-level class
+
+* Never put multiple top-level classes or interfaces in a single source file.
