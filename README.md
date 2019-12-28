@@ -204,3 +204,5 @@ This is not intented to be used as an official reference of any kind. It is only
 * Every time you use a `@SuppressWarnings("unchecked")` annotation, add a comment saying why it is safe to do so.
 
 ### Item 28: Prefer lists to arrays
+
+### Item 29: Favor generic types
