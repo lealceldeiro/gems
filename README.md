@@ -206,3 +206,15 @@ This is not intented to be used as an official reference of any kind. It is only
 ### Item 28: Prefer lists to arrays
 
 ### Item 29: Favor generic types
+
+### Item 30: Favor generic methods
+
+* The type parameter list, which declares the type parameters, goes between a method’s modifiers and its return type.
+```
+  // Generic method
+  public static <E> Set<E> union(Set<E> s1, Set<E> s2) {
+    Set<E> result = new HashSet<>(s1);
+    result.addAll(s2);
+    return result;
+  }
+```
