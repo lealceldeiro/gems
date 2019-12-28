@@ -165,3 +165,8 @@ This is not intented to be used as an official reference of any kind. It is only
 ### Item 22: Use interfaces only to define types
 
 * The constant interface pattern is a poor use of interfaces.
+
+### Item 23: Prefer class hierarchies to tagged classes
+
+* Tagged classes are verbose, error-prone, and inefficient.
+* A tagged class is just a pallid imitation of a class hierarchy.
