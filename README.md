@@ -170,3 +170,7 @@ This is not intented to be used as an official reference of any kind. It is only
 
 * Tagged classes are verbose, error-prone, and inefficient.
 * A tagged class is just a pallid imitation of a class hierarchy.
+
+### Item 24: Favor static member classes over nonstatic
+
+* If you declare a member class that does not require access to an enclosing instance, always put the `static` modifier in its declaration.
