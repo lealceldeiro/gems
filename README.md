@@ -218,3 +218,23 @@ This is not intented to be used as an official reference of any kind. It is only
     return result;
   }
 ```
+### Item 31: Use bounded wildcards to increase API flexibility
+
+* For maximum flexibility, use wildcard types on input parameters that represent producers or consumers.
+* **PECS** stands for producer-`extends`, consumer-`super`.
+* Do not use bounded wildcard types as return types.
+* If the user of a class has to think about wildcard types, there is probably something wrong with its API.
+* If a type parameter appears only once in a method declaration, replace it with a wildcard. i.e, from the following two declarations, the second, is the preferrend one:
+```
+public static <E> void swap(List<E> list, int i, int j) {  // (1) not preferred, it's more complex for the API clients
+  list.set(i, list.set(j, list.get(i)));
+}
+
+public static void swap(List<?> list, int i, int j) {      // (2) preferred, it's simpler to use by the API clients
+  swapHelper(list, i, j);
+}
+// Private helper method for wildcard capture
+private static <E> void swapHelper(List<E> list, int i, int j) {
+  list.set(i, list.set(j, list.get(i)));
+}
+```
