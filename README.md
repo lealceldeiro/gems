@@ -268,3 +268,7 @@ private static <E> void swapHelper(List<E> list, int i, int j) {
 ### Item 37: Use EnumMap instead of ordinal indexing
 
 * It is rarely appropriate to use ordinals to index into arrays: use `EnumMap` instead.
+
+### Item 38: Emulate extensible enums with interfaces
+
+* While you cannot write an extensible enum type, you can emulate it by writing an interface to accompany a basic enum type that implements the interface.
