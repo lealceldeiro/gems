@@ -260,3 +260,7 @@ private static <E> void swapHelper(List<E> list, int i, int j) {
 ### Item 35: Use instance fields instead of ordinals
 
 * Never derive a value associated with an enum from its ordinal; store it in an instance field instead.
+
+### Item 36: Use `EnumSet` instead of bit fields
+
+* Just because an enumerated type will be used in sets, there is no reason to represent it with bit fields.
