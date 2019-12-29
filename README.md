@@ -256,3 +256,7 @@ private static <E> void swapHelper(List<E> list, int i, int j) {
 * Switches on enums are good for augmenting enum types with constant-specific behavior.
 * Use enums any time you need a set of constants whose members are known at compile time.
 * It is not necessary that the set of constants in an enum type stay fixed for all time.
+
+### Item 35: Use instance fields instead of ordinals
+
+* Never derive a value associated with an enum from its ordinal; store it in an instance field instead.
