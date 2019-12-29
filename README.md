@@ -277,3 +277,7 @@ private static <E> void swapHelper(List<E> list, int i, int j) {
 
 * There is simply no reason to use naming patterns when you can use annotations instead.
 * all programmers should use the predefined annotation types that Java provides.
+
+### Item 40: Consistently use the `Override` annotation
+
+* Use the `Override` annotation on every method declaration that you believe to override a superclass declaration.
