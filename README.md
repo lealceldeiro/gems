@@ -249,7 +249,7 @@ private static <E> void swapHelper(List<E> list, int i, int j) {
 
 ## Chapter 6. Enums and Annotations
 
-### Item 34: Use enums instead of int constants
+### Item 34: Use enums instead of `int` constants
 
 * To associate data with enum constants, declare instance fields and write a constructor that takes the data and stores it in the fields.
 * If you override the `toString` method in an `enum` type, consider writing a `fromString` method to translate the custom string representation back to the corresponding enum.
@@ -265,10 +265,15 @@ private static <E> void swapHelper(List<E> list, int i, int j) {
 
 * Just because an enumerated type will be used in sets, there is no reason to represent it with bit fields.
 
-### Item 37: Use EnumMap instead of ordinal indexing
+### Item 37: Use `EnumMap` instead of ordinal indexing
 
 * It is rarely appropriate to use ordinals to index into arrays: use `EnumMap` instead.
 
 ### Item 38: Emulate extensible enums with interfaces
 
 * While you cannot write an extensible enum type, you can emulate it by writing an interface to accompany a basic enum type that implements the interface.
+
+### Item 39: Prefer annotations to naming patterns
+
+* There is simply no reason to use naming patterns when you can use annotations instead.
+* all programmers should use the predefined annotation types that Java provides.
