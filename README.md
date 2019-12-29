@@ -264,3 +264,7 @@ private static <E> void swapHelper(List<E> list, int i, int j) {
 ### Item 36: Use `EnumSet` instead of bit fields
 
 * Just because an enumerated type will be used in sets, there is no reason to represent it with bit fields.
+
+### Item 37: Use EnumMap instead of ordinal indexing
+
+* It is rarely appropriate to use ordinals to index into arrays: use `EnumMap` instead.
