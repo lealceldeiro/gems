@@ -288,3 +288,12 @@ private static <E> void swapHelper(List<E> list, int i, int j) {
 * Another advantage of marker interfaces over marker annotations is that they can be targeted more precisely.
 * The chief advantage of marker annotations over marker interfaces is that they are part of the larger annotation facility.
 * If you find yourself writing a marker annotation type whose target is `ElementType.TYPE`, take the time to figure out whether it really should be an annotation type or whether a marker interface would be more appropriate.
+
+## Chapter 7. Lambdas and Streams
+
+### Item 42: Prefer lambdas to anonymous classes
+
+* Omit the types of all lambda parameters unless their presence makes your program clearer.
+* Lambdas lack names and documentation; if a computation isn’t self-explanatory, or exceeds a few lines, don’t put it in a lambda.
+* You should rarely, if ever, serialize a lambda.
+* Don’t use anonymous classes for function objects unless you have to create instances of types that aren’t functional interfaces.
