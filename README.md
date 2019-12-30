@@ -301,3 +301,14 @@ private static <E> void swapHelper(List<E> list, int i, int j) {
 ### Item 43: Prefer method references to lambdas
 
 * Where method references are shorter and clearer, use them; where they aren’t, stick with lambdas.
+
+### Item 44: Favor the use of standard functional interfaces
+
+* If one of the standard functional interfaces does the job, you should generally use it in preference to a
+purpose-built functional interface.
+* Don’t be tempted to use basic functional interfaces with boxed primitives instead of primitive functional interfaces.
+* You should seriously consider writing a purpose-built functional interface in preference to using a standard one if:
+  - It will be commonly used and could benefit from a descriptive name.
+  - It has a strong contract associated with it.
+  - It would benefit from custom default methods.
+* Always annotate your functional interfaces with the `@FunctionalInterface` annotation.
