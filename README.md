@@ -297,3 +297,7 @@ private static <E> void swapHelper(List<E> list, int i, int j) {
 * Lambdas lack names and documentation; if a computation isn’t self-explanatory, or exceeds a few lines, don’t put it in a lambda.
 * You should rarely, if ever, serialize a lambda.
 * Don’t use anonymous classes for function objects unless you have to create instances of types that aren’t functional interfaces.
+
+### Item 43: Prefer method references to lambdas
+
+* Where method references are shorter and clearer, use them; where they aren’t, stick with lambdas.
