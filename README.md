@@ -326,3 +326,8 @@ purpose-built functional interface.
 
 * The `forEach` operation should be used only to report the result of a stream computation, not to perform the computation.
 * It is customary and wise to statically import all members of `Collectors` because it makes stream pipelines more readable.
+
+### Item 47: Prefer Collection to Stream as a return type
+
+* `Collection` or an appropriate subtype is generally the best return type for a public, sequence-returning method.
+* Do not store a large sequence in memory just to return it as a collection.
