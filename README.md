@@ -380,3 +380,11 @@ invariants.
 ### Item 54: Return empty collections or arrays, not nulls
 
 * Never return `null` in place of an empty array or collection.
+
+### Item 55: Return optionals judiciously
+
+* Never return a `null` value from an `Optional`-returning method: it defeats the entire purpose of the facility.
+* Optionals are similar in spirit to checked exceptions.
+* Container types, including collections, maps, streams, arrays, and optionals should not be wrapped in optionals.
+* You should declare a method to return `Optional<T>` if it might not be able to return a result and clients will have to perform special processing if no result is returned.
+* You should never return an optional of a boxed primitive type.
