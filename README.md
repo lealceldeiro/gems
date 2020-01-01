@@ -424,3 +424,10 @@ invariants.
 
 * The `float` and `double` types are particularly ill-suited for monetary calculations.
 * Use `BigDecimal`, `int`, or `long` for monetary calculations.
+
+### Item 61: Prefer primitive types to boxed primitives
+
+* Applying the `==` operator to boxed primitives is almost always wrong.
+* When you mix primitives and boxed primitives in an operation, the boxed primitive is auto-unboxed.
+* *Autoboxing* reduces the verbosity, but not the danger, of using boxed primitives.
+* When your program does *unboxing*, it can throw a `NullPointerException`.
