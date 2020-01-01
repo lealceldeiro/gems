@@ -411,3 +411,11 @@ invariants.
 * Keep methods small and focused.
 
 ### Item 58: Prefer `for`-each loops to traditional `for` loops
+
+### Item 59: Know and use the libraries
+
+* By using a standard library, you take advantage of the knowledge of the experts who wrote it and the experience of those who used it before you.
+* The random number generator of choice is now `ThreadLocalRandom` (For fork join pools and parallel streams, use `SplittableRandom`).
+* Numerous features are added to the libraries in every major release, and it pays to keep abreast of these additions.
+* Every programmer should be familiar with the basics of **`java.lang`**, **`java.util`**, and **`java.io`**, and their subpackages.
+* The *collections* framework and the *streams* library should be part of every programmer’s basic toolkit, as should parts of the concurrency utilities in **`java.util.concurrent`**.
