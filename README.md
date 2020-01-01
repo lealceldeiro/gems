@@ -321,3 +321,8 @@ purpose-built functional interface.
 * Refrain from using streams to process `char` values.
 * Refactor existing code to use streams and use them in new code only where it makes sense to do so.
 * If you’re not sure whether a task is better served by streams or iteration, try both and see which works better.
+
+### Item 46: Prefer side-effect-free functions in streams
+
+* The `forEach` operation should be used only to report the result of a stream computation, not to perform the computation.
+* It is customary and wise to statically import all members of `Collectors` because it makes stream pipelines more readable.
