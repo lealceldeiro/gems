@@ -409,3 +409,5 @@ invariants.
 * Nearly every local variable declaration should contain an initializer.
 * Prefer for loops to while loops.
 * Keep methods small and focused.
+
+### Item 58: Prefer `for`-each loops to traditional `for` loops
