@@ -346,3 +346,13 @@ instances; `arrays`; `int` ranges; and `long` ranges.
 ### Item 49: Check parameters for validity
 
 * The `Objects.requireNonNull` method, added in Java 7, is flexible and convenient, so there’s no reason to perform `null` checks manually anymore.
+
+### Item 50: Make defensive copies when needed
+
+* You must program defensively, with the assumption that clients of your class will do their best to destroy its
+invariants.
+* Date is obsolete and should no longer be used in new code.
+* It is essential to make a *defensive copy* of each mutable parameter to the constructor.
+* Defensive copies are made before checking the validity of the parameters, and the validity check is performed on the copies rather than on the originals.
+* Do not use the clone method to make a defensive copy of a parameter whose type is subclassable by untrusted parties.
+* Return defensive copies of mutable internal fields.
