@@ -431,3 +431,10 @@ invariants.
 * When you mix primitives and boxed primitives in an operation, the boxed primitive is auto-unboxed.
 * *Autoboxing* reduces the verbosity, but not the danger, of using boxed primitives.
 * When your program does *unboxing*, it can throw a `NullPointerException`.
+
+### Item 62: Avoid strings where other types are more appropriate
+
+* Strings are poor substitutes for other value types.
+* Strings are poor substitutes for enum types.
+* Strings are poor substitutes for aggregate types.
+* Strings are poor substitutes for capabilities.
