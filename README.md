@@ -356,3 +356,12 @@ invariants.
 * Defensive copies are made before checking the validity of the parameters, and the validity check is performed on the copies rather than on the originals.
 * Do not use the clone method to make a defensive copy of a parameter whose type is subclassable by untrusted parties.
 * Return defensive copies of mutable internal fields.
+
+### Item 51: Design method signatures carefully
+
+* Choose method names carefully.
+* Don’t go overboard in providing convenience methods.
+* Avoid long parameter lists.
+* Long sequences of identically typed parameters are especially harmful.
+* For parameter types, favor interfaces over classes.
+* Prefer two-element enum types to boolean parameters.
