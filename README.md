@@ -340,3 +340,9 @@ purpose-built functional interface.
 instances; `arrays`; `int` ranges; and `long` ranges.
 * Not only can parallelizing a stream lead to poor performance, including liveness failures; it can lead to incorrect results and unpredictable behavior (safety failures).
 * Under the right circumstances, it is possible to achieve near-linear speedup in the number of processor cores simply by adding a parallel call to a stream pipeline.
+
+## Chapter 8. Methods
+
+### Item 49: Check parameters for validity
+
+* The `Objects.requireNonNull` method, added in Java 7, is flexible and convenient, so there’s no reason to perform `null` checks manually anymore.
