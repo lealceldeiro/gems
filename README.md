@@ -438,3 +438,9 @@ invariants.
 * Strings are poor substitutes for enum types.
 * Strings are poor substitutes for aggregate types.
 * Strings are poor substitutes for capabilities.
+
+### Item 63: Beware the performance of string concatenation
+
+* Using the string concatenation operator repeatedly to concatenate `n` strings requires time quadratic in `n`.
+* To achieve acceptable performance (to avoid the case mentioned before), use a `StringBuilder` in place of a `String`.
+* Don’t use the string concatenation operator to combine more than a few strings unless performance is irrelevant.
