@@ -376,3 +376,7 @@ invariants.
 * Do not overload methods to take different functional interfaces in the same argument position.
 
 ### Item 53: Use varargs judiciously
+
+### Item 54: Return empty collections or arrays, not nulls
+
+* Never return `null` in place of an empty array or collection.
