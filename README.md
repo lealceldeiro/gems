@@ -465,3 +465,17 @@ invariants.
 
 * It is rarely advisable to use native methods for improved performance.
 * It is rare that you need to use them for improved performance. If you must use native methods to access low-level resources or native libraries, use as little native code as possible and test it thoroughly.
+
+### Item 67: Optimize judiciously
+
+* More computing sins are committed in the name of efficiency (without necessarily achieving it) than for any other single reason,including blind stupidity. — William A. Wulf
+* We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. — Donald E. Knuth
+* We follow two rules in the matter of optimization: — M. A. Jackson
+  - Rule 1. Don’t do it.
+  - Rule 2 (for experts only). Don’t do it yet—that is, not until you have a perfectly clear and unoptimized solution.
+* Strive to write good programs rather than fast ones.
+* Strive to avoid design decisions that limit performance.
+* Consider the performance consequences of your API design decisions.
+* It is a very bad idea to warp an API to achieve good performance.
+* Measure performance before and after each attempted optimization.
+* [*jmh*](https://openjdk.java.net/projects/code-tools/jmh/) is a microbenchmarking framework that provides unparalleled visibility into the detailed performance of Java code.
