@@ -479,3 +479,38 @@ invariants.
 * It is a very bad idea to warp an API to achieve good performance.
 * Measure performance before and after each attempted optimization.
 * [*jmh*](https://openjdk.java.net/projects/code-tools/jmh/) is a microbenchmarking framework that provides unparalleled visibility into the detailed performance of Java code.
+
+### Item 68: Adhere to generally accepted naming conventions
+
+* The Java platform has a well-established set of naming conventions, many of which are contained in The Java Language Specification [JLS, 6.1], summarized as follow:
+  - Package and module names should be hierarchical with the components separated by periods.
+  - Components should consist of lowercase alphabetic characters and, rarely, digits.
+  - The name of any package that will be used outside your organization should begin with your organization’s Internet domain name with the components reversed, for example, `edu.cmu`, `com.google`, `org.eff`. The standard libraries and optional packages, whose names begin with `java` and `javax`, are exceptions to this rule.
+  - Users must not create packages or modules whose names begin with `java` or `javax`.
+  - The remainder of a package name should consist of one or more components describing the package.
+  - Components should be short, generally eight or fewer characters.
+  - Meaningful abbreviations are encouraged, for example, `util` rather than `utilities`.
+  - Acronyms are acceptable, for example, `awt`.
+  - Components should generally consist of a single word or abbreviation.
+  - Class and interface names, including enum and annotation type names, should consist of one or more words, with the first letter of each word capitalized, for example, `List` or `FutureTask`.
+  - Abbreviations are to be avoided, except for acronyms and certain common abbreviations like `max` and `min`.
+  - Method and field names follow the same typographical conventions as class and interface names, except that the first letter of a method or field name should be lowercase, for example, `remove` or `ensureCapacity`.
+  - If an acronym occurs as the first word of a method or field name, it should be lowercase.
+  - The sole exception to the previous rule concerns “constant fields”, whose names should consist of one or more uppercase words separated by the underscore character, for example, `VALUES` or `NEGATIVE_INFINITY`.
+  - Local variable names have similar typographical naming conventions to member names, except that abbreviations are permitted, as are individual characters and short sequences of characters whose meaning depends on the context in which they occur, for example, `i`, `denom`, `houseNum`.
+  - Input parameters should be named much more carefully than ordinary local variables, as their names are an integral part of their method’s documentation.
+  - Type parameter names usually consist of a single letter. Most commonly it is one of these five: `T` for an arbitrary type, `E` for the element type of a collection, `K` and `V` for the key and value types of a map, and `X` for an exception. The return type of a function is usually `R`. A sequence of arbitrary types can be `T`, `U`, `V` or `T1`, `T2`, `T3`.
+  - Instantiable classes, including enum types, are generally named with a singular noun or noun phrase, such as `Thread`, `PriorityQueue`, or `ChessPiece`.
+  - Non-instantiable utility classes are often named with a plural noun, such as `Collectors` or `Collections`.
+  - Interfaces are named like classes, for example, `Collection` or `Comparator`, or with an adjective ending in `able` or `ible`, for example, `Runnable`, `Iterable`, or `Accessible`.
+  - Because annotation types have so many uses, no part of speech predominates. Nouns, verbs, prepositions, and adjectives are all common, for example, `BindingAnnotation`, `Inject`, `ImplementedBy`, or `Singleton`.
+  - Methods that perform some action are generally named with a verb or verb phrase (including object), for example, `append` or `drawImage`.
+  - Methods that return a boolean value usually have names that begin with the word `is` or, less commonly, `has`, followed by a noun, noun phrase, or any word or phrase that functions as an adjective, for example, `isDigit`, `isProbablePrime`, `isEmpty`, `isEnabled`, or `hasSiblings`.
+  - Methods that return a non-boolean function or attribute of the object on which they’re invoked are usually named with a noun, a noun phrase, or a verb phrase beginning with the verb `get`, for example, `size`, `hashCode`, or `getTime`.
+  - Instance methods that convert the type of an object, returning an independent object of a different type, are often called `to`*Type*, for example, `toString` or `toArray`.
+  - Methods that return a view whose type differs from that of the receiving object are often called `as`*Type*, for example, `asList`.
+  - Methods that return a primitive with the same value as the object on which they’re invoked are often called *type*`Value`, for example, `intValue`.
+  - Common names for static factories include `from`, `of`, `valueOf`, `instance`, `getInstance`, `newInstance`, `get`*Type*, and `new`*Type*.
+  - Fields of type boolean are often named like boolean accessor methods with the initial is omitted, for example, `initialized`, `composite`.
+  - Fields of other types are usually named with nouns or noun phrases, such as `height`, `digits`, or `bodyStyle`.
+* These conventions should not be followed slavishly if long-held conventional usage dictates otherwise. Use common sense.
