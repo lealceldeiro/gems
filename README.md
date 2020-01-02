@@ -458,6 +458,10 @@ invariants.
   - You lose all the benefits of compile-time type checking.
   - The code required to perform reflective access is clumsy and verbose.
   - Performance suffers.
-  
 * You can obtain many of the benefits of reflection while incurring few of its costs by using it only in a very limited form.
 * Create instances reflectively and access them normally via their interface or superclass.
+
+### Item 66: Use native methods judiciously
+
+* It is rarely advisable to use native methods for improved performance.
+* It is rare that you need to use them for improved performance. If you must use native methods to access low-level resources or native libraries, use as little native code as possible and test it thoroughly.
