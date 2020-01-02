@@ -451,3 +451,13 @@ invariants.
 * If you get into the habit of using interfaces as types, your program will be much more flexible.
 * It is entirely appropriate to refer to an object by a class rather than an interface if no appropriate interface exists.
 * If there is no appropriate interface, just use the least specific class in the class hierarchy that provides the required functionality.
+
+### Item 65: Prefer interfaces to reflection
+
+* Reflection allows one class to use another, even if the latter class did not exist when the former was compiled. This has a price:
+  - You lose all the benefits of compile-time type checking.
+  - The code required to perform reflective access is clumsy and verbose.
+  - Performance suffers.
+  
+* You can obtain many of the benefits of reflection while incurring few of its costs by using it only in a very limited form.
+* Create instances reflectively and access them normally via their interface or superclass.
