@@ -533,3 +533,19 @@ invariants.
 
 * When used sparingly, checked exceptions can increase the reliability of programs; when overused, they make APIs painful to use.
 * If recovery may be possible and you want to *force* callers to handle exceptional conditions, first consider returning an optional. Only if this would provide insufficient information in the case of failure should you throw a checked exception.
+
+### Item 72: Favor the use of standard exceptions
+
+* Do not reuse `Exception`, `RuntimeException`, `Throwable`, or `Error` directly.
+* This table summarizes the most commonly reused exceptions:
+
+| Exception | Occasion for Use |
+| ----------- | ----------- |
+| `IllegalArgumentException` | Non-null parameter value is inappropriate |
+| `IllegalStateException` | Object state is inappropriate for method invocation |
+| `NullPointerException` | Parameter value is `null` where prohibited |
+| `IndexOutOfBoundsException` | Index parameter value is out of range |
+| `ConcurrentModificationException` | Concurrent modification of an object has been detected where it is prohibited |
+| `UnsupportedOperationException` | Object does not support method |
+
+* Throw `IllegalStateException` if no argument values would have worked, otherwise throw `IllegalArgumentException`.
