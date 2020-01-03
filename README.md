@@ -549,3 +549,8 @@ invariants.
 | `UnsupportedOperationException` | Object does not support method |
 
 * Throw `IllegalStateException` if no argument values would have worked, otherwise throw `IllegalArgumentException`.
+
+### Item 73: Throw exceptions appropriate to the abstraction
+
+* Higher layers should catch lower-level exceptions and, in their place, throw exceptions that can be explained in terms of the higher-level abstraction.
+* While exception translation is superior to mindless propagation of exceptions from lower layers, it should not be overused.
