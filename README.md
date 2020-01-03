@@ -514,3 +514,10 @@ invariants.
   - Fields of type boolean are often named like boolean accessor methods with the initial is omitted, for example, `initialized`, `composite`.
   - Fields of other types are usually named with nouns or noun phrases, such as `height`, `digits`, or `bodyStyle`.
 * These conventions should not be followed slavishly if long-held conventional usage dictates otherwise. Use common sense.
+
+## Chapter 10. Exceptions
+
+### Item 69: Use exceptions only for exceptional conditions
+
+* Exceptions are, as their name implies, to be used only for exceptional conditions; they should never be used for ordinary control flow.
+* A well-designed API must not force its clients to use exceptions for ordinary control flow.
