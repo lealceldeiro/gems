@@ -554,3 +554,9 @@ invariants.
 
 * Higher layers should catch lower-level exceptions and, in their place, throw exceptions that can be explained in terms of the higher-level abstraction.
 * While exception translation is superior to mindless propagation of exceptions from lower layers, it should not be overused.
+
+### Item 74: Document all exceptions thrown by each method
+
+* Always declare checked exceptions individually, and document precisely the conditions under which each one is thrown.
+* Use the Javadoc `@throws` tag to document each exception that a method can throw, but do not use the throws keyword on unchecked exceptions.
+* If an exception is thrown by many methods in a class for the same reason, you can document the exception in the class’s documentation comment rather than documenting it individually for each method.
