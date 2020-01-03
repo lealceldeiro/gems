@@ -528,3 +528,8 @@ invariants.
 * Use checked exceptions for conditions from which the caller can reasonably be expected to recover.
 * Use runtime exceptions to indicate programming errors.
 * All of the unchecked throwables you implement should subclass `RuntimeException` (directly or indirectly).
+
+### Item 71: Avoid unnecessary use of checked exceptions
+
+* When used sparingly, checked exceptions can increase the reliability of programs; when overused, they make APIs painful to use.
+* If recovery may be possible and you want to *force* callers to handle exceptional conditions, first consider returning an optional. Only if this would provide insufficient information in the case of failure should you throw a checked exception.
