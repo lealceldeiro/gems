@@ -521,3 +521,10 @@ invariants.
 
 * Exceptions are, as their name implies, to be used only for exceptional conditions; they should never be used for ordinary control flow.
 * A well-designed API must not force its clients to use exceptions for ordinary control flow.
+
+### Item 70: Use checked exceptions for recoverable conditions and runtime programming errors
+
+* Java provides three kinds of throwables: *checked exceptions*, *runtime exceptions*, and *errors*.
+* Use checked exceptions for conditions from which the caller can reasonably be expected to recover.
+* Use runtime exceptions to indicate programming errors.
+* All of the unchecked throwables you implement should subclass `RuntimeException` (directly or indirectly).
