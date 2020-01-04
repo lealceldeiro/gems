@@ -565,3 +565,7 @@ invariants.
 
 * To capture a failure, the detail message of an exception should contain the values of all parameters and fields that contributed to the exception.
 * Do not include passwords, encryption keys, and the like in detail messages.
+
+### Item 76: Strive for failure atomicity
+
+* Generally speaking, a failed method invocation should leave the object in the state that it was in prior to the invocation.
