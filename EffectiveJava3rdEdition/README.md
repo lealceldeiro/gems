@@ -612,3 +612,33 @@ invariants.
   - Not thread-safe
   - Thread-hostile
 * Lock fields should always be declared final.
+
+### Item 83: Use lazy initialization judiciously
+
+* Under most circumstances, normal initialization is preferable to lazy initialization.
+* If you use lazy initialization to break an initialization circularity, use a synchronized accessor.
+* If you need to use lazy initialization for performance on a static field, use the *lazy initialization holder class* idiom.
+```
+    private static class FieldHolder {
+        static final FieldType field = computeFieldValue();
+    }
+
+    private static FieldType getField() {
+        return FieldHolder.field;
+    }
+```
+* If you need to use lazy initialization for performance on an instance field, use the *double-check* idiom.
+```
+    private volatile FieldType field;
+
+    private FieldType getField() {
+        FieldType result = field;
+        if (result == null) { // First check (no locking)
+            synchronized (this) {
+                if (field == null) // Second check (with locking)
+                    field = result = computeFieldValue();
+            }
+        }
+        return result;
+    }
+```
