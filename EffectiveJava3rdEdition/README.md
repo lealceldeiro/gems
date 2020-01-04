@@ -592,3 +592,12 @@ invariants.
 * When you are designing a mutable class, think about whether it should do its own synchronization (this should be the case only if there is a good reason to do so, and document your decision clearly).
 
 ### Item 80: Prefer executors, tasks, and streams to threads
+
+### Item 81: Prefer concurrency utilities to `wait` and `notify`
+
+* Given the difficulty of using wait and notify correctly, you should use the higher-level concurrency utilities instead.
+* It is impossible to exclude concurrent activity from a concurrent collection; locking it will only slow the program.
+* Use `ConcurrentHashMap` in preference to `Collections.synchronizedMap`.
+* For interval timing, always use `System.nanoTime` rather than `System.currentTimeMillis`.
+* Always use the *wait loop idiom* to invoke the `wait` method; never invoke it outside of a loop.
+* There is seldom, if ever, a reason to use `wait` and `notify` in new code.
