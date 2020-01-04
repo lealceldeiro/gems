@@ -584,3 +584,9 @@ invariants.
 * Synchronization is not guaranteed to work unless both read and write operations are synchronized.
 * Confine mutable data to a single thread.
 * When multiple threads share mutable data, each thread that reads or writes the data must perform synchronization.
+
+### Item 79: Avoid excessive synchronization
+
+* To avoid liveness and safety failures, never cede control to the client within a synchronized method or block.
+* As a rule, you should do as little work as possible inside synchronized regions.
+* When you are designing a mutable class, think about whether it should do its own synchronization (this should be the case only if there is a good reason to do so, and document your decision clearly).
