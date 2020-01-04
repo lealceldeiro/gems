@@ -601,3 +601,14 @@ invariants.
 * For interval timing, always use `System.nanoTime` rather than `System.currentTimeMillis`.
 * Always use the *wait loop idiom* to invoke the `wait` method; never invoke it outside of a loop.
 * There is seldom, if ever, a reason to use `wait` and `notify` in new code.
+
+### Item 82: Document thread safety
+
+* The presence of the synchronized modifier in a method declaration is an implementation detail, not a part of its API.
+* To enable safe concurrent use, a class must clearly document what level of thread safety it supports.
+  - Immutable
+  - Unconditionally thread-safe
+  - Conditionally thread-safe
+  - Not thread-safe
+  - Thread-hostile
+* Lock fields should always be declared final.
