@@ -560,3 +560,8 @@ invariants.
 * Always declare checked exceptions individually, and document precisely the conditions under which each one is thrown.
 * Use the Javadoc `@throws` tag to document each exception that a method can throw, but do not use the throws keyword on unchecked exceptions.
 * If an exception is thrown by many methods in a class for the same reason, you can document the exception in the class’s documentation comment rather than documenting it individually for each method.
+
+### Item 75: Include failure-capture information in detail messages
+
+* To capture a failure, the detail message of an exception should contain the values of all parameters and fields that contributed to the exception.
+* Do not include passwords, encryption keys, and the like in detail messages.
