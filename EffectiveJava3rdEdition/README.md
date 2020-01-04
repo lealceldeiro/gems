@@ -650,3 +650,13 @@ private FieldType getField() {
 * Resist the temptation to “fix” the program by putting in calls to `Thread.yield`.
 * `Thread.yield` has no testable semantics.
 * Thread priorities are among the least portable features of Java.
+
+## Chapter 12. Serialization
+
+### Item 85: Prefer alternatives to Java serialization
+
+* The best way to avoid serialization exploits is never to deserialize anything.
+* There is no reason to use Java serialization in any new system you write.
+* Never deserialize untrusted data.
+* Prefer whitelisting to blacklisting when using an object deserialization filtering such as the `java.io.ObjectInputFilter` added in Java 9.
+* If you are designing a system from scratch, use a cross-platform structured-data representation such as JSON or protobuf instead of serialization.
