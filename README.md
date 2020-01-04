@@ -574,3 +574,13 @@ invariants.
 
 * An empty catch block defeats the purpose of exceptions.
 * If you choose to ignore an exception, the catch block should contain a comment explaining why it is appropriate to do so, and the variable should be named ignored.
+
+## Chapter 11. Concurrency
+
+### Item 78: Synchronize access to shared mutable data
+
+* Synchronization is required for reliable communication between threads as well as for mutual exclusion.
+* Do not use `Thread.stop`.
+* Synchronization is not guaranteed to work unless both read and write operations are synchronized.
+* Confine mutable data to a single thread.
+* When multiple threads share mutable data, each thread that reads or writes the data must perform synchronization.
