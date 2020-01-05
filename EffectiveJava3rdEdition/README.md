@@ -684,3 +684,14 @@ private FieldType getField() {
 * You must impose any synchronization on object serialization that you would impose on any other method that reads the entire state of the object.
 * Regardless of what serialized form you choose, declare an explicit serial version UID in every serializable class you write.
 * Do not change the serial version UID unless you want to break compatibility with all existing serialized instances of a class.
+
+### Item 88: Write `readObject` methods defensively
+
+* When an object is deserialized, it is critical to defensively copy any field containing an object reference that a client must not possess.
+* Anytime you write a `readObject` method, adopt the mind-set that you are writing a public constructor that must produce a valid instance regardless of what byte stream it is given.
+* Do not assume that the byte stream represents an actual serialized instance.
+* Guidelines for writing a readObject method:
+  - For classes with object reference fields that must remain private, defensively copy each object in such a field. Mutable components of immutable classes fall into this category.
+  - Check any invariants and throw an `InvalidObjectException` if a check fails. The checks should follow any defensive copying.
+  - If an entire object graph must be validated after it is deserialized, use the `ObjectInputValidation` interface.
+  - Do not invoke any overridable methods in the class, directly or indirectly.
