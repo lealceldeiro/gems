@@ -695,3 +695,10 @@ private FieldType getField() {
   - Check any invariants and throw an `InvalidObjectException` if a check fails. The checks should follow any defensive copying.
   - If an entire object graph must be validated after it is deserialized, use the `ObjectInputValidation` interface.
   - Do not invoke any overridable methods in the class, directly or indirectly.
+
+### Item 89: For instance control, prefer enum types to `readResolve`
+
+* If you depend on `readResolve` for instance control, all instance fields with object reference types *must* be declared `transient`.
+* The accessibility of `readResolve` is significant.
+* Use enum types to enforce instance control invariants wherever possible.
+* If this is not possible and you need a class to be both serializable and instance-controlled, you must provide a `readResolve` method and ensure that all of the class’s instance fields are either primitive or transient.
