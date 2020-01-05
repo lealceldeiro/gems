@@ -6,4 +6,6 @@ This is not intented to be used as an official reference of any kind. It is only
 
 Notes from:
 
- ### [Effective Java 3rd Edition](./EffectiveJava3rdEdition) (*Joshua J. Bloch*)
+ ### [Effective Java 3rd Edition](./EffectiveJava3rdEdition)  <sup><sub>(*Joshua J. Bloch*)</sub></sup>
+
+ ### [Java Concurrency in Practice](./JavaConcurrencyInPractice)  <sup><sub>(*Brian Goetz, Tim Peierls, Joshua Bloch, Joseph Bowbeer, David Holmes, Doug Lea*)</sub></sup>
