@@ -1,6 +1,6 @@
-Main notes taken from the book [Effective Java 3rd Edition](https://www.amazon.com/Effective-Java-Joshua-Bloch-ebook/dp/B078H61SCH).
-
 # Effective Java - Notes
+
+Main notes taken from the book [Effective Java 3rd Edition](https://www.amazon.com/Effective-Java-Joshua-Bloch-ebook/dp/B078H61SCH).
 
 ## Chapter 2. Creating and Destroying Objects
 
