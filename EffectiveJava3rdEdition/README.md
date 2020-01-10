@@ -420,7 +420,7 @@ invariants.
 * Every programmer should be familiar with the basics of **`java.lang`**, **`java.util`**, and **`java.io`**, and their subpackages.
 * The *collections* framework and the *streams* library should be part of every programmer’s basic toolkit, as should parts of the concurrency utilities in **`java.util.concurrent`**.
 
-### Item 60: Avoid `float` and `double` if exact answers are required.
+### Item 60: Avoid `float` and `double` if exact answers are required
 
 * The `float` and `double` types are particularly ill-suited for monetary calculations.
 * Use `BigDecimal`, `int`, or `long` for monetary calculations.
