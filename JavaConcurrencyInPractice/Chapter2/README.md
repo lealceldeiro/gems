@@ -41,3 +41,23 @@ The most common type of race condition is _check-then-act_, where a potentially 
 Using a potentially stale observation to make a decision or perform a computation is what characterizes most race conditions. This type of race condition is called _check-then-act_: you observe something to be true (file X doesn’t exist) and then take action based on that observation (create X); but in fact the observation could have become invalid between the time you observed it and the time you acted on it (someone else created X in the meantime), causing a problem (unexpected exception, overwritten data, file corruption).
 
 ### 2.2.2 Example: race conditions in lazy initialization
+
+A common idiom that uses check-then-act is _lazy initialization_.
+
+The following snippet has race conditions (**don't do this!**) that can undermine its correctness. Say that threads **A** and **B** execute `getInstance` at the same time. **A** sees that instance is `null` , and instantiates a new `ExpensiveObject`. **B** also checks if instance is `null` . Whether instance is `null` at this point depends unpredictably on timing, including the vagaries of scheduling and how long **A** takes to instantiate the `ExpensiveObject` and set the instance field. If instance is `null` when **B** examines it, the two callers to `getInstance` may receive two different results, even though `getInstance` is always supposed to return the same instance.
+
+```
+@NotThreadSafe
+public class LazyInitRace {
+  private ExpensiveObject instance = null;
+  
+  public ExpensiveObject getInstance() {
+    if (instance == null) {
+      instance = new ExpensiveObject();
+    }
+    
+    return instance;
+  }
+}
+```
+### 2.2.3 Compound actions
