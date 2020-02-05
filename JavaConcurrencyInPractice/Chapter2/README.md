@@ -39,3 +39,5 @@ The possibility of incorrect results in the presence of unlucky timing is so imp
 The most common type of race condition is _check-then-act_, where a potentially stale observation is used to make a decision on what to do next.
 
 Using a potentially stale observation to make a decision or perform a computation is what characterizes most race conditions. This type of race condition is called _check-then-act_: you observe something to be true (file X doesn’t exist) and then take action based on that observation (create X); but in fact the observation could have become invalid between the time you observed it and the time you acted on it (someone else created X in the meantime), causing a problem (unexpected exception, overwritten data, file corruption).
+
+### 2.2.2 Example: race conditions in lazy initialization
