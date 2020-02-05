@@ -29,3 +29,13 @@ Thread-safe classes encapsulate any needed synchronization so that clients need 
 Stateless objects are always thread-safe.
 
 ## 2.2 Atomicity
+
+The possibility of incorrect results in the presence of unlucky timing is so important in concurrent programming that it has a name: a _race condition_.
+
+<details><summary>_race condition_ or _data race_? </summary>The term _race condition_ is often confused with the related term _data race_, which arises when synchronization is not used to coordinate all access to a shared nonfinal field. You risk a data race whenever a thread writes a variable that might next be read by another thread or reads a variable that might have last been written by another thread if both threads do not use synchronization; code with data races has no useful defined semantics under the Java Memory Model. Not all race conditions are data races, and not all data races are race conditions, but they both can cause concurrent programs to fail in unpredictable ways.</details>
+
+### 2.2.1 Race conditions
+
+The most common type of race condition is _check-then-act_, where a potentially stale observation is used to make a decision on what to do next.
+
+Using a potentially stale observation to make a decision or perform a computation is what characterizes most race conditions. This type of race condition is called _check-then-act_: you observe something to be true (file X doesn’t exist) and then take action based on that observation (create X); but in fact the observation could have become invalid between the time you observed it and the time you acted on it (someone else created X in the meantime), causing a problem (unexpected exception, overwritten data, file corruption).
