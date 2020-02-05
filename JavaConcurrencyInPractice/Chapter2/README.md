@@ -69,3 +69,9 @@ We refer collectively to check-then-act and read-modify-write sequences as _comp
 Where practical, use existing thread-safe objects, like `AtomicLong`, to manage your class’s state. It is simpler to reason about the possible states and state transitions for existing thread-safe objects than it is for arbitrary state variables, and this makes it easier to maintain and verify thread safety.
 
 ## 2.3 Locking
+
+When multiple variables participate in an invariant, they are not _independent_: the value of one constrains the allowed value(s) of the others. Thus when updating one, you must update the others in the same atomic operation.
+
+To preserve state consistency, update related state variables in a single atomic operation.
+
+### 2.3.1 Intrinsic locks
