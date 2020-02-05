@@ -25,3 +25,12 @@ While _safety_ means “nothing bad ever happens”, liveness concerns the compl
 Performance issues subsume a broad range of problems, including poor service time, responsiveness, throughput, resource consumption, or scalability.
 
 ## 1.4 Threads are everywhere
+
+Frameworks introduce concurrency into applications by calling application components from framework threads. Components invariably access application state, thus requiring that _all_ code paths accessing that state be thread-safe.
+
+The facilities described below all cause application code to be called from threads not managed by the application:
+
+* Timer
+* Servlets and JavaServer Pages (JSPs)
+* Remote Method Invocation
+* Swing and AWT
