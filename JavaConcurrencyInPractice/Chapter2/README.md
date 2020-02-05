@@ -15,3 +15,17 @@ If multiple threads access the same mutable state variable without appropriate s
 It is far easier to design a class to be thread-safe than to retrofit it for thread safety later.
 
 When designing thread-safe classes, good object-oriented techniques—encapsulation, immutability, and clear specification of invariants—are your best friends.
+
+## 2.1 What is thread safety?
+
+A class is _thread-safe_ if it behaves correctly when accessed from multiple threads, regardless of the scheduling or interleaving of the execution of those threads by the runtime environment, and with no additional synchronization or other coordination on the part of the calling code.
+
+No set of operations performed sequentially or concurrently on instances of a thread-safe class can cause an instance to be in an invalid state.
+
+Thread-safe classes encapsulate any needed synchronization so that clients need not provide their own.
+
+### 2.1.1 Example: a stateless servlet
+
+Stateless objects are always thread-safe.
+
+## 2.2 Atomicity
