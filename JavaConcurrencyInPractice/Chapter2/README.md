@@ -75,3 +75,9 @@ When multiple variables participate in an invariant, they are not _independent_:
 To preserve state consistency, update related state variables in a single atomic operation.
 
 ### 2.3.1 Intrinsic locks
+
+Java provides a built-in locking mechanism for enforcing atomicity: the _synchronized_ block. Every Java object can implicitly act as a lock for purposes of synchronization; these built-in locks are called _intrinsic locks_ or _monitor locks_.
+
+Intrinsic locks in Java act as _mutexes_ (or mutual exclusion locks), which means that at most one thread may own the lock.
+
+### 2.3.2 Reentrancy
