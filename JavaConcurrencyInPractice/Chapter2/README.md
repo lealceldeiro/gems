@@ -81,3 +81,9 @@ Java provides a built-in locking mechanism for enforcing atomicity: the _synchro
 Intrinsic locks in Java act as _mutexes_ (or mutual exclusion locks), which means that at most one thread may own the lock.
 
 ### 2.3.2 Reentrancy
+
+Reentrancy means that locks are acquired on a per-thread rather than per-invocation basis.
+
+Iintrinsic locks are _reentrant_, if a thread tries to acquire a lock that it already holds, the request succeeds.
+
+## 2.4 Guarding state with locks
