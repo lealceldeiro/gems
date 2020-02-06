@@ -87,3 +87,17 @@ Reentrancy means that locks are acquired on a per-thread rather than per-invocat
 Iintrinsic locks are _reentrant_, if a thread tries to acquire a lock that it already holds, the request succeeds.
 
 ## 2.4 Guarding state with locks
+
+Holding a lock for the _entire duration_ of a compound action can make that compound action atomic.
+
+If synchronization is used to coordinate access to a variable, it is needed _everywhere that variable is accessed_.
+
+When using locks to coordinate access to a variable, the _same_ lock must be used wherever that variable is accessed.
+
+For each mutable state variable that may be accessed by more than one thread, _all_ accesses to that variable must be performed with the _same_ lock held. In this case, we say that the variable is _guarded by_ that lock.
+
+Every shared, mutable variable should be guarded by exactly one lock. Make it clear to maintainers which lock that is.
+
+For every invariant that involves more than one variable, _all_ the variables involved in that invariant must be guarded by the _same_ lock.
+
+## 2.5 Liveness and performance
