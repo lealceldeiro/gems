@@ -1,4 +1,4 @@
-# Chapter 2
+# Chapter 2: Thread Safety
 
 Writing thread-safe code is, at its core, about managing access to _state_, and in particular to _shared, mutable state_.
 
