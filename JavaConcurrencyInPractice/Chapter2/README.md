@@ -101,3 +101,9 @@ Every shared, mutable variable should be guarded by exactly one lock. Make it cl
 For every invariant that involves more than one variable, _all_ the variables involved in that invariant must be guarded by the _same_ lock.
 
 ## 2.5 Liveness and performance
+
+Acquiring and releasing a lock has some overhead, so it is undesirable to break down synchronized blocks _too_ far.
+
+There is frequently a tension between simplicity and performance. When implementing a synchronization policy, resist the temptation to prematurely sacrifice simplicity (potentially compromising safety) for the sake of performance.
+
+Avoid holding locks during lengthy computations or operations at risk of not completing quickly such as network or console I/O.
