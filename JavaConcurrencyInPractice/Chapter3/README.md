@@ -61,3 +61,26 @@ public class ThisEscape {
 ```
 
 ### 3.2.1 Safe construction practices
+
+Do not allow the `this` reference to escape during construction. i.e.:
+```
+public class SafeListener {
+  private final EventListener listener;
+  
+  private SafeListener() {
+    listener = new EventListener() {
+      public void onEvent(Event e) {
+        doSomething(e);
+      }
+    };
+  }
+  
+  public static SafeListener newInstance(EventSource source) {
+    SafeListener safe = new SafeListener();
+    source.registerListener(safe.listener);
+    return safe;
+  }
+}
+```
+
+## 3.3 Thread confinement
