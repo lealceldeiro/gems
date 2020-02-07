@@ -107,3 +107,13 @@ ThreadLocal allows you to associate a per-thread value with a value-holding obje
 Like global variables, thread-local variables can detract from reusability and introduce hidden couplings among classes, and should therefore be used with care.
 
 ## 3.4 Immutability
+
+Immutable objects are always thread-safe.
+
+An object is immutable if:
+
+* Its state cannot be modified after construction
+* All its fields are final
+* It is properly constructed (the `this` reference does not escape during construction)
+
+### 3.4.1 Final fields
