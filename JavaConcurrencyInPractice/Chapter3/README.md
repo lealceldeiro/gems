@@ -117,3 +117,7 @@ An object is immutable if:
 * It is properly constructed (the `this` reference does not escape during construction)
 
 ### 3.4.1 Final fields
+
+Just as it is a good practice to make all fields `private` unless they need greater visibility, it is a good practice to make all fields `final` unless they need to be mutable.
+
+### 3.4.2 Example: Using volatile to publish immutable objects
