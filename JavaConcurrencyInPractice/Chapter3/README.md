@@ -94,10 +94,16 @@ Thread confinement is an element of your program’s design that must be enforce
 
 _Ad-hoc thread confinement_ describes when the responsibility for maintaining thread confinement falls entirely on the implementation.
 
-Because of its fragility, ad-hoc thread confinement should be used sparingly; if possible, use one of the stronger forms of thread confinment (stack confinement or ThreadLocal) instead.
+Because of its fragility, ad-hoc thread confinement should be used sparingly; if possible, use one of the stronger forms of thread confinment (stack confinement or `ThreadLocal`) instead.
 
 ### 3.3.2 Stack confinement
 
 _Stack confinement_ is a special case of thread confinement in which an object can only be reached through local variables.
 
-#### 3.3.3 ThreadLocal
+### 3.3.3 ThreadLocal
+
+ThreadLocal allows you to associate a per-thread value with a value-holding object and provides `get` and `set` accessor methods that maintain a separate copy of the value for each thread that uses it, so a `get` returns the most recent value passed to `set` _from the currently executing thread_.
+
+Like global variables, thread-local variables can detract from reusability and introduce hidden couplings among classes, and should therefore be used with care.
+
+## 3.4 Immutability
