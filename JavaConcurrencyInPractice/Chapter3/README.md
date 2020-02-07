@@ -33,3 +33,31 @@ You can use volatile variables only when all the following criteria are met:
 * ocking is not required for any other reason while the variable is being accessed.
 
 ## 3.2 Publication and escape
+
+_Publishing_ an object means making it available to code outside of its current scope, such as by storing a reference to it where other code can find it, returning it from a nonprivate method, or passing it to a method in another class.
+
+An object that is published when it should not have been is said to have _escaped_.
+
+Publishing one object may indirectly publish others.
+
+Any object that is reachable from a published object by following some chain of nonprivate field references and method calls has also
+been published.
+
+From the perspective of a class `C`, an alien method is one whose behavior is not fully specified by `C`. This includes methods in other classes as well as overrideable methods (neither `private` nor `final`) in `C` itself. Passing an object to an alien method must also be considered publishing that object. Since you can’t know what code will actually be invoked, you don’t know that the alien method won’t publish the object or retain a reference to it that might later be used from another thread.
+
+An object or its internal state is also published when an inner class instance is pusblished, because the inner class instances contain a hidden reference to the enclosing instance. i.e.:
+```
+public class ThisEscape {
+  public ThisEscape(EventSource source) {
+    source.registerListener(
+      new EventListener() {
+        public void onEvent(Event e) {
+          doSomething(e);
+        }
+      }
+    );
+  }
+}
+```
+
+### 3.2.1 Safe construction practices
