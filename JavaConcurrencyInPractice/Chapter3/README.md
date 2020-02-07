@@ -125,3 +125,16 @@ Just as it is a good practice to make all fields `private` unless they need grea
 Whenever a group of related data items must be acted on atomically, consider creating an immutable holder class for them. Race conditions in accessing or updating multiple related variables can be eliminated by using an immutable object to hold all the variables.
 
 ## 3.5 Safe publication
+
+### 3.5.1 Improper publication: when good objects go bad
+
+When synchronization is not used to make an object instance visible to other threads, we say the object was _not properly published_.
+
+### 3.5.2 Immutable objects and initialization safety
+
+Because immutable objects are so important, the Java Memory Model offers a special guarantee of _initialization safety_ for sharing immutable objects.
+
+_Immutable_ objects can be used safely by any thread without additional synchronization, even when synchronization is not used to publish them.
+
+### 3.5.3 Safe publication idioms
+
