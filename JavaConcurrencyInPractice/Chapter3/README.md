@@ -91,3 +91,13 @@ simplest ways to achieve thread safety.
 Thread confinement is an element of your program’s design that must be enforced by its implementation. The language and core libraries provide mechanisms that can help in maintaining thread confinement—local variables and the `ThreadLocal` class—but even with these, it is still the programmer’s responsibility to ensure that thread-confined objects do not escape from their intended thread.
 
 ### 3.3.1 Ad-hoc thread confinement
+
+_Ad-hoc thread confinement_ describes when the responsibility for maintaining thread confinement falls entirely on the implementation.
+
+Because of its fragility, ad-hoc thread confinement should be used sparingly; if possible, use one of the stronger forms of thread confinment (stack confinement or ThreadLocal) instead.
+
+### 3.3.2 Stack confinement
+
+_Stack confinement_ is a special case of thread confinement in which an object can only be reached through local variables.
+
+#### 3.3.3 ThreadLocal
