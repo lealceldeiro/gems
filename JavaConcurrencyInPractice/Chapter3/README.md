@@ -138,3 +138,17 @@ _Immutable_ objects can be used safely by any thread without additional synchron
 
 ### 3.5.3 Safe publication idioms
 
+To publish an object safely, both the reference to the object and the object’s state must be made visible to other threads at the same time. A properly constructed object can be safely published by:
+
+* Initializing an object reference from a static initializer;
+* Storing a reference to it into a volatile field or AtomicReference;
+* Storing a reference to it into a final field of a properly constructed object; or
+* Storing a reference to it into a field that is properly guarded by a lock
+
+The thread-safe library collections offer the following safe publication guarantees:
+
+* Placing a key or value in a `Hashtable`, `SynchronizedMap`, or `ConcurrentMap` safely publishes it to any thread that retrieves it from the `Map` (whether directly or via an iterator);
+* Placing an element in a `Vector`, `CopyOnWriteArrayList`, `CopyOnWriteArraySet`, `SynchronizedList`, or `SynchronizedSet` safely publishes it to any thread that retrieves it from the collection;
+* Placing an element on a `BlockingQueue` or a `ConcurrentLinkedQueue` safely publishes it to any thread that retrieves it from the queue.
+
+### 3.5.4 Effectively immutable objects
