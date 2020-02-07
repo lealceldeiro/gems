@@ -120,4 +120,8 @@ An object is immutable if:
 
 Just as it is a good practice to make all fields `private` unless they need greater visibility, it is a good practice to make all fields `final` unless they need to be mutable.
 
-### 3.4.2 Example: Using volatile to publish immutable objects
+### 3.4.2 Example: Using `volatile` to publish immutable objects
+
+Whenever a group of related data items must be acted on atomically, consider creating an immutable holder class for them. Race conditions in accessing or updating multiple related variables can be eliminated by using an immutable object to hold all the variables.
+
+## 3.5 Safe publication
