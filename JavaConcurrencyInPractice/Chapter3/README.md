@@ -15,3 +15,7 @@ Stale data can cause serious and confusing failures such as unexpected exception
 Even if you don’t care about stale values, it is not safe to use shared mutable `long` and `double` variables in multithreaded programs unless they are declared `volatile` or guarded by a lock.
 
 ### 3.1.3 Locking and visibility
+
+Locking is not just about mutual exclusion; it is also about memory visibility. To ensure that all threads see the most up-to-date values of shared mutable variables, the reading and writing threads must synchronize on a common lock.
+
+### 3.1.4 Volatile variables
