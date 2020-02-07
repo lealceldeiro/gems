@@ -11,3 +11,7 @@ Always use the proper synchronization whenever data is shared across threads.
 Stale data can cause serious and confusing failures such as unexpected exceptions, corrupted data structures, inaccurate computations, and infinite loops.
 
 ### 3.1.2 Nonatomic 64-bit operations
+
+Even if you don’t care about stale values, it is not safe to use shared mutable `long` and `double` variables in multithreaded programs unless they are declared `volatile` or guarded by a lock.
+
+### 3.1.3 Locking and visibility
