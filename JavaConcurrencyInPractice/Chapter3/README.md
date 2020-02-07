@@ -84,3 +84,10 @@ public class SafeListener {
 ```
 
 ## 3.3 Thread confinement
+
+If data is only accessed from a single thread, no synchronization is needed. This technique, _thread confinement_, is one of the
+simplest ways to achieve thread safety.
+
+Thread confinement is an element of your program’s design that must be enforced by its implementation. The language and core libraries provide mechanisms that can help in maintaining thread confinement—local variables and the `ThreadLocal` class—but even with these, it is still the programmer’s responsibility to ensure that thread-confined objects do not escape from their intended thread.
+
+### 3.3.1 Ad-hoc thread confinement
