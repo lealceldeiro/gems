@@ -168,3 +168,11 @@ The publication requirements for an object depend on its mutability:
 * Mutable objects must be safely published, and must be either thread-safe or guarded by a lock.
 
 ### 3.5.6 Sharing objects safely
+
+The most useful policies for using and sharing objects in a concurrent program are:
+
+* **Thread-confined**. A thread-confined object is owned exclusively by and confined to one thread, and can be modified by its owning thread.
+* **Shared read-only**. A shared read-only object can be accessed concurrently by multiple threads without additional synchronization, but cannot be modified by any thread. Shared read-only objects include immutable and effectively immutable objects.
+* **Shared thread-safe**. A thread-safe object performs synchronization internally, so multiple threads can freely access it through its public interface without further synchronization.
+
+* **Guarded**. A guarded object can be accessed only with a specific lock held. Guarded objects include those that are encapsulated within other thread-safe objects and published objects that are known to be guarded by a specific lock.
