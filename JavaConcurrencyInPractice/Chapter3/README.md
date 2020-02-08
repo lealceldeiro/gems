@@ -152,3 +152,9 @@ The thread-safe library collections offer the following safe publication guarant
 * Placing an element on a `BlockingQueue` or a `ConcurrentLinkedQueue` safely publishes it to any thread that retrieves it from the queue.
 
 ### 3.5.4 Effectively immutable objects
+
+Objects that are not technically immutable, but whose state will not be modified after publication, are called _effectively immutable_.
+
+Safely published _effectively immutable_ objects can be used safely by any thread without additional synchronization.
+
+### 3.5.5 Mutable objects
