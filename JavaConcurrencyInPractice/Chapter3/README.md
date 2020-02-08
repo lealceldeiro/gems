@@ -158,3 +158,13 @@ Objects that are not technically immutable, but whose state will not be modified
 Safely published _effectively immutable_ objects can be used safely by any thread without additional synchronization.
 
 ### 3.5.5 Mutable objects
+
+To share mutable objects safely, they must be safely published and be either thread-safe or guarded by a lock.
+
+The publication requirements for an object depend on its mutability:
+
+* Immutable objects can be published through any mechanism;
+* Effectively immutable objects must be safely published;
+* Mutable objects must be safely published, and must be either thread-safe or guarded by a lock.
+
+### 3.5.6 Sharing objects safely
