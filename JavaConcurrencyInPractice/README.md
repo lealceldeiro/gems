@@ -7,3 +7,5 @@ Main notes taken from the book [Java Concurrency in Practice ](https://jcip.net/
 ### [Chapter 2](./Chapter2): Thread Safety
 
 ### [Chapter 3](./Chapter3): Sharing Objects
+
+### [Chapter 4](./Chapter4): Composing Objects
