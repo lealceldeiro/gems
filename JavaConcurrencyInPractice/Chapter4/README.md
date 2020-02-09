@@ -27,3 +27,13 @@ Operations with state-based preconditions are called state-dependent.
 In a single-threaded program, if a precondition does not hold, the operation has no choice but to fail. But in a concurrent program, the precondition may become true later due to the action of another thread.
 
 ## 4.1.3 State ownership
+
+When defining which variables form an object’s state, we want to consider only the data that object _owns_.
+
+Ownership is not embodied explicitly in the language, but is instead an element of class design
+
+In many cases, ownership and encapsulation go together—the object encapsulates the state it owns and owns the state it encapsulates.
+
+A class usually does not own the objects passed to its methods or constructors, unless the method is designed to explicitly transfer ownership of objects passed in (such as the synchronized collection wrapper factory methods).
+
+## 4.2 Instance confinement
