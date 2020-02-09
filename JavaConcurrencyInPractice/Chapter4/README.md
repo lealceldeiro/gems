@@ -80,3 +80,7 @@ If the components of our class are already thread-safe, _sometimes_ we need to a
 We can delegate thread safety to more than one underlying state variable as long as those underlying state variables are _independent_, meaning that the composite class does not impose any invariants involving the multiple state variables.
 
 ### 4.3.3 When delegation fails
+
+If a class is composed of multiple independent thread-safe state variables and has no operations that have any invalid state transitions, then it can delegate thread safety to the underlying state variables.
+
+### 4.3.4 Publishing underlying state variables
