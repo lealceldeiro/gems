@@ -96,3 +96,27 @@ The safest way to add a new atomic operation is to modify the original class to 
 Another approach is to extend the class, assuming it was designed for extension. Extension is more fragile than adding code directly to a class, because the implementation of the synchronization policy is now distributed over multiple, separately maintained source files. If the underlying class were to change its synchronization policy by choosing a different lock to guard its state variables, the subclass would subtly and silently break, because it no longer used the right lock to control concurrent access to the base class’s state.
 
 ### 4.4.1 Client-side locking
+
+A third strategy is to extend the functionality of the class without extending the class itself by placing extension code in a “helper” class.
+
+Client-side locking entails guarding client code that uses some object X with the lock X uses to guard its own state. In order to use client-side locking, you must know what lock X uses. Example (_ put-if-absent with client-side locking_):
+
+```
+@ThreadSafe
+public class ListHelper<E> {
+  public List<E> list = Collections.synchronizedList(new ArrayList<E>());
+  // ...
+  public boolean putIfAbsent(E x) {
+    synchronized (list) {
+      boolean absent = !list.contains(x);
+      if (absent) {
+        list.add(x);
+      }
+      return absent;
+    }
+  }
+}
+```
+If extending a class to add another atomic operation is fragile because it distributes the locking code for a class over multiple classes in an object hierarchy, client-side locking is even more fragile because it entails putting locking code for class `C` into classes that are totally unrelated to `C`.
+
+### 4.4.2 Composition
