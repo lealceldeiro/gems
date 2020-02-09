@@ -19,3 +19,11 @@ If an operation has invalid state transitions, it must be made atomic.
 When multiple variables participate in an invariant, the lock that guards them must be held for the duration of any operation that accesses the related variables.
 
 You cannot ensure thread safety without understanding an object’s invariants and postconditions. Constraints on the valid values or state transitions for state variables can create atomicity and encapsulation requirements.
+
+### 4.1.2 State-dependent operations
+
+Operations with state-based preconditions are called state-dependent.
+
+In a single-threaded program, if a precondition does not hold, the operation has no choice but to fail. But in a concurrent program, the precondition may become true later due to the action of another thread.
+
+## 4.1.3 State ownership
