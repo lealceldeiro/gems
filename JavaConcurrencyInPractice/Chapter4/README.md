@@ -89,4 +89,10 @@ The conditions under where we can publish an object’s underlying state variabl
 
 If a state variable is thread-safe, does not participate in any invariants that constrain its value, and has no prohibited state transitions for any of its operations, then it can safely be published.
 
-### 4.3.5 Example: vehicle tracker that publishes its state
+## 4.4 Adding functionality to existing thread-safe classes
+
+The safest way to add a new atomic operation is to modify the original class to support the desired operation, but this is not always possible because you may not have access to the source code or may not be free to modify it. If you can modify the original class, you need to understand the implementation’s synchronization policy so that you can enhance it in a manner consistent with its original design.
+
+Another approach is to extend the class, assuming it was designed for extension. Extension is more fragile than adding code directly to a class, because the implementation of the synchronization policy is now distributed over multiple, separately maintained source files. If the underlying class were to change its synchronization policy by choosing a different lock to guard its state variables, the subclass would subtly and silently break, because it no longer used the right lock to control concurrent access to the base class’s state.
+
+### 4.4.1 Client-side locking
