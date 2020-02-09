@@ -37,3 +37,29 @@ In many cases, ownership and encapsulation go together—the object encapsulates
 A class usually does not own the objects passed to its methods or constructors, unless the method is designed to explicitly transfer ownership of objects passed in (such as the synchronized collection wrapper factory methods).
 
 ## 4.2 Instance confinement
+
+Encapsulation simplifies making classes thread-safe by promoting _instance confinement_, often just called _confinement_.
+
+Encapsulating data within an object confines access to the data to the object’s methods, making it easier to ensure that the data is always accessed with the appropriate lock held.
+
+The following code snippet shows how confinement and locking can work together to make a class thread-safe even when its component state variables are not.
+
+```
+// NOTE: if Person is mutable, additional synchronization will be needed when accessing a Person retrieved from a PersonSet
+@ThreadSafe
+public class PersonSet {
+  @GuardedBy("this")
+  private final Set<Person> mySet = new HashSet<>();
+  
+  public synchronized void addPerson(Person p) {
+    mySet.add(p);
+  }
+  public synchronized boolean containsPerson(Person p) {
+    return mySet.contains(p);
+  }
+}
+```
+
+Instance confinement is one of the easiest ways to build thread-safe classes because a class that confines its state can be analyzed for thread safety without having to examine the whole program. It also allows flexibility in the choice of locking strategy and allows different state variables to be guarded by different locks.
+
+### 4.2.1 The Java monitor pattern
