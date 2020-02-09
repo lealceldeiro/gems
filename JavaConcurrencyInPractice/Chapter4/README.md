@@ -84,3 +84,9 @@ We can delegate thread safety to more than one underlying state variable as long
 If a class is composed of multiple independent thread-safe state variables and has no operations that have any invalid state transitions, then it can delegate thread safety to the underlying state variables.
 
 ### 4.3.4 Publishing underlying state variables
+
+The conditions under where we can publish an object’s underlying state variables so that other classes can modify them as well, depends on what invariants the class imposes on those variables.
+
+If a state variable is thread-safe, does not participate in any invariants that constrain its value, and has no prohibited state transitions for any of its operations, then it can safely be published.
+
+### 4.3.5 Example: vehicle tracker that publishes its state
