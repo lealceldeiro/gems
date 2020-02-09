@@ -76,3 +76,7 @@ encapsulates the lock so that client code cannot acquire it, whereas a publicly 
 If the components of our class are already thread-safe, _sometimes_ we need to add an additional layer of thread safety, but _not always_.
 
 ### 4.3.2 Independent state variables
+
+We can delegate thread safety to more than one underlying state variable as long as those underlying state variables are _independent_, meaning that the composite class does not impose any invariants involving the multiple state variables.
+
+### 4.3.3 When delegation fails
