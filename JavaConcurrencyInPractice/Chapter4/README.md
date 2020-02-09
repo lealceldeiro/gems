@@ -72,3 +72,7 @@ There are advantages to using a private lock object instead of an object’s int
 encapsulates the lock so that client code cannot acquire it, whereas a publicly accessible lock allows client code to participate in its synchronization policy—correctly or incorrectly.
 
 ## 4.3 Delegating thread safety
+
+If the components of our class are already thread-safe, _sometimes_ we need to add an additional layer of thread safety, but _not always_.
+
+### 4.3.2 Independent state variables
