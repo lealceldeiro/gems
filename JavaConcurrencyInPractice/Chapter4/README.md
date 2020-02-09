@@ -63,3 +63,12 @@ public class PersonSet {
 Instance confinement is one of the easiest ways to build thread-safe classes because a class that confines its state can be analyzed for thread safety without having to examine the whole program. It also allows flexibility in the choice of locking strategy and allows different state variables to be guarded by different locks.
 
 ### 4.2.1 The Java monitor pattern
+
+An object following the Java monitor pattern encapsulates all its mutable state and guards it with the object’s own intrinsic lock.
+
+The primary advantage of the Java monitor pattern is its simplicity and it is merely a convention; any lock object could be used to guard an object’s state so long as it is used consistently.
+
+There are advantages to using a private lock object instead of an object’s intrinsic lock: Making the lock object private
+encapsulates the lock so that client code cannot acquire it, whereas a publicly accessible lock allows client code to participate in its synchronization policy—correctly or incorrectly.
+
+## 4.3 Delegating thread safety
