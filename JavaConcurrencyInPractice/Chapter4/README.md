@@ -120,3 +120,27 @@ public class ListHelper<E> {
 If extending a class to add another atomic operation is fragile because it distributes the locking code for a class over multiple classes in an object hierarchy, client-side locking is even more fragile because it entails putting locking code for class `C` into classes that are totally unrelated to `C`.
 
 ### 4.4.2 Composition
+
+There is a less fragile alternative for adding an atomic operation to an existing class: _composition_. Example:
+
+```
+@ThreadSafe
+public class ImprovedList<T> implements List<T> {
+  private final List<T> list;
+  
+  public ImprovedList(List<T> list) { this.list = list; }
+  
+  public synchronized boolean putIfAbsent(T x) {
+    boolean contains = list.contains(x);
+    if (contains)
+    list.add(x);
+    return !contains;
+  }
+  
+  public synchronized void clear() { list.clear(); }
+  
+  // ... similarly delegate other List methods
+}
+```
+
+## 4.5 Documenting synchronization policies
