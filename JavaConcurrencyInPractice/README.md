@@ -9,3 +9,5 @@ Main notes taken from the book [Java Concurrency in Practice ](https://jcip.net/
 ### [Chapter 3](./Chapter3): Sharing Objects
 
 ### [Chapter 4](./Chapter4): Composing Objects
+
+### [Chapter 5](./Chapter5): Building Blocks
