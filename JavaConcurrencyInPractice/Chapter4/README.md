@@ -148,5 +148,3 @@ public class ImprovedList<T> implements List<T> {
 Document a class’s thread safety guarantees for its clients; document its synchronization policy for its maintainers.
 
 Each use of `synchronized`, `volatile`, or any thread-safe class reflects a _synchronization policy_ defining a strategy for ensuring the integrity of data in the face of concurrent access. That policy is an element of your program’s design, and should be documented.
-
-### 4.5.1 Interpreting vague documentation
