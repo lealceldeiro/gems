@@ -73,12 +73,20 @@ _Interruption_ is a _cooperative_ mechanism. One thread cannot force another to 
 
 When your code calls a method that throws `InterruptedException` , then your method is a blocking method too, and must have a plan for responding to interruption. For library code, there are basically two choices:
 
- * Propagate the InterruptedException
+ * Propagate the `InterruptedException`
  * Restore the interrupt
  
 There is one thing you should _not_ do with `InterruptedException`—catch it and do nothing in response. The only situation in which it is acceptable to swallow an interrupt is when you are extending `Thread` and therefore control all the code higher up on the call stack.
 
 ## 5.5 Synchronizers
+
+A _synchronizer_ is any object that coordinates the control flow of threads based on its state. Blocking queues can act as synchronizers; other types of synchronizers include semaphores, barriers, and latches.
+
+### 5.5.1 Latches
+
+A _latch_ is a synchronizer that can delay the progress of threads until it reaches its terminal state. It acts as a gate: until the latch reaches the terminal state the gate is closed and no thread can pass, and in the terminal state the gate opens, allowing all threads to pass. i.e.: `CountDownLatch`.
+
+## 5.5.2 `FutureTask`
 
 -----
 
