@@ -53,6 +53,33 @@ Bounded queues are a powerful resource management tool for building reliable app
 
 Build resource management into your design early using blocking queues—it is a lot easier to do this up front than to retrofit it later.
 
+### 5.3.2 Serial thread confinement
+
+For mutable objects, producer-consumer designs and blocking queues facilitate _serial thread confinement_ for handing off ownership of objects from producers to consumers.
+
+A thread-confined object is owned exclusively by a single thread, but that ownership can be “transferred” by publishing it safely where only one other thread will gain access to it and ensuring that the publishing thread does not access it after the handoff.
+
+### 5.3.3 Deques and work stealing
+
+Just as blocking queues lend themselves to the producer-consumer pattern, deques lend themselves to a related pattern called _work stealing_.
+
+A producer-consumer design has one shared work queue for all consumers; in a work stealing design, every consumer has its own deque. If a consumer exhausts the work in its own deque, it can steal work from the _tail_ of someone else’s deque.
+
+## 5.4 Blocking and interruptible methods
+
+When a method can throw `InterruptedException` , it is telling you that it is a blocking method, and further that if it is _interrupted_, it will make an effort to stop blocking early.
+
+_Interruption_ is a _cooperative_ mechanism. One thread cannot force another to stop what it is doing and do something else; when thread `A` interrupts thread `B`, `A` is merely requesting that `B` stop what it is doing when it gets to a convenient stopping point—if it feels like it.
+
+When your code calls a method that throws `InterruptedException` , then your method is a blocking method too, and must have a plan for responding to interruption. For library code, there are basically two choices:
+
+ * Propagate the InterruptedException
+ * Restore the interrupt
+ 
+There is one thing you should _not_ do with `InterruptedException`—catch it and do nothing in response. The only situation in which it is acceptable to swallow an interrupt is when you are extending `Thread` and therefore control all the code higher up on the call stack.
+
+## 5.5 Synchronizers
+
 -----
 
 <sup><sub>1. Serializing access to an object has nothing to do with object serialization (turning an object into a byte stream); serializing access means that threads take turns accessing the object exclusively, rather than doing so concurrently.</sup></sub>
