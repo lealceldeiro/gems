@@ -43,7 +43,15 @@ The copy-on-write collections are reasonable to use only when iteration is far m
 
 ## 5.3 Blocking queues and the producer-consumer pattern
 
+Blocking queues support the _producer-consumer_ design pattern.
 
+A producer-consumer design separates the identification of work to be done from the execution of that work by placing work items on a “to do” list for later processing, rather than processing them immediately as they are identified.
+
+The producer-consumer pattern simplifies development because it removes code dependencies between producer and consumer classes, and simplifies workload management by decoupling activities that may produce or consume data at different or variable rates.
+
+Bounded queues are a powerful resource management tool for building reliable applications: they make your program more robust to overload by throttling activities that threaten to produce more work than can be handled.
+
+Build resource management into your design early using blocking queues—it is a lot easier to do this up front than to retrofit it later.
 
 -----
 
