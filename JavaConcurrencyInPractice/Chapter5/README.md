@@ -86,7 +86,7 @@ A _synchronizer_ is any object that coordinates the control flow of threads base
 
 A _latch_ is a synchronizer that can delay the progress of threads until it reaches its terminal state. It acts as a gate: until the latch reaches the terminal state the gate is closed and no thread can pass, and in the terminal state the gate opens, allowing all threads to pass. i.e.: `CountDownLatch`.
 
-## 5.5.2 `FutureTask`
+### 5.5.2 `FutureTask`
 
 -----
 
