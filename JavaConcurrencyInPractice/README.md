@@ -12,4 +12,6 @@ Main notes taken from the book [Java Concurrency in Practice ](https://jcip.net/
 
 ### [Chapter 5](./Chapter5): Building Blocks
 
-### [_Cheat Sheet_ from Chapters 2 to 5](./CheatSheetChapter2-5.md)
+### [_Cheat Sheet from Chapters 2 to 5_](./CheatSheetChapter2-5.md)
+
+### [Chapter 6](./Chapter6): Task Execution
