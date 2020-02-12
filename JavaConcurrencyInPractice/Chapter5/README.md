@@ -114,6 +114,68 @@ If a barrier is considered _broken_ (a call to `await` times out or a thread blo
 
 ## 5.6 Building an efficient, scalable result cache
 
+```
+public interface Computable<A, V> {
+  V compute(A arg) throws InterruptedException;
+}
+
+public class ExpensiveFunction implements Computable<String, BigInteger> {
+  public BigInteger compute(String arg) {
+    // after deep thought...
+    return new BigInteger(arg);
+  }
+}
+
+public class Memoizer<A, V> implements Computable<A, V> {
+	private final ConcurrentMap<A, Future<V>> cache	= new ConcurrentHashMap<A, Future<V>>();
+	private final Computable<A, V> c;
+ 
+	public Memoizer(Computable<A, V> c) { this.c = c; }
+ 
+	public V compute(final A arg) throws InterruptedException {
+		while (true) {
+			Future<V> f = cache.get(arg);
+			if (f == null) {
+				Callable<V> eval = new Callable<V>() {
+					public V call() throws InterruptedException {
+						return c.compute(arg);
+					}
+				};
+				FutureTask<V> ft = new FutureTask<V>(eval);
+				f = cache.putIfAbsent(arg, ft);
+				if (f == null) { f = ft; ft.run(); }
+			}
+			try {
+				return f.get();
+			} catch (CancellationException e) {
+				cache.remove(arg, f);
+			} catch (ExecutionException e) {
+				throw launderThrowable(e.getCause());
+			}
+		}
+	}
+}
+
+@ThreadSafe
+public class Factorizer implements Servlet {
+	private final Computable<BigInteger, BigInteger[]> c =	new Computable<BigInteger, BigInteger[]>() {
+		public BigInteger[] compute(BigInteger arg) {
+			return factor(arg);
+		}
+	};
+	private final Computable<BigInteger, BigInteger[]> cache	= new Memoizer<BigInteger, BigInteger[]>(c);
+ 
+	public void service(ServletRequest req,
+		ServletResponse resp) {
+		try {
+			BigInteger i = extractFromRequest(req);
+			encodeIntoResponse(resp, cache.compute(i));
+		} catch (InterruptedException e) {
+			encodeError(resp, "factorization interrupted");
+		}
+	}
+}
+```
 -----
 
 <sup><sub>1. Serializing access to an object has nothing to do with object serialization (turning an object into a byte stream); serializing access means that threads take turns accessing the object exclusively, rather than doing so concurrently.</sup></sub>
