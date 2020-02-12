@@ -88,6 +88,23 @@ A _latch_ is a synchronizer that can delay the progress of threads until it reac
 
 ### 5.5.2 `FutureTask`
 
+`FutureTask` also acts like a latch.
+
+The behavior of `Future.get` depends on the state of the task. If it is completed, get returns the result immediately, and otherwise blocks until the task transitions to the completed state and then returns the result or throws an exception.
+
+### 5.5.3 Semaphores
+
+_Counting semaphores_ are used to control the number of activities that can access a certain resource or perform a given action at the same time.
+
+A binary semaphore can be used as a mutex with nonreentrant locking semantics; whoever holds the sole permit holds the mutex.
+
+Semaphores are useful for implementing resource pools such as database connection pools.
+
+A Semaphore can also be used to turn any collection into a blocking bounded collection. The semaphore is initialized to the desired maximum size of the collection. The `add` operation acquires a permit before adding the item into the underlying collection. If the underlying `add` operation does not actually add anything, it releases the permit immediately. Similarly, a successful `remove` operation releases a permit, enabling more elements to be added.
+
+### 5.5.4 Barriers
+
+
 -----
 
 <sup><sub>1. Serializing access to an object has nothing to do with object serialization (turning an object into a byte stream); serializing access means that threads take turns accessing the object exclusively, rather than doing so concurrently.</sup></sub>
