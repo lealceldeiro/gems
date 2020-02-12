@@ -11,3 +11,5 @@ Main notes taken from the book [Java Concurrency in Practice ](https://jcip.net/
 ### [Chapter 4](./Chapter4): Composing Objects
 
 ### [Chapter 5](./Chapter5): Building Blocks
+
+### [_Cheat Sheet_ from Chapters 2 to 5](./CheatSheetChapter2-5.md)
