@@ -104,6 +104,15 @@ A Semaphore can also be used to turn any collection into a blocking bounded coll
 
 ### 5.5.4 Barriers
 
+_Barriers_ are similar to latches in that they block a group of threads until some event has occurred. The key difference is that with a barrier, all the threads must come together at a barrier point _at the same time_ in order to proceed.
+
+Latches are for waiting for _events_; barriers are for waiting for other _threads_.
+
+`CyclicBarrier` allows a fixed number of parties to rendezvous repeatedly at a barrier point and is useful in parallel iterative algorithms that break down a problem into a fixed number of independent subproblems.
+
+If a barrier is considered _broken_ (a call to `await` times out or a thread blocked in `await` is interrupted) all outstanding calls to `await` terminate with `BrokenBarrierException`. If a barrier is successfully passed, `await` returns a unique arrival index for each thread, which can be used to “elect” a leader that takes some special action in the next iteration.
+
+## 5.6 Building an efficient, scalable result cache
 
 -----
 
