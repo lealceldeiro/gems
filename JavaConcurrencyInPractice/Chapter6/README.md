@@ -31,3 +31,30 @@ Unbounded thread creation may appear to work just fine during prototyping and de
 Thread pools offer the benefit of the usage of _bounded queues_ to prevent an overloaded application from running out of memory for thread management, and `java.util.concurrent` provides a flexible thread pool implementation as part of the _Executor_ framework.
 
 Using an Executor is usually the easiest path to implementing a producer-consumer design in your application.
+
+### 6.2.2 Execution policies
+
+An execution policy specifies the “what, where, when, and how” of task execution, including:
+
+* In what thread will tasks be executed?
+* In what order should tasks be executed (FIFO, LIFO, priority order)?
+* How many tasks may execute concurrently?
+* How many tasks may be queued pending execution?
+* If a task has to be rejected because the system is overloaded, which task
+should be selected as the victim, and how should the application be noti-
+fied?
+* What actions should be taken before or after executing a task?
+
+Whenever you see code of the form `new Thread(runnable).start()` and you think you might at some point want a more flexible execution policy, seriously consider replacing it with the use of an `Executor`.
+
+### 6.2.3 Thread pools
+
+A thread pool manages a homogeneous pool of worker threads and is tightly bound to a _work queue_ holding tasks waiting to
+be executed.
+
+You can create a thread pool by calling one of the static factory methods in `Executors`:
+
+* `newFixedThreadPool`: A fixed-size thread pool creates threads as tasks are submitted, up to the maximum pool size, and then attempts to keep the pool size constant (adding new threads if a thread dies due to an unexpected Exception).
+* `newCachedThreadPool`: A cached thread pool has more flexibility to reap idle threads when the current size of the pool exceeds the demand for processing, and to add new threads when demand increases, but places no bounds on the size of the pool.
+* `newSingleThreadExecutor`: A single-threaded executor creates a single worker thread to process tasks, replacing it if it dies unexpectedly. Tasks are guaranteed to be processed sequentially according to the order imposed by the task queue (FIFO, LIFO, priority order).
+* `newScheduledThreadPool`: A fixed-size thread pool that supports delayed and periodic task execution, similar to `Timer`.
