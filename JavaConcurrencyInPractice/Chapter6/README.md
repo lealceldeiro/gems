@@ -58,3 +58,11 @@ You can create a thread pool by calling one of the static factory methods in `Ex
 * `newCachedThreadPool`: A cached thread pool has more flexibility to reap idle threads when the current size of the pool exceeds the demand for processing, and to add new threads when demand increases, but places no bounds on the size of the pool.
 * `newSingleThreadExecutor`: A single-threaded executor creates a single worker thread to process tasks, replacing it if it dies unexpectedly. Tasks are guaranteed to be processed sequentially according to the order imposed by the task queue (FIFO, LIFO, priority order).
 * `newScheduledThreadPool`: A fixed-size thread pool that supports delayed and periodic task execution, similar to `Timer`.
+
+### 6.2.4 Executor lifecycle
+
+To address the issue of execution service lifecycle, the `ExecutorService` interface extends `Executor` , adding a number of methods for lifecycle management (as well as some convenience methods for task submission).
+
+The lifecycle implied by `ExecutorService` has three states—_running_, _shutting down_, and _terminated_.
+
+### 6.2.5 Delayed and periodic tasks
