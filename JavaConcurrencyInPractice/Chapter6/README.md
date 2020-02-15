@@ -90,3 +90,11 @@ The behavior of `Future.get` varies depending on the task state (not yet started
 Submitting a `Runnable` or `Callable` to an `Executor` constitutes a safe publication of the `Runnable` or `Callable` from the submitting thread to the thread that will eventually execute the task.
 
 Similarly, setting the result value for a `Future` constitutes a safe publication of the result from the thread in which it was computed to any thread that retrieves it via get.
+
+### 6.3.4 Limitations of parallelizing heterogeneous tasks
+
+Without finding finer-grained parallelism among similar tasks, this approach will yield diminishing returns.
+
+A further problem with dividing heterogeneous tasks among multiple workers is that the tasks may have disparate sizes
+
+The real performance payoff of dividing a program’s workload into tasks comes when there are a large number of independent, homogeneous tasks that can be processed concurrently.
