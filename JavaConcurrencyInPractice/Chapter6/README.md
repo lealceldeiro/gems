@@ -66,3 +66,27 @@ To address the issue of execution service lifecycle, the `ExecutorService` inter
 The lifecycle implied by `ExecutorService` has three states—_running_, _shutting down_, and _terminated_.
 
 ### 6.2.5 Delayed and periodic tasks
+
+You can construct a `ScheduledThreadPoolExecutor` through its constructor or through the `newScheduledThreadPool` factory.
+
+`ScheduledThreadPoolExecutor` deals properly with ill-behaved tasks; there is little reason to use `Timer` in Java 5.0 or later.
+
+## 6.3 Finding exploitable parallelism
+
+In most server applications, there is an obvious task boundary: a single client request. But sometimes good task boundaries are not quite so obvious, as in many desktop applications.
+
+### 6.3.2 Result-bearing tasks: `Callable` and `Future`
+
+`Runnable` and `Callable` describe abstract computational tasks. Tasks are usually finite: they have a clear starting point and they eventually terminate.
+
+The lifecycle of a task executed by an `Executor` has four phases: _created_, _submitted_, _started_, and _completed_.
+
+In the `Executor` framework, tasks that have been submitted but not yet started can always be cancelled, and tasks that have started can sometimes be cancelled if they are responsive to interruption.
+
+`Future` represents the lifecycle of a task and provides methods to test whether the task has completed or been cancelled, retrieve its result, and cancel the task.
+
+The behavior of `Future.get` varies depending on the task state (not yet started, running, completed). It returns immediately or throws an `Exception` if the task has already completed, but if not it blocks until the task completes.
+
+Submitting a `Runnable` or `Callable` to an `Executor` constitutes a safe publication of the `Runnable` or `Callable` from the submitting thread to the thread that will eventually execute the task.
+
+Similarly, setting the result value for a `Future` constitutes a safe publication of the result from the thread in which it was computed to any thread that retrieves it via get.
