@@ -15,3 +15,5 @@ Main notes taken from the book [Java Concurrency in Practice ](https://jcip.net/
 ### [_Cheat Sheet from Chapters 2 to 5_](./CheatSheetChapter2-5.md)
 
 ### [Chapter 6](./Chapter6): Task Execution
+
+### [Chapter 7](./Chapter7): Cancellation and Shutdown
