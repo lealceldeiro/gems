@@ -98,3 +98,15 @@ Without finding finer-grained parallelism among similar tasks, this approach wil
 A further problem with dividing heterogeneous tasks among multiple workers is that the tasks may have disparate sizes
 
 The real performance payoff of dividing a program’s workload into tasks comes when there are a large number of independent, homogeneous tasks that can be processed concurrently.
+
+### 6.3.5 `CompletionService`: `Executor` meets `BlockingQueue`
+
+`CompletionService` combines the functionality of an `Executor` and a `BlockingQueue`. You can submit `Callable` tasks to it for execution and use the queue-like methods take and poll to retrieve completed results, packaged as `Future`s, as they become available.
+
+`ExecutorCompletionService` implements `CompletionService`, delegating the computation to an `Executor`.
+
+### 6.3.7 Placing time limits on tasks
+
+The primary challenge in executing tasks within a time budget is making sure that you don’t wait longer than the time budget to get an answer or find out that one is not forthcoming. `Future.get` supports this requirement: it returns as soon as the result is ready, but throws `TimeoutException` if the result is not ready within the timeout period.
+
+A secondary problem when using timed tasks is to stop them when they run out of time, so they do not waste computing resources by continuing to compute a result that will not be used. If a timed `Future.get` completes with a `TimeoutException`, you can cancel the task through the `Future`. If the task is written to be cancellable, it can be terminated early so as not to consume excessive resources.
