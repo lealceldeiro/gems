@@ -52,3 +52,7 @@ public Task getNextTask(BlockingQueue<Task> queue) {
   }
 }
 ```
+
+When `Future.get` throws `InterruptedException` or `TimeoutException` and you know that the result is no longer needed by the program, cancel the task with `Future.cancel`.
+
+### 7.1.6 Dealing with non-interruptible blocking
