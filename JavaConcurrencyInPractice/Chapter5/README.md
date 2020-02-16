@@ -20,7 +20,7 @@ Just as encapsulating an object’s state makes it easier to preserve its invari
 
 ## 5.2 Concurrent collections
 
-Synchronized collections achieve their thread safety by serializing **<sup><sub>1</sup></sub>** all access to the collection’s state. The cost of this approach is poor concurrency; when multiple threads contend for the collection-wide lock, throughput suffers. The concurrent collections, on the other hand, are designed for concurrent access from multiple threads.
+Synchronized collections achieve their thread safety by serializing <sub><sup>**1**</sup></sub> all access to the collection’s state. The cost of this approach is poor concurrency; when multiple threads contend for the collection-wide lock, throughput suffers. The concurrent collections, on the other hand, are designed for concurrent access from multiple threads.
 
 Replacing synchronized collections with concurrent collections can offer dramatic scalability improvements with little risk.
 
@@ -177,4 +177,4 @@ public class Factorizer implements Servlet {
 ```
 -----
 
-<sup><sub>1. Serializing access to an object has nothing to do with object serialization (turning an object into a byte stream); serializing access means that threads take turns accessing the object exclusively, rather than doing so concurrently.</sup></sub>
+<sup><sub>**1. Serializing access to an object has nothing to do with object serialization (turning an object into a byte stream); serializing access means that threads take turns accessing the object exclusively, rather than doing so concurrently.**</sub></sup>
