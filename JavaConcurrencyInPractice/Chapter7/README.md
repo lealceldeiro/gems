@@ -56,3 +56,12 @@ public Task getNextTask(BlockingQueue<Task> queue) {
 When `Future.get` throws `InterruptedException` or `TimeoutException` and you know that the result is no longer needed by the program, cancel the task with `Future.cancel`.
 
 ### 7.1.6 Dealing with non-interruptible blocking
+
+We can sometimes convince threads blocked in noninterruptible activities to stop by means similar to interruption, but this requires greater awareness of why the thread is blocked.
+
+* Synchronous socket I/O in `java.io`: The common form of blocking I/O in server applications is reading or writing to a socket. Unfortunately, the read and write methods in `InputStream` and `OutputStream` are not responsive to interruption, but closing the underlying socket makes any threads blocked in read or write throw a `SocketException`.
+* Synchronous I/O in `java.nio`: Interrupting a thread waiting on an `InterruptibleChannel` causes it to throw `ClosedByInterruptException` and close the channel (and also causes all other threads blocked on the channel to throw `ClosedByInterruptException`). Closing an `InterruptibleChannel` causes threads blocked on channel operations to throw `AsynchronousCloseException`. Most standard `Channel`s implement `InterruptibleChannel`.
+* Asynchronous I/O with Selector. If a thread is blocked in `Selector.select` (in `java.nio.channels`), calling close or wakeup causes it to return prematurely.
+* Lock acquisition. If a thread is blocked waiting for an intrinsic lock, there is nothing you can do to stop it short of ensuring that it eventually acquires the lock and makes enough progress that you can get its attention some other way. However, the explicit `Lock` classes offer the `lockInterruptibly` method, which allows you to wait for a lock and still be responsive to interrupts.
+
+### 7.1.7 Encapsulating nonstandard cancellation with `newTaskFor`
