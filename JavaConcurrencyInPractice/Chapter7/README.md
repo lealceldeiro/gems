@@ -64,4 +64,12 @@ We can sometimes convince threads blocked in noninterruptible activities to stop
 * Asynchronous I/O with Selector. If a thread is blocked in `Selector.select` (in `java.nio.channels`), calling close or wakeup causes it to return prematurely.
 * Lock acquisition. If a thread is blocked waiting for an intrinsic lock, there is nothing you can do to stop it short of ensuring that it eventually acquires the lock and makes enough progress that you can get its attention some other way. However, the explicit `Lock` classes offer the `lockInterruptibly` method, which allows you to wait for a lock and still be responsive to interrupts.
 
-### 7.1.7 Encapsulating nonstandard cancellation with `newTaskFor`
+## 7.2 Stopping a thread-based service
+
+Provide lifecycle methods whenever a thread-owning service has a lifetime longer than that of the method that created it.
+
+### 7.2.2 `ExecutorService` shutdown
+
+The two different termination options (`shutdown` and `shutdownNow`) offer a tradeoff between safety and responsiveness: abrupt termination is faster but riskier because tasks may be interrupted in the middle of execution, and normal termination is slower but safer because the `ExecutorService` does not shut down until all queued tasks are processed. Other thread-owning services should consider providing a similar choiceof shutdown modes.
+
+### 7.2.3 Poison pills
