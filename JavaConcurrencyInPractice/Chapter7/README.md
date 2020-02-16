@@ -94,6 +94,26 @@ When you are calling unknown, untrusted code through an abstraction such as `Run
 
 ### 7.3.1 Uncaught exception handlers
 
+The Thread API also provides the UncaughtExceptionHandler facility, which lets you detect when a thread dies due to an uncaught exception.
+
+When a thread exits due to an uncaught exception, the JVM reports this event to an application-provided `UncaughtExceptionHandler`; if no handler exists, the default behavior is to print the stack trace to `System.err`.
+
+In long-running applications, always use uncaught exception handlers for all threads that at least log the exception.
+
+## 7.4 JVM shutdown
+
+The JVM can shut down in either an orderly or abrupt manner. An orderly shutdown is initiated when the last “normal” (nondaemon) thread terminates, someone calls `System.exit`, or by other platform-specific means (such as sending a `SIGINT` or hitting <kbd>Ctrl</kbd> + <kbd>C</kbd> ). While this is the standard and preferred way for the JVM to shut down, it can also be shut down abruptly by calling `Runtime.halt` or by killing the JVM process through the operating system (such as sending a `SIGKILL`).
+
+### 7.4.1 Shutdown hooks
+
+In an orderly shutdown, the JVM first starts all registered _shutdown hooks_. Shutdown hooks are unstarted threads that are registered with `Runtime.addShutdownHook`.
+
+If the shutdown hooks or finalizers don’t complete, then the orderly shutdown process “hangs” and the JVM must be shut down abruptly. In an abrupt shutdown, the JVM is not required to do anything other than halt the JVM; shutdown hooks will not run.
+
+Shutdown hooks can be used for service or application cleanup, such as deleting temporary files or cleaning up resources that are not automatically cleaned up by the OS; they must use synchronization when accessing shared data and should be careful to avoid deadlock, they should not make assumptions about the state of the application or about why the JVM is shutting down, and must therefore be coded extremely defensively. Finally, they should exit as quickly as possible, since their existence delays JVM termination at a time when the user may be expecting the JVM to terminate quickly.
+
+### 7.4.2 Daemon threads
+
 ----
 
 <sub><sup>**1. Unfortunately, there is no shutdown option in which tasks not yet started are returned to the caller but tasks in progress are allowed to complete; such an option would eliminate this uncertain intermediate state.**</sup></sub>
