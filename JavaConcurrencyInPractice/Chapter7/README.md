@@ -73,3 +73,27 @@ Provide lifecycle methods whenever a thread-owning service has a lifetime longer
 The two different termination options (`shutdown` and `shutdownNow`) offer a tradeoff between safety and responsiveness: abrupt termination is faster but riskier because tasks may be interrupted in the middle of execution, and normal termination is slower but safer because the `ExecutorService` does not shut down until all queued tasks are processed. Other thread-owning services should consider providing a similar choiceof shutdown modes.
 
 ### 7.2.3 Poison pills
+
+A _poison pill_ is a recognizable object placed on the queue that means “when you getthis, stop”.
+
+### 7.2.5 Limitations of `shutdownNow`
+
+When an `ExecutorService` is shut down abruptly with shutdownNow , it attempts to cancel the tasks currently in progress and returns a list of tasks that were submitted but never started so that they can be logged or saved for later processing.
+
+There is no general way to find out which tasks started but did not complete.
+
+There is no way of knowing the state of the tasks in progress at shutdown time unless the tasks themselves perform some sort of checkpointing.
+
+To know which tasks have not completed, you need to know not only which tasks didn’t start, but also which tasks were in progress when the executor was shut down <sub><sup>**1**</sup></sub>.
+
+## 7.3 Handling abnormal thread termination
+
+The less familiar you are with the code being called, the more skeptical you should be about its behavior.
+
+When you are calling unknown, untrusted code through an abstraction such as `Runnable` is one of the few times when you might want to consider catching `RuntimeException` (although there is some controversy over the safety of this technique; when a thread throws an unchecked).
+
+### 7.3.1 Uncaught exception handlers
+
+----
+
+<sub><sup>**1. Unfortunately, there is no shutdown option in which tasks not yet started are returned to the caller but tasks in progress are allowed to complete; such an option would eliminate this uncertain intermediate state.**</sup></sub>
