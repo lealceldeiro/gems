@@ -114,6 +114,22 @@ Shutdown hooks can be used for service or application cleanup, such as deleting 
 
 ### 7.4.2 Daemon threads
 
+Threads are divided into two types: normal threads and daemon threads.
+
+Normal threads and daemon threads differ only in what happens when they exit. When a thread exits, the JVM performs an inventory of running threads, and if the only threads that are left are daemon threads, it initiates an orderly shutdown. When the JVM halts, any remaining daemon threads are abandoned—finally blocks are not executed, stacks are not unwound—the JVM just exits.
+
+Daemon threads are not a good substitute for properly managing the life-cycle of services within an application.
+
+### 7.4.3 Finalizers
+
+Since finalizers can run in a thread managed by the JVM, any state accessed by a finalizer will be accessed by more than one thread and therefore must be accessed with synchronization.
+
+Finalizers offer no guarantees on when or even if they run, and they impose a significant performance cost on objects with nontrivial finalizers.
+
+They are also extremely difficult to write correctly. In most cases, the combination of finally blocks and explicit close methods does a better job of resource management than finalizers; the sole exception is when you need to manage objects that hold resources acquired by native methods.
+
+Avoid finalizers.
+
 ----
 
 <sub><sup>**1. Unfortunately, there is no shutdown option in which tasks not yet started are returned to the caller but tasks in progress are allowed to complete; such an option would eliminate this uncertain intermediate state.**</sup></sub>
