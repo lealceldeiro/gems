@@ -17,3 +17,5 @@ Main notes taken from the book [Java Concurrency in Practice ](https://jcip.net/
 ### [Chapter 6](./Chapter6): Task Execution
 
 ### [Chapter 7](./Chapter7): Cancellation and Shutdown
+
+### [Chapter 8](./Chapter8): Applying Thread Pools
