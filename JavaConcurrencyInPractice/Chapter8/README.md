@@ -129,3 +129,9 @@ If the `Executor` is created through one of the factory methods in `Executors` (
 `ThreadPoolExecutor` was designed for extension, providing several “hooks” for subclasses to override— beforeExecute, afterExecute, and terminated —that can be used to extend the behavior of `ThreadPoolExecutor`.
 
 ## 8.5 Parallelizing recursive algorithms
+
+Sequential loop iterations are suitable for parallelization when each iteration is independent of the others and the work done in each iteration of the loop body is significant enough to offset the cost of managing a new task.
+
+## Summary
+
+The Executor framework is a powerful and flexible framework for concurrently executing tasks. It offers a number of tuning options, such as policies for creating and tearing down threads, handling queued tasks, and what to do with excess tasks, and provides several hooks for extending its behavior. As in most powerful frameworks, however, there are combinations of settings that do not work well together; some types of tasks require specific execution policies, and some combinations of tuning parameters may produce strange results.
