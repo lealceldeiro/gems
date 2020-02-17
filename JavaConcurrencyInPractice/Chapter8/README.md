@@ -124,4 +124,8 @@ Most of the options passed to the `ThreadPoolExecutor` constructors can also be 
 
 If the `Executor` is created through one of the factory methods in `Executors` (except `newSingleThreadExecutor`), you can cast the result to `ThreadPoolExecutor` to access the setters.
 
-## 8.4 Extending ThreadPoolExecutor
+## 8.4 Extending `ThreadPoolExecutor`
+
+`ThreadPoolExecutor` was designed for extension, providing several “hooks” for subclasses to override— beforeExecute, afterExecute, and terminated —that can be used to extend the behavior of `ThreadPoolExecutor`.
+
+## 8.5 Parallelizing recursive algorithms
