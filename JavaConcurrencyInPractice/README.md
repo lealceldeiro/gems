@@ -21,3 +21,5 @@ Main notes taken from the book [Java Concurrency in Practice ](https://jcip.net/
 ### [Chapter 8](./Chapter8): Applying Thread Pools
 
 ### [Chapter 9](./Chapter9): GUI Applications
+
+### [Chapter 10](./Chapter10): Avoiding Liveness Hazards
