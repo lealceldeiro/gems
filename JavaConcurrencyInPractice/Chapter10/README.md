@@ -54,7 +54,7 @@ Using timed lock acquisition to acquire multiple locks can be effective against 
 
 The JVM can help identify deadlocks when they do happen using _thread dumps_.
 
-To trigger a thread dump, you can send the JVM process a `SIGQUIT` signal (kill -3) on Unix platforms, or press the <kbd>Ctrl</kbd> + <kbd>\</kbd> key on Unix or <kbd>Ctrl</kbd> + <kbd>Break</kbd> on Windows platforms. Many IDEs can request a thread dump as well.
+To trigger a thread dump, you can send the JVM process a `SIGQUIT` signal (kill -3) on Unix platforms, or press the <kbd>Ctrl</kbd> + <kbd>`\`</kbd> key on Unix or <kbd>Ctrl</kbd> + <kbd>Break</kbd> on Windows platforms. Many IDEs can request a thread dump as well.
 
 Java 6 does include thread dump support and deadlock detection with explicit `Lock`s, but the information on where `Lock`s are acquired is necessarily less precise than for intrinsic locks. Intrinsic locks are associated with the stack frame in which they were acquired; explicit Lock s are associated only with the acquiring thread.
 
