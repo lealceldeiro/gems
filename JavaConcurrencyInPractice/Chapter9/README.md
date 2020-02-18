@@ -125,3 +125,11 @@ As long as responsiveness is not unduly affected by blocking, the problem of mul
 It may sometimes be possible to get thread safety, consistency and good responsiveness with a versioned data model such as `CopyOnWriteArrayList`.
 
 ### 9.4.2 Split data models
+
+A program that has both a presentation-domain and an application-domain data model is said to have a split-model design.
+
+Consider a split-model design when a data model must be shared by more than one thread and implementing a thread-safe data model would be inadvisable because of blocking, consistency, or complexity reasons.
+
+## Summary
+
+GUI frameworks are nearly always implemented as single-threaded subsystems in which all presentation-related code runs as tasks in an event thread. Because there is only a single event thread, long-running tasks can compromise responsiveness and so should be executed in background threads. Helper classes which provide support for cancellation, progress indication, and completion indication, can simplify the development of long-running tasks that have both GUI and non-GUI components.
