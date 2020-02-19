@@ -63,3 +63,23 @@ Java 6 does include thread dump support and deadlock detection with explicit `Lo
 While deadlock is the most widely encountered liveness hazard, there are several other liveness hazards you may encounter in concurrent programs including starvation, missed signals, and livelock.
 
 ### 10.3.1 Starvation
+
+Starvation occurs when a thread is perpetually denied access to resources it needs in order to make progress; the most commonly starved resource is CPU cycles.
+
+Avoid the temptation to use thread priorities, since they increase platform dependence and can cause liveness problems. Most concurrent applications can use the default priority for all threads.
+
+### 10.3.2 Poor responsiveness
+
+CPU-intensive background tasks can still affect responsiveness because they can compete for CPU cycles with the event thread.
+
+Poor responsiveness can also be caused by poor lock management.
+
+### 10.3.3 Livelock
+
+_Livelock_ is a form of liveness failure in which a thread, while not blocked, still cannot make progress because it keeps retrying an operation that will always fail.
+
+Livelock can occur when multiple cooperating threads change their state in response to the others in such a way that no thread can ever make progress.
+
+## Summary
+
+Liveness failures are a serious problem because there is no way to recover from them short of aborting the application. The most common form of liveness failure is lock-ordering deadlock. Avoiding lock ordering deadlock starts at design time: ensure that when threads acquire multiple locks, they do so in a consistent order. The best way to do this is by using open calls throughout your program. This greatly reduces the number of places where multiple locks are held at once, and makes it more obvious where those places are.
