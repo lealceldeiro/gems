@@ -131,10 +131,10 @@ public class ImprovedList<T> implements List<T> {
   public ImprovedList(List<T> list) { this.list = list; }
   
   public synchronized boolean putIfAbsent(T x) {
-    boolean contains = list.contains(x);
-    if (contains)
-    list.add(x);
-    return !contains;
+    boolean absent = !list.contains(x);
+    if (absent)
+      list.add(x);
+    return absent;
   }
   
   public synchronized void clear() { list.clear(); }
