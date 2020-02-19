@@ -23,3 +23,5 @@ Main notes taken from the book [Java Concurrency in Practice ](https://jcip.net/
 ### [Chapter 9](./Chapter9): GUI Applications
 
 ### [Chapter 10](./Chapter10): Avoiding Liveness Hazards
+
+### [Chapter 11](./Chapter11): Performance and Scalability
