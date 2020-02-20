@@ -116,3 +116,5 @@ If the CPUs are not fully utilized, it may be because of:
 ### 11.4.7 Just say no to object pooling
 
 Even taking into account its reduced garbage collection overhead, object pooling has been shown to be a performance loss 14 for all but the most expensive objects (and a serious loss for light- and medium-weight objects) in single-threaded programs.
+
+### 11.6 Reducing context switch overhead
