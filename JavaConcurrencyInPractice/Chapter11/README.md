@@ -85,3 +85,34 @@ An effective way to reduce the likelihood of contention is to hold locks as brie
 Because the cost of synchronization is nonzero, breaking one synchronized block into multiple synchronized blocks (correctness permitting) at some point becomes counterproductive in terms of performance.
 
 ### 11.4.2 Reducing lock granularity
+
+The other way to reduce the fraction of time that a lock is held (and therefore the likelihood that it will be contended) is to have threads ask for it less often. This can be accomplished by lock splitting and lock striping, which involve using separate locks to guard multiple independent state variables previously guarded by a single lock.
+
+### 11.4.3 Lock striping
+
+Splitting a heavily contended lock into two is likely to result in two heavily contended locks. While this will produce a small scalability improvement by enabling two threads to execute concurrently instead of one, it still does not dramatically improve prospects for concurrency on a system with many processors.
+
+Lock splitting can sometimes be extended to partition locking on a variable-sized set of independent objects, in which case it is called _lock striping_.
+
+One of the downsides of lock striping is that locking the collection for exclusive access is more difficult and costly than with a single lock.
+
+### 11.4.4 Avoiding hot fields
+
+Common optimizations such as caching frequently computed values can introduce “hot fields” that limit scalability.
+
+### 11.4.5 Alternatives to exclusive locks
+
+A third technique for mitigating the effect of lock contention is to forego the use of exclusive locks in favor of a more concurrency-friendly means of managing shared state, such as the concurrent collections, read-write locks, immutable objects and atomic variables.
+
+### 11.4.6 Monitoring CPU utilization
+
+If the CPUs are not fully utilized, it may be because of:
+
+* Insufficent load
+* I/O-bound
+* Externally bound
+* Lock contention
+
+### 11.4.7 Just say no to object pooling
+
+Even taking into account its reduced garbage collection overhead, object pooling has been shown to be a performance loss 14 for all but the most expensive objects (and a serious loss for light- and medium-weight objects) in single-threaded programs.
