@@ -118,3 +118,11 @@ If the CPUs are not fully utilized, it may be because of:
 Even taking into account its reduced garbage collection overhead, object pooling has been shown to be a performance loss 14 for all but the most expensive objects (and a serious loss for light- and medium-weight objects) in single-threaded programs.
 
 ### 11.6 Reducing context switch overhead
+
+Many tasks involve operations that may block; transitioning between the running and blocked states entails a context switch.
+
+Concurrent systems perform much better when most lock acquisitions are uncontended, because contended lock acquisition means more context switches.
+
+## Summary
+
+Because one of the most common reasons to use threads is to exploit multiple processors, in discussing the performance of concurrent applications, we are usually more concerned with throughput or scalability than we are with raw service time. Amdahl’s law tells us that the scalability of an application is driven by the proportion of code that must be executed serially. Since the primary source of serialization in Java programs is the exclusive resource lock, scalability can often be improved by spending less time holding locks, either by reducing lock granularity, reducing the duration for which locks are held, or replacing exclusive locks with nonexclusive or nonblocking alternatives.
