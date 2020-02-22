@@ -42,3 +42,55 @@ Tests should be run on multiprocessor systems to increase the diversity of poten
 In tests that run until they complete a fixed number of operations, it is possible that the test case will never finish if the code being tested encounters an exception due to a bug. The most common way to handle this is to have the test framework abort tests that do not terminate within a certain amount of time. This problem is not unique to testing concurrent classes; sequential tests must also distinguish between long-running and infinite loops.
 
 ### 12.1.4 Testing resource management
+
+Any object that holds or manages other objects should not continue to maintain references to those objects longer than necessary. Such storage leaks prevent garbage collectors from reclaiming memory (or threads, file handles, sockets, database connections, or other limited resources) and can lead to resource exhaustion and application failure.
+
+Undesirable memory retention can be easily tested with heap-inspection tools that measure application memory usage; a variety of commercial and open-source heap-profiling tools can do this.
+
+### 12.1.5 Using callbacks
+
+Callbacks to client-provided code can be helpful in constructing test cases; callbacks are often made at known points in an object’s lifecycle that are good opportunities to assert invariants.
+
+### 12.1.6 Generating more interleavings
+
+Testing on a variety of systems with different processor counts, operating systems, and processor architectures can disclose problems that might not occur on all systems.
+
+A useful trick for increasing the number of interleavings, and therefore more effectively exploring the state space of your programs, is to use `Thread.yield` to encourage more context switches during operations that access shared state.
+
+## 12.2 Testing for performance
+
+Performance tests are often extended versions of functionality tests. In fact, it is almost always worthwhile to include some basic functionality testing within performance tests to ensure that you are not testing the performance of broken code.
+
+Performance tests seek to measure end-to-end performance metrics for representative use cases.
+
+A common secondary goal of performance testing is to select sizings empirically for various bounds—numbers of threads, buffer capacities, and so on. While these values might turn out to be sensitive enough to platform characteristics (such as processor type or even processor stepping level, number of CPUs, or memory size) to require dynamic configuration, it is equally common that reasonable choices for these values work well across a wide range of systems.
+
+### 12.2.3 Measuring responsiveness
+
+Sometimes it is more important to know how long an individual action might take to complete, and in this case we want to measure the _variance_ of service time.
+
+Histograms of task completion times are normally the best way to visualize variance in service time. Variances are only slightly more difficult to measure than averages—you need to keep track of per-task completion times in addition to aggregate completion time.
+
+Unless threads are continually blocking anyway because of tight synchronization requirements, nonfair semaphores provide much better throughput and fair semaphores provides lower variance. Because the results are so dramatically different, Semaphore forces its clients to decide which of the two factors to optimize for.
+
+## 12.3 Avoiding performance testing pitfalls
+
+### 12.3.1 Garbage collection
+
+The timing of garbage collection is unpredictable, so there is always the possibility that the garbage collector will run during a measured test run. If a test program performs N iterations and triggers no garbage collection but iteration N + 1 would trigger a garbage collection, a small variation in the size of the run could have a big (but spurious) effect on the measured time per iteration.
+
+There are two strategies for preventing garbage collection from biasing your results. One is to ensure that garbage collection does not run at all during your test (you can invoke the JVM with -verbose:gc to find out); alternatively, you can make sure that the garbage collector runs a number of times during your run so that the test program adequately reflects the cost of ongoing allocation and garbage collection. The latter strategy is often better—it requires a longer test and is more likely to reflect real-world performance.
+
+### 12.3.2 Dynamic compilation
+
+When a class is first loaded, the JVM executes it by interpreting the bytecode. At some point, if a method is run often enough, the dynamic compiler kicks in and converts it to machine code; when compilation completes, it switches from interpretation to direct execution.
+
+The timing of compilation is unpredictable. Your timing tests should run only after all code has been compiled.
+
+Allowing the compiler to run during a measured test run can bias test results in two ways: compilation consumes CPU resources, and measuring the run time of a combination of interpreted and compiled code is not a meaningful performance metric.
+
+One way to prevent compilation from biasing your results is to run your program for a long time (at least several minutes) so that compilation and interpreted execution represent a small fraction of the total run time. Another approach is to use an unmeasured “warm-up” run, in which your code is executed enough to be fully compiled when you actually start timing.
+
+Running the same test several times in the same JVM instance can be used to validate the testing methodology. The first group of results should be discarded as warm-up; seeing inconsistent results in the remaining groups suggests that the test should be examined further to determine why the timing results are not repeatable.
+
+### 12.3.3 Unrealistic sampling of code paths
