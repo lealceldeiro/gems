@@ -9,3 +9,6 @@ Notes from:
  ### [Effective Java 3rd Edition](./EffectiveJava3rdEdition)  <sup><sub>(*Joshua J. Bloch*)</sub></sup>
 
  ### [Java Concurrency in Practice](./JavaConcurrencyInPractice)  <sup><sub>(*Brian Goetz, Tim Peierls, Joshua Bloch, Joseph Bowbeer, David Holmes, Doug Lea*)</sub></sup>
+
+ ### [Spring Boot 2 Recipes: A Problem-Solution Approach](./SpringBoot2Recipes)  <sup><sub>(*Marten Deinum*)</sub></sup>
+ 
