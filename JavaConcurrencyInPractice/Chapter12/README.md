@@ -94,3 +94,41 @@ One way to prevent compilation from biasing your results is to run your program 
 Running the same test several times in the same JVM instance can be used to validate the testing methodology. The first group of results should be discarded as warm-up; seeing inconsistent results in the remaining groups suggests that the test should be examined further to determine why the timing results are not repeatable.
 
 ### 12.3.3 Unrealistic sampling of code paths
+
+Runtime compilers use profiling information to help optimize the code being compiled. The JVM is permitted to use information specific to the execution in order to produce better code, which means that compiling method `M` in one program may generate different code than compiling `M` in another.
+
+It is important that the test programs not only adequately approximate the usage patterns of a typical application, but also approximate the set of code paths used by such an application. Otherwise, a dynamic compiler could make special optimizations to a purely single-threaded test program that could not be applied in real applications containing at least occasional parallelism.
+
+### 12.3.4 Unrealistic degrees of contention
+
+If `N` threads are fetching tasks from a shared work queue and executing them, and the tasks are compute-intensive and long-running (and do not access shared data very much), there will be almost no contention; throughput is dominated by the availability of CPU resources.
+
+If the tasks are very short-lived, there will be a lot of contention for the work queue and throughput is dominated by the cost of synchronization.
+
+Concurrent performance tests should try to approximate the thread-local computation done by a typical application in addition to the concurrent coordination under study.
+
+If the work done for each task in an application is significantly different in nature or scope from the test program, it is easy to arrive at unwarranted conclusions about where the performance bottlenecks lie.
+
+### 12.3.5 Dead code elimination
+
+Writing effective performance tests requires tricking the optimizer into not optimizing away your benchmark as dead code. This requires every computed result to be used somehow by your program—in a way that does not require synchronization or substantial computation.
+
+## 12.4 Complementary testing approaches
+
+The goal of testing is not so much to find errors as it is to increase confidence that the code works as expected.
+
+Different QA methodologies are more effective at finding some types of defects and less effective at finding others. By employing complementary testing methodologies such as code review and static analysis, you can achieve greater confidence than you could with any single approach.
+
+### 12.4.1 Code review
+
+Taking the time to have someone else review the code is almost always worthwhile
+
+It not only can it find errors, but it often improves the quality of comments describing the implementation details, thus reducing future maintenence cost and risk.
+
+### 12.4.2 Static analysis tools
+
+Static code analysis is the process of analyzing code without executing it, and code auditing tools can analyze classes to look for instances of common _bug patterns_.
+
+## Summary
+
+Testing concurrent programs for correctness can be extremely challenging because many of the possible failure modes of concurrent programs are low-probability events that are sensitive to timing, load, and other hard-to-reproduce conditions. Further, the testing infrastructure can introduce additional synchronization or timing constraints that can mask concurrency problems in the code being tested. Testing concurrent programs for performance can be equally challenging; Java programs are more difficult to test than programs written in statically compiled languages like C, because timing measurements can be affected by dynamic compilation, garbage collection, and adaptive optimization.
