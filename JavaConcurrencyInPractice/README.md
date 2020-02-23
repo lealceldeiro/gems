@@ -27,3 +27,5 @@ Main notes taken from the book [Java Concurrency in Practice ](https://jcip.net/
 ### [Chapter 11](./Chapter11): Performance and Scalability
 
 ### [Chapter 12](./Chapter12): Testing Concurrent Programs
+
+### [Chapter 13](./Chapter13): Explicit Locks
