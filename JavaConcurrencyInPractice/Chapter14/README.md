@@ -1,1 +1,1 @@
-# Chapter 15: Building Custom Synchronizers
+# Chapter 14: Building Custom Synchronizers
