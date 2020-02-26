@@ -33,3 +33,5 @@ Main notes taken from the book [Java Concurrency in Practice ](https://jcip.net/
 ### [Chapter 14](./Chapter14): Building Custom Synchronizers
 
 ### [Chapter 15](./Chapter15): Atomic Variables and Nonblocking Synchronization
+
+### [Chapter 16](./Chapter16): The Java Memory Model
