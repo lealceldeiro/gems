@@ -34,3 +34,5 @@ The rules for happens-before are:
 * **Transitivity**. If `A` _happens-before_ `B`, and `B` _happens-before_ `C`, then `A` _happens-before_ `C`.
 
 When two threads synchronize on _different locks_, we can’t say anything about the ordering of actions between them—there is no _happens-before_ relation between the actions in the two threads.
+
+### 16.1.4 Piggybacking on synchronization
