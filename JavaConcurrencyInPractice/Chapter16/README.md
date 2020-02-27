@@ -36,3 +36,46 @@ The rules for happens-before are:
 When two threads synchronize on _different locks_, we can’t say anything about the ordering of actions between them—there is no _happens-before_ relation between the actions in the two threads.
 
 ### 16.1.4 Piggybacking on synchronization
+
+Because of the strength of the _happens-before_ ordering, you can sometimes piggyback on the visibility properties of an existing synchronization. This entails combining the program order rule for happens-before with one of the other ordering rules (usually the monitor lock or volatile variable rule) to order accesses to a variable not otherwise guarded by a lock. This technique is very sensitive to the order in which statements occur and is therefore quite fragile.
+
+This technique is called “piggybacking” because it uses an existing _happens-before_ ordering that was created for some other reason to ensure the visibility of object `X`, rather than creating a _happens-before_ ordering specifically for publishing `X`.
+
+Some _happens-before_ orderings guaranteed by the class library include:
+
+* Placing an item in a thread-safe collection _happens-before_ another thread retrieves that item from the collection;
+* Counting down on a `CountDownLatch` _happens-before_ a thread returns from `await` on that latch;
+* Releasing a permit to a `Semaphore` _happens-before_ acquiring a permit from that same `Semaphore`;
+* Actions taken by the task represented by a `Future` _happens-before_ another thread successfully returns from `Future.get`;
+* Submitting a `Runnable` or `Callable` to an `Executor` _happens-before_ the task begins execution; and
+* A thread arriving at a `CyclicBarrier` or `Exchanger` _happens-before_ the other threads are released from that same barrier or exchange point. If `CyclicBarrier` uses a barrier action, arriving at the barrier _happens-before_ the barrier action, which in turn _happens-before_ threads are released from the barrier.
+
+## 16.2 Publication
+
+### 16.2.1 Unsafe publication
+
+With the exception of immutable objects, it is not safe to use an object that has been initialized by another thread unless the publication _happens-before_ the consuming thread uses it.
+
+### 16.2.3 Safe initialization idioms
+
+Static initializers are run by the JVM at class initialization time, after class loading but before the class is used by any thread. Because the JVM acquires a lock during initialization and this lock is acquired by each thread at least once to ensure that the class has been loaded, memory writes made during static initialization are automatically visible to all threads. Thus statically initialized objects require no explicit synchronization either during construction or when being referenced. However, this applies only to the _as-constructed_ state—if the object is mutable, synchronization is still required by both readers and writers to make subsequent modifications visible and to avoid data corruption.
+
+### 16.2.4 Double-checked locking
+
+The purpose of double-checked locking (DCL) was to reduce the impact of synchronization while implementing lazy initialization in earlier Java versions. The way it worked was first to check whether initialization was needed without synchronizing, and if the resource reference was not `null`, use it. Otherwise, synchronize and check again if the `Resource` is initialized, ensuring that only one thread actually initializes the shared `Resource`. The common code path—fetching a reference to an already constructed Resource —doesn’t use synchronization. And that’s where the problem is: it is possible for a thread to see a partially constructed `Resource`.
+
+Subsequent changes in the JMM (Java 5.0 and later) have enabled DCL to work if resource is made `volatile`, and the performance impact of this is small since volatile reads are usually only slightly more expensive than nonvolatile reads.
+
+However, this is an idiom whose utility has largely passed—the forces that motivated it (slow uncontended synchronization, slow JVM startup) are no longer in play, making it less effective as an optimization. The [lazy initialization holder idiom](https://en.wikipedia.org/wiki/Initialization-on-demand_holder_idiom) offers the same benefits and is easier to understand.
+
+## 16.3 Initialization safety
+
+The guarantee of _initialization safety_ allows properly constructed immutable objects to be safely shared across threads without synchronization, regardless of how they are published—even if published using a data race.
+
+Initialization safety guarantees that for properly constructed objects, all threads will see the correct values of final fields that were set by the constructor, regardless of how the object is published. Further, any variables that can be reached through a final field of a properly constructed object (such as the elements of a final array or the contents of a HashMap referenced by a final field) are also guaranteed to be visible to other threads.
+
+Initialization safety makes visibility guarantees only for the values that are reachable through final fields as of the time the constructor finishes. For values reachable through nonfinal fields, or values that may change after construction, you must use synchronization to ensure visibility.
+
+## Summary
+
+The Java Memory Model specifies when the actions of one thread on memory are guaranteed to be visible to another. The specifics involve ensuring that operations are ordered by a partial ordering called _happens-before_, which is specified at the level of individual memory and synchronization operations. In the absence of sufficient synchronization, some very strange things can happen when threads access shared data. However, the higher-level rules offered in Chapters 2 and 3, such as `@GuardedBy` and safe publication, can be used to ensure thread safety without resorting to the low-level details of _happens-before_.
