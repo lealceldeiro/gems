@@ -14,4 +14,6 @@ Notes from:
  
  ### [Seroiusly Good Software](./SeriouslyGoodSoftware)  <sup><sub>(*Marco Faella*)</sub></sup>
 
- ### [Spring Boot 2 Recipes: A Problem-Solution Approach](./SpringBoot2Recipes)  <sup><sub>(*Marten Deinum*)</sub></sup> 
+ ### [Spring Boot 2 Recipes: A Problem-Solution Approach](./SpringBoot2Recipes)  <sup><sub>(*Marten Deinum*)</sub></sup>
+ 
+ ### [Reality Is Broken](./RealityIsBroken) <sup><sub>(*JANE McGONIGAL*)</sub></sup>
