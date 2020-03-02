@@ -20,7 +20,7 @@ Notes from:
  
  ### [Reality Is Broken](./RealityIsBroken) <sup><sub>(*JANE McGONIGAL*)</sub></sup>
 
- ### [Agile Java <sup><sub>TM</sub></sup>: Crafting Code with Test-Driven Development](./AgileJavaCraftingCodeWithTestDriven-Development)  <sup><sub>(*Jeff Langr*)</sub></sup>
+ ### [Agile Java <sup><sub>TM</sub></sup>: Crafting Code with Test-Driven Development](./AgileJavaCraftingCodeWithTestDrivenDevelopment)  <sup><sub>(*Jeff Langr*)</sub></sup>
  
   ### [Agile Software Development: Principles, Patterns, and Practices](./AgileSoftwareDevelopment)  <sup><sub>(*Robert C. Martin*)</sub></sup>
  
