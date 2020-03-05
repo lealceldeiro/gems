@@ -9,6 +9,8 @@ Notes from:
  ### [Effective Java 3rd Edition](./EffectiveJava3rdEdition)  <sup><sub>(*Joshua J. Bloch*)</sub></sup>
 
  ### [Java Concurrency in Practice](./JavaConcurrencyInPractice)  <sup><sub>(*Brian Goetz, Tim Peierls, Joshua Bloch, Joseph Bowbeer, David Holmes, Doug Lea*)</sub></sup>
+ 
+  ### [PostgreSQL Developer's Guide](./PostgreSQLDevelopersGuide)  <sup><sub>(*Ibrar Ahmed, Asif Fayyaz, Amjad Shahzad*)</sub></sup>
 
  ### [CleanCode](./CleanCode)  <sup><sub>(*Robert C. Martin*)</sub></sup>
  
@@ -24,4 +26,4 @@ Notes from:
  
   ### [Agile Software Development: Principles, Patterns, and Practices](./AgileSoftwareDevelopment)  <sup><sub>(*Robert C. Martin*)</sub></sup>
  
-  ### [UML For Java <sup><sub>TM</sub></sup> Programmers](./UmlForJavaProgrammers)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+  ### [UML For Java <sup><sub>TM</sub></sup> Programmers](./UmlForJavaProgrammers)  <sup><sub>(*Robert C. Martin*)</sub></sup>  
