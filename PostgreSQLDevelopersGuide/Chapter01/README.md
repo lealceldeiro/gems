@@ -29,3 +29,13 @@ Connect to the database using `\c <database_name>`.
 After successfully connecting to the DB it possible to perform some Data Definition Language (DDL) and Data Manipulation Language (DML) operations.
 
 Inside the multiple databases that can exist in PostgreSQL, there can be multiple extensions and schemas. Inside each schema, there can be database objects such as tables, views, sequences, procedures, and functions.
+
+To create a schema the following statement can be used: `CREATE SCHEMA <schema_name>;`.
+
+## Creating tables
+
+To create a table for example, with `id` and `name` and by specifying that the `id` is the primary key it can be done like this:
+
+```
+CREATE TABLE table_name(id INTEGER NOT NULL, name TEXT NOT NULL, CONSTRAINT "PRIM_KEY" PRIMARY KEY (id));
+```
