@@ -14,8 +14,8 @@ In a unix environment
   -  Open `/etc/postgresql/<version>/main/pg_hba.conf (Ubuntu) or /var/lib/pgsql/<version>/data/pg_hba.conf (Red Hat) in a text editor.
   - Modify the line that describes local socket connections and add the required information to accept local (or remote if needed) connections. Like this
    ```
-    local    all    postgres    md5              // where each represents host, database, user and authentication method
-    host     all    postgres    10.0.0.0/0 md5
+    local    all    postgres    md5
+    host     all    postgres    10.0.0.0/0    md5    // where each represents host, database, user, ip address, and authentication method
    ```
 
 ## Writing queries using `psql`
