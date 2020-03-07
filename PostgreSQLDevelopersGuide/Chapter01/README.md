@@ -27,3 +27,5 @@ Create a database using `CREATE DATABASE <database_name>;`.
 Connect to the database using `\c <database_name>`.
 
 After successfully connecting to the DB it possible to perform some Data Definition Language (DDL) and Data Manipulation Language (DML) operations.
+
+Inside the multiple databases that can exist in PostgreSQL, there can be multiple extensions and schemas. Inside each schema, there can be database objects such as tables, views, sequences, procedures, and functions.
