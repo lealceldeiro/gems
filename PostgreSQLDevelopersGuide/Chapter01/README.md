@@ -21,3 +21,9 @@ In a unix environment
 ## Writing queries using `psql`
 
 Login into the default database using `psql -U postgres -W` (**`-U`** indicates the username and **`-W`** will prompt for password.
+
+Create a database using `CREATE DATABASE <database_name>;`.
+
+Connect to the database using `\c <database_name>`.
+
+After successfully connecting to the DB it possible to perform some Data Definition Language (DDL) and Data Manipulation Language (DML) operations.
