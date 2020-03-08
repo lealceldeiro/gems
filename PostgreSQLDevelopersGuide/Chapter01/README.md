@@ -4,7 +4,7 @@
 
 In a unix environment
 
-* Do `sudo apt install postgresql` (see [Documentation](https://help.ubuntu.com/lts/serverguide/postgresql.html))
+* Do `sudo apt install postgresql` (see [reference](https://help.ubuntu.com/lts/serverguide/postgresql.html))
 * To set the passoword for the user `postgresql` do (see [reference](https://docs.boundlessgeo.com/suite/1.1.1/dataadmin/pgGettingStarted/firstconnect.html))
   - `sudo -u postgres psql postgres`
   - `\password postgres`
@@ -32,10 +32,31 @@ Inside the multiple databases that can exist in PostgreSQL, there can be multipl
 
 To create a schema the following statement can be used: `CREATE SCHEMA <schema_name>;`.
 
-## Creating tables
+### [`CREATE TABLE`](https://www.postgresql.org/docs/current/tutorial-table.html)
 
-To create a table for example, with `id` and `name` and by specifying that the `id` is the primary key it can be done like this:
+`CREATE TABLE table_name(id INTEGER NOT NULL, name TEXT NOT NULL, CONSTRAINT "PRIM_KEY" PRIMARY KEY (id));` creates a table with name `table_name` with `id` integer and `name` text and the `id` is the primary key.
 
+### [`CREATE SEQUENCE`](https://www.postgresql.org/docs/current/sql-createsequence.html)
+
+`CREATE SEQUENCE sequence_name;` creates a sequence with name `sequence_name`.
+
+This sequence can be used now (i.e.) in a table creation as follow:
+
+`CREATE TABLE table_name (table_id INTEGER NOT NULL DEFAULT nextval('sequence_name'));`
+
+### [`ALTER TABLE`](https://www.postgresql.org/docs/current/sql-altertable.html)
+
+Using the `ALTER TABLE` command, we can add, remove, or rename table columns. i.e.:
+
+`ALTER TABLE table_name ADD COLUMN phone_no INTEGER;` adds the `phone_no` column a previously created table `table_name`.
+
+At this point if the table is described using `\d table_name` the following information is show:
 ```
-CREATE TABLE table_name(id INTEGER NOT NULL, name TEXT NOT NULL, CONSTRAINT "PRIM_KEY" PRIMARY KEY (id));
+Column          | Type                   | Nullable
+----------------+------------------------+-----------
+id              | integer                | not null
+name            | text                   | not null
+phone_no        | integer                |
+Indexes:
+    "prim_key" PRIMARY KEY, btree (id)
 ```
