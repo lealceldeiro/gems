@@ -48,7 +48,7 @@ This sequence can be used now (i.e.) in a table creation as follow:
 
 Using the `ALTER TABLE` command, we can add, remove, or rename table columns. i.e.:
 
-`ALTER TABLE table_name ADD COLUMN phone_no INTEGER;` adds the `phone_no` column a previously created table `table_name`.
+`ALTER TABLE table_name ADD COLUMN phone_no INTEGER;` adds the `phone_no` column to a previously created table `table_name`.
 
 At this point if the table is described using `\d table_name` the following information is show:
 ```
@@ -57,6 +57,18 @@ Column          | Type                   | Nullable
 id              | integer                | not null
 name            | text                   | not null
 phone_no        | integer                |
+Indexes:
+    "prim_key" PRIMARY KEY, btree (id)
+```
+
+`ALTER TABLE table_name DROP COLUMN phone_no;` removes the `phone_no` column from a previously created table `table_name`.
+
+At this point if the table is described using `\d table_name` the following information is show:
+```
+Column          | Type                   | Nullable
+----------------+------------------------+-----------
+id              | integer                | not null
+name            | text                   | not null
 Indexes:
     "prim_key" PRIMARY KEY, btree (id)
 ```
