@@ -72,3 +72,5 @@ name            | text                   | not null
 Indexes:
     "prim_key" PRIMARY KEY, btree (id)
 ```
+
+## Truncating tables
