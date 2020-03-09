@@ -73,28 +73,30 @@ Indexes:
     "prim_key" PRIMARY KEY, btree (id)
 ```
 
-## [`TRUNCATE`](https://www.postgresql.org/docs/current/sql-truncate.html)
+### [`TRUNCATE`](https://www.postgresql.org/docs/current/sql-truncate.html)
 
 The `TRUNCATE` command is used to remove **all rows** from a table **without** providing any **criteria**. i.e.:
 
 `TRUNCATE TABLE table_name;`
 
-## [INSERT](https://www.postgresql.org/docs/current/sql-insert.html)
+### [INSERT](https://www.postgresql.org/docs/current/sql-insert.html)
 
 The `INSERT` command can be used to insert some data into some table, i.e.:
 
 `INSERT INTO table_name (id, name) values (31, 'super man')` will insert a new row in the table `table_name` with `id` equals to _31_ and `name` _super man_.
 
-## [UPDATE](https://www.postgresql.org/docs/current/sql-update.html)
+### [UPDATE](https://www.postgresql.org/docs/current/sql-update.html)
 
 The `UPDATE` command will update some data into some table(s). This may include some conditional to update the table. i.e., the following will change the `name` value to _spider man_ for those rows which have `id` equals to _31_, in this case it is only one, and the value in the `name` column will change from _super man_ to _spider man_:
 
 `UPDATE table_name SET name='spider man' WHERE id=31;`
 
-## [DELETE](https://www.postgresql.org/docs/current/sql-delete.html)
+### [DELETE](https://www.postgresql.org/docs/current/sql-delete.html)
 
 In the case of the `DELETE` command, the user has to provide the delete criteria using the `WHERE` clause. i.e., the following clause will delete all rows which have _spider man_ as a value in the `name` column:
 
 `DELETE FROM table_name WHERE name = 'spider man';`
 
 The difference between `TRUNCATE`, `DELETE` and `DROP` is that the `DELETE` command is used to drop a row from a table, whereas the `DROP` command is used to drop a complete table. The `TRUNCATE` command is used to empty the whole table.
+
+### PostgreSQL’s supported data types
