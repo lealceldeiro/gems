@@ -150,4 +150,25 @@ PostgreSQL has a rich set of native data types available to users. Users can add
 | xml                                     |                       | XML data                                          |
 
 
-### PostgreSQL’s operators and usage
+### [Logical Operators](https://www.postgresql.org/docs/current/functions-logical.html)
+
+The usual logical operators are available: `AND`, `OR`, `NOT`.
+
+SQL uses a three-valued logic system with `true`, `false`, and `null`, which represents “unknown”. Observe the following truth tables:
+
+| _a_   | _b_   | _a_ `AND` _b_ | _a_ `OR` _b_ |
+| ----- | ----- | ------------- | ------------ |
+| TRUE  | TRUE  |     TRUE      |    TRUE      |
+| TRUE  | FALSE |     FALSE     |    TRUE      |
+| TRUE  | NULL  |     NULL      |    TRUE      |
+| FALSE | FALSE |     FALSE     |    FALSE     |
+| FALSE | NULL  |     FALSE     |    NULL      |
+| NULL  | NULL  |     NULL      |    NULL      |
+
+| _a_   | `NOT` _a_ |
+| ----- | --------- |
+| TRUE  |   FALSE   |
+| FALSE |   TRUE    |
+| NULL  |   NULL    |
+
+The operators `AND` and `OR` are commutative, that is, you can switch the left and right operand without affecting the result.
