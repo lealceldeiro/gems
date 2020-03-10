@@ -172,3 +172,40 @@ SQL uses a three-valued logic system with `true`, `false`, and `null`, which rep
 | NULL  |   NULL    |
 
 The operators `AND` and `OR` are commutative, that is, you can switch the left and right operand without affecting the result.
+
+### [Comparison operators](https://www.postgresql.org/docs/current/functions-comparison.html)
+
+| Operator   | Description                |
+| ---------- | -------------------------- |
+|     <      |  less than                 |
+|     >      |  greater than              |
+|     <=     |  less than or equal to     |
+|     >=     |  greater than or equal to  |
+|     =      |  equal                     |
+|  <> or !=  |  not equal                 |
+
+The `!=` operator is converted to `<>` in the parser stage. It is not possible to implement `!=` and `<>` operators that do different things.
+
+### [Mathematical operators](https://www.postgresql.org/docs/current/functions-math.html)
+
+| Operator | Description                                        | Example   | Result  |
+| -------- | -------------------------------------------------- | --------- | ------- |
+|     +    |  addition                                          | 	2 + 3   |   5     |
+|     -    |  subtraction                                       |   2 - 3   |   -1    |
+|     *    |  multiplication                                    |   2 * 3   |   6     |
+|     /    |  division (integer division truncates the result)  |   4 / 2   |   2     |
+|     %    |  modulo (remainder)                                |   5 % 4   |   1     |
+|     ^    |  exponentiation (associates left to right)         | 2.0 ^ 3.0 |   8     |
+|    \|/   |  square root                                       | \|/ 25.0  |   5     |
+|  \|\|/   |  cube  root                                        |\|\|/ 27.0 |   3     |
+|    !     |  factorial                                         | 5 !       |   120   |
+|    !!    |  factorial (prefix operator)                       | !! 5      |   120   |
+|    @     |  absolute value                                    | @ -5.0    |   5     |
+|    &     |  bitwise AND                                       | 91 & 15   |   11    |
+|    \|    |  bitwise OR                                        | 32 \| 3    |   35    |
+|    #     |  bitwise XOR                                       | 17 # 5    |   20    |
+|    ~     |  bitwise NOT                                       | ~1        |   -2    |
+|    <<    |  bitwise shift left                                | 1 << 4    |   16    |
+|    >>    |  bitwise shift right                               | 8 >> 2    |   2     |
+
+The bitwise operators work only on integral data types, whereas the others are available for all numeric data types. The bitwise operators [are also available](https://www.postgresql.org/docs/current/functions-bitstring.html#FUNCTIONS-BIT-STRING-OP-TABLE) for the bit string types `bit` and `bit varying`.
