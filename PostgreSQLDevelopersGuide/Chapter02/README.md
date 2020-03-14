@@ -119,4 +119,111 @@ END;
 $$ LANGUAGE plpgsql;
 ```
 
-### Declaring the %TYPE attribute
+### Declaring the `%TYPE` attribute
+
+The `%TYPE` attribute is helpful to store values of a database object, usually a table column. This means declaring a variable with this attribute will store the value of the same data type it referenced. This is even more helpful if in future your column’s data type gets changed. It’s declared in the following manner:
+
+`variable_name table_name.column_name%TYPE`
+
+### Declaring the row-type and record type variables
+
+A row-type variable declares a row with the structure of an existing user-defined table or view using the `table_name%ROWTYPE` notation; otherwise, it can be declared by giving a composite type’s name. The fields of the row can be accessed with the dot notation, for example, rowvariable.field.
+
+### The assignment statement
+
+Assignment means assigning a value to a variable. Its syntax is as follows: `target := expression;`
+
+Here, `target` can be anything; it can be a variable, a column, a function parameter, or a row but not a constant.
+
+Examples:
+
+* **`SELECT`** `COUNT(*)` **`INTO`** `TOTAL FROM table_name;`
+* **`plus := a + b;`**
+
+### The call/return function
+
+All PostgreSQL functions return a value, and to call a function is to simply run a `SELECT` statement query or an assignment statement. Examples:
+
+* `SELECT function_identifier(arguments);`
+* `variable_identifier := function_identifier(arguments);`
+* `SELECT AVG(amount) FROM history;`
+
+### The `RETURN` expression
+
+As the function ends, the evaluated value of expression will be returned as per the specified return type in the `CREATE FUNCTION` command. TThe syntax for the RETURN command is as follows:
+```
+CREATE OR REPLACE FUNCTION function_identifier(arguments)
+RETURNS TYPE AS
+DECLARE
+   -- declaration;
+BEGIN
+  -- statement;
+RETURN { variable_name | value }
+END;
+LANGUAGE 'plpgsql';
+```
+
+### Exception handling statements
+
+The RAISE statements can be used to raise errors and exceptions in the PL/pgSQL function as follows:
+
+`RAISE NOTICE 'amount value is small.';`
+
+### Compound statements
+
+The syntax for conditional statements is as follows:
+```
+IF expression THEN
+  -- Statements
+ELSE
+  -- Statements
+END IF;
+```
+
+The syntax for looping statements is as follows:
+```
+LOOP
+  -- Statements
+END LOOP;
+```
+
+### Expressions
+
+An expression can be a collection of one or more values, constants, variables, operators, and PostgreSQL functions that evaluate as per rules of a language, to a value that has a data type, which is one of the PostgreSQL base data types.
+
+The following statement is an example of a Boolean expression; the part after the `WHERE` clause evaluates the matching expression:
+
+`SELECT * FROM history WHERE amount = 1000;`
+
+The following statement is an example of a numeric expression (one that involves mathematical calculation). Here, it is used a built-in aggregate function that calculates all rows of the history table.:
+
+`SELECT COUNT(*) FROM history;`
+
+Evaluation of expressions is actually done by the PostgreSQL server and not PL/pgSQL. All PL/pgSQL expressions are prepared only once during the lifetime of a PostgreSQL backend process.
+
+### Conditional statements
+
+* `IF`-`THEN`
+```
+IF boolean-expression THEN
+  -- Statements
+END IF;
+```
+* `IF`-`THEN`-`ELSE`
+```
+IF boolean-expression THEN
+  -- Statements
+ELSE
+  -- Statements;
+END IF;
+```
+* `IF`-`THEN`-`ELSIF`
+```
+IF boolean-expression THEN
+  -- Statements
+ELSIF another-boolean-expression THEN
+  -- Another Statements
+ELSE
+  -- this means none of the previous conditions succeded
+END IF;
+```
