@@ -209,3 +209,18 @@ The `!=` operator is converted to `<>` in the parser stage. It is not possible t
 |    >>    |  bitwise shift right                               | 8 >> 2    |   2     |
 
 The bitwise operators work only on integral data types, whereas the others are available for all numeric data types. The bitwise operators [are also available](https://www.postgresql.org/docs/current/functions-bitstring.html#FUNCTIONS-BIT-STRING-OP-TABLE) for the bit string types `bit` and `bit varying`.
+
+### Unique constraints
+
+A unique constraint is a constraint that at the time of an insertion operation makes sure that data present in a column (or a group of columns) is unique with regard to all rows already present in the table. An example of creation of tables using unique constraints is:
+
+`CREATE TABLE table_name (id INTEGER UNIQUE, name TEXT);`
+
+or
+
+`CREATE TABLE table_name (id INTEGER, name TEXT, UNIQUE(id));`
+
+and for more than one column, it can be done like this:
+
+`CREATE TABLE table_name (id INTEGER, name TEXT, UNIQUE(id, name));`
+
