@@ -235,3 +235,19 @@ and for more than one column, it can be done in the same way:
 `CREATE TABLE table_name (id INTEGER NOT NUL, name TEXT NOT NUL);`
 
 ### Exclusion constraints
+
+An **exclusion** constraint is used when comparing two rows on nominative columns or expressions using the nominative operators. The result of the comparison will be `false` or `null`.
+
+Consider the following example in which the conflicting tuple is given the `AND` operation together:
+
+`CREATE TABLE movies (title TEXT, copies INTEGER);`
+
+Then, using the `ALTER TABLE` command, it is created an exclusion constraint and the conditions for a conflicting tuple are `AND` together.
+
+`ALTER TABLE movies ADD EXCLUDE (title WITH=, copies WITH=);`
+
+Now in order for two records to conflict, there could something like:
+
+`record1.title = record2.title AND record1.copies = record2.copies`
+
+### Primary key constraints
