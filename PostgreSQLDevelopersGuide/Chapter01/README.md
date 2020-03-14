@@ -251,3 +251,9 @@ Now in order for two records to conflict, there could something like:
 `record1.title = record2.title AND record1.copies = record2.copies`
 
 ### Primary key constraints
+
+A **primary key** constraints is a combination of **not-null** constraints and **unique** constraints, which means that for a column to fulfill the primary key constraints limitation, it should be unique as well as not null. An example of creation of tables using primary key constraints is:
+
+`CREATE TABLE table_name (id INTEGER PRIMARY KEY, name TEXT);`
+
+### Foreign key constraints
