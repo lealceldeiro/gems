@@ -99,7 +99,7 @@ In the case of the `DELETE` command, the user has to provide the delete criteria
 
 The difference between `TRUNCATE`, `DELETE` and `DROP` is that the `DELETE` command is used to drop a row from a table, whereas the `DROP` command is used to drop a complete table. The `TRUNCATE` command is used to empty the whole table.
 
-### PostgreSQL’s supported [data types](https://www.postgresql.org/docs/current/datatype.html)
+## Supported [data types](https://www.postgresql.org/docs/current/datatype.html)
 
 PostgreSQL has a rich set of native data types available to users. Users can add new types to PostgreSQL using the [`CREATE TYPE`](https://www.postgresql.org/docs/current/sql-createtype.html) command.
 
@@ -149,6 +149,7 @@ PostgreSQL has a rich set of native data types available to users. Users can add
 | uuid                                    |                       | universally unique identifier                     |
 | xml                                     |                       | XML data                                          |
 
+## Operators
 
 ### [Logical Operators](https://www.postgresql.org/docs/current/functions-logical.html)
 
@@ -210,6 +211,8 @@ The `!=` operator is converted to `<>` in the parser stage. It is not possible t
 
 The bitwise operators work only on integral data types, whereas the others are available for all numeric data types. The bitwise operators [are also available](https://www.postgresql.org/docs/current/functions-bitstring.html#FUNCTIONS-BIT-STRING-OP-TABLE) for the bit string types `bit` and `bit varying`.
 
+## Constraints
+
 ### Unique constraints
 
 A **unique** constraint is a constraint that at the time of an insertion operation makes sure that data present in a column (or a group of columns) is unique with regard to all rows already present in the table. An example of creation of tables using unique constraints is:
@@ -268,3 +271,13 @@ CREATE TABLE table_B (id_b INTEGER PRIMARY KEY, amount FLOAT8, table_A_id INTEGE
 In a table more than one foreign key can be present.
 
 ### Check constraints
+
+A check constraint lets you define a condition that a column must fulfill a Boolean expression. i.e.: in the following table it is checked a constraints on `amount` to make sure that it must be greater than `0`.
+
+`CREATE TABLE table_name (id INTEGER PRIMARY KEY, amount NUMERIC CHECK (amount > 0));`
+
+Also, a more user-friendly name can be given to constraints, i.e.:
+
+`CREATE TABLE table_name (id INTEGER PRIMARY KEY, amount NUMERIC CONSTRAINT positive_amount CHECK (amount > 0));`
+
+## Privileges
