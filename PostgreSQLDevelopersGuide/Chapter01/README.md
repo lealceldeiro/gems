@@ -212,7 +212,7 @@ The bitwise operators work only on integral data types, whereas the others are a
 
 ### Unique constraints
 
-A unique constraint is a constraint that at the time of an insertion operation makes sure that data present in a column (or a group of columns) is unique with regard to all rows already present in the table. An example of creation of tables using unique constraints is:
+A **unique** constraint is a constraint that at the time of an insertion operation makes sure that data present in a column (or a group of columns) is unique with regard to all rows already present in the table. An example of creation of tables using unique constraints is:
 
 `CREATE TABLE table_name (id INTEGER UNIQUE, name TEXT);`
 
@@ -224,3 +224,14 @@ and for more than one column, it can be done like this:
 
 `CREATE TABLE table_name (id INTEGER, name TEXT, UNIQUE(id, name));`
 
+### Not-null constraints
+
+A **not-null** constraint makes sure that a column must have some values and a value is not left as `null`. An example of creation of tables using unique constraints is:
+
+`CREATE TABLE table_name (id INTEGER NOT NUL, name TEXT);`
+
+and for more than one column, it can be done in the same way:
+
+`CREATE TABLE table_name (id INTEGER NOT NUL, name TEXT NOT NUL);`
+
+### Exclusion constraints
