@@ -227,3 +227,24 @@ ELSE
   -- this means none of the previous conditions succeded
 END IF;
 ```
+* Simple `CASE`: helps executing conditions on equality of operands. The `searchexpression` is evaluated first and matched with each expression in the `WHEN` clause. When a match is found, associated statements will be executed and control will be transferred to the next statement after `END CASE`. If no match is found amongst the `WHEN` clauses, the `ELSE` block will be executed. If no match is found and `ELSE` is also absent, it will raise a `CASE_NOT_FOUND` exception.
+```
+CASE search-expression
+  WHEN expression THEN
+    -- Statements
+  WHEN another-expression THEN
+    -- Another Statements
+END CASE;
+```
+
+* Searched `CASE`: The searched `CASE` statement executes a condition based on the result of the booleanexpression. This is quite similar to `IF`-`THEN`-`ELSIF`. The evaluation of the expression continues until it finds a match and then subsequent statements are executed. Control is then transferred to the next statement after `END CASE`.
+```
+CASE
+  WHEN boolean-expression THEN
+    -- Statements
+  WHEN another-boolean-expression THEN
+    -- Another Statements
+END CASE;
+```
+
+### Loops
