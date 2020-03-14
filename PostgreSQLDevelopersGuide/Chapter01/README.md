@@ -228,11 +228,11 @@ and for more than one column, it can be done like this:
 
 A **not-null** constraint makes sure that a column must have some values and a value is not left as `null`. An example of creation of tables using unique constraints is:
 
-`CREATE TABLE table_name (id INTEGER NOT NUL, name TEXT);`
+`CREATE TABLE table_name (id INTEGER NOT NULL, name TEXT);`
 
 and for more than one column, it can be done in the same way:
 
-`CREATE TABLE table_name (id INTEGER NOT NUL, name TEXT NOT NUL);`
+`CREATE TABLE table_name (id INTEGER NOT NULL, name TEXT NOT NULL);`
 
 ### Exclusion constraints
 
@@ -257,3 +257,14 @@ A **primary key** constraints is a combination of **not-null** constraints and *
 `CREATE TABLE table_name (id INTEGER PRIMARY KEY, name TEXT);`
 
 ### Foreign key constraints
+
+**Foreign key** constraints state that the value in a column must be the same as the value present in another table’s row. This is for the sake of maintaining the referential integrity between two interlinked tables. Taking into account the following example, two tables are created, and the column (`id_a`) of one table (`table_A`) is used in the second table (`table_B`) as a foreign key constraint:
+
+```
+CREATE TABLE table_A (id_a INTEGER PRIMARY KEY, name TEXT);
+CREATE TABLE table_B (id_b INTEGER PRIMARY KEY, amount FLOAT8, table_A_id INTEGER REFERENCES table_A (id_a));
+```
+
+In a table more than one foreign key can be present.
+
+### Check constraints
