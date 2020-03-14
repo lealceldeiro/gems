@@ -80,3 +80,43 @@ name [ CONSTANT ] type [ COLLATE collation_name ] [ NOT NULL ] [ { DEFAULT | := 
 ```
 
 ### Declaring function parameters
+
+Functions can accept and return values called function parameters or arguments. These parameters should be declared before usage.
+
+Parameters thus passed to functions are labeled with the numeric identifiers `$1` and `$2`. We can also use an alias for a parameter name; both can then be later used to reference the parameter value.
+
+Example 1:
+```
+CREATE OR REPLACE FUNCTION alias_explain(int)
+RETURNS integer AS $$
+DECLARE
+  total ALIAS FOR $1;
+BEGIN
+  RETURN total*10;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+Example 2:
+```
+CREATE OR REPLACE FUNCTION alias_explain(total int)
+RETURNS integer AS $$
+BEGIN
+  RETURN total * 10;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+The parameter types are `IN`, `OUT`, and `INOUT`. If not mentioned explicitly, function parameters are `IN` by default.
+
+Example: 
+```
+CREATE OR REPLACE FUNCTION func_param(a int, IN b int, OUT plus int, OUT sub int) AS $$
+BEGIN
+  plus := a + b;
+  sub := a - b;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+### Declaring the %TYPE attribute
