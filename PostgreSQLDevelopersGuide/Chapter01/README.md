@@ -281,3 +281,21 @@ Also, a more user-friendly name can be given to constraints, i.e.:
 `CREATE TABLE table_name (id INTEGER PRIMARY KEY, amount NUMERIC CONSTRAINT positive_amount CHECK (amount > 0));`
 
 ## Privileges
+
+Multiple privileges are present for every object that is created. By default, the owner (or a superuser) of an object has all the privileges on it. In PostgreSQL, the following types of privileges are present:
+
+* `SELECT`
+* `INSERT`
+* `UPDATE`
+* `DELETE`
+* `TRUNCATE`
+* `REFERENCES`
+* `TRIGGER`
+* `CREATE`
+* `CONNECT`
+* `TEMPORARY`
+* `EXECUTE`
+* `USAGE`
+
+There are different privileges associated with different objects. For instance, the `EXECUTE` privilege is associated with procedure. The `GRANT` command is used to grant any privilege to any user. Similarly, to take back privileges, the `REVOKE` command is used.
+
