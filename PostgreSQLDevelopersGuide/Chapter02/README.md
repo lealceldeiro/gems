@@ -35,7 +35,7 @@ END;
 $$ LANGUAGE plpgsql;
 ```
 
-### Comments in PL/pgSQL
+## Comments in PL/pgSQL
 
 Single-line comments are declared by starting with two dashes and with no endcharacter as follow:
 
@@ -69,7 +69,7 @@ END;
 $$ LANGUAGE plpgsql;
 ```
 
-### Declaring variables in PL/pgSQL
+## Declaring variables in PL/pgSQL
 
 Each variable is used in the lifetime of a block and must be declared within the `DECLARE` block starting with the `DECLARE` keyword as show in the previouse `getRecords` example function.
 
@@ -79,7 +79,7 @@ The general syntax is as follow:
 name [ CONSTANT ] type [ COLLATE collation_name ] [ NOT NULL ] [ { DEFAULT | := } expression
 ```
 
-### Declaring function parameters
+## Declaring function parameters
 
 Functions can accept and return values called function parameters or arguments. These parameters should be declared before usage.
 
@@ -119,15 +119,17 @@ END;
 $$ LANGUAGE plpgsql;
 ```
 
-### Declaring the `%TYPE` attribute
+## Declaring the `%TYPE` attribute
 
 The `%TYPE` attribute is helpful to store values of a database object, usually a table column. This means declaring a variable with this attribute will store the value of the same data type it referenced. This is even more helpful if in future your column’s data type gets changed. It’s declared in the following manner:
 
 `variable_name table_name.column_name%TYPE`
 
-### Declaring the row-type and record type variables
+## Declaring the row-type and record type variables
 
 A row-type variable declares a row with the structure of an existing user-defined table or view using the `table_name%ROWTYPE` notation; otherwise, it can be declared by giving a composite type’s name. The fields of the row can be accessed with the dot notation, for example, rowvariable.field.
+
+## Statements and Expressions
 
 ### The assignment statement
 
@@ -195,7 +197,7 @@ The following statement is an example of a Boolean expression; the part after th
 
 `SELECT * FROM history WHERE amount = 1000;`
 
-The following statement is an example of a numeric expression (one that involves mathematical calculation). Here, it is used a built-in aggregate function that calculates all rows of the history table.:
+The following statement is an example of a numeric expression (one that involves mathematical calculation). Here, it is used a built-in aggregate function that calculates all rows of the `history` table.:
 
 `SELECT COUNT(*) FROM history;`
 
@@ -248,3 +250,99 @@ END CASE;
 ```
 
 ### Loops
+
+* The simple loop: The simple loops are composed of an unconditional loop that ends only with an `EXIT` statement (which can be used with all loop constructs)
+```
+LOOP
+  -- Statements
+END LOOP;
+```
+The syntax for `EXIT` is `EXIT WHEN boolean-expression;`
+
+If no label is given to an `EXIT` command, the innermost loop is terminated. i.e.:
+```
+LOOP
+  result = result-1;
+  IF result > 0 THEN
+    -- exits loop
+    EXIT;
+  END IF;
+END LOOP;
+```
+or
+```
+LOOP
+  result = result -1
+  EXIT WHEN result > 0;
+END LOOP;
+```
+* The `WHILE` loop: The WHILE loop will loop until the `boolean-expression` becomes `false`. The expression is evaluated first before executing the associated commands. The syntax is as follows:
+```
+WHILE boolean-expression
+LOOP
+  -- Statements
+END LOOP;
+```
+* The `FOR` loop: It iterates over a range of integer values. An iterative integer is declared here and doesn’t need to be declared in the `DECLARE` block. The life scope of this variable remains within the `FOR` loop and ends after the loop exits. By default, it iterates with a step of `1`, unless specified in the `BY` clause. Iteration ranges in the upper and lower ranges are defined as two expressions. If the `REVERSE` clause is given, then the iterated value will not step up but will be subtracted. Example
+```
+CREATE OR REPLACE FUNCTION get_grade(subjects integer) RETURNS integer AS $$
+  DECLARE
+    grade integer := 2;
+  BEGIN
+    FOR i IN 1..10
+    LOOP
+      grade := grade * subjects;
+    END LOOP;
+  RETURN grade;
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT get_grade(5);
+ get_grade
+-----------
+      2048
+(1 row)
+```
+And using `REVERSE`:
+```
+CREATE OR REPLACE FUNCTION get_grade(subjects integer) RETURNS integer AS $$
+  DECLARE
+    grade integer := 2;
+  BEGIN
+    FOR i IN REVERSE 10..1 BY 2
+    LOOP
+      grade := grade * subjects;
+    END LOOP;
+  RETURN grade;
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT get_grade(2);
+ get_grade
+-----------
+        64
+(1 row)
+```
+Also, iteration over a dynamic query (that is unknown at the time of writing the function and processed on runtime) can be done using the `EXECUTE` keyword in the following manner:
+```
+CREATE OR REPLACE FUNCTION count_in_query(query VARCHAR) RETURNS integer AS $$
+  DECLARE
+    count integer := 0;
+    table_records RECORD;
+  BEGIN
+    FOR table_records IN EXECUTE query
+    LOOP
+      count := count + 1;
+    END LOOP;
+    RETURN count;
+  END;
+$$ LANGUAGE 'plpgsql';
+
+SELECT count_in_query('SELECT * FROM table_name');
+ count_in_query
+----------------
+              7
+(1 row)
+```
+
+## Exception handling
