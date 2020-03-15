@@ -345,4 +345,12 @@ SELECT count_in_query('SELECT * FROM table_name');
 (1 row)
 ```
 
-## Exception handling
+## [Exception handling](https://www.postgresql.org/docs/current/plpgsql-errors-and-messages.html)
+
+Implementing `RAISE` statements takes care of error handling in an efficient manner with the options of `NOTICE`, `DEBUG`, and `EXCEPTION`. By defining the level of issues it should raise, it sends information to be displayed and logs it in PostgreSQL logs. The syntax for a `RAISE` statement is as follows:
+
+`RAISE NOTICE|DEBUG|EXCEPTION 'the message string';`
+
+## Native support for other procedural languages
+
+PL/pgSQL is not the only procedural language available for PostgreSQL. It has native support for Python, Perl and Tcl as well. It doesn’t stop here. However, it allows the usage of other procedural languages, for example, PL/Java and PL/Ruby. PostgreSQL uses bison (a parser generator) in the parsing process, thus enabling it to allow support for various open source languages.
