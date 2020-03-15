@@ -147,3 +147,9 @@ The [`CLUSTER`](https://www.postgresql.org/docs/12/sql-cluster.html) command is 
 index. It creates a whole initial copy of the table and the old copy of the data is dropped. This command requires enough space, virtually twice the disk space, to hold the initial organized copy of the data. Its basic syntax is:
 
 `CLUSTER table_name USING index_name`
+
+## [REINDEX](https://www.postgresql.org/docs/12/sql-reindex.html)ing
+
+If an index becomes inefficient due to bloating or data becomes randomly scattered, then reindexing is required to get the maximum performance from the index. Its syntax is:
+
+`REINDEX TABLE item;`
