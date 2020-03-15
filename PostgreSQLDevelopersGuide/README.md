@@ -6,3 +6,4 @@ This is not intended to be used as a full reference. For that see the [PostgreSQ
 
 ### [Chapter 1](./Chapter01): Getting Started with PostgreSQL
 ### [Chapter 2](./Chapter02): The Procedural Language
+### [Chapter 3](./Chapter03): Working with Indexes
