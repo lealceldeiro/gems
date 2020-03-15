@@ -92,3 +92,58 @@ creation on a table is a very expensive operation, and on a sizeably huge table,
 The concurrent index is slower than the normal index because it completes index building in two parts.
 
 The syntax of a concurrent index is `CREATE INDEX CONCURRENTLY index_name ON table_name using btree(column_name);`
+
+## Index types
+
+PostgreSQL supports the B-tree, hash, GiST, and GIN index methods. The index method or type can be selected via the USING method. Different types of indexes have different purposes, for example, the B-tree index is effectively used when a query involves the range and equality operators and the hash index is effectively used when the equality operator is used in a query. Example:
+
+`CREATE INDEX index_name ON table_name` **`USING btree`** `(column);`
+
+### B-tree index
+
+The B-tree index is effectively used when a query involves the equality operator (`=`) and range operators (`<`, `<=`, `>`, `>=`, `BETWEEN`, and `IN`).
+
+### Hash index
+
+Hash indexes are utilized when a query involves simple equivalent operators only. Example:
+
+`CREATE INDEX item_name ON table_name USING HASH(column_name);`
+
+### GiST index
+
+The Generalized Search Tree (GiST) index provides the possibility to create custom data types with indexed access methods. It additionally provides an extensive set of queries.
+
+It can be utilized for operations beyond equivalent and range comparisons. The GiST index is lossy, which means that it can create incorrect matches. The syntax of the GiST index is:
+
+`CREATE INDEX index_name ON table_name USING gist(column_name);`
+
+[Modules and extensions developed using GiST](https://www.postgresql.org/docs/current/gist-examples.html) are `rtree_gist`, `btree_gist`, `intarray`, `tsearch`, `ltree`, and `cube`.
+
+### [GIN index](https://www.postgresql.org/docs/current/gin-intro.html)
+
+GIN stands for Generalized Inverted Index. GIN is designed for handling cases where the items to be indexed are composite values, and the queries to be handled by the index need to search for element values that appear within the composite items. For example, the items could be documents, and the queries could be searches for documents containing specific words.
+
+Syntax: `CREATE INDEX index_name ON table_name USING gin(column_name);`
+
+The GIN index requires three times more space than GiST, but is three times faster than GiST.
+
+## Index bloating
+
+As the architecture of PostgreSQL is based on [MVCC](https://www.postgresql.org/docs/current/mvcc-intro.html), tables have the difficulty of dead rows. Rows that are not visible to any transaction are considered dead rows. Due to a lot of dead rows, bloating occurs. There are various reasons for index bloating, and it needs to be fixed to achieve more performance, because it hurts the performance of the database.
+
+### Dump and restore
+
+In the case of bloating, the simplest way of prevention is to back up the table utilizing pg_dump, drop the table, and reload the data into the initial table. This is an expensive operation and sometimes seems too restrictive.
+
+### VACUUM
+
+Vacuuming the table using the [`VACUUM`](https://www.postgresql.org/docs/current/sql-vacuum.html) command is another solution that can be used to fix the bloat. The `VACUUM` command reshuffles the rows to ensure that the page is as full as possible, but database file shrinking only happens when there are 100 percent empty pages at the end of the file. This is the only case where VACUUM is useful to reduce the bloat. Its basic syntax is:
+
+`VACUUM table_name`
+
+### CLUSTER
+
+The [`CLUSTER`](https://www.postgresql.org/docs/12/sql-cluster.html) command is used to physically reorder rows based on the
+index. It creates a whole initial copy of the table and the old copy of the data is dropped. This command requires enough space, virtually twice the disk space, to hold the initial organized copy of the data. Its basic syntax is:
+
+`CLUSTER table_name USING index_name`
