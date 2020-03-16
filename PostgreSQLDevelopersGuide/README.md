@@ -8,3 +8,4 @@ This is not intended to be used as a full reference. For that see the [PostgreSQ
 ### [Chapter 2](./Chapter02): The Procedural Language
 ### [Chapter 3](./Chapter03): Working with Indexes
 ### [Chapter 4](./Chapter04): Triggers, Rules, and Views
+### [Chapter 5](./Chapter05): Window Functions
