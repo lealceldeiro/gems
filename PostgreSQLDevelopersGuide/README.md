@@ -9,3 +9,4 @@ This is not intended to be used as a full reference. For that see the [PostgreSQ
 ### [Chapter 3](./Chapter03): Working with Indexes
 ### [Chapter 4](./Chapter04): Triggers, Rules, and Views
 ### [Chapter 5](./Chapter05): Window Functions
+### [Chapter 6](./Chapter06): Partitioning
