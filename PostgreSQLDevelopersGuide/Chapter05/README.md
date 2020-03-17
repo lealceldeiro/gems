@@ -244,7 +244,7 @@ For example, taking as reference the same data and queries as before, if we exec
 the result is
 
 ```
-no  | column_1 | last_value
+no  | column_1 | nth_value
 ----+----------+-----------
 10  | data1    |
 20  | data2    |
@@ -263,3 +263,98 @@ In the preceding example, the `PARTITION BY` clause was used and partitioned the
 * The `no` 40 has one row and no second row, so the _nth_ value is `null`
 
 ### `ntile()`
+
+The `ntile()` function returns an integer ranging from 1 to the argument value, divides the partition as equally as possible, and assigns an appropriate bucket number to each row.
+
+For example, taking as reference the same data and queries as before, if we execute
+
+`SELECT no, column_1, ntile(2) OVER (ORDER BY no) FROM table_name;`
+
+the result is
+
+```
+no  | column_1 | ntile
+----+----------+-----------
+10  | data1    |  1
+20  | data2    |  1
+20  | data3    |  1
+30  | data4    |  1
+30  | data5    |  2
+30  | data6    |  2
+40  | data7    |  2
+```
+
+In the preceding example, the table is divided into two partitions by the ntile() function.
+
+If the executed query is changed now so the `ntile` takes 3 as an argument like this
+
+`SELECT no, column_1, ntile(3) OVER (ORDER BY no) FROM table_name;`
+
+the result is
+
+```
+no  | column_1 | ntile
+----+----------+-----------
+10  | data1    |  1
+20  | data2    |  1
+20  | data3    |  1
+30  | data4    |  2
+30  | data5    |  2
+30  | data6    |  3
+40  | data7    |  4
+```
+
+In the preceding example, the table is divided into three partitions by the `ntile()` function.
+
+### `lag()`
+
+The `lag()` function is used to access more than one row of a table at the same time without using a **self join**. Considering that the number of rows returned from a query and the position of the cursor, `lag()` gives direction to a row at a given physical offset prior to that position.
+
+For example, taking as reference the same data and queries as before, if we execute
+
+`SELECT no, column_1, lag(no, 3) OVER (ORDER BY no) FROM table_name;`
+
+the result is
+
+```
+no  | column_1 | lag
+----+----------+-----------
+10  | data1    |
+20  | data2    |
+20  | data3    |
+30  | data4    |  10
+30  | data5    |  20
+30  | data6    |  20
+40  | data7    |  30
+```
+
+In the preceding example, two arguments were given to the `lag()` function. The first is the column name on the basis of which the function will access `no` . The second argument is an offset value, which in this case is 3, and this means that the cursor will start from the fourth value and make a **self join** of `no` with the remaining record.
+
+### `lead()`
+
+It is used to get the evaluated values of rows that are offset rows after the current row within the partition. If the offset argument is not given at the time of calling the function, it is set to 1 by default.
+
+For example, taking as reference the same data and queries as before, if we partition a table on the base of `no` and then call the `lead()` function for `column_1` with an offset value equal to 1; this will result in the following output:
+
+`SELECT no, column_1, lead(column_1, 1) OVER (PARTITION BY no, ORDER BY no, column_1) FROM table_name;`
+
+the result is
+
+```
+no  | column_1 | lead
+----+----------+-----------
+10  | data1    |
+20  | data2    |  data3
+20  | data3    |
+30  | data4    |  data5
+30  | data5    |  data6
+30  | data6    |
+40  | data7    |
+```
+
+The preceding example has the following results:
+
+* The `no` 10 has only one row, so there is no _lead_ value as the offset is 1
+* The `no` 20 has two rows and has `data3` as _lead_
+* The `no` 30 has three rows; the first row is skipped as offset is 1 and the remaining rows have `data5` and `data6` as _lead_
+* The `no` 40 has only one row, so no _lead_ value as offset is 1
