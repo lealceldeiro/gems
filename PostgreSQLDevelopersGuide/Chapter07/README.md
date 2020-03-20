@@ -21,7 +21,7 @@ Formatted output can be in TEXT, XML, JSON, or YAML. Here is an example of a for
 ```
             QUERY PLAN
 ----------------------------------------
-  [                                    +
+  [                                     +
     {                                   +
       "Plan": {                         +
         "Node Type": "Seq Scan",        +
@@ -101,3 +101,45 @@ A nested loop join is basically a nested FOR loop in which the relation on the r
 A merge join or a sort-merge join works on the principle that before the join starts, each relation is first sorted on the join attributes. Scanning is performed in parallel and matching rows are thus combined. Implementation can become complex with duplicate values, so if the left one has duplicate values, then the right table can be rescanned more than once.
 
 ### Hash joins
+
+Unlike a merge join, a hash join doesn’t sort its input. Rather, it first creates a hash table from each row of the right table using its join attributes as hash keys and then scans the left table to find the corresponding matching rows.
+
+### Hash semi and anti joins
+
+A semi join can be exercised when the optimizer has to make sure that a key value exists on one side of the join. On the other hand, an anti join looks particularly for entries where the key value doesn’t exist.
+
+Usually, these two types of joins are used when executing the `EXISTS` and `NOT EXISTS` expressions.
+
+### Join ordering
+
+When the number of joins increases, so does the complexity associated in controlling it in query tuning and the optimizer. Though the query optimizer can choose plans to execute these joins in several orders with identical results, yet the most inexpensive one will beutilized. However, performing these searches for best plans can be time consuming and error prone for decisions. The optimizer can be coerced to utilize the order which is consider the optimal one to join the tables, thus reducing the orchestrating time when performing a series of explicit join operations. In this way, other plans will not be considered. This can be a subsidiary, considering if the query-construction time is huge for a complex join or when the order selected by the optimizer is worthless.
+
+## Hints
+
+PostgreSQL does not have optimizer hints, but there is another way to provide allusions to the optimizer. We can enable or disable features according to our requirement; if we don’t want to utilize the sequential scan, then we can disable it and the planner will use the next scan for that query. We can get the benefit of hints by enabling and disabling the scans according to our need.
+
+The following features can be enabled or disabled:
+
+* enable_bitmapscan
+* enable_hashjoin
+* enable_indexscan
+* enable_mergejoin
+* enable_seqscan
+* enable_tidscanenable_hashagg
+* enable_indexonlyscan
+* enable_material
+* enable_nestloop
+* enable_sort
+
+## Configuration parameters to optimize queries
+
+PostgreSQL has configuration parameters that can be configured permanently or session predicated. The `postgresql.conf` file is utilized to configure most of the configuration parameters.
+
+Some of these parameters that actually have an impact in performance are:
+
+* `work_mem`: The disk I/O is the dominant cost factor in queries; if case queries involve a large number of complex sorts, then it can increment the disk access. If the system has lots of recollection, then the database should perform the in-recollection sorting to reduce the disk read. The `work_mem` configuration parameter is utilized to determine when the sorting will be performed in a recollection or the disk sort will be utilized. If we have lots of recollection, then the `work_mem` parameter should be set to the optimal value so that every sort can be performed in-recollection. This parameter is per connection for each sort which makes it authentically hard to set its value. The default value is 4 MB. This can be seen using the following statement: `SHOW work_mem;`
+* `maintenance_workmem`: The memory used for maintenance work can be configured by utilizing the `maintenance_workmem` parameter. The default value is 16 MB. Increasing the value can increment the performance of the maintenance jobs such as `CREATE INDEX`, `VACUUM`, and `REINDEX`. The following statement gives the value of `maintenance_work_mem`: `SHOW maintenance_work_mem;`
+* `effective_cache_size`: This parameter is used to set the estimated memory available for the operating system cache. The following statement shows the resulting value of `effective_cache_size`: `SHOW effective_cache_size;`
+* `checkpoint_segments`: This parameter is used to control the checkpoint. It designates a checkpoint after the checkpoint_segments log file is filled, which is customarily 16 MB in size. The default value is 3. Increasing the value reduces the disk I/O, which is definitely a performance boost, and this also increases the crash recovery time. The following statement shows the default value of `checkpoint_segments`: `SHOW checkpoint_segments;`
+* `checkpoint_timeout`: This parameter is used as well to control the checkpoints, that is, a checkpoint occurs when `checkpoint_timeout` log seconds have passed. The default value is 5 minutes. The following statement shows the default value of `checkpoint_timeout`: `SHOW checkpoint_timeout;`
+* `shared_buffers`: The shared_buffers parameter is used to limit the memory dedicated to caching of data in PostgreSQL. The default value is 128 MB. The following statement shows the default value of `shared_buffers`: `SHOW shared_buffers;`
