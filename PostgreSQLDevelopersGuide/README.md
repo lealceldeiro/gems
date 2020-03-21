@@ -12,3 +12,4 @@ This is not intended to be used as a full reference. For that see the [PostgreSQ
 ### [Chapter 6](./Chapter06): Partitioning
 ### [Chapter 7](./Chapter07): Query Optimization
 ### [Chapter 8](./Chapter08): Dealing with Large Objects
+### [Chapter 9](./Chapter09): Communicating with PostgreSQL Using LibPQ
