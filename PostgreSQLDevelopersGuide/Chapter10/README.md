@@ -1,4 +1,4 @@
-# Chapter 10. Embedded SQL in C – ECPG
+# Chapter 10: Embedded SQL in C – ECPG
 
 Full reference can be found at:
 
