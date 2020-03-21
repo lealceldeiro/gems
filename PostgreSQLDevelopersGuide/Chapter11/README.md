@@ -100,3 +100,134 @@ Foreign data wrappers are extensions and can be loaded using [`CREATE EXTENSION`
 `CREATE EXTENION my_fdw;`
 
 ### Creating a server
+
+After loading the extension, it is needed to create a foreign server that typically consists of connection information. Normally, the connection information consists of a remote machine hostname or IP address and target system port number. The user information may be specified in user mapping.
+
+```
+CREATE SERVER server_name
+  [ TYPE 'server_type' ] [ VERSION 'server_version' ]
+  FOREIGN DATA WRAPPER fdw_name
+  [ OPTIONS ( option 'value' [, ... ] ) ]
+```
+
+Let’s consider the various parameters mentioned in the preceding [syntax](https://www.postgresql.org/docs/current/sql-createserver.html):
+
+* `server_name`: This is the name of the server. This will be referred while creating the foreign tables.
+* `server_type`: This is the type of the server and is optional.
+* `server_version`: This is the server version information and is optional.
+* `fdw_name`: This is the name of the foreign data wrapper.
+* `OPTIONS`: This is the optional server specific information, normally contains the connection information. These options are validated in dummy_fdw validator.
+
+The following statement creates a server named `my_server` of the `my_fdw` foreign data wrapper:
+
+`CREATE SERVER my_server FOREIGN DATA WRAPPER my_fdw;`
+
+### Creating a user mapping
+
+The connection information consists of two parts; one is the target address, for example, host name, IP address ,and port; and the second part is the user information. The `CREATE SERVER` statement covers the target address part and `CREATE USER MAPPING` covers the user information part. The `CREATE USER MAPPING` statement maps the PostgreSQL user to the foreign server user. The syntax for [`CREATE USER MAPPING`](https://www.postgresql.org/docs/current/sql-createusermapping.html) is as follows:
+
+```
+CREATE USER MAPPING FOR
+  { user_name | USER | CURRENT_USER | PUBLIC }
+  SERVER server_name
+  [ OPTIONS ( option 'value' [ , ... ] ) ]
+```
+
+Here,
+
+* `user_name`: This is the name of the existing PostgreSQL user that needs to be mapped. The `CURRENT_USER` and `USER` parameter means the current logged in user, and `PUBLIC` is used when no user specific mapping is required.
+* `server_name`: This is the name of the server for which user mapping is required.
+* `OPTIONS`: These are the foreign data wrapper dependent options. Normally it contains the remote or foreign server username and password.
+
+For example:
+
+```
+CREATE USER MAPPING FOR postgres SERVER my_server OPTIONS(username 'foo', password 'bar');
+```
+
+### Creating a foreign table
+
+After creating the server and user mapping, the next step is to create a foreign table. The [syntax for creating a foreign table](https://www.postgresql.org/docs/current/sql-createforeigntable.html) is as follows:
+
+```
+CREATE FOREIGN TABLE [ IF NOT EXISTS ] table_name
+  ( [column_namedata_type
+  [ OPTIONS ( option 'value' [, ... ] ) ]
+  [ COLLATE collation ]
+  [ column_constraint [ ... ] ] [, ... ] ] )
+  SERVER server_name [ OPTIONS ( option 'value' [, ... ] ) ]
+  WHERE column_constraint is:
+  [ CONSTRAINT constraint_name ]
+  { NOT NULL | NULL | DEFAULT default_expr }
+```
+
+Let’s consider the various parameters mentioned in the preceding syntax:
+
+* `table_name`: This is the name of the table.
+* `column_name`: This is the name of the column.
+* `data_type`: This gives the data type.
+* `DEFAULT` default_expr: This is the the `DEFAULT` clause.
+* `server_name`: This is the name of the foreign server.
+* `OPTIONS`: This is the foreign data wrapper specific table options. It normally contains the remote table name.
+
+Here is a simple example to create a user mapping for the `postgres` user:
+
+```
+CREATE FOREIGN TABLE my_foreign_table (id INTEGER, name TEXT) SERVER my_server OPTIONS(table_name 'my_remote_table');
+```
+
+## Using foreign data wrappers
+
+After creating the foreign table, we can perform DML on the table just like a normal table like the following statement:
+
+`SELECT * FROM my_foreign_table;`
+
+### Working with `postgres_fdw`
+
+PostgreSQL provides a template to create OUR own foreign data wrapper. But there are only two officially supported foreign data wrappers: `postgres_fdw` and `file_fdw`. The `postgres_fdw` is a foreign data wrapper that is used to retrieve and manipulate the remote PostgreSQL’s server. The `postgres_fdw` data wrapper can be used by performing the following steps:
+
+1. Load the extension using `CREATE EXTENSION`:
+
+`CREATE EXTENSION postgres_fdw;`
+
+2. Create the server using `CREATE SERVER`:
+
+```
+CREATE SERVER postgres_server FOREIGN DATA WRAPPER postgres_fdw OPTIONS (host, '127.0.0.1', port '5432', dbname 'postgres');
+```
+
+3. Create user mapping using `CREATE USER MAPPING`:
+
+`CREATE USER MAPPING FOR PUBLIC SERVER postgres_server;`
+
+4. Create a foreign table using `CREATE FOREIGN TABLE`:
+
+`CREATE FOREIGN TABLE dummy_table (foo INTEGER, bar TEXT) SERVER postgres_server OPTIONS (table_name 'remote_dummy_table');`
+
+5. Insert data into the foreign table:
+
+`INSERT INTO dummy_table VALUES (1, 'foo');`
+
+6. Select data from the foreign data wrapper:
+
+`SELECT * FROM dummy_table;`
+
+### Working with `file_fdw`
+
+This is used to access the files in the server file system and it can be used by performing the following steps:
+
+1. Load extension using `CREATE EXTENSION`:
+
+`CREATE EXTENSION file_fdw;`
+
+2. Create the server using `CREATE SERVER`:
+
+`CREATE SERVER file_svr FOREIGN DATA WRAPPER file_fdw;`
+
+3. Create a foreign table using `CREATE FOREIGN TABLE`:
+
+```
+CREATE FOREIGN TABLE logfile (log_id INTEGER, log_detail TEXT, log_date date) SERVER file_svr OPTIONS (filename, 'log.txt', delimiter ',');
+```
+
+The `log.txt` file contains one record per line and every field is separated by a comma; in other words, log.txt is a Comma Separated File (CSF).
