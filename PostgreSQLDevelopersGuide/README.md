@@ -14,3 +14,5 @@ This is not intended to be used as a full reference. For that see the [PostgreSQ
 ### [Chapter 8](./Chapter08): Dealing with Large Objects
 ### [Chapter 9](./Chapter09): Communicating with PostgreSQL Using LibPQ
 ### [Chapter 10](./Chapter10): Embedded SQL in C – ECPG
+### [Chapter 11](./Chapter11): Foreign Data Wrapper
+### [Chapter 12](./Chapter12): Extensions
