@@ -1,4 +1,6 @@
-﻿Freeware License, some rights reserved
+As part of the original licence for the source code from the Author of the book the following original licence is included as part of this repository.
+
+Freeware License, some rights reserved
 
 Copyright (c) 2018 Marten Deinum
 
