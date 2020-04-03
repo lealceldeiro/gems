@@ -2,7 +2,7 @@
 
 Spring Boot will automatically configure a web application when it finds the classes on the classpath. It will also start an embedded server (by default it will launch an embedded Tomcat).
 
-3.1 Getting Started with Spring MVC
+## 3.1 Getting Started with Spring MVC
 
 **Problem**
 
