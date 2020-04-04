@@ -22,7 +22,7 @@ How to use Spring MVC to expose REST based resources `@WebMvcTest`.
 
 A JSON library is needed to do the JSON marshalling (although XML and other formats could be used as well, as content negotiation 3 is part of REST). The `spring-boot-starter-web` dependency already includes the needed Jackson libraries by default.
 
-## 3-3 Using Thymeleaf with Spring Boot
+## 3.3 Using Thymeleaf with Spring Boot
 
 **Problem**
 
