@@ -14,7 +14,7 @@ Notes from:
   
 ### [Spring Boot 2 Recipes: A Problem-Solution Approach](./SpringBoot2Recipes)  <sup><sub>(*Marten Deinum*)</sub></sup>
 
-### [CleanCode](./CleanCode)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+### [Clean Code](./CleanCode)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
 ### [Spring 5 Recipes: A Problem-Solution Approach](./Spring5Recipes)  <sup><sub>(*Marten Deinum*)</sub></sup>
  
