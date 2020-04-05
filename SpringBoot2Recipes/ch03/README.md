@@ -31,3 +31,23 @@ How to use Thymeleaf to render the pages of the application?
 **Solution**
 
 The dependency for Thymeleaf needs to be added and a regular `@Controller` has to be created to determine the view and fill the model.
+
+## 3.4 Handling Exceptions
+
+**Problem**
+
+How to customize the default white label error page shown by Spring Boot.
+
+**Solution**
+
+An additional `error.html` must be added as a customized error page, or specific error pages for specific HTTP error codes (i.e., `404.html` and `500.html`).
+
+## 3.5 Internationalizing Your Application
+
+**Problem**
+
+When developing an internationalized web application, the web pages have to be displayed in a user’s preferred locale. It's never wanted to create different versions of the same page for different locales.
+
+**Solution**
+
+To avoid creating different versions of a page for different locales, the web pages should be made independent of the locale by externalizing locale-sensitive text messages. Spring is able to resolve text messages by using a message source, which has to implement the `MessageSource` interface. In the page templates it can be used either special tags or do lookups for the messages.
