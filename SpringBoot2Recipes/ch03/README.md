@@ -63,3 +63,5 @@ In order for a web application to support internationalization, each user’s pr
 In a Spring MVC application, a user’s locale is identified by a locale resolver, which has to implement the `LocaleResolver` interface. Spring MVC comes with several `LocaleResolver` implementations for you to resolve locales by different criteria. Alternatively, an own custom locale resolver may be created by implementing that interface.
 
 Spring Boot allows to set the `spring.mvc.locale-resolver` property. This can be set to `ACCEPT` (the default) or `FIXED`. The first will create an `AcceptHeaderLocaleResolver`; the latter, a `FixedLocaleResolver`. It can be also defined a locale resolver by registering a bean of type `LocaleResolver` in the web application context. **The bean name of the locale resolver must set to `localeResolver` so it can be autodetected**.
+
+## 3.7 Selecting and Configuring the Embedded Server
