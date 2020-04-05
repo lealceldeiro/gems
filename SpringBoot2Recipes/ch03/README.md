@@ -42,7 +42,7 @@ How to customize the default white label error page shown by Spring Boot.
 
 An additional `error.html` must be added as a customized error page, or specific error pages for specific HTTP error codes (i.e., `404.html` and `500.html`).
 
-## 3.5 Internationalizing Your Application
+## 3.5 Internationalizing an Application
 
 **Problem**
 
@@ -51,3 +51,15 @@ When developing an internationalized web application, the web pages have to be d
 **Solution**
 
 To avoid creating different versions of a page for different locales, the web pages should be made independent of the locale by externalizing locale-sensitive text messages. Spring is able to resolve text messages by using a message source, which has to implement the `MessageSource` interface. In the page templates it can be used either special tags or do lookups for the messages.
+
+## 3.6 Resolving User Locales
+
+**Problem**
+
+In order for a web application to support internationalization, each user’s preferred locale must be identified and display contents according to this locale.
+
+**Solution**
+
+In a Spring MVC application, a user’s locale is identified by a locale resolver, which has to implement the `LocaleResolver` interface. Spring MVC comes with several `LocaleResolver` implementations for you to resolve locales by different criteria. Alternatively, an own custom locale resolver may be created by implementing that interface.
+
+Spring Boot allows to set the `spring.mvc.locale-resolver` property. This can be set to `ACCEPT` (the default) or `FIXED`. The first will create an `AcceptHeaderLocaleResolver`; the latter, a `FixedLocaleResolver`. It can be also define a locale resolver by registering a bean of type `LocaleResolver` in the web application context. **The bean name of the locale resolver must set to `localeResolver` so it can be autodetected**.
