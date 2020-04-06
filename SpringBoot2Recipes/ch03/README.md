@@ -73,3 +73,13 @@ How to use Jetty as an embedded container instead of the default Tomcat containe
 **Solution**
 
 The Tomcat runtime must be excluded and the Jetty runtime must be included. Spring Boot will automatically detect if Tomcat, Jetty, or Undertow is on the classpath and configure the container accordingly.
+
+## 3-8 Configuring SSL for the Servlet Container
+
+**Problem**
+
+How to make the application to be accessible through HTTPS next (or instead of ) HTTP.
+
+**Solution**
+
+A certificate has to be placed in a keystore, and using the `server.ssl` namespace, the keystore must be configured. Spring Boot will then automatically configure the server to be accessible through HTTPS only.
