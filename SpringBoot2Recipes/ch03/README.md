@@ -65,3 +65,11 @@ In a Spring MVC application, a user’s locale is identified by a locale resolve
 Spring Boot allows to set the `spring.mvc.locale-resolver` property. This can be set to `ACCEPT` (the default) or `FIXED`. The first will create an `AcceptHeaderLocaleResolver`; the latter, a `FixedLocaleResolver`. It can be also defined a locale resolver by registering a bean of type `LocaleResolver` in the web application context. **The bean name of the locale resolver must set to `localeResolver` so it can be autodetected**.
 
 ## 3.7 Selecting and Configuring the Embedded Server
+
+**Problem**
+
+How to use Jetty as an embedded container instead of the default Tomcat container.
+
+**Solution**
+
+The Tomcat runtime must be excluded and the Jetty runtime must be included. Spring Boot will automatically detect if Tomcat, Jetty, or Undertow is on the classpath and configure the container accordingly.
