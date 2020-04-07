@@ -19,3 +19,13 @@ Given a service, or multiple calls, how to collect the results from them and sen
 **Solution**
 
 Use a `ResponseBodyEmitter` (or its subclass `SseEmitter`) to collect and send the response to the client.
+
+## 43 WebSockets
+
+**Problem**
+
+How to use bidirectional communication from the client to the server over the web.
+
+**Solution**
+
+Use WebSockets to communicate from the client to the server and vice versa. WebSockets provide full duplex communication, unlike HTTP.
