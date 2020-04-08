@@ -6,3 +6,4 @@ Main notes taken from the book [Spring Boot 2 Recipes: A Problem-Solution Approa
 ## [Chapter 2](./ch02): Basics
 ## [Chapter 3](./ch03): Spring MVC
 ## [Chapter 4](./ch04): Spring MVC - Async
+## [Chapter 5](./ch05): Spring WebFlux
