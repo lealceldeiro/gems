@@ -29,3 +29,13 @@ How to use bidirectional communication from the client to the server over the we
 **Solution**
 
 Use WebSockets to communicate from the client to the server and vice versa. WebSockets provide full duplex communication, unlike HTTP.
+
+## 4.4 WebSockets with STOMP
+
+**Problem**
+
+How to use STOMP (**S**imple/**S**treaming **T**ext **O**riented **M**essage **P**rotocol) over WebSockets to communicate with the server.
+
+**Solution**
+
+Configure the message broker and use `@MessageMapping` annotated methods in an `@Controller` annotated class to handle the messages.
