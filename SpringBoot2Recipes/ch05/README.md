@@ -18,7 +18,7 @@ public interface HttpHandler {
 
 There are two ways of doing an integration test for a controller. The first approach is to simply write a test that creates an instance of the controller, call the handler methods, and do expectations on the results. The second is to use the `@WebFluxTest` annotation to create the test. The latter will start a minimal application context containing the web infrastructure and MockMvc can be used to test the controller. This last approach sits between a plain unit test and a full-blown integration test.
 
-## 52 Publishing and Consuming with Reactive Rest Services
+## 5.2 Publishing and Consuming with Reactive Rest Services
 
 **Problem**
 
