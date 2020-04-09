@@ -27,3 +27,13 @@ How to write a reactive REST endpoint that will produce JSON.
 **Solution**
 
 Just as with a regular `@RestController`, a regular object or list of objects can be returned and those will be sent to the client. To make them reactive, it is only required to wrap those return values in their reactive counterparts: a `Mono` or a `Flux`.
+
+## 53 Use Thymeleaf as a Template Engine
+
+**Problem**
+
+How to render a view in a WebFlux based application?
+
+**Solution**
+
+Use Thymeleaf to create a view and reactively return the view name and fill the model.
