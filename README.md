@@ -16,9 +16,11 @@ Notes from:
 
 ### [Clean Code](./CleanCode)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
-### [Spring 5 Recipes: A Problem-Solution Approach](./Spring5Recipes)  <sup><sub>(*Marten Deinum*)</sub></sup>
- 
+### [High-Performance Java Persistence](./HighPerformanceJavaPersistence)  <sup><sub>(*Vlad Mihalcea*)</sub></sup>
+
 ### [Seroiusly Good Software](./SeriouslyGoodSoftware)  <sup><sub>(*Marco Faella*)</sub></sup>
+
+### [Spring 5 Recipes: A Problem-Solution Approach](./Spring5Recipes)  <sup><sub>(*Marten Deinum*)</sub></sup>
 
 ### [Working Effectively with Legacy Code](./WorkingEffectivelyWithLegacyCode)  <sup><sub>(*Robert C. Martin*)</sub></sup>
  
