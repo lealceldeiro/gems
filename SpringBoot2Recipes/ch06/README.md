@@ -24,7 +24,7 @@ Some parts of the application may allow for anonymous access (e.g., access to th
 
 Spring Security also supports remember-me login, which is able to remember a user’s identity across multiple browser sessions so that a user needn’t log in again after logging in for the first time.
 
-## 6-3 Authenticating Users
+## 6.3 Authenticating Users
 
 **Problem**
 
@@ -36,3 +36,13 @@ In Spring Security, authentication is performed by one or more `AuthenticationPr
 reports that the user is disabled or locked or that the credential is incorrect, or if no provider can authenticate the user, then the user will be unable to log into this application.
 
 Spring Security supports multiple ways of authenticating users and includes built-in provider implementations for them. These providers can be easily configured with the built-in XML elements. Most common authentication providers authenticate users against a user repository storing user details (e.g., in an application’s memory, a relational database, or an LDAP repository).
+
+## 6.4 Making Access Control Decisions
+
+**Problem**
+
+In the authentication process, an application will grant a successfully authenticated user a set of authorities. When this user attempts to access a resource in the application, the application has to decide whether the resource is accessible with the granted authorities or other characteristics.
+
+**Solution**
+
+The decision on whether a user is allowed to access a resource in an application is called an access control decision. It is made based on the user’s authentication status, and the resource’s nature and access attributes.
