@@ -23,3 +23,16 @@ Spring Security supports multiple ways for users to log into a web application. 
 Some parts of the application may allow for anonymous access (e.g., access to the welcome page). Spring Security provides an anonymous login service that can assign a principal and grant authorities to an anonymous user, so that an anonymous user can be handled like a normal user when defining security policies.
 
 Spring Security also supports remember-me login, which is able to remember a user’s identity across multiple browser sessions so that a user needn’t log in again after logging in for the first time.
+
+## 6-3 Authenticating Users
+
+**Problem**
+
+When a user attempts to log into the application to access its secure resources, the user’s principal must be authenticated  and grant authorities to this user.
+
+**Solution**
+
+In Spring Security, authentication is performed by one or more `AuthenticationProviders`, connected as a chain. If any of these providers authenticates a user successfully, that user will be able to log into the application. If any provider
+reports that the user is disabled or locked or that the credential is incorrect, or if no provider can authenticate the user, then the user will be unable to log into this application.
+
+Spring Security supports multiple ways of authenticating users and includes built-in provider implementations for them. These providers can be easily configured with the built-in XML elements. Most common authentication providers authenticate users against a user repository storing user details (e.g., in an application’s memory, a relational database, or an LDAP repository).
