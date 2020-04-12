@@ -46,3 +46,13 @@ In the authentication process, an application will grant a successfully authenti
 **Solution**
 
 The decision on whether a user is allowed to access a resource in an application is called an access control decision. It is made based on the user’s authentication status, and the resource’s nature and access attributes.
+
+## 6.5 Adding Security to a WebFlux Application
+
+**Problem**
+
+How to secure an application built with Spring Web Flux by using Spring Security.
+
+**Solution**
+
+When adding Spring Security as a dependency to a WebFlux-based application, Spring Boot will automatically enable security. It will add an `@EnableWebFluxSecurity` annotated configuration class to the application. The `@EnableWebFluxSecurity` annotation then imports the default Spring Security `WebFluxSecurityConfiguration`.
