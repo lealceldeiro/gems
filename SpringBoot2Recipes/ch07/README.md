@@ -19,3 +19,13 @@ How to use `JdbcTemplate` or `NamedParameterJdbcTemplate` to have a better JDBC 
 **Solution**
 
 Use the automatically configured `JdbcTemplate` or `NamedParameterJdbcTemplate` to execute the queries and handle the results.
+
+## 7.3 Use JPA
+
+**Problem**
+
+How to use JPA in your Spring Boot application.
+
+**Solution**
+
+Spring Boot automatically detects the presence of Hibernate, and the needed JPA classes will use that information to configure the EntityManagerFactory.
