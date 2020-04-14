@@ -30,7 +30,7 @@ How to use JPA in your Spring Boot application.
 
 Spring Boot automatically detects the presence of Hibernate, and the needed JPA classes will use that information to configure the EntityManagerFactory.
 
-## 7-4 Use Plain Hibernate
+## 7.4 Use Plain Hibernate
 
 **Problem**
 
@@ -39,3 +39,13 @@ You have some code that uses the plain Hibernate API, Session, and/or SessionFac
 **Solution**
 
 Use the `EntityManager` or `EntityManagerFactory` to obtain the plain Hibernate objects like `Session` or `SessionFactory`.
+
+## 7.5 Spring Data MongoDB
+
+**Problem**
+
+You want to use MongoDB in your Spring Boot application.
+
+**Solution**
+
+Add the Mongo Driver as a dependency and use the `spring.data.mongodb` properties to let Spring Boot set up the MongoTemplate to the correct MongoDB.
