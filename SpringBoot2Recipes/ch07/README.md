@@ -44,7 +44,7 @@ Use the `EntityManager` or `EntityManagerFactory` to obtain the plain Hibernate 
 
 **Problem**
 
-You want to use MongoDB in your Spring Boot application.
+How to use MongoDB in your Spring Boot application.
 
 **Solution**
 
