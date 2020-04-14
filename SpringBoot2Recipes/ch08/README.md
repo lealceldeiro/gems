@@ -19,3 +19,15 @@ How to schedule a method invocation in a consistent manner, using either a cron 
 **Solution**
 
 Spring has support to configure `TaskExecutor`s and `TaskScheduler`s. This capability, coupled with the ability to schedule method execution using the `@Scheduled` annotation, makes Spring scheduling support work with a minimum of fuss: all that is need are a method, an annotation, and to have switched on the scanner for annotations. Spring Boot will not automatically detect the need for scheduling; it has to be enabled explicitely by using the `@EnableScheduling` annotation.
+
+## 8.3 Sending E-mail
+
+Spring Boot will automatically configure the ability to send mail when mail properties and the java mail library are detected on the classpath.
+
+**Problem**
+
+How to send e-mail from a Spring Boot application.
+
+**Solution**
+
+Spring’s e-mail support makes it easier to send e-mail by providing an abstract and implementation-independent API for sending e-mail. The core interface of Spring’s e-mail support is `MailSender`. The `JavaMailSender` interface is a subinterface of `MailSender` that includes specialized JavaMail features such as Multipurpose Internet Mail Extensions (MIME message) support. To send an e-mail message with HTML content, inline images, or attachments, you have to send it as a MIME message. Spring Boot will automatically configure the `JavaMailSender` when the `javax.mail` classes are found on the classpath and when the appropriate `spring.mail` properties have been set.
