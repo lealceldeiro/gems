@@ -31,3 +31,13 @@ How to send e-mail from a Spring Boot application.
 **Solution**
 
 Spring’s e-mail support makes it easier to send e-mail by providing an abstract and implementation-independent API for sending e-mail. The core interface of Spring’s e-mail support is `MailSender`. The `JavaMailSender` interface is a subinterface of `MailSender` that includes specialized JavaMail features such as Multipurpose Internet Mail Extensions (MIME message) support. To send an e-mail message with HTML content, inline images, or attachments, you have to send it as a MIME message. Spring Boot will automatically configure the `JavaMailSender` when the `javax.mail` classes are found on the classpath and when the appropriate `spring.mail` properties have been set.
+
+## 8.4 Register a JMX MBean
+
+**Problem**
+How to register an object in a Spring Boot application as a JMX MBean, to have the ability to look at services that are running and manipulate their state at runtime. This allows to perform tasks like rerun batch jobs, invoke methods, and change
+configuration metadata.
+
+## Solution
+
+Spring Boot by default enables the Spring JMX support and will detect the `@ManagedResource` annotated beans and register them with the JMX server.
