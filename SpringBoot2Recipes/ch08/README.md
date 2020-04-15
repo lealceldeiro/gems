@@ -35,9 +35,10 @@ Spring’s e-mail support makes it easier to send e-mail by providing an abstrac
 ## 8.4 Register a JMX MBean
 
 **Problem**
+
 How to register an object in a Spring Boot application as a JMX MBean, to have the ability to look at services that are running and manipulate their state at runtime. This allows to perform tasks like rerun batch jobs, invoke methods, and change
 configuration metadata.
 
-## Solution
+**Solution**
 
 Spring Boot by default enables the Spring JMX support and will detect the `@ManagedResource` annotated beans and register them with the JMX server.
