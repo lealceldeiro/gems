@@ -48,3 +48,13 @@ How to send a message to a RabbitMQ broker so that the message can be delivered 
 **Solution**
 
 Using the `RabbitTemplate`, messages can be sent to an exchange and provide a routing key.
+
+## 9.6 Receive Messages Using RabbitMQ
+
+**Problem**
+
+How to receive messages from a RabbitMQ.
+
+**Solution**
+
+Annotating a method with `@RabbitListener` will bind it to a queue and let it receive messages.
