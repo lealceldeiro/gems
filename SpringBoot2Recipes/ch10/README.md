@@ -15,3 +15,13 @@ How to enable health and metrics in the application so that the status of the ap
 Add a dependency for the `spring-boot-starter-actuator` to and the health and metrics will be enabled and exposed for the application. Additional configuration can be done through properties in the `management` namespace.
 
 The `management.server` properties are only effective when using an embedded server; when deploying to an external server these properties don’t apply anymore.
+
+## 10.2 Create Custom Health Checks and Metrics
+
+**Problem**
+
+It is needed to expose certain metrics and have a health check that aren’t available by default in the application.
+
+***Solution**
+
+The health checks and metrics are pluggable, and beans of type `HealthIndicator` and `MetricBinder` are automatically registered to provide additional health checks and/or metrics. The task is to create a class implementing the desired interface and register an instance of that class as a bean in the context of having it contribute to the health and metrics.
