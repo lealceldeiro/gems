@@ -11,3 +11,4 @@ Main notes taken from the book [Spring Boot 2 Recipes: A Problem-Solution Approa
 ## [Chapter 7](./ch07): Data Access
 ## [Chapter 8](./ch08): Java Enterprise Services
 ## [Chapter 9](./ch09): Messaging
+## [Chapter 10](./ch10): Spring Boot Actuator
