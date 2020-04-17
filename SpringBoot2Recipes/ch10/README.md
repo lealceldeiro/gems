@@ -13,3 +13,5 @@ How to enable health and metrics in the application so that the status of the ap
 **Solution**
 
 Add a dependency for the `spring-boot-starter-actuator` to and the health and metrics will be enabled and exposed for the application. Additional configuration can be done through properties in the `management` namespace.
+
+The `management.server` properties are only effective when using an embedded server; when deploying to an external server these properties don’t apply anymore.
