@@ -25,3 +25,13 @@ It is needed to expose certain metrics and have a health check that aren’t ava
 **Solution**
 
 The health checks and metrics are pluggable, and beans of type `HealthIndicator` and `MetricBinder` are automatically registered to provide additional health checks and/or metrics. The task is to create a class implementing the desired interface and register an instance of that class as a bean in the context of having it contribute to the health and metrics.
+
+## 10.3 Export Metrics
+
+**Problem**
+
+How to export the metrics to an external system, to create a dashboard to monitor the application.
+
+**Solution**
+
+Use one of the supported systems like Graphite and periodically push the metrics to that system. Include a `micrometer.io` registry dependency in the application (next to the `spring-boot-starter-actuator` dependency) and metrics will automatically be exported. By default, every minute the data will be pushed to the server.
