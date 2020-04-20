@@ -33,3 +33,9 @@ Encoded names are seldom pronounceable and are easy to mis-type.
 Nowadays Hungarian Notation and other forms of type encoding are simply impediments. They make it harder to change the name or type of a variable, function, or class. They make it harder to read the code. And they create the possibility that the encoding system will mislead the reader.
 
 ### Member Prefixes
+
+You also don’t need to prefix member variables with `m_` anymore. Your classes and functions should be small enough that you don’t need them. And you should be using an editing environment that highlights or colorizes members to make them distinct.
+
+## Avoid Mental Mapping
+
+Readers shouldn’t have to mentally translate your names into other names they already know. This problem generally arises from a choice to use neither problem domain terms nor solution domain terms.
