@@ -57,3 +57,75 @@ the The Stepdown Rule paragraphs would be something like
 `switch` statements can be tolerated if they appear only once, are used to create polymorphic objects, and are hidden behind an inheritance relationship so that the rest of the system can’t see them.
 
 ## Use Descriptive Names
+
+Don’t be afraid to make a name long. A long descriptive name is better than a short enigmatic name. A long descriptive name is better than a long descriptive comment.
+
+Choosing descriptive names will clarify the design of the module in your mind and help you to improve it.
+
+Be consistent in your names. Use the same phrases, nouns, and verbs in the function names you choose for your modules.
+
+## Function Arguments
+
+The ideal number of arguments for a function is zero (niladic). Next comes one (monadic), followed closely by two (dyadic). Three arguments (triadic) should be avoided where possible. More than three (polyadic) requires very special justification—and then shouldn’t be used anyway.
+
+The argument is at a different level of abstraction than the function name and forces you to know a detail that may not be particularly important at that point.
+
+Arguments are even harder from a testing point of view. Imagine the difficulty of writing all the test cases to ensure that all the various combinations of arguments work properly.
+
+Output arguments are harder to understand than input arguments.
+
+Using an output argument instead of a return value for a transformation is confusing. If a function is going to transform its input argument, the transformation should appear as the return value.
+
+## Flag Arguments
+
+Flag arguments are ugly. Passing a boolean into a function is a truly terrible practice. It immediately complicates the signature of the method, loudly proclaiming that this function does more than one thing. It does one thing if the flag is true and another if the flag is false!
+
+### Dyadic Functions
+
+Dyads aren’t evil, and you will certainly have to write them. However, you should be aware that they come at a cost and should take advantage of what mechanims may be available to you to convert them into monads.
+
+### Argument Objects
+
+When a function seems to need more than two or three arguments, it is likely that some of those arguments ought to be wrapped into a class of their own. i.e., `double x, double y` conceptually form a `Point`:
+
+```
+Circle makeCircle(double x, double y, double radius);
+Circle makeCircle(Point center, double radius);
+```
+
+### Verbs and Keywords
+
+In the case of a monad function, the function name and argument should form a very nice verb/noun pair. i.e.: `write(name)` or `writeField(name)`.
+
+## Have No Side Effects
+
+Side effects are lies. Your function promises to do one thing, but it also does other hidden things.
+
+Temporal couplings are confusing, especially when hidden as a side effect. If you must have a temporal coupling, you should make it clear in the name of the function.
+
+### Output Arguments
+
+Arguments are most naturally interpreted as inputs to a function.
+
+Many times output arguments force you to check the function signature, and that is equivalent to a double-take. It’s a cognitive break and should be avoided.
+
+In general output arguments should be avoided. If your function must change the state of something, have it change the state of its owning object.
+
+## Command Query Separation
+
+Functions should either do something or answer something, but not both. Either your function should change the state of an object, or it should return some information about that object. Doing both often leads to confusion.
+
+For example, the following function `public boolean set(String attribute, String value);` sets the value of a named attribute and returns `true` if it is successful and `false` if no such attribute exists.
+
+This leads to odd statements like `if (set("username", "unclebob"))`. From the point of view of the reader it’s hard to infer the meaning from the call because it’s not clear whether the word "`set`" is a verb or an adjective.
+
+The author intended `set` to be a verb, but in the context of the if statement it _feels_ like an adjective. So the statement reads as "If the username attribute was previously set to unclebob" and not "set the username attribute to unclebob and if that worked then...".
+
+The solution is to separate the command from the query so that the ambiguity cannot occur.
+```
+if (attributeExists("username")) {
+  setAttribute("username", "unclebob");
+  // ...
+}
+```
+
