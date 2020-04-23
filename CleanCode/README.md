@@ -5,3 +5,4 @@ Main notes taken from the book [Clean Code](https://www.amazon.de/dp/0132350882/
 ## [Chapter 1](./Chapter01): Clean Code
 ## [Chapter 2](./Chapter02): Meaningful Names
 ## [Chapter 3](./Chapter03): Functions
+## [Chapter 4](./Chapter04): Comments
