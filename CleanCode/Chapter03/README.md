@@ -129,3 +129,26 @@ if (attributeExists("username")) {
 }
 ```
 
+## Prefer Exceptions to Returning Error Codes
+
+Returning error codes from command functions is a subtle violation of command query separation. It promotes commands being used as expressions in the predicates of `if` statements.
+
+When you return an error code, you create the problem that the caller must deal with the error immediately.
+
+### Extract Try/Catch Blocks
+
+It is better to extract the bodies of the `try` and `catch` blocks out into functions of their own. This provides a nice separation that makes the code easier to understand and modify.
+
+### Error Handling Is One Thing
+
+Functions should do one thing. Error handing is one thing. Thus, a function that handles errors should do nothing else.
+
+### The `Error.java` Dependency Magnet
+
+Classes (most of the time `enum`s) which hold error codes are _dependency magnet_ (many other classes depend on them) and should be avoided. It is better to use exceptions because, for example, they can be added without forcing any recompilation or redeployment.
+
+## Don’t Repeat Yourself
+
+Duplication may be the root of all evil in software. Many principles and practices have been created for the purpose of controlling or eliminating it. Object-oriented programming serves to concentrate code into base classes that would otherwise be redundant. Structured programming, Aspect Oriented Programming, Component Oriented Programming, are all, in part, strategies for eliminating duplication.
+
+## Structured Programming
