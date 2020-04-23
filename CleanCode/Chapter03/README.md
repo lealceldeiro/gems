@@ -151,4 +151,8 @@ Classes (most of the time `enum`s) which hold error codes are _dependency magnet
 
 Duplication may be the root of all evil in software. Many principles and practices have been created for the purpose of controlling or eliminating it. Object-oriented programming serves to concentrate code into base classes that would otherwise be redundant. Structured programming, Aspect Oriented Programming, Component Oriented Programming, are all, in part, strategies for eliminating duplication.
 
-## Structured Programming
+## How To Write Functions Like This?
+
+When writing functions, they come out long and complicated. They have lots of indenting and nested loops. They have long argument lists. The names are arbitrary, and there is duplicated code. But also there should be a suite of unit tests that cover every one of those clumsy lines of code.
+
+Then that code should be refined, splitting out functions, changing names, eliminating duplication. The methods should be shrunk and reordered. Sometimes even whole classes should be broken out, all the while keeping the tests passing. In the end, there should be functions that follow the rules laid down in this chapter. It's improbable that anyone can write them that way to start.
