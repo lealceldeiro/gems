@@ -73,3 +73,35 @@ public void _testWithReallyBigFile() {
   // ...
 }
 ```
+
+### TODO Comments
+
+It is sometimes reasonable to leave “To do” notes in the form of `// TODO` comments.
+
+`TODO`s are jobs that the programmer thinks should be done, but for some reason can’t do at the moment. It might be a reminder to delete a deprecated feature or a plea for someone else to look at a problem. It might be a request for someone else to think of a better name or a reminder to make a change that is dependent on a planned event. Whatever else a `TODO` might be, it is _not_ an excuse to leave bad code in the system.
+
+### Amplification
+
+A comment may be used to amplify the importance of something that may otherwise seem inconsequential.
+
+### Javadocs in Public APIs
+
+There is nothing quite so helpful and satisfying as a well-described public API. The javadocs for the standard Java library are a case in point. It would be difficult, at best, to write Java programs without them.
+
+If you are writing a public API, then you should certainly write good javadocs for it. But keep in mind the rest of the advice in this chapter. Javadocs can be just as misleading, nonlocal, and dishonest as any other kind of comment.
+
+## Bad Comments
+
+Most comments fall into this category. Usually they are crutches or excuses for poor code or justifications for insufficient decisions, amounting to little more than the programmer talking to himself.
+
+### Mumbling
+
+If you decide to write a comment, then spend the time necessary to make sure it is the best comment you can write.
+
+Any comment that forces you to look in another module for the meaning of that comment has failed to communicate to you and is not worth the bits it consumes.
+
+### Redundant Comments
+
+This kind of comments is certainly not more informative than the code. It does not justify the code, or provide intent or rationale. It is not easier to read than the code. Indeed, it is less precise than the code and entices the reader to accept that lack of precision in lieu of true understanding.
+
+### Misleading Comments
