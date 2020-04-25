@@ -167,3 +167,21 @@ Sometimes programmers like to mark a particular position in a source file. i.e.,
 There are rare times when it makes sense to gather certain functions together beneath a banner like this. But in general they are clutter that should be eliminated—especially the noisy train of slashes at the end.
 
 If you overuse banners, they’ll fall into the background noise and be ignored.
+
+### Closing Brace Comments
+
+This kind of comments might make sense for long functions with deeply nested structures, however it serves only to clutter the kind of small and encapsulated functions that we prefer. So if you find yourself wanting to mark your closing braces, try to shorten your functions instead.
+
+### Attributions and Bylines
+
+Comments like this `/* Added by Rick */`.
+
+Source code control systems are very good at remembering who added what, when. There is no need to pollute the code with little bylines. You might think that such comments would be useful in order to help others know who to talk to about the code. But the reality is that they tend to stay around for years and years, getting less and less accurate and relevant.
+
+### Commented-Out Code
+
+Others who see that commented-out code won’t have the courage to delete it. They’ll think it is there for a reason and is too important to delete.
+
+There was a time, back in the sixties, when commenting-out code might have been useful. But we’ve had good source code control systems for a very long time now. Those systems will remember the code for us. We don’t have to comment it out any more.
+
+### HTML Comments
