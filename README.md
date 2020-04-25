@@ -24,6 +24,8 @@ Notes from:
 
 ### [Spring 5 Recipes: A Problem-Solution Approach](./Spring5Recipes)  <sup><sub>(*Marten Deinum*)</sub></sup>
 
+### [Clean Architecture](./CleanArchitecture)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+
 ### [Working Effectively with Legacy Code](./WorkingEffectivelyWithLegacyCode)  <sup><sub>(*Robert C. Martin*)</sub></sup>
  
 ### [Reality Is Broken](./RealityIsBroken) <sup><sub>(*JANE McGONIGAL*)</sub></sup>
