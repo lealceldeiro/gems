@@ -18,6 +18,8 @@ Notes from:
 
 ### [High-Performance Java Persistence](./HighPerformanceJavaPersistence)  <sup><sub>(*Vlad Mihalcea*)</sub></sup>
 
+### [Design Patterns - Elements of Reusable Object-Oriented Software](./DesignPatternsElementsOfReusableObjectOrientesSoftware)  <sup><sub>(*Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides*)</sub></sup>
+
 ### [Seroiusly Good Software](./SeriouslyGoodSoftware)  <sup><sub>(*Marco Faella*)</sub></sup>
 
 ### [Spring 5 Recipes: A Problem-Solution Approach](./Spring5Recipes)  <sup><sub>(*Marten Deinum*)</sub></sup>
