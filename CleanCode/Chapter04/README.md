@@ -105,3 +105,65 @@ Any comment that forces you to look in another module for the meaning of that co
 This kind of comments is certainly not more informative than the code. It does not justify the code, or provide intent or rationale. It is not easier to read than the code. Indeed, it is less precise than the code and entices the reader to accept that lack of precision in lieu of true understanding.
 
 ### Misleading Comments
+
+Sometimes, with all the best intentions, a programmer makes a statement in his comments that isn’t precise enough to be accurate.
+
+This misinformation, couched in a comment that is harder to read than the body of the code, could cause another programmer to find himself in a debugging session trying to figure out why his code executed different than expected.
+
+### Mandated Comments
+
+It is just plain silly to have a rule that says that every function must have a javadoc, or every variable must have a comment. Comments like this just clutter up the code, propagate lies, and lend to general confusion and disorganization.
+
+### Journal Comments
+
+Sometimes people add a comment to the start of a module every time they edit it. These comments accumulate as a kind of journal, or log, of every change that has ever been made.
+
+Long ago there was a good reason to create and maintain these log entries at the start of every module. We didn’t have source code control systems that did it for us. Nowadays, however, these long journals are just more clutter to obfuscate the module. They should be completely removed.
+
+### Noise Comments
+
+Sometimes you see comments that are nothing but noise. They restate the obvious and provide no new information. i.e.:
+
+```
+/**
+* Default constructor.
+*/
+protected Animal() {
+}
+```
+
+Replace the temptation to create noise with the determination to clean your code. You’ll find it makes you a better and happier programmer.
+
+### Scary Noise
+
+Javadocs can also be noisy. If authors aren’t paying attention when comments are written (or pasted), why should readers be expected to profit from them?
+
+### Don’t Use a Comment When You Can Use a Function or a Variable
+
+Consider the following stretch of code:
+
+```
+// does the module from the global list <mod> depend on the
+// subsystem we are part of?
+if (smodule.getDependSubsystems().contains(subSysMod.getSubSystem()))
+```
+
+This could be rephrased without the comment as:
+
+```
+List<String> moduleDependees = smodule.getDependSubsystems();
+String ourSubSystem = subSysMod.getSubSystem();
+if (moduleDependees.contains(ourSubSystem))
+```
+
+### Position Markers
+
+Sometimes programmers like to mark a particular position in a source file. i.e., banners like this:
+
+```
+// Actions //////////////////////////////////
+```
+
+There are rare times when it makes sense to gather certain functions together beneath a banner like this. But in general they are clutter that should be eliminated—especially the noisy train of slashes at the end.
+
+If you overuse banners, they’ll fall into the background noise and be ignored.
