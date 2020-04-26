@@ -26,3 +26,26 @@ A method `f` of a class `C` should only call the methods of these:
 The method should not invoke methods on objects that are returned by any of the allowed functions. In other words, talk to friends, not to strangers.
 
 ### Train Wrecks
+
+This kind of code is often called a train wreck because it looks like a bunch of coupled train cars. Chains of calls like this are generally considered to be sloppy style and should be avoided.
+
+```
+final String outputDir = ctxt.getOptions().getScratchDir().getAbsolutePath();
+```
+
+### Hybrids
+
+This confusion sometimes leads to unfortunate hybrid structures that are half object and half data structure. They have functions that do significant things, and they also have either public variables or public accessors and mutators that, for all intents and purposes, make the private variables public.
+
+Such hybrids make it hard to add new functions but also make it hard to add new data structures. They are the worst of both worlds and should be avoided.
+
+### Hiding Structure
+
+In the previous code snippet, we should not be able to navigate through `ctxt`, `options`, and `scratchDir`.
+
+If `ctxt` is an object, we should be telling it to _do something_; we should not be asking it about its internals. For exampe, if the intent of getting the absolute path of the scratch directory was to create a scratch file of a given name, we could tell the `ctxt` object to do this:
+
+```
+BufferedOutputStream bos = ctxt.createScratchFileStream(classFileName);
+```
+## Data Transfer Objects
