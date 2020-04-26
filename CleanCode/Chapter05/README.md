@@ -48,3 +48,48 @@ In general we want function call dependencies to point in the downward direction
 
 ## Horizontal Formatting
 
+We should strive to keep our lines short.
+
+### Horizontal Openness and Density
+
+We use horizontal white space to associate things that are strongly related and disassociate things that are more weakly related.
+
+### Horizontal Alignment
+
+Horizontal alignment to accentuate certain structures is not useful. The alignment seems to emphasize the wrong things and leads our eyes away from the true intent. To make matters worse, automatic reformatting tools usually eliminate this kind of alignments.
+
+It should be preferred unaligned declarations and assignments, because they point out an important deficiency. If we have a long lists that need to be aligned, _the problem is the length of the lists_, not the lack of alignment.
+
+### Indentation
+
+Statements at the level of the file, such as most class declarations, are not indented at all. Methods within a class are indented one level to the right of the class. Implementations of those methods are implemented one level to the right of the method declaration. Block implementations are implemented one level to the right of their containing block, and so on.
+
+#### Breaking Indentation
+
+It is sometimes tempting to break the indentation rule for short if statements, short while loops, or short functions. Avoid collapsing scopes down to one line like this:
+
+```
+public CommentWidget(ParentWidget parent, String text){super(parent, text);}
+```
+
+Write instead
+
+```
+public CommentWidget(ParentWidget parent, String text) {
+  super(parent, text);
+}
+```
+### Dummy Scopes
+
+Sometimes the body of a `while` or `for` statement is a dummy one like this:
+
+```
+while (dis.read(buf, 0, readBufferSize) != -1)
+  ;
+```
+
+When this kind of structures can't be avoided we need to make sure that the dummy body is properly indented and surrounded by braces.
+
+## Team Rules
+
+A team of developers should agree upon a single formatting style, and then every member of that team should use that style. We want the software to have a consistent style. We don’t want it to appear to have been written by a bunch of disagreeing individuals.
