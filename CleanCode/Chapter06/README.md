@@ -15,3 +15,14 @@ Procedural code (code using data structures) makes it easy to add new functions 
 Procedural code makes it hard to add new data structures because all the functions must change. OO code makes it hard to add new functions because all the classes must change (not so true in some cases, such as Java 8, where default methods can be declared in interfaces and may be suitable in some cases).
 
 ## The Law of Demeter
+
+A method `f` of a class `C` should only call the methods of these:
+
+* `C`
+* An object created by `f`
+* An object passed as an argument to `f`
+* An object held in an instance variable of `C`
+
+The method should not invoke methods on objects that are returned by any of the allowed functions. In other words, talk to friends, not to strangers.
+
+### Train Wrecks
