@@ -49,3 +49,15 @@ If `ctxt` is an object, we should be telling it to _do something_; we should not
 BufferedOutputStream bos = ctxt.createScratchFileStream(classFileName);
 ```
 ## Data Transfer Objects
+
+The quintessential form of a data structure is a class with public variables and no functions. This is sometimes called a data transfer object, or DTO. DTOs are very useful structures, especially when communicating with databases or parsing messages from sockets, and so on.
+
+Somewhat more common is the "bean". Beans have private variables manipulated by getters and setters.
+
+### Active Record
+
+Active Records are special forms of DTOs. They are data structures with public (or bean-accessed) variables; but they typically have navigational methods like `save` and `find`.
+
+Unfortunately we often find that developers try to treat these data structures as though they were objects by putting business rule methods in them. This is awkward because it creates a hybrid between a data structure and an object.
+
+The solution, of course, is to treat the Active Record as a data structure and to create separate objects that contain the business rules and that hide their internal data.
