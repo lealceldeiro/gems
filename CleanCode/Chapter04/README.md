@@ -185,3 +185,11 @@ Others who see that commented-out code won’t have the courage to delete it. Th
 There was a time, back in the sixties, when commenting-out code might have been useful. But we’ve had good source code control systems for a very long time now. Those systems will remember the code for us. We don’t have to comment it out any more.
 
 ### HTML Comments
+
+HTML in source code comments makes the comments hard to read in the one place where they should be easy to read—the editor/IDE.
+
+### Nonlocal Information
+
+If you must write a comment, then make sure it describes the code it appears near. Don’t offer systemwide information in the context of a local comment.
+
+### Too Much Information
