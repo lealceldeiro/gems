@@ -21,3 +21,30 @@ Checked exceptions can sometimes be useful if you are writing a critical library
 
 ## Provide Context with Exceptions
 
+Each exception that you throw should provide enough context to determine the source and location of an error.
+
+Create informative error messages and pass them along with your exceptions. Mention the operation that failed and the type of failure. If you are logging in your application, pass along enough information to be able to log the error in your `catch`.
+
+## Define Exception Classes in Terms of a Caller’s Needs
+
+We can classify them by their source or their type. However, when we define exception classes in an application, our most important concern should be how they are caught.
+
+Often a single exception class is fine for a particular area of code. The information sent with the exception can distinguish the errors. Use different classes only if there are times when you want to catch one exception and allow the other one to pass through.
+
+## Define the Normal Flow
+
+In the presence of the Special Case Pattern, you create a class or configure an object so that it handles a special case for you. When you do, the client code doesn’t have to deal with exceptional behavior. That behavior is encapsulated in the special case object.
+
+## Don’t Return Null
+
+When we return `null`, we are essentially creating work for ourselves and foisting problems upon our callers.
+
+If you are calling a `null`-returning method from a third-party API, consider wrapping that method with a method that either throws an exception or returns a special case object.
+
+## Don’t Pass Null
+
+Returning `null` from methods is bad, but passing `null` into methods is worse. Unless you are working with an API which expects you to pass `null`, you should avoid passing `null` in your code whenever possible.
+
+## Conclusion
+
+Clean code is readable, but it must also be robust. These are not conflicting goals. We can write robust clean code if we see error handling as a separate concern, something that is viewable independently of our main logic. To the degree that we are able to do that, we can reason about it independently, and we can make great strides in the maintainability of our code.
