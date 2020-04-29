@@ -11,3 +11,4 @@ Main notes taken from the book [Clean Code](https://www.amazon.de/dp/0132350882/
 ## [Chapter 7](./Chapter07): Error Handling
 ## [Chapter 8](./Chapter08): Boundaries
 ## [Chapter 9](./Chapter09): Unit Tests
+## [Chapter 10](./Chapter10): Classes
