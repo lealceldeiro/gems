@@ -22,3 +22,8 @@ Whether you need the learning provided by the learning tests or not, a clean bou
 
 There is another kind of boundary, one that separates the known from the unknown. There are often places in the code where our knowledge seems to drop off the edge. Sometimes what is on the other side of the boundary is unknowable (at least right now). i.e.: and API that we will use, but its specification is not ready yet.
 
+## Clean Boundaries
+
+Good software designs accommodate change without huge investments and rework. When we use code that is out of our control, special care must be taken to protect our investment and make sure future change is not too costly.
+
+Code at the boundaries needs clear separation and tests that define expectations. We should avoid letting too much of our code know about the third-party particulars. It’s better to depend on something _you_ control than on something you don’t control, lest it end up controlling you.
