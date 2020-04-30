@@ -1,6 +1,6 @@
 # Clean Code: A Handbook of Agile Software Craftmanship - Notes
 
-Main notes taken from the book [Clean Code: A Handbook of Agile Software Craftmanship](https://www.amazon.de/dp/0132350882/ref=cm_sw_em_r_mt_dp_U_Lu-wEbR4P412Q)
+Main notes taken from the book [Clean Code: A Handbook of Agile Software Craftsmanship](https://www.amazon.de/dp/0132350882/ref=cm_sw_em_r_mt_dp_U_Lu-wEbR4P412Q)
 
 ## [Chapter 1](./Chapter01): Clean Code
 ## [Chapter 2](./Chapter02): Meaningful Names
