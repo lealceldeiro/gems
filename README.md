@@ -20,6 +20,8 @@ Notes from:
 
 ### [Design Patterns - Elements of Reusable Object-Oriented Software](./DesignPatternsElementsOfReusableObjectOrientesSoftware)  <sup><sub>(*Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides*)</sub></sup>
 
+### [Java Cookbook: Problems and Solutions for Java Developers](./JavaCookBookProblemsAndSolutions)  <sup><sub>(*Ian F. Darwin*)</sub></sup>
+
 ### [Seroiusly Good Software](./SeriouslyGoodSoftware)  <sup><sub>(*Marco Faella*)</sub></sup>
 
 ### [Spring 5 Recipes: A Problem-Solution Approach](./Spring5Recipes)  <sup><sub>(*Marten Deinum*)</sub></sup>
