@@ -14,7 +14,7 @@ Notes from:
   
 ### [Spring Boot 2 Recipes: A Problem-Solution Approach](./SpringBoot2Recipes)  <sup><sub>(*Marten Deinum*)</sub></sup>
 
-### [Clean Code](./CleanCode)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+### [Clean Code: A Handbook of Agile Software Craftsmanship](./CleanCode)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
 ### [High-Performance Java Persistence](./HighPerformanceJavaPersistence)  <sup><sub>(*Vlad Mihalcea*)</sub></sup>
 
@@ -24,7 +24,7 @@ Notes from:
 
 ### [Spring 5 Recipes: A Problem-Solution Approach](./Spring5Recipes)  <sup><sub>(*Marten Deinum*)</sub></sup>
 
-### [Clean Architecture](./CleanArchitecture)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+### [Clean Architecture: : A Craftsman's Guide to Software Structure and Design](./CleanArchitecture)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
 ### [Working Effectively with Legacy Code](./WorkingEffectivelyWithLegacyCode)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
