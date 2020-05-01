@@ -23,3 +23,7 @@ In some cases we could use the Abstract Factory pattern to give the application 
 ![Image of a diagram showing how to separate construction from use using the abstract factory method](./image/separate_construct_factory.png "Separate construct from Use")
 
 ### Dependency Injection
+
+A powerful mechanism for separating construction from use is _Dependency Injection_ (DI), the application of _Inversion of Control_ (IoC) to dependency management. Inversion of Control moves secondary responsibilities from an object to other objects that are dedicated to the purpose, thereby supporting the _Single Responsibility Principle_.
+
+## Scaling Up
