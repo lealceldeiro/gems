@@ -34,3 +34,4 @@ Software systems are unique compared to physical systems. Their architectures ca
 
 ## Cross-Cutting Concerns
 
+Cross-cutting concerns are the aspects regarding persistence, transactions, security, caching, failover, and so on, in the system implementation.
