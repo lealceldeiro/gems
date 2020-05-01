@@ -35,3 +35,13 @@ Software systems are unique compared to physical systems. Their architectures ca
 ## Cross-Cutting Concerns
 
 Cross-cutting concerns are the aspects regarding persistence, transactions, security, caching, failover, and so on, in the system implementation.
+
+## Test Drive the System Architecture
+
+Although software has its own _physics_, it is economically feasible to make radical change, if the structure of the software separates its concerns effectively.
+
+An optimal system architecture consists of modularized domains of concern, each of which is implemented with Plain Old Java (or other) Objects. The different domains are integrated together with minimally invasive Aspects or Aspect-like tools. This architecture can be test-driven, just like the code.
+
+## Optimize Decision Making
+
+Modularity and separation of concerns make decentralized management and decision making possible.
