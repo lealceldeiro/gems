@@ -47,3 +47,21 @@ An optimal system architecture consists of modularized domains of concern, each 
 Modularity and separation of concerns make decentralized management and decision making possible.
 
 The agility provided by a POJO system with modularized concerns allows us to make optimal, just-in-time decisions, based on the most recent knowledge. The complexity of these decisions is also reduced.
+
+## Use Standards Wisely, When They Add Demonstrable Value
+
+Standards make it easier to reuse ideas and components, recruit people with relevant experience, encapsulate good ideas, and wire components together. However, the process of creating standards can sometimes take too long for industry to wait, and some standards lose touch with the real needs of the adopters they are intended to serve.
+
+## Systems Need Domain-Specific Languages
+
+A good Domain-Specific Language minimizes the “communication gap” between a domain concept and the code that implements it, just as agile practices optimize the communications within a team and with the project’s stakeholders.
+
+Domain-Specific Languages allow all levels of abstraction and all domains in the application to be expressed as POJOs, from high-level policy to low-level details.
+
+## Conclusion
+
+Systems must be clean too. An invasive architecture overwhelms the domain logic and impacts agility. When the domain logic is obscured, quality suffers because bugs find it easier to hide and stories become harder to implement. If agility is compromised, productivity suffers and the benefits of TDD are lost.
+
+At all levels of abstraction, the intent should be clear. This will only happen if you write POJOs and you use aspect-like mechanisms to incorporate other implementation concerns noninvasively.
+
+Whether you are designing systems or individual modules, never forget to use the simplest thing that can possibly work.
