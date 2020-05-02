@@ -14,3 +14,4 @@ Main notes taken from the book [Clean Code: A Handbook of Agile Software Craftsm
 ## [Chapter 10](./Chapter10): Classes
 ## [Chapter 11](./Chapter11): Systems
 ## [Chapter 12](./Chapter12): Emergence
+## [Chapter 13](./Chapter13): Concurrency
