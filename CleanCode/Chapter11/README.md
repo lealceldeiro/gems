@@ -45,3 +45,5 @@ An optimal system architecture consists of modularized domains of concern, each 
 ## Optimize Decision Making
 
 Modularity and separation of concerns make decentralized management and decision making possible.
+
+The agility provided by a POJO system with modularized concerns allows us to make optimal, just-in-time decisions, based on the most recent knowledge. The complexity of these decisions is also reduced.
