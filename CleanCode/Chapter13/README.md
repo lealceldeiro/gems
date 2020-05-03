@@ -36,3 +36,19 @@ Things to consider when writing threaded code in Java 5 or later:
 *Recommendation*: Review the classes available to you. In the case of Java, become familiar with `java.util.concurrent`, `java.util.concurrent.atomic`, `java.util.concurrent.locks`.
 
 ## Know Your Execution Models
+
+### Producer-Consumer
+
+One or more producer threads create some work and place it in a buffer or queue. One or more consumer threads acquire that work from the queue and complete it. The queue between the producers and consumers is a _bound resource_.
+
+### Readers-Writers
+
+When you have a shared resource that primarily serves as a source of information for readers, but which is occasionally updated by writers, throughput is an issue.
+
+### Dining Philosophers
+
+Takins as reference the [Dining philosophers problem](https://en.wikipedia.org/wiki/Dining_philosophers_problem), replace philosophers with threads and forks with resources and this problem is similar to many enterprise applications in which processes compete for resources. Unless carefully designed, systems that compete in this way can experience deadlock, livelock, throughput, and efficiency degradation.
+
+*Recommendation*: Learn these basic algorithms and understand their solutions.
+
+## Beware Dependencies Between Synchronized Methods
