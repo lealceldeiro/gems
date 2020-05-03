@@ -64,3 +64,23 @@ Dependencies between synchronized methods cause subtle bugs in concurrent code.
 * **Adapted Server**: Create an intermediary that performs the locking. This is an example of server-based locking, where the original server cannot be changed.
 
 ## Keep Synchronized Sections Small
+
+We want to design our code with as few critical sections as possible.
+
+Extending synchronization beyond the minimal critical section increases contention and degrades performance.
+
+## Writing Correct Shut-Down Code Is Hard
+
+Think about shut-down early and get it working early. It’s going to take longer than you expect. Review existing algorithms because this is probably harder than you think.
+
+## Testing Threaded Code
+
+*Recommendation*: Write tests that have the potential to expose problems and then run them frequently, with different programatic configurations and system configurations and load. If tests ever fail, track down the failure. Don’t ignore a failure just because the tests pass on a subsequent run. So:
+
+* Treat spurious failures as candidate threading issues (Do not ignore system failures as one-offs).
+* Get your nonthreaded code working first (Do not try to chase down nonthreading bugs and threading bugs at the same time. Make sure your code works outside of threads).
+* Make your threaded code pluggable (so that you can run it in various configurations: one, two, various threads, for different number of iterations, etc).
+* Make your threaded code tunable.
+* Run with more threads than processors (the more frequently your tasks swap, the more likely you’ll encounter code that is missing a critical section or causes deadlock).
+* Run on different platforms (Multithreaded code behaves differently in different environments. Run your threaded code on all target platforms early and often).
+* Instrument your code to try and force failures.
