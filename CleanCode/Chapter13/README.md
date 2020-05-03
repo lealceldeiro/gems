@@ -52,3 +52,15 @@ Takins as reference the [Dining philosophers problem](https://en.wikipedia.org/w
 *Recommendation*: Learn these basic algorithms and understand their solutions.
 
 ## Beware Dependencies Between Synchronized Methods
+
+Dependencies between synchronized methods cause subtle bugs in concurrent code.
+
+*Recommendation*: Avoid using more than one method on a shared object. Otherwise there are three ways to make the code correct:
+
+* **Client-Based Locking**: Have the client lock the server before calling the first method and make sure the lock’s extent includes code calling the last method.
+
+* **Server-Based Locking**: Within the server create a method that locks the server, calls all the methods, and then unlocks. Have the client call the new method.
+
+* **Adapted Server**: Create an intermediary that performs the locking. This is an example of server-based locking, where the original server cannot be changed.
+
+## Keep Synchronized Sections Small
