@@ -1,3 +1,3 @@
 # Chapter 15: JUnit Internals
 
-*(example case study)*
+*(example study case)*
