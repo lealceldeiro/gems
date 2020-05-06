@@ -41,3 +41,5 @@ Notes from:
 ### [Clean Agile: Back to Basics](./CleanAgile)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
 ### [Implementation Patterns](./ImplementationPatterns)  <sup><sub>(*Kent Beck*)</sub></sup>
+
+### [Head First Design Patterns](./HeadFirstDesignPatterns)  <sup><sub>(*Eric Freeman, Bert Bates,  Kathy Sierra, Elisabeth Robson*)</sub></sup>
