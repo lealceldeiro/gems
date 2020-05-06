@@ -39,3 +39,5 @@ Notes from:
 ### [UML For Java <sup><sub>TM</sub></sup> Programmers](./UmlForJavaProgrammers)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
 ### [Clean Agile: Back to Basics](./CleanAgile)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+
+### [Implementation Patterns](./ImplementationPatterns)  <sup><sub>(*Kent Beck*)</sub></sup>
