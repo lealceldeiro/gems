@@ -218,6 +218,7 @@ Source code at https://github.com/jbloch/effective-java-3e-source-code
     return result;
   }
 ```
+
 ### Item 31: Use bounded wildcards to increase API flexibility
 
 * For maximum flexibility, use wildcard types on input parameters that represent producers or consumers.
@@ -225,6 +226,7 @@ Source code at https://github.com/jbloch/effective-java-3e-source-code
 * Do not use bounded wildcard types as return types.
 * If the user of a class has to think about wildcard types, there is probably something wrong with its API.
 * If a type parameter appears only once in a method declaration, replace it with a wildcard. i.e, from the following two declarations, the second, is the preferrend one:
+
 ```
 public static <E> void swap(List<E> list, int i, int j) {  // (1) not preferred, it's more complex for the API clients
   list.set(i, list.set(j, list.get(i)));
@@ -238,6 +240,7 @@ private static <E> void swapHelper(List<E> list, int i, int j) {
   list.set(i, list.set(j, list.get(i)));
 }
 ```
+
 ### Item 32: Combine generics and varargs judiciously
 
 * It is unsafe to store a value in a generic varargs array parameter.
@@ -618,6 +621,7 @@ invariants.
 * Under most circumstances, normal initialization is preferable to lazy initialization.
 * If you use lazy initialization to break an initialization circularity, use a synchronized accessor.
 * If you need to use lazy initialization for performance on a static field, use the *lazy initialization holder class* idiom.
+
 ```
 private static class FieldHolder {
     static final FieldType field = computeFieldValue();
@@ -627,7 +631,9 @@ private static FieldType getField() {
     return FieldHolder.field;
 }
 ```
+
 * If you need to use lazy initialization for performance on an instance field, use the *double-check* idiom.
+
 ```
 private volatile FieldType field;
 
