@@ -16,5 +16,5 @@ Main notes taken from the book [Clean Code: A Handbook of Agile Software Craftsm
 ## [Chapter 12](./Chapter12): Emergence
 ## [Chapter 13](./Chapter13): Concurrency
 ## [Chapter 14](./Chapter14): Successive Refinement
-## [Chapter 15](./Chapter15): JUnit Internals
-## [Chapter 16](./Chapter16): Refactoring `SerialDate`
+## [Chapter 15](./Chapter15): JUnit Internals *(example study case)*
+## [Chapter 16](./Chapter16): Refactoring `SerialDate` *(example study case)*
