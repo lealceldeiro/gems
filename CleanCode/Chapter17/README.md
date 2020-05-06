@@ -77,3 +77,67 @@ It is risky to override safeties.
 Find and eliminate duplication wherever you can.
 
 Every time you see duplication in the code, it represents a missed opportunity for abstraction. That duplication could probably become a subroutine or perhaps another class outright. By folding the duplication into such an abstraction, you increase the vocabulary of the language of your design. Other programmers can use the abstract facilities you create. Coding becomes faster and less error prone because you have raised the abstraction level.
+
+### G6: Code at Wrong Level of Abstraction
+
+It is important to create abstractions that separate higher level general concepts from lower level detailed concepts. Sometimes we do this by creating abstract classes to hold the higher level concepts and derivatives to hold the lower level concepts. When we do this, we need to make sure that the separation is complete. We want *all* the lower level concepts to be in the derivatives and *all* the higher level concepts to be in the base class.
+
+### G7: Base Classes Depending on Their Derivatives
+
+The most common reason for partitioning concepts into base and derivative classes is so that the higher level base class concepts can be independent of the lower level derivative class concepts. Therefore, when we see base classes mentioning the names of their derivatives, we suspect a problem. In general, base classes should know nothing about their derivatives.
+
+Some exceptions to this are, for example, when the number of derivatives is strictly fixed, and the base class has code that selects between the derivatives.
+
+### G8: Too Much Information
+
+Hide your data. Hide your utility functions. Hide your constants and your temporaries. Don’t create classes with lots of methods or lots of instance variables. Don’t create lots of protected variables and functions for your subclasses. Concentrate on keeping interfaces very tight and very small. Help keep coupling low by limiting information.
+
+### G9: Dead Code
+
+Dead code is not completely updated when designs change. It still *compiles*, but it does not follow newer conventions or rules. It was written at a time when the system was *different*. When you find dead code, do the right thing: delete it from the system.
+
+### G10: Vertical Separation
+
+Variables and function should be defined close to where they are used. Local variables should be declared just above their first usage and should have a small vertical scope.
+
+Private functions should be defined just below their first usage. Private functions belong to the scope of the whole class, but we’d still like to limit the vertical distance between the invocations and definitions.
+
+### G11: Inconsistency
+
+If you do something a certain way, do all similar things in the same way. This goes back to the principle of least surprise. Be careful with the conventions you choose, and once chosen, be careful to continue to follow them.
+
+### G12: Clutter
+
+Keep your source files clean, well organized, and free of clutter.
+
+### G13: Artificial Coupling
+
+Things that don’t depend upon each other should not be artificially coupled.
+
+In general an artificial coupling is a coupling between two modules that serves no direct purpose. It is a result of putting a variable, constant, or function in a temporarily convenient, though inappropriate, location.
+
+### G14: Feature Envy
+
+The methods of a class should be interested in the variables and functions of the class they belong to, and not the variables and functions of other classes. When a method uses accessors and mutators of some other object to manipulate the data within that object, then it _envies_ the scope of the class of that other object. It wishes that it were inside that other class so that it could have direct access to the variables it is manipulating.
+
+### G15: Selector Arguments
+
+Not only is the purpose of a selector argument difficult to remember, each selector argument combines many functions into one. Selector arguments are just a lazy way to avoid splitting a large function into several smaller functions. In general it is better to have many functions than to pass some code into a function to select the behavior.
+
+### G16: Obscured Intent
+
+Run-on expressions, Hungarian notation, and magic numbers all obscure the author’s intent and should be avoided in order to get the code to be as expressive as possible.
+
+### G17: Misplaced Responsibility
+
+Code should be placed where a reader would naturally expect it to be.
+
+### G18: Inappropriate Static
+
+In general you should prefer nonstatic methods to static methods. When in doubt, make the function nonstatic. If you really want a function to be static, make sure that there is no chance that you’ll want it to behave polymorphically.
+
+### G19: Use Explanatory Variables
+
+One of the more powerful ways to make a program readable is to break the calculations up into intermediate values that are held in variables with meaningful names. More explanatory variables are generally better than fewer.
+
+### G20: Function Names Should Say What They Do
