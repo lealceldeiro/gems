@@ -141,3 +141,91 @@ In general you should prefer nonstatic methods to static methods. When in doubt,
 One of the more powerful ways to make a program readable is to break the calculations up into intermediate values that are held in variables with meaningful names. More explanatory variables are generally better than fewer.
 
 ### G20: Function Names Should Say What They Do
+
+If you have to look at the implementation (or documentation) of the function to know what it does, then you should work to find a better name or rearrange the functionality so that it can be placed in functions with better names.
+
+### G21: Understand the Algorithm
+
+Before you consider yourself to be done with a function, make sure you understand how it works. It is not good enough that it passes all the tests. You must know 10 that the solution is correct.
+
+Often the best way to gain this knowledge and understanding is to refactor the function into something that is so clean and expressive that it is obvious how it works.
+
+### G22: Make Logical Dependencies Physical
+
+If one module depends upon another, that dependency should be physical, not just logical. The dependent module should not make assumptions (in other words, logical dependencies) about the module it depends upon. Rather it should explicitly ask that module for all the information it depends upon.
+
+### G23: Prefer Polymorphism to If/Else or Switch/Case
+
+This heuristic is here to remind us to consider polymorphism before using a `switch`.
+
+The cases where functions are more volatile than types are relatively rare. So every `switch` statement should be suspect.
+
+There may be no more than one `switch` statement for a given type of selection. The place of other such `switch` statements in the rest of the system.
+
+### G24: Follow Standard Conventions
+
+Every team should follow a coding standard based on common industry norms. This coding standard should specify things like where to declare instance variables; how to name classes, methods, and variables; where to put braces; and so on.
+
+Everyone on the team should follow these conventions. This means that each team member must be mature enough to realize that it doesn’t matter where you put your braces so long as you all agree on where to put them.
+
+### G25: Replace Magic Numbers with Named Constants
+
+The term “Magic Number” does not apply only to numbers. It applies to any token that has a value that is not self-describing.
+
+In general it is a bad idea to have raw numbers in your code. You should hide them behind well-named constants. However some constants are so easy to recognize that they don’t always need a named constant to hide behind so long as they are used in conjunction with very self-explanatory code. i.e.:
+
+```
+int dailyPay = hourlyRate * 8;
+```
+
+Also, there are some formulae in which constants are simply better written as raw numbers. i.e.:
+
+```
+double circumference = radius * Math.PI * 2;
+```
+
+### G26: Be Precise
+
+When you make a decision in your code, make sure you make it precisely. Know why you have made it and how you will deal with any exceptions. Don’t be lazy about the precision of your decisions.
+
+Ambiguities and imprecision in code are either a result of disagreements or laziness. In either case they should be eliminated.
+
+### G27: Structure over Convention
+
+Enforce design decisions with structure over convention. Naming conventions are good, but they are inferior to structures that force compliance.
+
+### G28: Encapsulate Conditionals
+
+Boolean logic is hard enough to understand without having to see it in the context of an if or while statement. Extract functions that explain the intent of the conditional.i.e.:
+
+```
+if (shouldBeDeleted(timer))
+```
+
+is preferable to
+
+```
+if (timer.hasExpired() && !timer.isRecurrent())
+```
+
+### G29: Avoid Negative Conditionals
+
+When possible, conditionals should be expressed as positives. i.e:
+
+```
+if (buffer.shouldCompact())
+```
+
+is preferable to
+
+```
+if (!buffer.shouldNotCompact())
+```
+
+### G30: Functions Should Do One Thing
+
+It is often tempting to create functions that have multiple sections that perform a series of operations. Functions of this kind do more than *one thing*, and should be converted into many smaller functions, each of which does *one thing*.
+
+### G31: Hidden Temporal Couplings
+
+Temporal couplings are often necessary, but you should not hide the coupling. Structure the arguments of your functions such that the order in which they should be called is obvious.
