@@ -256,3 +256,85 @@ If many modules used some form of the statement `a.getB().getC()`, then it would
 This is how architectures become rigid. Too many modules know too much about the architecture.
 
 Rather we want our immediate collaborators to offer all the services we need. We should not have to roam through the object graph of the system, hunting for the method we want to call.
+
+## Java
+
+### J1: Avoid Long Import Lists by Using Wildcards
+
+*(arguable from my perspective)*
+
+### J2: Don’t Inherit Constants
+
+Don’t use inheritance as a way to cheat the scoping rules of the language. Use a static import instead.
+
+### J3: Constants versus Enums
+
+Don’t keep using the old trick of `public static final int`s. The meaning of `int`s can get lost. The meaning of `enum`s cannot, because they belong to an enumeration that is named.
+
+## Names
+
+### N1: Choose Descriptive Names
+
+Don’t be too quick to choose a name. Make sure the name is descriptive. You need to take the time to choose them wisely and keep them relevant. Names are too important to treat carelessly.
+
+### N2: Choose Names at the Appropriate Level of Abstraction
+
+Don’t pick names that communicate implementation; choose names that reflect the level of abstraction of the class or function you are working in.
+
+### N3: Use Standard Nomenclature Where Possible
+
+Names are easier to understand if they are based on existing convention or usage.
+
+### N4: Unambiguous Names
+
+Choose names that make the workings of a function or variable unambiguous.
+
+### N5: Use Long Names for Long Scopes
+
+The length of a name should be related to the length of the scope. You can use very short variable names for tiny scopes, but for big scopes you should use longer names.
+
+### N6: Avoid Encodings
+
+Names should not be encoded with type or scope information. Prefixes such as `m_` or `f` are useless in today’s environments. Also project and/or subsystem encodings such as `vis_` (for visual imaging system) are distracting and redundant. Again, today’s environments provide all that information without having to mangle the names. Keep your names free of Hungarian pollution.
+
+### N7: Names Should Describe Side-Effects
+
+Names should describe everything that a function, variable, or class is or does. Don’t hide side effects with a name. Don’t use a simple verb to describe a function that does more than just that simple action.
+
+## Tests
+
+### T1: Insufficient Tests
+
+A test suite should test everything that could possibly break. The tests are insufficient so long as there are conditions that have not been explored by the tests or calculations that have not been validated.
+
+### T2: Use a Coverage Tool!
+
+Coverage tools reports gaps in your testing strategy. They make it easy to find modules, classes, and functions that are insufficiently tested.
+
+### T3: Don’t Skip Trivial Tests
+
+They are easy to write and their documentary value is higher than the cost to produce them.
+
+### T4: An Ignored Test Is a Question about an Ambiguity
+
+Sometimes we are uncertain about a behavioral detail because the requirements are unclear. We can express our question about the requirements as a test that is commented out, or as a test that annotated with @Ignore . Which you choose depends upon whether the ambiguity is about something that would compile or not.
+
+### T5: Test Boundary Conditions
+
+Take special care to test boundary conditions. We often get the middle of an algorithm right but misjudge the boundaries.
+
+### T6: Exhaustively Test Near Bugs
+
+Bugs tend to congregate. When you find a bug in a function, it is wise to do an exhaustive test of that function. You’ll probably find that the bug was not alone.
+
+### T7: Patterns of Failure Are Revealing
+
+Sometimes you can diagnose a problem by finding patterns in the way the test cases fail. This is another argument for making the test cases as complete as possible. Complete test cases, ordered in a reasonable way, expose patterns.
+
+### T8: Test Coverage Patterns Can Be Revealing
+
+Looking at the code that is or is not executed by the passing tests gives clues to why the failing tests fail.
+
+### T9: Tests Should Be Fast
+
+A slow test is a test that won’t get run. When things get tight, it’s the slow tests that will be dropped from the suite. So do what you must to keep your tests fast.
