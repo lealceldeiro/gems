@@ -229,3 +229,30 @@ It is often tempting to create functions that have multiple sections that perfor
 ### G31: Hidden Temporal Couplings
 
 Temporal couplings are often necessary, but you should not hide the coupling. Structure the arguments of your functions such that the order in which they should be called is obvious.
+
+### G32: Don’t Be Arbitrary
+
+Have a reason for the way you structure your code, and make sure that reason is communicated by the structure of the code. If a structure appears arbitrary, others will feel empowered to change it. If a structure appears consistently throughout the system, others will use it and preserve the convention.
+
+### G33: Encapsulate Boundary Conditions
+
+Boundary conditions are hard to keep track of. Put the processing for them in one place. Don’t let them leak all over the code. We don’t want swarms of `+1`s and `-1`s scattered hither and yon.
+
+
+### G34: Functions Should Descend Only One Level of Abstraction
+
+The statements within a function should all be written at the same level of abstraction, which should be one level below the operation described by the name of the function. This may be the hardest of these heuristics to interpret and follow. Though the idea is plain enough, humans are just far too good at seamlessly mixing levels of abstraction.
+
+### G35: Keep Configurable Data at High Levels
+
+If you have a constant such as a default or configuration value that is known and expected at a high level of abstraction, do not bury it in a low-level function. Expose it as an argument to that low-level function called from the high-level function.
+
+### G36: Avoid Transitive Navigation
+
+In general we don’t want a single module to know much about its collaborators. More specifically, if `A` collaborates with `B`, and `B` collaborates with `C`, we don’t want modules that use `A` to know about `C`. (For example, we don’t want `a.getB().getC().doSomething();`.)
+
+If many modules used some form of the statement `a.getB().getC()`, then it would be difficult to change the design and architecture to interpose a `Q` between `B` and `C`. You’d have to find every instance of `a.getB().getC()` and convert it to `a.getB().getQ().getC()`.
+
+This is how architectures become rigid. Too many modules know too much about the architecture.
+
+Rather we want our immediate collaborators to offer all the services we need. We should not have to roam through the object graph of the system, hunting for the method we want to call.
