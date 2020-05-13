@@ -6,7 +6,7 @@ This is not intented to be used as an official reference of any kind. It is only
 
 Notes from:
 
-### [Effective Java 3rd Edition](./EffectiveJava3rdEdition)  <sup><sub>(*Joshua J. Bloch*)</sub></sup>
+### [Effective Java](./EffectiveJava3rdEdition)  <sup><sub>(*Joshua J. Bloch*)</sub></sup>
 
 ### [Java Concurrency in Practice](./JavaConcurrencyInPractice)  <sup><sub>(*Brian Goetz, Tim Peierls, Joshua Bloch, Joseph Bowbeer, David Holmes, Doug Lea*)</sub></sup>
  
@@ -26,7 +26,9 @@ Notes from:
 
 ### [Spring 5 Recipes: A Problem-Solution Approach](./Spring5Recipes)  <sup><sub>(*Marten Deinum*)</sub></sup>
 
-### [Clean Architecture: : A Craftsman's Guide to Software Structure and Design](./CleanArchitecture)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+### [Clean Architecture: A Craftsman's Guide to Software Structure and Design](./CleanArchitecture)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+
+### [Concurrent Programming in Java<sup><sub>TM</sub></sup>: Design Principles and Patterns](./ConcurrentProgrammingInJava)  <sup><sub>(*Doug Lea*)</sub></sup>
 
 ### [Working Effectively with Legacy Code](./WorkingEffectivelyWithLegacyCode)  <sup><sub>(*Michael Feathers*)</sub></sup>
 
