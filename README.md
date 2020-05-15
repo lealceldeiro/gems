@@ -36,12 +36,14 @@ Notes from:
 
 ### [Agile Java <sup><sub>TM</sub></sup>: Crafting Code with Test-Driven Development](./AgileJavaCraftingCodeWithTestDrivenDevelopment)  <sup><sub>(*Jeff Langr*)</sub></sup>
 
+### [Implementation Patterns](./ImplementationPatterns)  <sup><sub>(*Kent Beck*)</sub></sup>
+
 ### [Agile Software Development: Principles, Patterns, and Practices](./AgileSoftwareDevelopment)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
 ### [UML For Java <sup><sub>TM</sub></sup> Programmers](./UmlForJavaProgrammers)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
+### [Head First Design Patterns](./HeadFirstDesignPatterns)  <sup><sub>(*Eric Freeman, Bert Bates,  Kathy Sierra, Elisabeth Robson*)</sub></sup>
+
 ### [Clean Agile: Back to Basics](./CleanAgile)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
-### [Implementation Patterns](./ImplementationPatterns)  <sup><sub>(*Kent Beck*)</sub></sup>
-
-### [Head First Design Patterns](./HeadFirstDesignPatterns)  <sup><sub>(*Eric Freeman, Bert Bates,  Kathy Sierra, Elisabeth Robson*)</sub></sup>
+### [Patterns of Enterprise Application Architecture](./PatternsofEnterpriseApplicationArchitecture)  <sup><sub>(*Martin Fowler*)</sub></sup>
