@@ -2,4 +2,4 @@
 
 Main notes taken from the book [High-Performance Java Persistence](https://vladmihalcea.com/books/high-performance-java-persistence/)
 
-[Chapter I](ChapterI): Introduction
+[Chapter I](Chapter01): Introduction
