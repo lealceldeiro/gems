@@ -18,3 +18,28 @@ JPQL (Java Persistence Querying Language) abstracts the common SQL syntax by sub
 
 As opposed to JPA, jOOQ (Java Object Oriented Query) embraces database specific query features, and it provides a type-safe query builder which can protect the application against SQL injection attacks even for dynamic native queries.
 
+## 2. Performance and Scaling
+
+### 2.1 Response time and throughput
+
+Throughput is defined as the rate of completing incoming load. In a database context, throughput can be calculated as the number of transactions executed within a given time interval.
+
+[USL (Universal Scalability Law)](http://www.perfdynamics.com/Manifesto/USLscalability.html) can approximate the maximum relative throughput (system capacity) in relation to the number of load generators (database connections).
+
+```
+C (N) = N / (1 + α (N − 1) + βN (N − 1))
+```
+
+* C - the relative throughput gain for the given concurrency level
+* α - the contention coefficient (the serializable portion of the data processing routine)
+* β - the coherency coefficient (the cost for maintaining consistency across all concurrent database sessions)
+
+When the coherency coefficient is zero, USL overlaps with [Amdahl’s Law](https://en.wikipedia.org/wiki/Amdahl%27s_law).
+
+The number of load generators (database connections), for which the system hits its maximum capacity, depends on the USL coefficients solely.
+
+![Image of a formula showing the number of database connections where the system hits its maximun capacity](./image/formula-2.1.1 "Formula for the number of database connections where the system hits its maximun capacity")
+
+The resulting capacity gain is relative to the minimum throughput, so the absolute system capacity is obtained as follows:
+
+![Image of a formula showing the absolute system capacity](./image/formula-2.1.1 "Formula for the absolute system capacity")
