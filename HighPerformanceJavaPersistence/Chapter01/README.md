@@ -38,8 +38,8 @@ When the coherency coefficient is zero, USL overlaps with [Amdahl’s Law](https
 
 The number of load generators (database connections), for which the system hits its maximum capacity, depends on the USL coefficients solely.
 
-![Image of a formula showing the number of database connections where the system hits its maximun capacity](./image/formula-2.1.1 "Formula for the number of database connections where the system hits its maximun capacity")
+![Image of a formula showing the number of database connections where the system hits its maximun capacity](./image/formula-2.1.1.png "Formula for the number of database connections where the system hits its maximun capacity")
 
 The resulting capacity gain is relative to the minimum throughput, so the absolute system capacity is obtained as follows:
 
-![Image of a formula showing the absolute system capacity](./image/formula-2.1.1 "Formula for the absolute system capacity")
+![Image of a formula showing the absolute system capacity](./image/formula-2.1.2.png "Formula for the absolute system capacity")
