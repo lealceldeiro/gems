@@ -8,7 +8,7 @@ All data access frameworks rely on JDBC (Java Database Connectivity) API for com
 
 ### 1.2 The application data access layer
 
-### 1.2.2 The native query builder framework
+#### 1.2.2 The native query builder framework
 
 JPA (Java Persistence API) and Hibernate were never meant to substitute SQL.
 
@@ -43,3 +43,27 @@ The number of load generators (database connections), for which the system hits 
 The resulting capacity gain is relative to the minimum throughput, so the absolute system capacity is obtained as follows:
 
 ![Image of a formula showing the absolute system capacity](./image/formula-2.1.2.png "Formula for the absolute system capacity")
+
+### 2.2 Database connections boundaries
+
+The total number of connections offered by a database server depends on the underlying hardware resources, and finding how many connections a server can handle is possible through measurements and proven scalability models.
+
+### 2.3 Scaling up and scaling out
+
+Scaling is the effect of increasing capacity by adding more resources. Scaling vertically (scaling up) means adding resources to a single machine. Increasing the number of available machines is called horizontal scaling (scaling out).
+
+#### 2.3.1 Master-Slave replication
+
+For enterprise systems where the read/write ratio is high, a Master-Slave replication scheme is suitable for increasing availability.
+
+Aside from eliminating the single point of failure, database replication can also increase transaction throughput. In a Master-Slave topology, the Slave nodes can accept read-only transactions, therefore routing read traffic away from the Master node.
+
+#### 2.3.2 Multi-Master replication
+
+In a Multi-Master replication scheme, all nodes are equal and can accept both read-only and read-write transactions. Splitting the load among multiple nodes can only increase transaction throughput and reduce response time as well.
+
+Ensuring data consistency is challenging in a Multi-Master replication scheme because there is no longer a single source of truth.
+
+#### 2.3.3 Sharding
+
+When data size grows beyond the overall capacity of a replicated multi-node environment, splitting data becomes unavoidable. Sharding means distributing data across multiple nodes so each instance contains only a subset of the overall data.
