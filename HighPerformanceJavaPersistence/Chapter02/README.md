@@ -87,3 +87,43 @@ For a constant throughput, the number of enqueued connection requests (`Lq`) is 
 ### 3.4 Practical database connection provisioning
 
 By continuously monitoring the connection usage patterns, it’s much easier to react and adjust the pool size when the initial configuration doesn’t hold anymore.
+
+## 4. Batch Updates
+
+JDBC 2.0 introduced batch updates, so that multiple DML statements can be grouped into a single database request. Sending multiple statements in a single request reduces the number of database roundtrips, therefore decreasing transaction response time.
+
+### 4.1 Batching Statements
+
+For executing static SQL statements, JDBC defines the `Statement` interface and batching multiple DML statements is as straightforward as the following code snippet:
+
+```
+statement.addBatch("INSERT INTO post (title, version, id) VALUES ('Post no. 1', 0, 1)");
+statement.addBatch("INSERT INTO post_comment (post_id, review, version, id) VALUES (1, 'Post comment 1.1', 0, 1)");
+int[] updateCounts = statement.executeBatch();
+```
+
+The numbers of database rows affected by each statement is included in the return value of the `executeBatch()` method.
+
+### 4.2 Batching PreparedStatements
+
+For dynamic statements, JDBC offers the `PreparedStatement` interface for binding parameters in a safely manner. The driver must validate the provided parameter at runtime, therefore discarding unexpected input values.
+
+Here, the batch update can group multiple parameter values belonging to the same prepared statement. Example:
+
+```
+PreparedStatement postStatement = connection.prepareStatement("INSERT INTO Post (title, version, id) VALUES (?, ?, ?)");
+
+postStatement.setString(1, String.format("Post no. %1$d", 1));
+postStatement.setInt(2, 0);
+postStatement.setLong(3, 1);
+postStatement.addBatch();
+
+postStatement.setString(1, String.format("Post no. %1$d", 2));
+postStatement.setInt(2, 0);
+postStatement.setLong(3, 2);
+postStatement.addBatch();
+
+int[] updateCounts = postStatement.executeBatch();
+```
+
+For dynamic statements, PreparedStatement provides better performance (when enabling batching) and stronger security guarantees. Most ORM tools use prepared statements, and since entities are inserted/update/deleted individually, they can take advantage of batching.
