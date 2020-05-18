@@ -32,6 +32,8 @@ Notes from:
 
 ### [Working Effectively with Legacy Code](./WorkingEffectivelyWithLegacyCode)  <sup><sub>(*Michael Feathers*)</sub></sup>
 
+### [Java 8 in Action](./Java8InAction)  <sup><sub>(*Raoul-Gabriel Urma, Mario Fusco, and Alan Mycroft*)</sub></sup>
+
 ### [Reality Is Broken](./RealityIsBroken) <sup><sub>(*JANE McGONIGAL*)</sub></sup>
 
 ### [Agile Java <sup><sub>TM</sub></sup>: Crafting Code with Test-Driven Development](./AgileJavaCraftingCodeWithTestDrivenDevelopment)  <sup><sub>(*Jeff Langr*)</sub></sup>
