@@ -127,3 +127,13 @@ int[] updateCounts = postStatement.executeBatch();
 ```
 
 For dynamic statements, PreparedStatement provides better performance (when enabling batching) and stronger security guarantees. Most ORM tools use prepared statements, and since entities are inserted/update/deleted individually, they can take advantage of batching.
+
+#### 4.2.1 Choosing the right batch size
+
+Like any other performance optimization technique, measuring the application performance gain in response to a certain batch size value remains the most reliable tuning option.
+
+As a rule of thumb you should always measure the performance improvement for various batch sizes. In practice, a relatively low value (between 10 and 30) is usually a good choice.
+
+### 4.2.2 Bulk operations
+
+SQL offers bulk operations to modify all rows that satisfy a given filtering criteria. Bulk update or delete statements can also benefit from indexing, just like select statements.
