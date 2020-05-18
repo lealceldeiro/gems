@@ -31,3 +31,55 @@ The connection pool doesn’t return the physical connection to the client, but 
 Apart from reducing connection acquisition time, the pooling mechanism can also limit the number of connections an application can use at once.
 
 The connection pool acts as a bounded buffer for the incoming connection requests. If there is a traffic spike, the connection pool will level it, instead of saturating all the available database resources.
+
+### 3.3 Queuing theory capacity planning
+
+According to [Little’s Law](https://en.wikipedia.org/wiki/Little%27s_law), the average time for a request to be serviced depends only on the long-term request arrival rate and the average number of requests in the system.
+
+```
+L = λ × W
+```
+
+* `L` - average number of requests in the system (including both the requests being serviced and the ones waiting in the queue)
+* `λ` - long-term average arrival rate
+* `W` - average time a request spends in a system
+
+
+**Example:**
+
+Assuming that an application-level transaction uses the same database connection throughout its whole lifecycle, and the average transaction response time is 100 milliseconds, `W = 100 ms = 0.1 s`
+
+if the average connection acquisition rate is 50 requests per second, `λ = 50`
+
+then the average number of connection requests in the system is:
+
+```
+L = λ × W = 50 × 0.1 = 5 connection requests
+```
+
+A pool size of 5 can accommodate the average incoming traffic without having to enqueue any connection request. If the pool size is 3, then, on average, 2 requests are enqueued and waiting for connections to become available.
+
+In queueing theory, throughput is represented by the departure rate (`μ`), and, for a connection pool, it represents the number of connections offered in a given unit of time:
+
+```
+μ = Ls / Ws = pool size / connection lease time
+```
+
+When the arrival rate equals departure rate, the system becomes saturated, all connections being in use.
+
+```
+λ = μ = Ls / Ws
+```
+
+If the arrival rate outgrows the connection pool throughput, the overflowing requests must wait for connections to become available.
+
+Following the previous **example**, a one second traffic burst of 150 requests is handled as follows:
+
+* the first 50 requests can be served in the first second
+* the following 100 requests are first enqueued and processed in the following two seconds
+
+```
+μ = Ls / Ws = 5 / 0.1 = Lq / Wq = 10 / 0.2
+```
+
+For a constant throughput, the number of enqueued connection requests (`Lq`) is proportional to the connection acquisition time (`Wq`).
