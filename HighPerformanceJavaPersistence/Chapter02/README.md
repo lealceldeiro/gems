@@ -83,3 +83,7 @@ Following the previous **example**, a one second traffic burst of 150 requests i
 ```
 
 For a constant throughput, the number of enqueued connection requests (`Lq`) is proportional to the connection acquisition time (`Wq`).
+
+### 3.4 Practical database connection provisioning
+
+By continuously monitoring the connection usage patterns, it’s much easier to react and adjust the pool size when the initial configuration doesn’t hold anymore.
