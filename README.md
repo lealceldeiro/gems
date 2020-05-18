@@ -40,7 +40,11 @@ Notes from:
 
 ### [Implementation Patterns](./ImplementationPatterns)  <sup><sub>(*Kent Beck*)</sub></sup>
 
+### [Java Performance: In-depth Advice for Tuning and Programming Java](./JavaPerformanceAdviceForTuningAndProgramming)  <sup><sub>(*Scott Oaks*)</sub></sup>
+
 ### [Agile Software Development: Principles, Patterns, and Practices](./AgileSoftwareDevelopment)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+
+### [Java Generics and Collections](./JavaGenericsAndCollections)  <sup><sub>(*Maurice Naftalin, Philip Wadler*)</sub></sup>
 
 ### [UML For Java <sup><sub>TM</sub></sup> Programmers](./UmlForJavaProgrammers)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
@@ -49,3 +53,17 @@ Notes from:
 ### [Clean Agile: Back to Basics](./CleanAgile)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
 ### [Patterns of Enterprise Application Architecture](./PatternsofEnterpriseApplicationArchitecture)  <sup><sub>(*Martin Fowler*)</sub></sup>
+
+### [Programming Pearls](./ProgrammingPearls)  <sup><sub>(*Jon Bentley*)</sub></sup>
+
+### [The Mythical Man-Month](./TheMythicalManMonth)  <sup><sub>(*Frederick P. Brooks Jr.*)</sub></sup>
+
+### [Refactoring: Improving the Design of Existing Code](./RefactoringImprovingTheDesignOfExistingCode)  <sup><sub>(*Martin Fowler*)</sub></sup>
+
+### [The Design of Everyday Things](./TheDesignOfEverydayThings)  <sup><sub>(*Don Norman*)</sub></sup>
+
+### [The Clean Coder: A Code of Conduct for Professional Programmers](./TheCleanCoder)  <sup><sub>(*Robert Martin*)</sub></sup>
+
+### [Domain-Driven Design](./DomainDrivenDesign)  <sup><sub>(*Eric Evans*)</sub></sup>
+
+### [Coders at Work: Reflections on the Craft of Programming](./CodersAtWork)  <sup><sub>(*Peter Seibel*)</sub></sup>
