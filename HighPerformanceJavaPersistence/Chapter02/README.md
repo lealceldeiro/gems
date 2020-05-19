@@ -255,3 +255,17 @@ The main goals of the client-side statement caching can be summarized as follows
 
 * reducing client-side statement processing, which, in turn, lowers transaction response time
 * sparing application resources by recycling statement objects along with their associated database-specific metadata
+
+## 6. ResultSet Fetching
+
+Unlike the insert, update and delete statements, which only return the affected row count, a JDBC select query returns a `ResultSet` instead.
+
+### 6.1 ResultSet scrollability
+
+By default, the ResultSet uses a *forward-only* application-level cursor, which can be traversed only once, from the first position to last one.
+
+JDBC also offers *scrollable* cursors, therefore allowing the row-level pointer to be positioned freely (in any direction and on every record).
+
+The main difference between the two scrollable result sets lays in their selectivity. An *insensitive* cursor offers a static view over the current result set, so the data needs to be fetched entirely prior to being iterated. A *sensitive* cursor allows the result set to be fetched dynamically, so it can reflect concurrent changes.
+
+### 6.2 ResultSet changeability
