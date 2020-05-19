@@ -80,4 +80,4 @@ Notes from:
 
 ### [TCP/IP Illustrated, Volume 1: The Protocols](./TCPIPIllustratedVolume1)  <sup><sub>(*Kevin R. Fall, W. Richard Stevens*)</sub></sup>
 
-### [The Complete Software Developer's Career Guide](./TheCompleteSoftwareDevelopersCareerGuide)  <sup><sub>(*by John Sonmez*)</sub></sup>
+### [The Complete Software Developer's Career Guide](./TheCompleteSoftwareDevelopersCareerGuide)  <sup><sub>(*John Sonmez*)</sub></sup>
