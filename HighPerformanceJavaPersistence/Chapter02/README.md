@@ -173,3 +173,85 @@ PreparedStatement postStatement = connection.prepareStatement(
 > When using Statement.RETURN_GENERATED_KEYS , Oracle returns a ROWID instead of the actual generated column value. A workaround is to supply the column index or the column name, and so the auto-generated value can be extracted after executing the statement.
 
 Not all database systems support fetching auto-generated keys from a batch of statements.
+
+#### 4.3.1 Sequences to the rescue
+
+As opposed to identity columns, database sequences offer the advantage of decoupling the identifier generation from the actual row insert.
+
+To make use of batch inserts, the identifier must be fetched prior to setting the insert statement parameter values.
+
+For batch processors inserting large amounts of data, the extra sequence calls can add up. As an optimization, the identifier generation process can be split among the database and the data access logic. The database sequences can be incremented in steps.
+
+The data access logic can assign identifiers in-between the database sequence calls (e.g. 2, 3, 4, ..., N-1, N ), and so it mitigates the extra network roundtrips penalty.
+
+## 5. Statement Caching
+
+### 5.1 Statement lifecycle
+
+The main database modules responsible for processing an SQL statement are the *Parser*, the *Optimizer* and the *Executor*.
+
+#### 5.1.1 Parser
+
+The Parser checks the SQL statement and ensures its validity. The statements are verified both syntactically and semantically.
+
+During parsing, the SQL statement is transformed into a database internal representation, called the syntax tree.
+
+#### 5.1.2 Optimizer
+
+When finding an optimal execution plan, the Optimizer might evaluate multiple options, and, based on their overall cost, it will choose the one requiring the least amount of time to execute.
+
+Finding a proper execution plan is resource intensive, and, for this purpose, some database vendors offer execution plan caching.
+
+Among the many challenging aspects of the caching mechanism, the most challenging one is to ensure that only a good execution plan goes in the cache, since a bad plan, getting reused over and over, can really hurt application performance.
+
+##### 5.1.2.1 Execution plan visualization
+
+Oracle uses the `EXPLAIN PLAN FOR` syntax, and the output goes into the `dbms_xplan` package.
+
+PostgreSQL reserves the `EXPLAIN` keyword for displaying execution plans.
+
+The SQL Server Management Studio provides an execution plan viewer. Another option is to enable the `SHOWPLAN_ALL` setting prior to running a statement.
+
+In MySQL, the plan is displayed using `EXPLAIN` or `EXPLAIN EXTENDED`.
+
+#### 5.1.3 Executor
+
+From the Optimizer, the execution plan goes to the Executor where it is used to fetch the associated data and build the result set.
+
+The Executor makes use of the Storage Engine and the Transaction Engine. Having a reasonably large in-memory buffer allows the database to reduce the I/O contention, therefore reducing transaction response time.
+
+The consistency model also has an impact on the overall transaction performance since locks may be acquired to ensure data integrity, and the more locking, the less the chance for parallel execution.
+
+
+### 5.2 Caching performance gain
+
+Most database systems can benefit from reusing statements and, in some particular use cases, the performance gain is quite substantial.
+
+Statement caching plays a very important role in optimizing high-performance OLTP (Online transaction processing) systems.
+
+### 5.3 Server-side statement caching
+
+Dynamic-generated JDBC `Statement`s are not suitable for reusing execution plans.
+
+Server-side prepared statements allow the data access logic to reuse the same execution plan for multiple executions.
+
+For prepared statements, the execution plan can either be compiled on every execution or it can be cached and reused. Recompiling the plan can generate the best data access paths for any given bind variable set while paying the price of additional database resources usage. Reusing a plan can spare database resources, but it might not be suitable for every parameter value combination.
+
+#### 5.3.1 Bind-sensitive execution plans
+
+In database terminology, the number of rows returned by a given predicate is called *cardinality*.
+
+The *predicate selectivity* is obtained by dividing cardinality with the total number of rows.
+
+The lower the selectivity, the less rows will be matched for a given bind value, and the more selective the predicate gets.
+
+The execution plan depends on bind parameter value selectivity. For example, the Optimizer tends to prefer sequential scans over index lookups for high selectivity percentages, to reduce the total number of disk-access roundtrips (especially when data is scattered among multiple data blocks).
+
+If the selectivity is constant across the whole bind value domain, the execution plan is no longer sensitive to parameter values. A *generic* execution plan is much easier to reuse than a bind-sensitive one.
+
+### 5.4 Client-side statement caching
+
+The main goals of the client-side statement caching can be summarized as follows:
+
+* reducing client-side statement processing, which, in turn, lowers transaction response time
+* sparing application resources by recycling statement objects along with their associated database-specific metadata
