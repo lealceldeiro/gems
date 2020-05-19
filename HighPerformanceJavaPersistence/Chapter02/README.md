@@ -137,3 +137,39 @@ As a rule of thumb you should always measure the performance improvement for var
 ### 4.2.2 Bulk operations
 
 SQL offers bulk operations to modify all rows that satisfy a given filtering criteria. Bulk update or delete statements can also benefit from indexing, just like select statements.
+
+### 4.3 Retrieving auto-generated keys
+
+It’s common practice to delegate the row identifier generation to the database system. This way, the developer doesn’t have to provide a monotonically incrementing primary key since the database takes care of this upon inserting a new record.
+
+To retrieve the newly created row identifier, the JDBC `PreparedStatement` must be instructed to return the auto-generated keys:
+
+```
+PreparedStatement postStatement = connection.prepareStatement(
+    "INSERT INTO post (title, version) VALUES (?, ?)",
+    Statement.RETURN_GENERATED_KEYS
+);
+```
+
+One alternative is to hint the driver about the column index holding the auto-generated key column:
+
+```
+PreparedStatement postStatement = connection.prepareStatement(
+    "INSERT INTO post (title, version) VALUES (?, ?)",
+    new int[] {1}
+);
+```
+
+Or, the column name can also be used to instruct the driver about the auto-generated key column:
+
+```
+PreparedStatement postStatement = connection.prepareStatement(
+    "INSERT INTO post (title, version) VALUES (?, ?)",
+    new String[] {"id"}
+);
+```
+> **Oracle auto-generated key retrieval gotcha**
+>
+> When using Statement.RETURN_GENERATED_KEYS , Oracle returns a ROWID instead of the actual generated column value. A workaround is to supply the column index or the column name, and so the auto-generated value can be extracted after executing the statement.
+
+Not all database systems support fetching auto-generated keys from a batch of statements.
