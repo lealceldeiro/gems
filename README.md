@@ -67,3 +67,17 @@ Notes from:
 ### [Domain-Driven Design](./DomainDrivenDesign)  <sup><sub>(*Eric Evans*)</sub></sup>
 
 ### [Coders at Work: Reflections on the Craft of Programming](./CodersAtWork)  <sup><sub>(*Peter Seibel*)</sub></sup>
+
+### [Grokking Algorithms](./GrokkingAlgorithms)  <sup><sub>(*Aditya Y. Bhargava*)</sub></sup>
+
+### [Building Microservices: Designing Fine-Grained Systems](./BuildingMicroservices)  <sup><sub>(*Sam Newman*)</sub></sup>
+
+### [Hibernate Tips: More than 70 solutions to common Hibernate](./HibernateTips)  <sup><sub>(*Thorben Janssen, Steve Ebersole*)</sub></sup>
+
+### [Soft Skills: The software developer's life manual](./SoftSkills)  <sup><sub>(*John Sonmez*)</sub></sup>
+
+### [Database Design for Mere Mortals](./DatabaseDesignForMereMortals)  <sup><sub>(*Michael J. Hernandez*)</sub></sup>
+
+### [TCP/IP Illustrated, Volume 1: The Protocols](./TCPIPIllustratedVolume1)  <sup><sub>(*Kevin R. Fall, W. Richard Stevens*)</sub></sup>
+
+### [The Complete Software Developer's Career Guide](./TheCompleteSoftwareDevelopersCareerGuide)  <sup><sub>(*by John Sonmez*)</sub></sup>
