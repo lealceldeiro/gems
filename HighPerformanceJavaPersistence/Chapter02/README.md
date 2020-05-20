@@ -437,3 +437,33 @@ This phenomenon happens when a transaction reads a row while another transaction
 > Traditionally, Repeatable Read protected against lost updates since the shared locks could prevent a concurrent transaction from modifying an already fetched record. With MVCC, the second transaction is allowed to make the change, while the first transaction is aborted when the database engine detects the row version mismatch (during the first transaction commit).
 
 #### 7.3.3 Isolation levels
+
+SQL-92 introduced multiple isolation levels, and the database client has the option of balancing concurrency against data correctness.
+
+| Isolation Level  | Dirty read | Non-repeatable read | Phantom read |
+| ---------------- | -----------| --------------------|--------------|
+| Read Uncommitted | Yes        | Yes                 | Yes          |
+| Read Committed   | No         | Yes                 | Yes          |
+| Repeatable Read  | No         | No                  | Yes          |
+| Serializable     | No         | No                  | No           |
+
+Without an explicit setting, the JDBC driver uses the default isolation level.
+
+The default isolation level can be gotten using [`getDefaultTransactionIsolation()`](https://docs.oracle.com/javase/8/docs/api/java/sql/DatabaseMetaData.html#getDefaultTransactionIsolation--):
+
+```
+int level = connection.getMetaData().getDefaultTransactionIsolation();
+```
+
+It can be changed using [`setTransactionIsolation(int level)`](https://docs.oracle.com/javase/8/docs/api/java/sql/Connection.html#setTransactionIsolation-int-):
+
+```
+connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+```
+
+> Even if ACID properties imply a serializable schedule, most relational database systems use a lower default isolation level instead:
+>
+> * Read Committed (Oracle, SQL Server, PostgreSQL)
+> * Repeatable Read (MySQL)
+
+### 7.4 Durability
