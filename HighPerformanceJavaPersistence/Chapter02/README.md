@@ -467,3 +467,21 @@ connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
 > * Repeatable Read (MySQL)
 
 ### 7.4 Durability
+
+Durability ensures that all committed transaction changes become permanent. It allows system recoverability, and, to some extent, it’s similar to the rolling back mechanism.
+
+When a transaction is committed, the database persists all current changes in an append-only, sequential data structure commonly known as the redo log.
+
+### 7.5 Read-only transactions
+
+The JDBC Connection defines the [`setReadOnly(boolean readOnly)`](https://docs.oracle.com/javase/8/docs/api/java/sql/Connection.html#setReadOnly%28boolean%29) method which can be used to hint the driver to apply some database optimizations for the upcoming read-only transactions. This method shouldn’t be called in the middle of a transaction because the database system cannot turn a read-write transaction into a read-only one (a transaction must start as read-only from the very beginning).
+
+#### 7.5.1 Read-only transaction routing
+
+Setting up a database replication environment is useful for both high-availability (a Slave can replace a crashing Master) and traffic splitting. In a Master-Slave replication topology, the Master node accepts both read-write and read-only transactions, while Slave nodes only take read-only traffic.
+
+If the JDBC driver doesn’t support Master-Slave routing, the application can do it using multiple `DataSource` instances. This design cannot rely on the read-only status of the underlying `Connection` since the routing must take place before a database connection is fetched.
+
+If the transaction manager supports declarative read-only transactions, the routing decision can be taken based on the current transaction read-only preference. Otherwise, the routing must be done manually in each service layer component, and so a read-only transaction uses a read-only `DataSource` or a read-only JPA `PersistenceContext`.
+
+### 7.6 Transaction boundaries
