@@ -317,3 +317,13 @@ Extracting too many columns can increase the result set processing response time
 So, if a business case requires only a subset of all entity properties, fetching extra columns becomes a waste of database and application resources (CPU, Memory, I/O, Networking).
 
 ## 7. Transactions
+
+A transaction is a collection of read and write operations that can either succeed or fail together, as a unit. All database statements must execute within a transactional context, even when the database client doesn’t explicitly define its boundaries.
+
+ACID (Atomicity, Consistency, Isolation and Durability) are the four disctintive characteristics of transactions.
+
+### 7.1 Atomicity
+
+Atomicity is the property of grouping multiple operations into an all-or-nothing unit of work, which can succeed only if all individual operations succeed.
+
+### 7.2 Consistency
