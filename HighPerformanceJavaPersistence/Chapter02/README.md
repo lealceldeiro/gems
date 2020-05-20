@@ -485,3 +485,56 @@ If the JDBC driver doesn’t support Master-Slave routing, the application can d
 If the transaction manager supports declarative read-only transactions, the routing decision can be taken based on the current transaction read-only preference. Otherwise, the routing must be done manually in each service layer component, and so a read-only transaction uses a read-only `DataSource` or a read-only JPA `PersistenceContext`.
 
 ### 7.6 Transaction boundaries
+
+Every database statement executes in the context of a database transaction, even if the client doesn’t explicitly set transaction boundaries.
+
+While there might be single statement transactions (usually a read-only query), when the unit of work consists of multiple SQL statements, the database should wrap them all in a single unit of work.
+
+Auto-commit should be avoided as much as possible, and, even for single statement transactions, it’s good practice to mark the transaction boundaries explicitly.
+
+Since transactions management is a cross-cutting concern, declarative transactions management should be preferred. They break the strong coupling between the data access logic and the transaction management code. Thus, transaction boundaries are marked with metadata (e.g. annotations) and a separate transaction manager abstraction is in charge of coordinating transaction logic.
+
+#### 7.6.1 Distributed transactions
+
+The difference between local and global transactions is that the former uses a single resource manager, while the latter operates on multiple heterogeneous resource managers.
+
+All transactional resource adapters are registered by the global transaction manager, which decides when a resource is allowed to commit or rollback.
+
+##### 7.6.1.1 Two-phase commit
+
+In a two-phase commit (2PC), a resource manager takes all the necessary actions to prepare the transaction for the upcoming commit. Only if all resource managers successfully acknowledge the preparation step, the transaction manager will proceed with the commit phase. If one resource doesn’t acknowledge the prepare phase, the transaction manager proceeds to rolling back all current participants.
+
+If all resource managers acknowledge the commit phase, the global transaction ends successfully. If one resource fails to commit (or times out), the transaction manager will have to retry this operation in a background thread until it succeeds or reports the incident for manual intervention.
+
+#### 7.6.2 Declarative transactions
+
+Transaction boundaries are usually associated with a Service layer, which uses one or more DAO to fulfil the business logic. The transaction *propagates* from one component to the other within the service-layer transaction boundaries.
+
+The declarative transaction model is supported by both Java EE and Spring. Transaction boundaries are controlled through similar propagation strategies, which define how boundaries are inherited or disrupted at the borderline between the outermost component (in the current call stack) and the current one (waiting to be invoked).
+
+### 7.7 Application-level transactions
+
+In a highly concurrent environment, database transactions are bound to be as short as possible. Application-level transactions require application-level concurrency control mechanisms.
+
+The application-level repeatable reads are not self-sufficient (this argument is true for database isolation levels as well). To prevent lost updates, a concurrency control mechanism becomes mandatory.
+
+#### 7.7.1 Pessimistic and optimistic locking
+
+Isolation levels entail implicit locking, whether it involves physical locks (like 2PL) or data anomaly detection (MVCC). To coordinate state changes, application-level concurrency control makes use of explicit locking, which comes in two flavors: pessimistic and optimistic locking.
+
+##### 7.7.1.1 Pessimistic locking
+
+Most database systems offer the possibility of manually requesting shared or exclusive locks. This concurrency control is said to be *pessimistic* because it assumes that conflicts are bound to happen, and so they must be prevented accordingly.
+
+##### 7.7.1.2 Optimistic locking
+
+Optimistic locking doesn’t incur any locking at all. It uses a totally different approach to managing conflicts than pessimistic locking.
+
+MVCC is an optimistic concurrency control strategy since it assumes that contention is unlikely to happen, and so it doesn’t rely on locking for controlling access to shared resources. The optimistic concurrency mechanisms detect anomalies and resort to aborting transactions whose invariants no longer hold.
+
+The optimistic locking concurrency algorithm looks like this:
+
+* when a client reads a particular row, its `version` comes along with the other fields
+* upon updating a row, the client filters the current record by the version it has previously loaded.
+  - i.e.: `UPDATE product SET (quantity, version) = (4, 2) WHERE id = 1 AND version = 1`
+* if the statement update count is zero, the version was incremented in the meanwhile, and the current transaction now operates on a stale record version.
