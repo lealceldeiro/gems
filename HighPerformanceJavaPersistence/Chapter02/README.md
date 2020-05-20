@@ -327,3 +327,113 @@ ACID (Atomicity, Consistency, Isolation and Durability) are the four disctintive
 Atomicity is the property of grouping multiple operations into an all-or-nothing unit of work, which can succeed only if all individual operations succeed.
 
 ### 7.2 Consistency
+
+Consistency is about validating the transaction state change, so that all committed transactions leave the database in a proper state. If only one constraint gets violated, the entire transaction is rolled back and all modifications are going to be reverted.
+
+### 7.3 Isolation
+
+The serializable execution is the only transaction isolation level that doesn’t compromise data integrity, while allowing a certain degree of parallelization.
+
+#### 7.3.1 Concurrency control
+
+There are basically two strategies for handling data collisions:
+
+* avoiding conflicts (e.g. two-phase locking) requires locking to control access to shared resources
+* detecting conflicts (e.g. Multi-Version Concurrency Control) provides better concurrency, at the price of relaxing serializability and possibly accepting various data anomalies.
+
+##### 7.3.1.1 Two-phase locking
+
+Each database system comes with its own lock hierarchy but the most common types remain the following ones:
+
+* shared (read) lock, preventing a record from being written while allowing concurrent reads
+* exclusive (write) lock, disallowing both read and write operations
+
+Locks alone are not sufficient for preventing conflicts. A concurrency control strategy must define how locks are being acquired and released because this also has an impact on transaction interleaving. That's why the 2PL protocol splits a transaction in two sections:
+
+* expanding phase (locks are acquired and no lock is released)
+* shrinking phase (all locks are released and no other lock is further acquired)
+
+In a locking-based concurrency control implementation, all currently interleaved transactions must follow the 2PL protocol as otherwise serializability might be compromised, resulting in data anomalies.
+
+Using locking for controlling access to shared resources is prone to deadlocks, and the transaction scheduler alone cannot prevent their occurrences. Preserving the lock order becomes the responsibility of the data access layer, and the database can only assist in recovering from a deadlock situation.
+
+The database engine runs a separate process that scans the current conflict graph for lock-wait cycles. When a cycle is detected, the database engine picks one transaction and aborts it, causing its locks to be released, so the other transaction can make progress.
+
+##### 7.3.1.2 Multi-Version Concurrency Control
+
+While 2PL prevents conflicts, Multi-Version Concurrency Control (MVCC) uses a conflict detection strategy instead.
+
+#### 7.3.2 Phenomena
+
+Relaxing serializability guarantees may generate data integrity anomalies, which are also referred as phenomena.
+
+The SQL-92 standard introduced three phenomena that can occur when moving away from a serializable transaction schedule:
+
+* dirty read
+* non-repeatable read
+* phantom read
+
+There are other phenomena that can occur due to transaction interleaving, described in [A Critique of ANSI SQL Isolation Levels](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/tr-95-51.pdf):
+
+* dirty write
+* read skew
+* write skew
+* lost update
+
+> Choosing a certain isolation level is a trade-off between increasing concurrency and acknowledging the possible anomalies that might occur.
+>
+> Scalability is undermined by contention and coherency costs. The lower the isolation level, the less locking (or multi-version transaction abortions), and the more scalable the application will get.
+>
+> But a lower isolation level allows more phenomena, and the data integrity responsibility is shifted from the database side to the application logic, which must ensure that it takes all measures to prevent or mitigate any such data anomaly.
+
+##### 7.3.2.1 Dirty write
+
+A dirty write happens when two concurrent transactions are allowed to modify the same row at the same time. All changes are applied against the actual database object structures, which means that the second transaction simply overwrites the first transaction pending change.
+
+> If the database engine didn’t prevent dirty writes, guaranteeing rollbacks would not be possible. Because atomicity cannot be implemented in the absence of reliable rollbacks, all database systems must therefore prevent dirty writes.
+
+##### 7.3.2.2 Dirty read
+
+A dirty read happens when a transaction is allowed to read the uncommitted changes of some other concurrent transaction.
+
+> Cases for using Read Uncommitted are seldom (non-strict reporting queries where dirty reads are acceptable), so Read Committed is usually the lowest practical isolation level.
+
+##### 7.3.2.3 Non-repeatable read
+
+If one transaction reads a database row without applying a shared lock on the newly fetched record, then a concurrent transaction might change this row before the first transaction has ended.
+
+> Repeatable Read and Serializable prevent this anomaly by default. With Read Committed, it’s possible to avoid non-repeatable (fuzzy) reads if the shared locks are acquired explicitly (e.g. `SELECT FOR SHARE`).
+
+##### 7.3.2.4 Phantom read
+
+If a transaction makes a business decision based on a set of rows satisfying a given predicate, without predicate locking, a concurrent transaction might insert a record matching that particular predicate.
+
+> Traditionally, the Serializable isolation prevented phantom reads through predicate locking. Other MVCC implementations can detect phantom rows by introspecting the transaction schedule and aborting any transaction whose serializability guarantees were violated.
+
+##### 7.3.2.5 Read skew
+
+Read skew is an anomaly that involves a constraint on more than one database tables.
+
+For example, one transaction `A` which reads values from two tables with constraitns which need to be in sync in both tables `T1` and `T2`, after reading the first part of the data, in table `T1`, another (interleaving) transaction `B` updates the values in tables `T1` and `T2`, and now transaction `A` finishes reading the other part of the data in table `T2`. This last part of the data is not in sync with the version of the first part of the data that `A` already got from `T1`, but with the real (updated by `B`) data in `T1`.
+
+> Like with non-repeatable reads, there are two ways to avoid this phenomenon:
+>
+> * the first transaction can acquire shared locks on every read, therefore preventing the second transaction from updating these records
+> * the first transaction can be aborted upon validating the commit constraints (when using an MVCC implementation of the Repeatable Read or Serializable isolation levels)
+
+##### 7.3.2.6 Write skew
+
+Like read skew, this phenomenon involves disjoint writes over two different tables that are constrained to be updated as a unit.
+
+> Like with non-repeatable reads, there are two ways to avoid this phenomenon:
+>
+> * the first transaction can acquire shared locks on both entries, therefore preventing the second transaction from updating these records
+> * the database engine can detect that another transaction has changed these records, and so it can force the first transaction to roll back (under an MVCC implementation of Repeatable Read or Serializable).
+
+##### 7.3.2.7 Lost update
+
+This phenomenon happens when a transaction reads a row while another transaction modifies it prior to the first transaction to finish.
+
+> Traditionally, Repeatable Read protected against lost updates since the shared locks could prevent a concurrent transaction from modifying an already fetched record. With MVCC, the second transaction is allowed to make the change, while the first transaction is aborted when the database engine detects the row version mismatch (during the first transaction commit).
+
+#### 7.3.3 Isolation levels
