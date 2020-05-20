@@ -269,3 +269,51 @@ JDBC also offers *scrollable* cursors, therefore allowing the row-level pointer 
 The main difference between the two scrollable result sets lays in their selectivity. An *insensitive* cursor offers a static view over the current result set, so the data needs to be fetched entirely prior to being iterated. A *sensitive* cursor allows the result set to be fetched dynamically, so it can reflect concurrent changes.
 
 ### 6.2 ResultSet changeability
+
+As a rule of thumb, if the current transaction doesn’t require updating selected records, the forward-only and read-only default result set type is the most efficient option. Even if it is a reminiscence from JDBC 1.0, the default result set is still the right choice in most situations.
+
+### 6.3 ResultSet holdability
+
+Unlike scrollability and updatability, the default value for holdability is implementation specific.
+
+In a typical enterprise application, database connections are reused from one transaction to another, so holding a result set after a transaction ends is risky. Depending on the underlying database system and on the cursor type, a result set might allocate system resources, which, for scalability reasons, need to be released as soon as possible.
+
+Although the `CLOSE_CURSORS_AT_COMMIT` holdability option is not supported by all database engines, the same effect can be achieved by simply closing all acquired `ResultSet`(s) and their associated Statement objects.
+
+### 6.4 Fetching size
+
+The JDBC `ResultSet` acts as an application-level cursor, so whenever the statement is traversed, the result must be transferred from the database to the client. The transfer rate is controlled by the `Statement` fetch size.
+
+`statement.setFetchSize(fetchSize);`
+
+A custom fetch size gives the driver a hint as to the number of rows needed to be retrieved in a single database roundtrip. The default value of *0* leaves each database choose its own driver-specific fetching policy.
+
+### 6.5 ResultSet size
+
+Setting the appropriate fetching size can undoubtedly speed up the result set retrieval, as long as a statement fetches only the data required by the current business logic.
+
+#### 6.5.1 Too many rows
+
+When the result set size is limited by external factors, it makes no sense to select more data than necessary.
+
+Without placing upper bounds, the result sets grow proportionally with the underlying table data. A large result set requires more time to be extracted and to be sent over the wire too.
+
+Limiting queries can therefore ensure predictable response times and database resource utilization. The shorter the query processing time, the quicker the row-level locks are released, and the more scalable the data access layer becomes.
+
+The most efficient strategy of limiting a result set is to include the row restriction clause in the SQL statement. Another one is to configure a maximum row count at the JDBC `Statement` level.
+
+##### 6.5.1.2 JDBC max rows
+
+The JDBC specification defines the [`maxRows`](https://docs.oracle.com/javase/8/docs/api/java/sql/Statement.html#setMaxRows-int-) attribute which limits all ResultSet(s) for the current statement.
+
+`statement.setMaxRows(maxRows);`
+
+Unlike the SQL construct, the JDBC alternative is portable across all driver implementations. And according to the JDBC documentation, the driver is expected to discard the extra rows when the maximum threshold is reached, which is a poor strategy because it wastes both database resources (CPU, I/O, Memory) as well as networking bandwidth. This strategy is implementation specific and it might be more effective or ineffective from one DB implementation to another.
+
+#### 6.5.2 Too many columns
+
+Extracting too many columns can increase the result set processing response time. This situation is more prevalent among ORM tools, as for populating entities entirely, all columns are needed to be selected.
+
+So, if a business case requires only a subset of all entity properties, fetching extra columns becomes a waste of database and application resources (CPU, Memory, I/O, Networking).
+
+## 7. Transactions
