@@ -81,3 +81,19 @@ Notes from:
 ### [TCP/IP Illustrated, Volume 1: The Protocols](./TCPIPIllustratedVolume1)  <sup><sub>(*Kevin R. Fall, W. Richard Stevens*)</sub></sup>
 
 ### [The Complete Software Developer's Career Guide](./TheCompleteSoftwareDevelopersCareerGuide)  <sup><sub>(*John Sonmez*)</sub></sup>
+
+### [The Pragmatic Programmer](./ThePragmaticProgrammer)  <sup><sub>(*David Thomas, Andrew Hunt*)</sub></sup>
+
+### [The Art of Agile Development](./TheArtOfAgileDevelopment)  <sup><sub>(*James Shore, Shane Warden*)</sub></sup>
+
+### [Zero Bugs and Program Faster](./ZeroBugsAndProgramFaster)  <sup><sub>(*Kate Thompson*)</sub></sup>
+
+### [Essential Scrum](./EssentialScrum)  <sup><sub>(*Kenneth S. Rubin*)</sub></sup>
+
+### [Scrum: The Art of Doing Twice the Work in Half the Time](./ScrumTheArtOfDoingTwiceTheWorkInHalfTheTime)  <sup><sub>(*Jeff Sutherland, J.J. Sutherland*)</sub></sup>
+
+### [The Deadline: A Novel About Project Management](./TheDeadlineANovelAboutProjectManagement)  <sup><sub>(*Tom DeMarco*)</sub></sup>
+
+### [Object-Oriented Analysis and Design with Applications](./ObjectOrientedAnalysisAndDesignWithApplications)  <sup><sub>(*Grady Booch, Robert A. Maksimchuk, Michael W. Engle*)</sub></sup>
+
+### [The Effective Engineer](./TheEffectiveEngineer)  <sup><sub>(*Edmond Lau, Bret Taylor*)</sub></sup>
