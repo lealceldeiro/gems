@@ -90,3 +90,29 @@ The JPA [EntityManager](https://docs.oracle.com/javaee/7/api/javax/persistence/E
 > Hibernate has a native pessimistic locking API, which brings support for timing out lock acquisition requests or skipping already acquired locks.
 
 ### 8.5 Read-based optimizations
+
+The database cannot be abstracted out of this context, and pretending that entities can be manipulated just like any other plain objects is very detrimental to application performance. When it comes to reading data, the impedance mismatch becomes even more apparent, and, for performance reasons, it’s mandatory to keep in mind the SQL statements associated with every fetching operation.
+
+Each business use case has different data access requirements, and one policy cannot anticipate all possible use cases, so the fetching strategy should always be set up on a query basis.
+
+Although it is very convenient to fetch entities along with all their associated relationships, it’s better to take into consideration the performance impact as well.
+
+In reality, not all use cases require loading entities anyway, and not all read operations need to be served by the same fetching mechanism. Sometimes a custom projection (selecting only a few columns from an entity) is much more suitable, and the data access logic can even take advantage of database specific SQL constructs that might not be supported by the JPA query abstraction.
+
+As a rule of thumb, fetching entities is suitable when the logical transaction requires modifying them, even if that will only happen in a successive web request.
+
+The Persistence Context is also known as the first-level cache, and so it cannot be shared by multiple concurrent transactions.
+
+the second-level cache is associated with an EntityManagerFactory , and all Persistence Contexts have access to it. The second-level cache can store entities as well as entity associations and even entity query results.
+
+Because JPA doesn’t make it mandatory, each provider takes a different approach to caching. 
+
+Although the second-level cache can mitigate the entity fetching performance issues, it requires a distributed caching implementation, which might not elude the networking penalties anyway.
+
+### 8.6 Wrap-up
+
+Bridging two highly-specific technologies is always a difficult problem to solve. When the enterprise system is built on top of an object-oriented language, the object-relational impedance mismatch becomes inevitable. The ORM pattern aims to close this gap although it cannot completely abstract it out.
+
+A high-performance enterprise application must resonate with the underlying database system, and the ORM tool must not disrupt this relationship.
+
+## 9. Connection Management and Monitoring
