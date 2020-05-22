@@ -188,3 +188,11 @@ The most straight-forward way of logging SQL statements along with their runtime
 Either the JDBC Driver or the DataSource must be proxied to intercept statement executions and log them along with the actual parameter values. Besides statement logging, a JDBC proxy can provide other cross-cutting features like long-running query detection or custom statement execution listeners.
 
 ## 10. Mapping Types and Identifiers
+
+Although it’s common practice to map all database columns, this is not a strict requirement. Sometimes it’s more practical to use a root entity and several sub-entities, so each business case fetches just as much info as needed (while still benefiting from entity state management).
+
+Identifiers are mandatory for entity elements, and an embeddable type is forbidden to have an identity of its own. Knowing the database table and the column that uniquely identifies any given row, Hibernate can correlate database rows with Domain Model entities.
+
+The Domain Model can share state between multiple entities either by using inheritance or composition. Embeddable types can reuse state through composition.
+
+### 10.1 Types
