@@ -116,3 +116,66 @@ Bridging two highly-specific technologies is always a difficult problem to solve
 A high-performance enterprise application must resonate with the underlying database system, and the ORM tool must not disrupt this relationship.
 
 ## 9. Connection Management and Monitoring
+
+### 9.1 JPA connection management
+
+In a Java EE container, all database connections are managed by the application server which provides connection pooling, monitoring and JTA capabilities.
+
+While for a Java EE application it’s perfectly fine to rely on the application server for providing a full-featured DataSource reference, stand-alone applications are usually configured using dependency injection rather than JNDI.
+
+### 9.2 Hibernate connection providers
+
+Hibernate needs to operate both in Java EE and stand-alone environments, and the database connectivity configuration can be done either declaratively or programmatically.
+
+#### 9.2.1 `DriverManagerConnectionProvider`
+
+Hibernate picks this provider when being given JPA 2.0 connection properties or the Hibernate-specific configuration counterpart.
+
+> Although it fetches database connections through the underlying DriverManager, this provider tries to avoid the connection acquisition overhead by using a trivial pooling implementation. The Hibernate documentation doesn’t recommend using the DriverManagerConnectionProvider in a production setup.
+
+#### 9.2.2 `C3P0ConnectionProvider`
+
+[C3p0](https://www.mchange.com/projects/c3p0/) is a mature connection pooling solution that has proven itself in many production environments, and, using the underlying JDBC connection properties, Hibernate can replace the built-in connection pool with a c3p0 DataSource. To activate this provider, the application developer must supply at least one configuration property starting with the `hibernate.c3p0` prefix.
+
+#### 9.2.3 `HikariConnectionProvider`
+
+HikariCP is one of the fastest Java connection pool, and, although not natively supported by Hibernate, it also comes with its own `ConnectionProvider` implementation. By specifying the `hibernate.connection.provider_class` property, the application developer can override the default connection provider mechanism:
+
+```
+<property name="hibernate.connection.provider_class"
+          value="com.zaxxer.hikari.hibernate.HikariConnectionProvider"
+/>
+```
+
+[HikariCP](https://github.com/brettwooldridge/HikariCP) doesn’t recognize the JPA or Hibernate-specific connection properties. The `HikariConnectionProvider` requires framework-specific properties.
+
+#### 9.2.4 `DatasourceConnectionProvider`
+
+This provider is chosen when the JPA configuration file defines a `non-jta-data-source` or a `jta-data-source` element, or when supplying a `hibernate.connection.datasource` configuration property.
+
+#### 9.2.5 Connection release modes
+
+The connection release strategy is controlled through the `hibernate.connection.release_mode` property (which can take the following values: `after_transaction`, `after_statement`, `auto`).
+
+> The `after_transaction` connection release mode is more efficient than the default JTA `after_statement` strategy, and so it should be used if the JTA transaction resource management logic doesn’t interfere with this connection releasing strategy.
+
+### 9.3 Monitoring connections
+
+#### 9.3.1 Hibernate statistics
+
+Hibernate has a built-in statistics collector which gathers notifications related to database connections, `Session` transactions and even second-level caching usage. The `StatisticsImplementor` interface defines the contract for intercepting various Hibernate internal events.
+
+The statistics mechanism is disabled by default. To enable the statistics gathering mechanism, the following property must be configured first: `<property name="hibernate.generate_statistics" value="true"/>`.
+
+Once statistics are being collected, in order to print them into the current application log, the following logger configuration must be set up:
+
+```
+<logger name="org.hibernate.engine.internal.StatisticalLoggingSessionEventListener" level="info" />
+```
+
+It’s better to use a mature framework such as Dropwizard Metrics instead of building a custom implementation from scratch.
+
+> For a high-performance data access layer, statistics and metrics becomes mandatory requirements. The Hibernate statistics mechanism is a very powerful tool, allowing the development team to get a better insight into Hibernate inner workings.
+
+### 9.4 Statement logging
+
