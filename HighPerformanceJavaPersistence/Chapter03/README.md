@@ -179,3 +179,12 @@ It’s better to use a mature framework such as Dropwizard Metrics instead of bu
 
 ### 9.4 Statement logging
 
+When a business logic is implemented, the Definition of Done should include a review of all the associated data access layer operations. Following this rule can save a lot of hassle when the enterprise system is deployed into production.
+
+The most straight-forward way of logging SQL statements along with their runtime bind parameter values is to use an external DataSource proxy. Because the proxy intercepts all statement executions, the bind parameter values can be introspected and printed as well.
+
+#### 9.4.3 Logging parameters
+
+Either the JDBC Driver or the DataSource must be proxied to intercept statement executions and log them along with the actual parameter values. Besides statement logging, a JDBC proxy can provide other cross-cutting features like long-running query detection or custom statement execution listeners.
+
+## 10. Mapping Types and Identifiers
