@@ -320,3 +320,148 @@ Some drawbacks of this apporach are:
 * A unidirectional association requires additional inserts for the junction table records
 
 > The unidirectional `@OneToMany` relationship is less efficient both for reading data, as for adding or removing child entries.
+
+##### 11.3.3.1 `@ElementCollection`
+
+Although it’s not an entity association type, the `@ElementCollection` is very similar to the unidirectional `@OneToMany` relationship. To represent collections of basic types (e.g. `String`, `int`, `BigDecimal`) or embeddable types, the `@ElementCollection` must be used instead.
+
+When it comes to adding or removing child records, the `@ElementCollection` behaves like a unidirectional `@OneToMany` relationship, annotated with `CascadeType.ALL` and `orphanRemoval`. For instance:
+
+```
+@ElementCollection
+private List<String> comments = new ArrayList<>();
+// ...
+post.getComments().add("My first review");
+post.getComments().add("My second review");
+post.getComments().add("My third review");
+
+INSERT INTO Post_comments (Post_id, comments) VALUES (1, 'My first review')
+INSERT INTO Post_comments (Post_id, comments) VALUES (1, 'My second review')
+INSERT INTO Post_comments (Post_id, comments) VALUES (1, 'My third review')
+```
+
+Unfortunately, the remove operation uses the same logic as the unidirectional @OneToMany association, so when removing the first collection element:
+
+```
+post.getComments().remove(0);
+
+DELETE FROM Post_comments WHERE Post_id = 1
+INSERT INTO Post_comments (Post_id, comments) VALUES (1, 'My second review')
+INSERT INTO Post_comments (Post_id, comments) VALUES (1, 'My third review')
+```
+
+> In spite its simplicity, the `@ElementCollection` is not very efficient for element removal. Just like unidirectional `@OneToMany` collections, the `@OrderColumn` can optimize the removal operation for entries located near the collection tail.
+
+#### 11.3.4 `@OneToMany` with `@JoinColumn`
+
+With the `@JoinColumn`, the `@OneToMany` association controls the child table foreign key so there is no need for a junction table. Example:
+
+```
+@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+@JoinColumn(name = "post_id")
+private List<PostComment> comments = new ArrayList<>();
+
+// ...
+
+post.getComments().add(new PostComment("My first review"));
+post.getComments().add(new PostComment("My second review"));
+post.getComments().add(new PostComment("My third review"));
+
+INSERT INTO post_comment (review, id) VALUES ('My first review', 2)
+INSERT INTO post_comment (review, id) VALUES ('My second review', 3)
+INSERT INTO post_comment (review, id) VALUES ('My third review', 4)
+UPDATE post_comment SET post_id = 1 WHERE id = 2
+UPDATE post_comment SET post_id = 1 WHERE id = 3
+UPDATE post_comment SET post_id = 1 WHERE id = 4
+```
+
+Although it’s an improvement over the regular `@OneToMany` mapping, in practice, it’s still not as efficient as a regular bidirectional `@OneToMany` association. In the previous example, besides the regular `INSERT` statements, Hibernate issues three `UPDATE` statements for setting the `post_id` column on the newly inserted child records.
+
+When deleting the last element of the collection, there is an additional update statement associated with the child removal operation. When a child entity is removed from the parent-side collection, Hibernate will set the child table foreign key column to `null`. Afterwards, the orphan removal logic kicks in and it triggers a delete statement against the disassociated child entity.
+
+### 11.4 `@OneToOne`
+
+From a database perspective, the one-to-one association is based on a foreign key that’s constrained to be unique. This way, a parent row can be referenced by at most one child record only.
+
+#### 11.4.1 Unidirectional `@OneToOne`
+
+The JPA entity relationship diagram matches exactly the one-to-one table relationship. From the Domain Model side, the unidirectional `@OneToOne` relationship is strikingly similar to the unidirectional `@ManyToOne` association.
+
+The mapping is done through the `@OneToOne` annotation, which, just like the `@ManyToOne` mapping, might also take a `@JoinColumn` as well.
+
+```
+@OneToOne
+@JoinColumn(name = "post_id")
+private Post post;
+```
+
+The unidirectional `@OneToOne` association controls the associated foreign key, so, when the post property is set:
+
+```
+Post post = entityManager.find(Post.class, 1L);
+PostDetails details = new PostDetails("John Doe");
+details.setPost(post);
+entityManager.persist(details);
+```
+
+Hibernate populate the foreign key column with the associated post identifier:
+
+```
+INSERT INTO post_details (created_by, created_on, post_id, id) VALUES ('John Doe', '2016-01-08 11:28:21.317', 1, 2)
+```
+
+If the `Post` entity always needs its `PostDetails`, it’s important to know the `PostDetails` identifier prior to loading the entity. For this, there’s an approach which is portable across JPA providers: derived identifiers, which make possible to link the `PostDetails` identifier to the post table primary key. This way, the `post_details` table primary key can also be a foreign key referencing the post table identifier:
+
+```
+@OneToOne
+@MapsId
+private Post post;
+```
+
+Thus, because `PostDetails` has the same identifier as the parent `Post` entity, it can be fetched without having to write a JPQL query.
+
+```
+PostDetails details = entityManager.find(PostDetails.class, post.getId());
+```
+
+> **The shared primary key efficiency**
+>
+> Because of the reduced memory footprint and enabling the second-level cache direct retrieval, the JPA 2.0 derived identifier is the preferred `@OneToOne` mapping strategy. The shared primary key is not limited to unidirectional associations, being available for bidirectional `@OneToOne` relationships as well.
+
+#### 11.4.2 Bidirectional `@OneToOne`
+
+A bidirectional `@OneToOne` association allows the parent entity to map the child-side as well.
+
+The parent-side defines a `mappedBy` attribute because the child-side is in charge of this JPA relationship:
+
+```
+@OneToOne(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+private PostDetails details;
+```
+
+Because it’s much simpler and performs well even without bytecode enhancement, the unidirectional `@OneToOne` relationship is often preferred.
+
+### 11.5 `@ManyToMany`
+
+From a database perspective, the `@ManyToMany` association mirrors a many-to-many table relationship.
+
+#### 11.5.1 Unidirectional `@ManyToMany`
+
+For both unidirectional and bidirectional associations, it’s better to avoid the `CascadeType.REMOVE` mapping. Instead of `CascadeType.ALL`, the cascade attributes should be declared explicitly (e.g. `CascadeType.PERSIST`, `CascadeType.MERGE`).
+
+#### 11.5.2 Bidirectional `@ManyToMany`
+
+The bidirectional `@ManyToMany` relationship can be navigated from both sides.
+
+While in the one-to-many and many-to-many association the child-side is the one holding the foreign key, for a many-to-many table relationship both ends are actually parent-sides and the junction table is the child-side.
+
+Because the junction table is hidden when using the default `@ManyToMany` mapping, the application developer must choose an owning and a `mappedBy` side.
+
+Hibernate manages each side of a `@ManyToMany` relationship like a unidirectional `@OneToMany` association between the parent-side (e.g. `Post` or the `Tag`) and the hidden child-side (e.g. the `post_tag` table `post_id` or `tag_id` foreign keys). This is the reason why the entity removal or changing their order resulted in deleting all junction entries and reinserting them by mirroring the in-memory _Persistence Context_.
+
+#### 11.5.3 The `@OneToMany` alternative
+
+The most efficient JPA relationships are the ones where the foreign key side is controlled by a child-side `@ManyToOne` or `@OneToOne` association. For this reason, the many-to-many table relationship is best mapped with two bidirectional `@OneToMany` associations. The entity removal and the element order changes are more efficient than the default `@ManyToMany`
+relationship and the junction entity can also map additional columns (e.g. `created_on`, `created_by`).
+
+## 12. Inheritance
