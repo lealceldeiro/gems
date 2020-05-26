@@ -465,3 +465,38 @@ The most efficient JPA relationships are the ones where the foreign key side is 
 relationship and the junction entity can also map additional columns (e.g. `created_on`, `created_by`).
 
 ## 12. Inheritance
+
+There are three ways of mapping inheritance into a relational database:
+
+* [Single Table Inheritance](https://martinfowler.com/eaaCatalog/singleTableInheritance.html), which uses a single database table to represent all classes in a given inheritance hierarchy
+* [Class Table Inheritance](https://martinfowler.com/eaaCatalog/classTableInheritance.html), which maps each class to a table, and the inheritance association is resolved through table joins
+* [Concrete Table Inheritance](https://martinfowler.com/eaaCatalog/concreteTableInheritance.html), where each table defines all fields that are either defined in the subclass or inherited from a super class.
+
+The JPA specification defines all these three inheritance mapping models through the following strategies:
+
+* `InheritanceType.SINGLE_TABLE`
+* `InheritanceType.JOINED`
+* `InheritanceType.TABLE_PER_CLASS`
+
+JPA also covers the case when inheritance is only available in the Domain Model, without being mirrored into the database (e.g. `@MappedSuperclass`).
+
+### 12.1 Single table
+
+The single table inheritance is the default JPA strategy, funneling a whole inheritance Domain Model hierarchy into a single database table.
+
+To employ this strategy, the entity class must be mapped with one of the following annotations:
+
+* `@Inheritance` (being the default inheritance model, it’s not mandatory to supply the strategy when using single table inheritance)
+* `@Inheritance(strategy = InheritanceType.SINGLE_TABLE)`
+
+The entity table contains columns associated with the base class as well as columns related to properties from entities subclasses.
+
+> **Performance and data integrity considerations**
+> 
+> Since only one table is used for storing entities, both read and write operations are fast. Even when using a `@ManyToOne` or a `@OneToOne` base class association, Hibernate needs a single join between the child-side table and the parent-side one. The `@OneToMany` base class entity relationship is also efficient since it either generates a secondary select or a single parent-child table join.
+>
+> Because all subclass properties are collocated in a single table, `NOT NULL` constraints are not allowed for columns belonging to subclasses. Being automatically inherited by all subclasses, the base class properties may be non-nullable. From a data integrity perspective, this limitation defeats the purpose of Consistency (guaranteed by the ACID properties).
+>
+> Nevertheless, the data integrity rules can be enforced through database trigger procedures (a column non-nullability is accounted based on the class discriminator value). Another approach is to move the check into the data access layer. Bean Validation can validate `@NotNull` properties at runtime. JPA also defines callback methods (e.g. `@PreUpdate`, `@PreUpdate`) as well as entity listeners (e.g. `@EntityListeners`) which can throw an exception when a non-null constraint is violated.
+
+### 12.2 Join table
