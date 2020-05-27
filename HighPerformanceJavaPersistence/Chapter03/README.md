@@ -500,3 +500,57 @@ The entity table contains columns associated with the base class as well as colu
 > Nevertheless, the data integrity rules can be enforced through database trigger procedures (a column non-nullability is accounted based on the class discriminator value). Another approach is to move the check into the data access layer. Bean Validation can validate `@NotNull` properties at runtime. JPA also defines callback methods (e.g. `@PreUpdate`, `@PreUpdate`) as well as entity listeners (e.g. `@EntityListeners`) which can throw an exception when a non-null constraint is violated.
 
 ### 12.2 Join table
+
+The join table inheritance resembles the Domain Model class diagram since each class is mapped to an individual table. The subclass tables have a foreign key column referencing the base class table primary key.
+
+To use this inheritance strategy, the base entity class must be annotated with:
+
+`@Inheritance(strategy = InheritanceType.JOINED)`
+
+The java entities subclasses can use a `@PrimaryKeyJoinColumn` mapping to define the base class foreign key column. By default, the subclass table primary key column is used as a foreign key as well.
+
+> **Performance considerations**
+>
+> Unlike single table inheritance, the joined table strategy allows nullable subclass property columns.
+>
+> When writing data, Hibernate requires two insert statements for each subclass entity, so there’s a performance impact compared to single table inheritance. The index memory footprint also increases because instead of a single table primary key, the database must index the base class and all subclasses primary keys.
+>
+> When reading data, polymorphic queries require joining the base class with all subclass tables, so, if there are n subclasses, Hibernate will need n + 1 joins. The more joins, the more difficult it is for the database to calculate the most efficient execution plan.
+
+### 12.3 Table-per-class
+
+The table-per-class inheritance model has a table layout similar to the joined table strategy, but, instead of storing base class columns in the base class table, each subclass table stores also columns from the base class table. There is no foreign key between the base class table and the subclass tables.
+
+To use this inheritance strategy, the base class must be annotated with:
+
+`@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)`.
+
+Unlike the joined table inheritance, each persisted subclass entity requires a single insert statement.
+
+> The identity generator is not allowed with this strategy because rows belonging to different subclasses would share the same identifier, therefore conflicting in polymorphic `@ManyToOne` or `@OneToOne` associations.
+
+> **Performance considerations**
+>
+> While write operations are faster than in the joined table strategy, the read operations are only efficient when querying against the actual subclass entities. Polymorphic queries can have a considerable performance impact because Hibernate must select all subclass tables and use `UNION ALL` to build the whole inheritance tree result set. As a rule of thumb, the more subclass tables, the least efficient the polymorphic queries will get.
+
+### 12.4 Mapped superclass
+
+If the base class is not required to be a stand-alone entity, it’s more practical to leave inheritance out of the database. This way, the base class can be made abstract and marked with the `@MappedSuperclass` annotation so that JPA can acknowledge the inheritance model on the entity-side only.
+
+To retain the inheritance semantics, the base class properties are going to be merged with the subclass ones, so the associated subclass entity table will contain both. This is similar to the table-per-class inheritance strategy, with the distinction that the base class is not mapped to a database table (hence, it cannot be used in polymorphic queries or associations).
+
+> **Performance considerations**
+>
+> Although polymorphic queries and associations are no longer permitted, the `@MappedSuperclass` yields very efficient read and write operations. Like single and table-per-class inheritance, write operations require a single insert statement and reading only needs to select from one table only.
+
+**Inheritance best practices**
+
+All the aforementioned inheritance mapping models require trading something in order to accommodate the impedance mismatch between the relational database system and the object-oriented Domain Model.
+
+The default single table inheritance performs the best in terms of reading and writing data, but it forces the application developer to overcome the column nullability limitation. This strategy is useful when the database can provide support for trigger procedures and the number of subclasses is relatively small.
+
+The join table is worth considering when the number of subclasses is higher and the data access layer doesn’t require polymorphic queries. When the number of subclass tables is large, polymorphic queries will require many joins, and fetching such a result set will have an impact on application performance. This issue can be mitigated by restricting the result set (e.g. pagination), but that only applies to queries and not to @OneToMany or @ManyToMany associations. On the other hand, polymorphic @ManyToOne and @OneToOne associations are fine since, in spite of joining multiple tables, the result set can have at most one record only.
+
+Table-per-class is the least effective when it comes to polymorphic queries or associations. If each subclass is stored in a separate database table, the @MappedSuperclass Domain Model inheritance is often a better alternative anyway.
+
+Although a powerful concept, Domain Model inheritance should be used sparingly and only when the benefits supersede trade-offs.
