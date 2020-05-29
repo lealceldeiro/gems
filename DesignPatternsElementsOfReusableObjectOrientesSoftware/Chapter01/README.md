@@ -32,3 +32,34 @@ MVC uses other design patterns, such as Factory Method to specify the default co
 |           |            |                  |                  | Strategy                |
 |           |            |                  |                  | Visitor                 |
 
+## 1.6 How Design Patterns Solve Design Problems
+
+**Finding Appropriate Objects**
+
+The hard part about object-oriented design is decomposing a system into objects. The task is difficult because many factors come into play: encapsulation, granularity, dependency, flexibility, performance, evolution, reusability, and on and on. They all influence the decomposition, often in conflicting ways.
+
+Strict modeling of the real world leads to a system that reflects today's realities but not necessarily tomorrow's. The abstractions that emerge during design are key to making a design flexible.
+
+Design patterns help you identify less-obvious abstractions and the objects that can capture them.
+
+**Determining Object Granularity**
+
+Design patterns address the issue about how to decide what should be an object, since they (the objects) can vary tremendously in size and number. They can represent everything down to the hardware or all the way up to entire applications.
+
+**Specifying Object Interfaces**
+
+The set of all signatures defined by an object's operations is called the interface to the object. An object's interface characterizes the complete set of requests that can be sent to the object. Any request that matches a signature in the object's interface may be sent to the object.
+
+Design patterns help you define interfaces by identifying their key elements and the kinds of data that get sent across an interface. A design pattern might also tell you what not to put in the interface.
+
+Design patterns also specify relationships between interfaces. In particular, they often require some classes to have similar interfaces, or they place constraints on the interfaces of some classes.
+
+**Specifying Object Implementations**
+
+**Putting Reuse Mechanisms to Work**
+
+Most people can understand concepts like objects, interfaces, classes, and inheritance. The challenge lies in applying them to build flexible, reusable software, and design patterns can show you how.
+
+**Design patterns relationships**
+
+![Image of the relationships among design patterns](./image/design-patterns-relationships.png "Relationships among design patterns")
