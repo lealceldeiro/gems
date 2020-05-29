@@ -60,6 +60,23 @@ Design patterns also specify relationships between interfaces. In particular, th
 
 Most people can understand concepts like objects, interfaces, classes, and inheritance. The challenge lies in applying them to build flexible, reusable software, and design patterns can show you how.
 
+**Designing for Change**
+
+To design the system so that it's robust to such changes, you must consider how the system might need to change over its lifetime. A design that doesn't take change into account risks major redesign in the future. Those changes might involve class redefinition and reimplementation, client modification, and retesting. Redesign affects many parts of the software system, and unanticipated changes are invariably expensive.
+
+Design patterns help you avoid this by ensuring that a system can change in specific ways. Each design pattern lets some aspect of system structure vary independently of other aspects, thereby making a system more robust to a particular kind of change.
+
 **Design patterns relationships**
 
 ![Image of the relationships among design patterns](./image/design-patterns-relationships.png "Relationships among design patterns")
+
+## 1.7 How to Select a Design Pattern
+
+* Consider how design patterns solve design problems.
+* Read through each pattern's intent to find one or more that sound relevant to your problem.
+* Study how patterns interrelate.
+* Study patterns of like purpose.
+* Examine a cause of redesign.
+* Consider what should be variable in your design.
+
+## 1.8 How to Use a Design Pattern
