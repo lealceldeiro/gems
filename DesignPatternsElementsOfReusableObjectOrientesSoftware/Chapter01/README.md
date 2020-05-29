@@ -80,3 +80,13 @@ Design patterns help you avoid this by ensuring that a system can change in spec
 * Consider what should be variable in your design.
 
 ## 1.8 How to Use a Design Pattern
+
+* Read the pattern once through for an overview.
+* Go back and study the Structure, Participants, and Collaborations sections.
+* Look at the Sample Code section to see a concrete example of the pattern in code.
+* Choose names for pattern participants that are meaningful in the application context.
+* Define the classes.
+* Define application-specific names for operations in the pattern.
+* Implement the operations to carry out the responsibilities and collaborations in the pattern.
+
+Design patterns should not be applied indiscriminately. Often they achieve flexibility and variability by introducing additional levels of indirection, and that can complicate a design and/or cost you some performance. A design pattern should only be applied when the flexibility it affords is actually needed.
