@@ -75,15 +75,7 @@ class FactoryManager {
 class FactoryManager
 note right: Utility class used to create a <i>Singleton</i> <i>WidgetFactory</i>. \n Based on some criteria it determines which instance \n of the specific implementation of <i>WidgetFactory</i> will \n be created.
 
-WindowsWidgetFactory ..|> WindowsButton : uses
-WindowsWidgetFactory ..|> WindowsScrollBar : uses
-
-LinuxWidgetFactory ..|> LinuxButton : uses
-LinuxWidgetFactory ..|> LinuxScrollBar : uses
-
 FactoryManager o-- "1..0" WidgetFactory
-FactoryManager ..|> LinuxWidgetFactory : uses
-FactoryManager ..|> WindowsWidgetFactory : uses
 
 class Client
 
