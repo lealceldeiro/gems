@@ -46,4 +46,119 @@ Separate the construction of a complex object from its representation so that th
 
 A *Composite* is what the builder often builds.
 
+## Example in Java
 
+Here are two concrete subclasses of `Pizza`, one of which represents a standard New-York-style pizza, the other a calzone. 
+
+The former has a required `size` parameter, while the latter lets you specify whether sauce should be inside or out.
+
+Note that the build method in each subclass’s builder is declared to return the correct subclass. This technique, wherein a subclass method is declared to return a subtype of the return type declared in the super-class, is known as *covariant return typing*. It allows clients to use these builders without the need for casting.
+
+![Class Diagram](./image/code_class_design.png "Class Diagram")
+
+```
+abstract class Pizza {
+
+    enum Topping { HAM, MUSHROOM, ONION, PEPPER, SAUSAGE }
+
+    private final Set<Topping> toppings;
+
+    abstract static class Builder<T extends Builder<T>> {
+        Set<Topping> toppings = EnumSet.noneOf(Topping.class);
+
+        T addTopping(Topping topping) {
+            toppings.add(Objects.requireNonNull(topping));
+            return self();
+        }
+
+        abstract Pizza build();
+
+        // Subclasses must override this method to return "this"
+        protected abstract T self();
+    }
+
+    Pizza(Builder<?> builder) {
+        toppings = EnumSet.copyOf(builder.toppings);
+    }
+
+    Set<Topping> getToppings() {
+        return toppings;
+    }
+}
+
+class Calzone extends Pizza {
+    private final boolean sauceInside;
+
+    static class CalzoneBuilder extends Pizza.Builder<CalzoneBuilder> {
+        private boolean sauceInside; // Default to false
+
+        CalzoneBuilder sauceInside() {
+            sauceInside = true;
+            return this;
+        }
+
+        @Override
+        public Calzone build() {
+            return new Calzone(this);
+        }
+
+        @Override
+        protected CalzoneBuilder self() {
+            return this;
+        }
+    }
+
+    private Calzone(CalzoneBuilder builder) {
+        super(builder);
+        sauceInside = builder.sauceInside;
+    }
+
+    boolean isSauceInside() {
+        return sauceInside;
+    }
+}
+
+class NyPizza extends Pizza {
+
+    enum Size { SMALL, MEDIUM, LARGE }
+
+    private final Size size;
+
+    static class NyBuilder extends Pizza.Builder<NyBuilder> {
+        private final Size size;
+
+        NyBuilder(Size size) {
+            this.size = Objects.requireNonNull(size);
+        }
+
+        @Override public NyPizza build() {
+            return new NyPizza(this);
+        }
+        @Override protected NyBuilder self() {
+            return this;
+        }
+    }
+
+    private NyPizza(NyBuilder builder) {
+        super(builder);
+        size = builder.size;
+    }
+
+    Size getSize() {
+        return size;
+    }
+}
+
+// ---
+
+class PizzaClient {
+    NyPizza pizza = new NyPizza.NyBuilder(NyPizza.Size.SMALL)
+                               .addTopping(Pizza.Topping.SAUSAGE)
+                               .addTopping(Pizza.Topping.ONION)
+                               .build();
+    Calzone calzone = new Calzone.CalzoneBuilder()
+                                 .addTopping(Pizza.Topping.HAM)
+                                 .sauceInside()
+                                 .build();
+}
+```
