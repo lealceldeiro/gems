@@ -1,0 +1,77 @@
+@startuml
+enum Topping {
+    + HAM,
+    + MUSHROOM,
+    + ONION,
+    + PEPPER,
+    + SAUSAGE
+}
+
+abstract class Pizza {
+    - Set<Topping> toppings
+
+    + Pizza(Builder<?> builder)
+    + Set<Topping> getToppings()
+}
+
+Pizza "0..*" o-- "0..*" Topping : has
+
+abstract class Builder<T extends Builder<T>> {
+    - Set<Topping> toppings
+
+    + T addTopping(Topping topping)
+    + {abstract} Pizza build()
+    + {abstract} T self()
+}
+
+class Builder
+note top: Declares a generic type with a recursive type parameter,\nwhich along with the abstract <i>self<i> method, allows method\nchaining to work properly in subclasses,\nwithout the need for casts
+
+class Builder
+note bottom: This uses the <i>simulated self-type idiom</i> as a\nworkaround for the fact that Java lacks a self type
+
+Pizza ..|> Builder : uses it to get toppings
+
+class Calzone extends Pizza {
+    - boolean sauceInside
+
+    + Calzone(CalzoneBuilder builder)
+    + boolean isSauceInside()
+}
+
+class CalzoneBuilder extends Builder {
+    - boolean sauceInside
+
+    + CalzoneBuilder sauceInside()
+    + Calzone build()
+    + CalzoneBuilder self()
+}
+
+Calzone ..|> CalzoneBuilder : uses it to get toppings\nand <i>sauceInside</i>
+
+enum Size {
+    + SMALL,
+    + MEDIUM,
+    + LARGE
+}
+
+class NyPizza extends Pizza {
+    - Size size
+
+    + NyPizza(NyBuilder builder)
+    + Size getSize()
+}
+
+class NyBuilder extends Builder {
+    - Size size
+
+    + NyBuilder (Size size)
+    + NyPizza build()
+    + NyBuilder self()
+}
+
+NyPizza ..|> NyBuilder : uses it to get toppings\nand <i>size</i>
+NyPizza "0..*" o-- "1" Size : has
+
+hide empty members
+@enduml
