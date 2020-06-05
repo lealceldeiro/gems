@@ -1,8 +1,8 @@
 @startuml
 package widgetfactory {
     interface WidgetFactory {
-        + ButtonWidget createButtonWidget()
-        + ScrollBarWidget createScrollBarWidget()
+        + {abstract} ButtonWidget createButtonWidget()
+        + {abstract} ScrollBarWidget createScrollBarWidget()
     }
     class LinuxWidgetFactory {
         + ButtonWidget createButtonWidget()
@@ -20,8 +20,8 @@ package widgetfactory {
 package widget {
     package scrollbar {
         interface ScrollBarWidget {
-            + void scroll(int toPosition)
-            + int currentPosition()
+            + {abstract} void scroll(int toPosition)
+            + {abstract} int currentPosition()
         }
         class LinuxScrollBar {
             - int currentPosition
@@ -41,8 +41,8 @@ package widget {
     }
     package button {
         interface ButtonWidget {
-            + void setDisplayText(String text)
-            + String getDisplayText()
+            + {abstract} void setDisplayText(String text)
+            + {abstract} String getDisplayText()
         }
         class LinuxButton {
             - int displayText
@@ -68,9 +68,9 @@ ScrollBarWidget <|-- WindowsScrollBar : implements
 ButtonWidget <|-- WindowsButton : implements
 
 class FactoryManager {
-    - WidgetFactory WIDGET_FACTORY_INSTANCE
+    - {static} WidgetFactory WIDGET_FACTORY_INSTANCE
 
-    + WidgetFactory widgetFactory()
+    + {static} WidgetFactory widgetFactory()
 }
 class FactoryManager
 note right: Utility class used to create a <i>Singleton</i> <i>WidgetFactory</i>. \n Based on some criteria it determines which instance \n of the specific implementation of <i>WidgetFactory</i> will \n be created.
