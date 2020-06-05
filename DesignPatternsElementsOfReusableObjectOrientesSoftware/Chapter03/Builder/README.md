@@ -32,7 +32,7 @@ Separate the construction of a complex object from its representation so that th
 * `Builder` handles requests from the director and adds parts to the product
 * The client retrieves the product from the builder
 
-![Image of the structure for the Builder Patter](./image/builder_sequence.png "Structure for the Builder Patter")
+![Image of a sequence using the Builder Patter](./image/builder_sequence.png "Sequence of a usage of the Builder Patter")
 
 ## Consequences
 
