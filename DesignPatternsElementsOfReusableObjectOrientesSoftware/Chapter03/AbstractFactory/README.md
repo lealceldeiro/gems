@@ -47,6 +47,8 @@ A concrete factory is often a singleton (*Singleton* pattern).
 
 ## Example in Java
 
+![Class Diagram](./image/code_class_design.png "Class Diagram")
+
 ```
 package widget.scrollbar;
 
