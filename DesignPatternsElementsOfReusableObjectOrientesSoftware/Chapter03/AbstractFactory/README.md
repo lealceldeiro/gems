@@ -212,7 +212,7 @@ public final class FactoryManager {
 
     public static WidgetFactory widgetFactory() {
         if (WIDGET_FACTORY_INSTANCE == null) {
-            throw new IllegalStateException("This program doesn't on this Operating System");
+            throw new IllegalStateException("This program doesn't run on this Operating System");
         }
         return WIDGET_FACTORY_INSTANCE;
     }
