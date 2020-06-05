@@ -1,0 +1,96 @@
+@startuml
+package widgetfactory {
+    interface WidgetFactory {
+        + ButtonWidget createButtonWidget()
+        + ScrollBarWidget createScrollBarWidget()
+    }
+    class LinuxWidgetFactory {
+        + ButtonWidget createButtonWidget()
+        + ScrollBarWidget createScrollBarWidget()
+    }
+    class WindowsWidgetFactory {
+        + ButtonWidget createButtonWidget()
+        + ScrollBarWidget createScrollBarWidget()
+    }
+
+    WidgetFactory <|-- LinuxWidgetFactory : implements
+    WidgetFactory <|-- WindowsWidgetFactory : implements
+}
+
+package widget {
+    package scrollbar {
+        interface ScrollBarWidget {
+            + void scroll(int toPosition)
+            + int currentPosition()
+        }
+        class LinuxScrollBar {
+            - int currentPosition
+            - double blurLevel
+
+            + void scroll(int toPosition)
+            + int currentPosition()
+            - void updateBlurLevel()
+        }
+        class WindowsScrollBar {
+            - int currentPosition
+
+            + void scroll(int toPosition)
+            + int currentPosition()
+            - void transformRegistry()
+        }
+    }
+    package button {
+        interface ButtonWidget {
+            + void setDisplayText(String text)
+            + String getDisplayText()
+        }
+        class LinuxButton {
+            - int displayText
+
+            + void setDisplayText(String text)
+            + String getDisplayText()
+        }
+
+        class WindowsButton {
+            - int displayText
+
+            + void setDisplayText(String text)
+            + String getDisplayText()
+            - updateWindowsRegistryStringPool
+        }
+    }
+}
+
+ScrollBarWidget <|-- LinuxScrollBar : implements
+ButtonWidget <|-- LinuxButton : implements
+
+ScrollBarWidget <|-- WindowsScrollBar : implements
+ButtonWidget <|-- WindowsButton : implements
+
+class FactoryManager {
+    - WidgetFactory WIDGET_FACTORY_INSTANCE
+
+    + WidgetFactory widgetFactory()
+}
+class FactoryManager
+note right: Utility class used to create a <i>Singleton</i> <i>WidgetFactory</i>. \n Based on some criteria it determines which instance \n of the specific implementation of <i>WidgetFactory</i> will \n be created.
+
+WindowsWidgetFactory ..|> WindowsButton : uses
+WindowsWidgetFactory ..|> WindowsScrollBar : uses
+
+LinuxWidgetFactory ..|> LinuxButton : uses
+LinuxWidgetFactory ..|> LinuxScrollBar : uses
+
+FactoryManager o-- "1..0" WidgetFactory
+FactoryManager ..|> LinuxWidgetFactory : uses
+FactoryManager ..|> WindowsWidgetFactory : uses
+
+class Client
+
+Client ..|> FactoryManager : uses
+Client ..|> ButtonWidget : uses
+Client ..|> ScrollBarWidget : uses
+Client ..|> WidgetFactory : uses
+
+hide empty members
+@enduml
