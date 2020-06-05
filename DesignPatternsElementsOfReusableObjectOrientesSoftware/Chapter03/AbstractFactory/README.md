@@ -17,7 +17,7 @@ Kit
 
 ## Structure
 
-![Image of the structure for the Abstract Factory Patter](../image/abstract_factory.png "Structure for the Abstract Factory Patter")
+![Image of the structure for the Abstract Factory Patter](./image/abstract_factory.png "Structure for the Abstract Factory Patter")
 
 ## Participants
 
