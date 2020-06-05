@@ -45,26 +45,15 @@ Kit
 
 A concrete factory is often a singleton (*Singleton* pattern).
 
-## Example
+## Example in Java
 
 ```
-package widget;
+package widget.scrollbar;
 
 public interface ScrollBarWidget {
     void scroll(int toPosition);
     int currentPosition();
 }
-
-public interface ButtonWidget {
-    void setDisplayText(String text);
-    String getDisplayText();
-}
-```
-
-```
-package widget.linux;
-
-import widget.ScrollBarWidget;
 
 public class LinuxScrollBar implements ScrollBarWidget {
     private int currentPosition;
@@ -88,32 +77,6 @@ public class LinuxScrollBar implements ScrollBarWidget {
         this.blurLevel = currentPosition / 100D;
     }
 }
-```
-
-```
-package widget.linux;
-
-import widget.ButtonWidget;
-
-public class LinuxButton implements ButtonWidget {
-    String displayText;
-
-    @Override
-    public void setDisplayText(String text) {
-        displayText = text;
-    }
-
-    @Override
-    public String getDisplayText() {
-        return displayText;
-    }
-}
-```
-
-```
-package widget.windows;
-
-import widget.ScrollBarWidget;
 
 public class WindowsScrollBar implements ScrollBarWidget {
     private int currentPosition;
@@ -137,9 +100,26 @@ public class WindowsScrollBar implements ScrollBarWidget {
 ```
 
 ```
-package widget.windows;
+package widget.button;
 
-import widget.ButtonWidget;
+public interface ButtonWidget {
+    void setDisplayText(String text);
+    String getDisplayText();
+}
+
+public class LinuxButton implements ButtonWidget {
+    String displayText;
+
+    @Override
+    public void setDisplayText(String text) {
+        displayText = text;
+    }
+
+    @Override
+    public String getDisplayText() {
+        return displayText;
+    }
+}
 
 public class WindowsButton implements ButtonWidget {
     String displayText;
@@ -164,6 +144,9 @@ public class WindowsButton implements ButtonWidget {
 ```
 package widgetfactory;
 
+import widget.button.ButtonWidget;
+import widget.scrollbar.ScrollBarWidget;
+
 public interface WidgetFactory {
     ButtonWidget createButtonWidget();
     ScrollBarWidget createScrollBarWidget();
@@ -173,10 +156,10 @@ public interface WidgetFactory {
 ```
 package widgetfactory;
 
-import widget.ButtonWidget;
-import widget.ScrollBarWidget;
-import widget.windows.WindowsButton;
-import widget.windows.WindowsScrollBar;
+import widget.button.ButtonWidget;
+import widget.button.WindowsButton;
+import widget.scrollbar.ScrollBarWidget;
+import widget.scrollbar.WindowsScrollBar;
 
 public class WindowsWidgetFactory implements WidgetFactory {
     @Override
@@ -192,12 +175,12 @@ public class WindowsWidgetFactory implements WidgetFactory {
 ```
 
 ```
-package org.javaexamples.abstractfactorypattern.widgetfactory;
+package widgetfactory;
 
-import widget.ButtonWidget;
-import widget.ScrollBarWidget;
-import widget.linux.LinuxButton;
-import widget.linux.LinuxScrollBar;
+import widget.button.ButtonWidget;
+import widget.button.LinuxButton;
+import widget.scrollbar.LinuxScrollBar;
+import widget.scrollbar.ScrollBarWidget;
 
 public class LinuxWidgetFactory implements WidgetFactory {
     @Override
