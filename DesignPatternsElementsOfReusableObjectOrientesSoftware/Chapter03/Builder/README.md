@@ -152,13 +152,13 @@ class NyPizza extends Pizza {
 // ---
 
 class PizzaClient {
-    NyPizza pizza = new NyPizza.NyBuilder(NyPizza.Size.SMALL)
-                               .addTopping(Pizza.Topping.SAUSAGE)
-                               .addTopping(Pizza.Topping.ONION)
+    Pizza pizza = new NyPizza.NyBuilder(NyPizza.Size.SMALL)
+                             .addTopping(Pizza.Topping.SAUSAGE)
+                             .addTopping(Pizza.Topping.ONION)
+                             .build();
+    Pizza calzone = new Calzone.CalzoneBuilder()
+                               .addTopping(Pizza.Topping.HAM)
+                               .sauceInside()
                                .build();
-    Calzone calzone = new Calzone.CalzoneBuilder()
-                                 .addTopping(Pizza.Topping.HAM)
-                                 .sauceInside()
-                                 .build();
 }
 ```
