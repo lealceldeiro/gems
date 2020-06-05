@@ -46,3 +46,201 @@ Kit
 A concrete factory is often a singleton (*Singleton* pattern).
 
 ## Example
+
+```
+package widget;
+
+public interface ScrollBarWidget {
+    void scroll(int toPosition);
+    int currentPosition();
+}
+
+public interface ButtonWidget {
+    void setDisplayText(String text);
+    String getDisplayText();
+}
+```
+
+```
+package widget.linux;
+
+import widget.ScrollBarWidget;
+
+public class LinuxScrollBar implements ScrollBarWidget {
+    private int currentPosition;
+    private double blurLevel;
+
+    @Override
+    public void scroll(int toPosition) {
+        this.currentPosition = toPosition;
+        this.updateBlurLevel();
+    }
+
+    @Override
+    public int currentPosition() {
+        if (blurLevel == 1) {
+            throw new IllegalStateException("An inconsistent state has been reached");
+        }
+        return currentPosition;
+    }
+
+    private void updateBlurLevel(){
+        this.blurLevel = currentPosition / 100D;
+    }
+}
+```
+
+```
+package widget.linux;
+
+import widget.ButtonWidget;
+
+public class LinuxButton implements ButtonWidget {
+    String displayText;
+
+    @Override
+    public void setDisplayText(String text) {
+        displayText = text;
+    }
+
+    @Override
+    public String getDisplayText() {
+        return displayText;
+    }
+}
+```
+
+```
+package widget.windows;
+
+import widget.ScrollBarWidget;
+
+public class WindowsScrollBar implements ScrollBarWidget {
+    private int currentPosition;
+
+    @Override
+    public void scroll(int toPosition) {
+        this.currentPosition = toPosition;
+
+        this.transformRegistry();
+    }
+
+    @Override
+    public int currentPosition() {
+        return currentPosition;
+    }
+
+    private void transformRegistry(){
+        // windows OS specific operation
+    }
+}
+```
+
+```
+package widget.windows;
+
+import widget.ButtonWidget;
+
+public class WindowsButton implements ButtonWidget {
+    String displayText;
+
+    @Override
+    public void setDisplayText(String text) {
+        displayText = text;
+        updateWindowsRegistryStringPool();
+    }
+
+    @Override
+    public String getDisplayText() {
+        return displayText;
+    }
+
+    private void updateWindowsRegistryStringPool() {
+        // windows OS specific operation
+    }
+}
+```
+
+```
+package widgetfactory;
+
+public interface WidgetFactory {
+    ButtonWidget createButtonWidget();
+    ScrollBarWidget createScrollBarWidget();
+}
+```
+
+```
+package widgetfactory;
+
+import widget.ButtonWidget;
+import widget.ScrollBarWidget;
+import widget.windows.WindowsButton;
+import widget.windows.WindowsScrollBar;
+
+public class WindowsWidgetFactory implements WidgetFactory {
+    @Override
+    public ButtonWidget createButtonWidget() {
+        return new WindowsButton();
+    }
+
+    @Override
+    public ScrollBarWidget createScrollBarWidget() {
+        return new WindowsScrollBar();
+    }
+}
+```
+
+```
+package org.javaexamples.abstractfactorypattern.widgetfactory;
+
+import widget.ButtonWidget;
+import widget.ScrollBarWidget;
+import widget.linux.LinuxButton;
+import widget.linux.LinuxScrollBar;
+
+public class LinuxWidgetFactory implements WidgetFactory {
+    @Override
+    public ButtonWidget createButtonWidget() {
+        return new LinuxButton();
+    }
+
+    @Override
+    public ScrollBarWidget createScrollBarWidget() {
+        return new LinuxScrollBar();
+    }
+}
+```
+
+```
+import widgetfactory.LinuxWidgetFactory;
+import widgetfactory.WidgetFactory;
+import widgetfactory.WindowsWidgetFactory;
+
+public final class FactoryManager {
+    private static final WidgetFactory WIDGET_FACTORY_INSTANCE = switch (System.getProperty("os.name")) {
+        case "Linux" -> new LinuxWidgetFactory();
+        case "Windows" -> new WindowsWidgetFactory();
+        default -> null;
+    };
+    private FactoryManager() {}
+
+    public static WidgetFactory widgetFactory() {
+        if (WIDGET_FACTORY_INSTANCE == null) {
+            throw new IllegalStateException("This program doesn't on this Operating System");
+        }
+        return WIDGET_FACTORY_INSTANCE;
+    }
+}
+```
+
+```
+public final class Client {
+    public static void main(String[] args) {
+        final WidgetFactory widgetFactory = FactoryManager.widgetFactory();
+
+        ButtonWidget button = widgetFactory.createButtonWidget();
+        ScrollBarWidget scrollBar = widgetFactory.createScrollBarWidget();
+    }
+}
+```
