@@ -25,7 +25,7 @@ abstract class Builder<T extends Builder<T>> {
 }
 
 class Builder
-note top: Declares a generic type with a recursive type parameter,\nwhich along with the abstract <i>self<i> method, allows method\nchaining to work properly in subclasses,\nwithout the need for casts
+note top: Declares a generic type with a recursive type parameter,\nwhich along with the abstract <i>self</i> method, allows method\nchaining to work properly in subclasses,\nwithout the need for casts
 
 class Builder
 note bottom: This uses the <i>simulated self-type idiom</i> as a\nworkaround for the fact that Java lacks a self type
@@ -72,6 +72,11 @@ class NyBuilder extends Builder {
 
 NyPizza ..|> NyBuilder : uses it to get toppings\nand <i>size</i>
 NyPizza "0..*" o-- "1" Size : has
+
+class PizzaClient
+
+PizzaClient o-- Pizza
+PizzaClient o-- Builder
 
 hide empty members
 @enduml
