@@ -37,7 +37,7 @@ class Plane extends Vehicle {
 Plane ..|> SpacePoint : uses
 
 class Ship extends Vehicle {
-    - long coreArmor;
+    - long coreArmor
 
     + void move(SpacePoint spacePoint)
     - boolean sunk()
