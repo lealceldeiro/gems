@@ -1,0 +1,66 @@
+@startuml
+class SpacePoint {
+    - double latitude
+    - double longitude
+    - double altitude
+
+    + SpacePoint(double latitude, double longitude)
+    + SpacePoint(double latitude, double longitude, double altitude)
+    + double getLatitude()
+    + double getLongitude()
+    + double getAltitude()
+}
+
+abstract class Vehicle {
+    - double xPosition
+    - double yPosition
+
+    + {abstract} void move(SpacePoint spacePoint)
+}
+Vehicle ..|> SpacePoint : uses
+
+class Jeep extends Vehicle {
+    - long tiresArmor
+
+    + void move(SpacePoint spacePoint)
+    - boolean busted()
+}
+Jeep ..|> SpacePoint : uses
+
+class Plane extends Vehicle {
+    - long bodyArmor
+    - double altitude
+
+    + void move(SpacePoint spacePoint)
+    - boolean crashed()
+}
+Plane ..|> SpacePoint : uses
+
+class Ship extends Vehicle {
+    - long coreArmor;
+
+    + void move(SpacePoint spacePoint)
+    - boolean sunk()
+}
+Ship ..|> SpacePoint : uses
+
+class VehicleCreator {
+    + Vehicle createVehicle()
+}
+VehicleCreator --o Jeep : creates
+note right of VehicleCreator : The factory method <i>createVehicle</i> creates\nby default <i>Jeep</i> objects
+
+class PlaneCreator extends VehicleCreator {
+    + Vehicle createVehicle()
+}
+PlaneCreator --o Plane : creates
+note top of PlaneCreator : The factory method <i>createVehicle</i>\ncreates <i>Plane</i> objects
+
+class ShipCreator extends VehicleCreator {
+    + Vehicle createVehicle()
+}
+ShipCreator --o Ship : creates
+note top of ShipCreator : The factory method <i>createVehicle</i>\ncreates <i>Ship</i> objects
+
+hide empty members
+@enduml
