@@ -188,7 +188,8 @@ Source code at https://github.com/jbloch/effective-java-3e-source-code
 * You can’t put any element (other than `null`) into a `Collection<?>`.
 * You must use raw types in class literals.
 * This is the preferred way to use the `instanceof` operator with generic types:
-```
+
+```java
   if (o instanceof Set) {
   // Raw type
   Set<?> s = (Set<?>) o;
@@ -196,6 +197,7 @@ Source code at https://github.com/jbloch/effective-java-3e-source-code
   ...
 }
 ```
+
 ### Item 27: Eliminate unchecked warnings
 
 * Eliminate every unchecked warning that you can.
@@ -210,7 +212,8 @@ Source code at https://github.com/jbloch/effective-java-3e-source-code
 ### Item 30: Favor generic methods
 
 * The type parameter list, which declares the type parameters, goes between a method’s modifiers and its return type.
-```
+
+```java
   // Generic method
   public static <E> Set<E> union(Set<E> s1, Set<E> s2) {
     Set<E> result = new HashSet<>(s1);
@@ -227,7 +230,7 @@ Source code at https://github.com/jbloch/effective-java-3e-source-code
 * If the user of a class has to think about wildcard types, there is probably something wrong with its API.
 * If a type parameter appears only once in a method declaration, replace it with a wildcard. i.e, from the following two declarations, the second, is the preferrend one:
 
-```
+```java
 public static <E> void swap(List<E> list, int i, int j) {  // (1) not preferred, it's more complex for the API clients
   list.set(i, list.set(j, list.get(i)));
 }
@@ -622,7 +625,7 @@ invariants.
 * If you use lazy initialization to break an initialization circularity, use a synchronized accessor.
 * If you need to use lazy initialization for performance on a static field, use the *lazy initialization holder class* idiom.
 
-```
+```java
 private static class FieldHolder {
     static final FieldType field = computeFieldValue();
 }
@@ -634,7 +637,7 @@ private static FieldType getField() {
 
 * If you need to use lazy initialization for performance on an instance field, use the *double-check* idiom.
 
-```
+```java
 private volatile FieldType field;
 
 private FieldType getField() {
