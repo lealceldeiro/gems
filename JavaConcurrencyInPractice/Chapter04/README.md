@@ -44,7 +44,7 @@ Encapsulating data within an object confines access to the data to the object’
 
 The following code snippet shows how confinement and locking can work together to make a class thread-safe even when its component state variables are not.
 
-```
+```java
 // NOTE: if Person is mutable, additional synchronization will be needed when accessing a Person retrieved from a PersonSet
 @ThreadSafe
 public class PersonSet {
@@ -101,7 +101,7 @@ A third strategy is to extend the functionality of the class without extending t
 
 Client-side locking entails guarding client code that uses some object X with the lock X uses to guard its own state. In order to use client-side locking, you must know what lock X uses. Example (_ put-if-absent with client-side locking_):
 
-```
+```java
 @ThreadSafe
 public class ListHelper<E> {
   public List<E> list = Collections.synchronizedList(new ArrayList<E>());
@@ -117,13 +117,14 @@ public class ListHelper<E> {
   }
 }
 ```
+
 If extending a class to add another atomic operation is fragile because it distributes the locking code for a class over multiple classes in an object hierarchy, client-side locking is even more fragile because it entails putting locking code for class `C` into classes that are totally unrelated to `C`.
 
 ### 4.4.2 Composition
 
 There is a less fragile alternative for adding an atomic operation to an existing class: _composition_. Example:
 
-```
+```java
 @ThreadSafe
 public class ImprovedList<T> implements List<T> {
   private final List<T> list;
