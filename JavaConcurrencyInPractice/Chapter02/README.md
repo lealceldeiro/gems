@@ -32,7 +32,7 @@ Stateless objects are always thread-safe.
 
 The possibility of incorrect results in the presence of unlucky timing is so important in concurrent programming that it has a name: a _race condition_.
 
-<details><summary>_race condition_ or _data race_? </summary>The term _race condition_ is often confused with the related term _data race_, which arises when synchronization is not used to coordinate all access to a shared nonfinal field. You risk a data race whenever a thread writes a variable that might next be read by another thread or reads a variable that might have last been written by another thread if both threads do not use synchronization; code with data races has no useful defined semantics under the Java Memory Model. Not all race conditions are data races, and not all data races are race conditions, but they both can cause concurrent programs to fail in unpredictable ways.</details>
+<details><summary>race condition or data race? </summary>The term _race condition_ is often confused with the related term _data race_, which arises when synchronization is not used to coordinate all access to a shared nonfinal field. You risk a data race whenever a thread writes a variable that might next be read by another thread or reads a variable that might have last been written by another thread if both threads do not use synchronization; code with data races has no useful defined semantics under the Java Memory Model. Not all race conditions are data races, and not all data races are race conditions, but they both can cause concurrent programs to fail in unpredictable ways.</details>
 
 ### 2.2.1 Race conditions
 
@@ -46,7 +46,7 @@ A common idiom that uses check-then-act is _lazy initialization_.
 
 The following snippet has race conditions (**don't do this!**) that can undermine its correctness. Say that threads **A** and **B** execute `getInstance` at the same time. **A** sees that instance is `null` , and instantiates a new `ExpensiveObject`. **B** also checks if instance is `null` . Whether instance is `null` at this point depends unpredictably on timing, including the vagaries of scheduling and how long **A** takes to instantiate the `ExpensiveObject` and set the instance field. If instance is `null` when **B** examines it, the two callers to `getInstance` may receive two different results, even though `getInstance` is always supposed to return the same instance.
 
-```
+```java
 @NotThreadSafe
 public class LazyInitRace {
   private ExpensiveObject instance = null;
@@ -60,6 +60,7 @@ public class LazyInitRace {
   }
 }
 ```
+
 ### 2.2.3 Compound actions
 
 Operations A and B are _atomic_ with respect to each other if, from the perspective of a thread executing A, when another thread executes B, either all of B has executed or none of it has. An _atomic_ operation is one that is atomic with respect to all operations, including itself, that operate on the same state.
