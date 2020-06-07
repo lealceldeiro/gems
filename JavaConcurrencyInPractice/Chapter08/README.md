@@ -101,7 +101,8 @@ new task.
 The _caller-runs_ policy implements a form of throttling that neither discards tasks nor throws an exception, but instead tries to slow down the flow of new tasks by pushing some of the work back to the caller.
 
 Example of creating a fixed-size thread pool with the caller-runs saturation policy:
-```
+
+```java
 ThreadPoolExecutor executor = new ThreadPoolExecutor(
   N_THREADS,
   N_THREADS,
