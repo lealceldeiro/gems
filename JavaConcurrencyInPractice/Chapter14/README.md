@@ -38,7 +38,7 @@ When a thread wakes up from `wait` the condition predicate  must tested again, a
 
 This is the canonical form for state-dependent condition wait methods.
 
-```
+```java
 void stateDependentMethod() throws InterruptedException {
   // condition predicate must be guarded by lock
   synchronized(lock) {
@@ -100,7 +100,8 @@ Hazard warning: The equivalents of `wait`, `notify`, and `notifyAll` for `Condit
 Choose between using explicit `Condition`s and intrinsic condition queues in the same way as you would choose between `ReentrantLock` and `synchronized`: use `Condition` if you need its advanced features such as fair queueing or multiple wait sets per lock, and otherwise prefer intrinsic condition queues.
 
 Example of bounded buffer using explicit condition variables:
-```
+
+```java
 @ThreadSafe
 public class ConditionBoundedBuffer<T> {
   protected final Lock lock = new ReentrantLock();
@@ -172,7 +173,7 @@ The basic operations that an AQS-based synchronizer performs are some variants o
 
 The `while` loop terminates either when there are not enough permits or when `tryAcquireShared` can atomically update the permit count to reflect acquisition.
 
-```
+```java
 protected int tryAcquireShared(int acquires) {
   while (true) {
     int available = getState();
