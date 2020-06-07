@@ -28,7 +28,8 @@ The result of `Thread.getState` should not be used for concurrency control, and 
 The challenge to constructing effective safety tests for concurrent classes is identifying easily checked properties that will, with high probability, fail if something goes wrong, while at the same time not letting the failure-auditing code limit concurrency artificially. It is best if checking the test property does not require any synchronization.
 
 For testing purposes, rather than using a general-purpose random generators, it is better to use simple pseu-dorandom functions. High-quality randomness is not needed. The `xor-Shift` function is among the cheapest medium-quality random number functions:
-```
+
+```java
 static int xorShift(int y) {
   y ^= (y << 6);
   y ^= (y >>> 21);
