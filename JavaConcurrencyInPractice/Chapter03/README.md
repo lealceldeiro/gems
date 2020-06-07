@@ -46,7 +46,8 @@ been published.
 From the perspective of a class `C`, an alien method is one whose behavior is not fully specified by `C`. This includes methods in other classes as well as overrideable methods (neither `private` nor `final`) in `C` itself. Passing an object to an alien method must also be considered publishing that object. Since you can’t know what code will actually be invoked, you don’t know that the alien method won’t publish the object or retain a reference to it that might later be used from another thread.
 
 An object or its internal state is also published when an inner class instance is pusblished, because the inner class instances contain a hidden reference to the enclosing instance. i.e.:
-```
+
+```java
 public class ThisEscape {
   public ThisEscape(EventSource source) {
     source.registerListener(
@@ -63,7 +64,8 @@ public class ThisEscape {
 ### 3.2.1 Safe construction practices
 
 Do not allow the `this` reference to escape during construction. i.e.:
-```
+
+```java
 public class SafeListener {
   private final EventListener listener;
   
