@@ -34,7 +34,7 @@ Cancellation could implemented directly using thread interruption, but it is muc
 
 `FutureTask` has a `done` hook that similarly facilitates completion notification. i.e.:
 
-```
+```java
 /**
  * Background task class supporting cancellation, completion notification, and progress notification.
  */
