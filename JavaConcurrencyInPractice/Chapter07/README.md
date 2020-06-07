@@ -34,7 +34,8 @@ When you call an interruptible blocking method such as `Thread.sleep` or `Blocki
 Only code that implements a thread’s interruption policy may swallow an interruption request. General-purpose task and library code should never swallow interruption requests.
 
 Activities that do not support cancellation but still call interruptible blocking methods will have to call them in a loop, retrying when interruption is detected. In this case, they should save the interruption status locally and restore it just before returning rather than immediately upon catching `InterruptedException`. Setting the interrupted status too early could result in an infinite loop, because most interruptible blocking methods check the interrupted status on entry and throw InterruptedException immediately if it is set. i.e.:
-```
+
+```java
 public Task getNextTask(BlockingQueue<Task> queue) {
   boolean interrupted = false;
   try {
