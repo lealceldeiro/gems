@@ -114,7 +114,7 @@ If a barrier is considered _broken_ (a call to `await` times out or a thread blo
 
 ## 5.6 Building an efficient, scalable result cache
 
-```
+```java
 public interface Computable<A, V> {
   V compute(A arg) throws InterruptedException;
 }
