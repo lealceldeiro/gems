@@ -49,7 +49,7 @@ A concrete factory is often a singleton (*Singleton* pattern).
 
 ![Class Diagram](./image/code_class_design.png "Class Diagram")
 
-```
+```java
 package widget.scrollbar;
 
 public interface ScrollBarWidget {
@@ -101,7 +101,7 @@ public class WindowsScrollBar implements ScrollBarWidget {
 }
 ```
 
-```
+```java
 package widget.button;
 
 public interface ButtonWidget {
@@ -143,7 +143,7 @@ public class WindowsButton implements ButtonWidget {
 }
 ```
 
-```
+```java
 package widgetfactory;
 
 import widget.button.ButtonWidget;
@@ -155,7 +155,7 @@ public interface WidgetFactory {
 }
 ```
 
-```
+```java
 package widgetfactory;
 
 import widget.button.ButtonWidget;
@@ -176,7 +176,7 @@ public class WindowsWidgetFactory implements WidgetFactory {
 }
 ```
 
-```
+```java
 package widgetfactory;
 
 import widget.button.ButtonWidget;
@@ -197,7 +197,7 @@ public class LinuxWidgetFactory implements WidgetFactory {
 }
 ```
 
-```
+```java
 import widgetfactory.LinuxWidgetFactory;
 import widgetfactory.WidgetFactory;
 import widgetfactory.WindowsWidgetFactory;
@@ -219,7 +219,7 @@ public final class FactoryManager {
 }
 ```
 
-```
+```java
 public final class Client {
     public static void main(String[] args) {
         final WidgetFactory widgetFactory = FactoryManager.widgetFactory();
