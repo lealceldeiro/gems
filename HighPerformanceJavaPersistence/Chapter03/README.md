@@ -141,7 +141,7 @@ Hibernate picks this provider when being given JPA 2.0 connection properties or 
 
 HikariCP is one of the fastest Java connection pool, and, although not natively supported by Hibernate, it also comes with its own `ConnectionProvider` implementation. By specifying the `hibernate.connection.provider_class` property, the application developer can override the default connection provider mechanism:
 
-```
+```xml
 <property name="hibernate.connection.provider_class"
           value="com.zaxxer.hikari.hibernate.HikariConnectionProvider"
 />
@@ -169,7 +169,7 @@ The statistics mechanism is disabled by default. To enable the statistics gather
 
 Once statistics are being collected, in order to print them into the current application log, the following logger configuration must be set up:
 
-```
+```xml
 <logger name="org.hibernate.engine.internal.StatisticalLoggingSessionEventListener" level="info" />
 ```
 
@@ -255,7 +255,7 @@ Even if the child-side is in charge of synchronizing the entity state changes wi
 
 To synchronize both ends, it’s practical to provide parent-side helper methods that add/remove child entities.
 
-```
+```java
 @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
 private List<PostComment> comments = new ArrayList<>();
 // ...
@@ -272,7 +272,7 @@ public void removeComment(PostComment comment) {
 
 One of the major advantages of using a bidirectional association is that entity state transitions can be cascaded from the parent entity to its children. In the following example, when persisting the parent Post entity, all the PostComment child entities are persisted as well.
 
-```
+```java
 Post post = new Post("First post");
 entityManager.persist(post);
 
@@ -291,7 +291,7 @@ INSERT INTO post_comment (post_id, review, id) VALUES (1, 'My second review', 3)
 
 When removing a comment from the parent-side collection, the orphan removal attribute will instruct Hibernate to generate a delete DML statement on the targeted child entity:
 
-```
+```java
 post.removeComment(comment1);
 
 DELETE FROM post_comment WHERE id = 2
@@ -327,7 +327,7 @@ Although it’s not an entity association type, the `@ElementCollection` is very
 
 When it comes to adding or removing child records, the `@ElementCollection` behaves like a unidirectional `@OneToMany` relationship, annotated with `CascadeType.ALL` and `orphanRemoval`. For instance:
 
-```
+```java
 @ElementCollection
 private List<String> comments = new ArrayList<>();
 // ...
@@ -342,7 +342,7 @@ INSERT INTO Post_comments (Post_id, comments) VALUES (1, 'My third review')
 
 Unfortunately, the remove operation uses the same logic as the unidirectional @OneToMany association, so when removing the first collection element:
 
-```
+```java
 post.getComments().remove(0);
 
 DELETE FROM Post_comments WHERE Post_id = 1
@@ -356,7 +356,7 @@ INSERT INTO Post_comments (Post_id, comments) VALUES (1, 'My third review')
 
 With the `@JoinColumn`, the `@OneToMany` association controls the child table foreign key so there is no need for a junction table. Example:
 
-```
+```java
 @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 @JoinColumn(name = "post_id")
 private List<PostComment> comments = new ArrayList<>();
@@ -366,7 +366,9 @@ private List<PostComment> comments = new ArrayList<>();
 post.getComments().add(new PostComment("My first review"));
 post.getComments().add(new PostComment("My second review"));
 post.getComments().add(new PostComment("My third review"));
+```
 
+```sql
 INSERT INTO post_comment (review, id) VALUES ('My first review', 2)
 INSERT INTO post_comment (review, id) VALUES ('My second review', 3)
 INSERT INTO post_comment (review, id) VALUES ('My third review', 4)
@@ -389,7 +391,7 @@ The JPA entity relationship diagram matches exactly the one-to-one table relatio
 
 The mapping is done through the `@OneToOne` annotation, which, just like the `@ManyToOne` mapping, might also take a `@JoinColumn` as well.
 
-```
+```java
 @OneToOne
 @JoinColumn(name = "post_id")
 private Post post;
@@ -397,7 +399,7 @@ private Post post;
 
 The unidirectional `@OneToOne` association controls the associated foreign key, so, when the post property is set:
 
-```
+```java
 Post post = entityManager.find(Post.class, 1L);
 PostDetails details = new PostDetails("John Doe");
 details.setPost(post);
@@ -406,13 +408,13 @@ entityManager.persist(details);
 
 Hibernate populate the foreign key column with the associated post identifier:
 
-```
+```sql
 INSERT INTO post_details (created_by, created_on, post_id, id) VALUES ('John Doe', '2016-01-08 11:28:21.317', 1, 2)
 ```
 
 If the `Post` entity always needs its `PostDetails`, it’s important to know the `PostDetails` identifier prior to loading the entity. For this, there’s an approach which is portable across JPA providers: derived identifiers, which make possible to link the `PostDetails` identifier to the post table primary key. This way, the `post_details` table primary key can also be a foreign key referencing the post table identifier:
 
-```
+```java
 @OneToOne
 @MapsId
 private Post post;
@@ -420,7 +422,7 @@ private Post post;
 
 Thus, because `PostDetails` has the same identifier as the parent `Post` entity, it can be fetched without having to write a JPQL query.
 
-```
+```java
 PostDetails details = entityManager.find(PostDetails.class, post.getId());
 ```
 
@@ -434,7 +436,7 @@ A bidirectional `@OneToOne` association allows the parent entity to map the chil
 
 The parent-side defines a `mappedBy` attribute because the child-side is in charge of this JPA relationship:
 
-```
+```java
 @OneToOne(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 private PostDetails details;
 ```
