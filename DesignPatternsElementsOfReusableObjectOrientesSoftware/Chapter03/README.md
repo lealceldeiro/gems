@@ -6,3 +6,4 @@ Creational design patterns abstract the instantiation process. They help make a 
 ## [Builder](./Builder)
 ## [Factory Method](./FactoryMethod)
 ## [Prototype](./Prototype)
+## [Singleton](./Singleton)
