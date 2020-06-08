@@ -1,0 +1,24 @@
+@startuml
+
+class ApplicationRegistry {
+    - Map<String, String> registryInformation
+
+    - ApplicationRegistry()
+    + {static} ApplicationRegistry getInstance()
+    + Map<String, String> getRegistryInformation()
+    + void addRegistryInformation(String key, String value)
+}
+
+note right of ApplicationRegistry : This uses the\n"Initialization-on-demand holder idiom"\n to load the instance class only on demand
+
+class ApplicationRegistryHolder {
+    - {static} ApplicationRegistry INSTANCE
+}
+
+ApplicationRegistry ..|> ApplicationRegistryHolder : uses
+
+class Client
+
+Client --o ApplicationRegistry : has
+
+@enduml
