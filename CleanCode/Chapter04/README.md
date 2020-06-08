@@ -16,14 +16,15 @@ There are certainly times when code makes a poor vehicle for explanation. Unfort
 
 The following comment can be completed replaced
 
-```
+```java
 // Check to see if the employee is eligible for full benefits
 if ((employee.flags & HOURLY_FLAG) &&
     (employee.age > 65))
 ```
+
 by a well named function like this:
 
-```
+```java
 if (employee.isEligibleForFullBenefits())
 ```
 
@@ -39,7 +40,7 @@ Copyright and authorship statements are necessary and reasonable things to put i
 
 It is sometimes useful to provide basic information with a comment. For example
 
-```
+```java
 // format matched kk:mm:ss EEE, MMM dd, yyyy
 Pattern timeMatcher = Pattern.compile("\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*");
 ```
@@ -48,7 +49,7 @@ Pattern timeMatcher = Pattern.compile("\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*");
 
 Sometimes a comment goes beyond just useful information about the implementation and provides the intent behind a decision. i.e.:
 
-```
+```java
 public int compareTo(Object o) {
   if(o instanceof WikiPagePath) {
     // ...
@@ -66,7 +67,7 @@ Sometimes it is just helpful to translate the meaning of some obscure argument o
 
 Sometimes it is useful to warn other programmers about certain consequences. For example, here is a comment that explains why a particular test case is turned off:
 
-```
+```java
 // Don't run unless you have some time to kill.
 public void _testWithReallyBigFile() {
   writeLinesToFile(10000000);
@@ -124,7 +125,7 @@ Long ago there was a good reason to create and maintain these log entries at the
 
 Sometimes you see comments that are nothing but noise. They restate the obvious and provide no new information. i.e.:
 
-```
+```java
 /**
 * Default constructor.
 */
@@ -142,7 +143,7 @@ Javadocs can also be noisy. If authors aren’t paying attention when comments a
 
 Consider the following stretch of code:
 
-```
+```java
 // does the module from the global list <mod> depend on the
 // subsystem we are part of?
 if (smodule.getDependSubsystems().contains(subSysMod.getSubSystem()))
@@ -150,7 +151,7 @@ if (smodule.getDependSubsystems().contains(subSysMod.getSubSystem()))
 
 This could be rephrased without the comment as:
 
-```
+```java
 List<String> moduleDependees = smodule.getDependSubsystems();
 String ourSubSystem = subSysMod.getSubSystem();
 if (moduleDependees.contains(ourSubSystem))
@@ -160,7 +161,7 @@ if (moduleDependees.contains(ourSubSystem))
 
 Sometimes programmers like to mark a particular position in a source file. i.e., banners like this:
 
-```
+```java
 // Actions //////////////////////////////////
 ```
 
