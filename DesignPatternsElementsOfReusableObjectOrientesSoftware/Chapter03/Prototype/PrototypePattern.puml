@@ -1,0 +1,44 @@
+@startuml
+
+interface Graphic {
+    + {abstract} void setPositionOnScreen(double positionOnScreen)
+    + {abstract} double getPositionOnScreen()
+
+    + {abstract} void setColor(String color)
+    + {abstract} String getColor()
+    + {abstract} Graphic copy()
+}
+
+
+class Bubble extends Graphic {
+    + {static} double DEFAULT_POSITION_ON_SCREEN
+    - double positionOnScreen
+    - String color
+
+    + Bubble()
+    + Bubble(double seed)
+    - double calculatePositionOnScreen(double seed)
+    + void setPositionOnScreen(double positionOnScreen)
+    + double getPositionOnScreen()
+    + void setColor(String color)
+    + String getColor()
+    + Graphic copy()
+}
+
+class GraphicPrototypeFactory {
+    - {static} Map<Class<? extends Graphic>, Map<Double, Graphic>> PROTOTYPES_BY_CLASS
+
+    + {static} Graphic createBubbleWidget(String color)
+    + {static} Graphic createBubbleWidget(String color, double position)
+}
+
+GraphicPrototypeFactory --o Graphic : creates
+GraphicPrototypeFactory ..|> Bubble : uses
+
+class Client
+
+Client ..|> Graphic : uses
+Client ..|> GraphicPrototypeFactory : uses
+
+hide empty members
+@enduml
