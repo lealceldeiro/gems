@@ -32,7 +32,7 @@ We want to be able to read the program as though it were a set of TO paragraphs,
 
 Example, for this function:
 
-```
+```java
 public static String renderPageWithSetupsAndTeardowns(PageData pageData, boolean isSuite) {
   if (isTestPage(pageData)) {
     includeSetupAndTeardownPages(pageData, isSuite);
@@ -88,7 +88,7 @@ Dyads aren’t evil, and you will certainly have to write them. However, you sho
 
 When a function seems to need more than two or three arguments, it is likely that some of those arguments ought to be wrapped into a class of their own. i.e., `double x, double y` conceptually form a `Point`:
 
-```
+```java
 Circle makeCircle(double x, double y, double radius);
 Circle makeCircle(Point center, double radius);
 ```
@@ -122,7 +122,8 @@ This leads to odd statements like `if (set("username", "unclebob"))`. From the p
 The author intended `set` to be a verb, but in the context of the if statement it _feels_ like an adjective. So the statement reads as "If the username attribute was previously set to unclebob" and not "set the username attribute to unclebob and if that worked then...".
 
 The solution is to separate the command from the query so that the ambiguity cannot occur.
-```
+
+```java
 if (attributeExists("username")) {
   setAttribute("username", "unclebob");
   // ...
