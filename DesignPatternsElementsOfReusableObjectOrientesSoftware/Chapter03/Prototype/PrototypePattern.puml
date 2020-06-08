@@ -3,12 +3,11 @@
 interface Graphic {
     + {abstract} void setPositionOnScreen(double positionOnScreen)
     + {abstract} double getPositionOnScreen()
-
     + {abstract} void setColor(String color)
     + {abstract} String getColor()
     + {abstract} Graphic copy()
 }
-
+note bottom of Graphic : <i>copy</i> will create a copy\nof the instance as\nrequired in each subclass
 
 class Bubble extends Graphic {
     + {static} double DEFAULT_POSITION_ON_SCREEN
