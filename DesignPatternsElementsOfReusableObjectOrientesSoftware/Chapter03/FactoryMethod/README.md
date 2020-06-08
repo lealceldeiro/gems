@@ -51,7 +51,7 @@ Connects parallel class hierarchies.
 
 ![Class Diagram](./image/code_class_design.png "Class Diagram")
 
-```
+```java
 abstract class Vehicle {
     double xPosition;
     double yPosition;
