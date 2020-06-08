@@ -96,7 +96,7 @@ JDBC 2.0 introduced batch updates, so that multiple DML statements can be groupe
 
 For executing static SQL statements, JDBC defines the `Statement` interface and batching multiple DML statements is as straightforward as the following code snippet:
 
-```
+```java
 statement.addBatch("INSERT INTO post (title, version, id) VALUES ('Post no. 1', 0, 1)");
 statement.addBatch("INSERT INTO post_comment (post_id, review, version, id) VALUES (1, 'Post comment 1.1', 0, 1)");
 int[] updateCounts = statement.executeBatch();
@@ -110,7 +110,7 @@ For dynamic statements, JDBC offers the `PreparedStatement` interface for bindin
 
 Here, the batch update can group multiple parameter values belonging to the same prepared statement. Example:
 
-```
+```java
 PreparedStatement postStatement = connection.prepareStatement("INSERT INTO Post (title, version, id) VALUES (?, ?, ?)");
 
 postStatement.setString(1, String.format("Post no. %1$d", 1));
@@ -144,7 +144,7 @@ It’s common practice to delegate the row identifier generation to the database
 
 To retrieve the newly created row identifier, the JDBC `PreparedStatement` must be instructed to return the auto-generated keys:
 
-```
+```java
 PreparedStatement postStatement = connection.prepareStatement(
     "INSERT INTO post (title, version) VALUES (?, ?)",
     Statement.RETURN_GENERATED_KEYS
@@ -153,7 +153,7 @@ PreparedStatement postStatement = connection.prepareStatement(
 
 One alternative is to hint the driver about the column index holding the auto-generated key column:
 
-```
+```java
 PreparedStatement postStatement = connection.prepareStatement(
     "INSERT INTO post (title, version) VALUES (?, ?)",
     new int[] {1}
@@ -162,7 +162,7 @@ PreparedStatement postStatement = connection.prepareStatement(
 
 Or, the column name can also be used to instruct the driver about the auto-generated key column:
 
-```
+```java
 PreparedStatement postStatement = connection.prepareStatement(
     "INSERT INTO post (title, version) VALUES (?, ?)",
     new String[] {"id"}
@@ -451,13 +451,13 @@ Without an explicit setting, the JDBC driver uses the default isolation level.
 
 The default isolation level can be gotten using [`getDefaultTransactionIsolation()`](https://docs.oracle.com/javase/8/docs/api/java/sql/DatabaseMetaData.html#getDefaultTransactionIsolation--):
 
-```
+```java
 int level = connection.getMetaData().getDefaultTransactionIsolation();
 ```
 
 It can be changed using [`setTransactionIsolation(int level)`](https://docs.oracle.com/javase/8/docs/api/java/sql/Connection.html#setTransactionIsolation-int-):
 
-```
+```java
 connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
 ```
 
