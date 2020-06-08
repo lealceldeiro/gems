@@ -56,7 +56,7 @@ Note that the build method in each subclass’s builder is declared to return th
 
 ![Class Diagram](./image/code_class_design.png "Class Diagram")
 
-```
+```java
 abstract class Pizza {
 
     enum Topping { HAM, MUSHROOM, ONION, PEPPER, SAUSAGE }
