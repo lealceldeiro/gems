@@ -68,13 +68,13 @@ Statements at the level of the file, such as most class declarations, are not in
 
 It is sometimes tempting to break the indentation rule for short if statements, short while loops, or short functions. Avoid collapsing scopes down to one line like this:
 
-```
+```java
 public CommentWidget(ParentWidget parent, String text){super(parent, text);}
 ```
 
 Write instead
 
-```
+```java
 public CommentWidget(ParentWidget parent, String text) {
   super(parent, text);
 }
@@ -83,7 +83,7 @@ public CommentWidget(ParentWidget parent, String text) {
 
 Sometimes the body of a `while` or `for` statement is a dummy one like this:
 
-```
+```java
 while (dis.read(buf, 0, readBufferSize) != -1)
   ;
 ```
