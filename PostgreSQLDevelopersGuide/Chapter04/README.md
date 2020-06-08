@@ -6,7 +6,7 @@ A trigger, in terms of databases, means a certain operation to be performed spon
 
 The simple form of the [`CREATE TRIGGER`](https://www.postgresql.org/docs/12/sql-createtrigger.html) syntax is as follows:
 
-```
+```sql
 CREATE TRIGGER trigger_name {BEFORE | AFTER | INSTEAD OF} {event [OR…]}
   ON table_name
   [FOR [EACH] {ROW | STATEMENT}]
@@ -26,7 +26,8 @@ Variables provided to a trigger function:
 `TG_WHEN`: This will contain the string with the value of `BEFORE`, `AFTER`, or `INSTEAD OF`, as per the trigger’s definition.
 
 Example:
-```
+
+```sql
 -- trigger function
 CREATE OR REPLACE FUNCTION audit_func() RETURNS trigger AS $first_trigger$
   BEGIN
@@ -49,7 +50,8 @@ A view is not a real table itself but can serve as a read-only view of the table
 * They always bring the updated data when accessed.
 
 General syntax to [`CREATE` a `VIEW`](https://www.postgresql.org/docs/current/sql-createview.html):
-```
+
+```sql
 CREATE [ OR REPLACE ] [ TEMP | TEMPORARY ] [ RECURSIVE ] VIEW name [ (column_name [, ...] ) ]
   [ WITH ( view_option_name [= view_option_value] [, ... ] ) ]
   AS query
