@@ -37,7 +37,7 @@ Functions for large objects _must_ be called in a transaction block, so when _au
 
 For example, to see the list of functions available to access large objects, the following query can be executed:
 
-```
+```sql
 SELECT
   n.nspname as "Schema",
   p.proname as "Name",
