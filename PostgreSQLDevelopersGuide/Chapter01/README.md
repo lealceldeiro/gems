@@ -263,7 +263,7 @@ A **primary key** constraints is a combination of **not-null** constraints and *
 
 **Foreign key** constraints state that the value in a column must be the same as the value present in another table’s row. This is for the sake of maintaining the referential integrity between two interlinked tables. Taking into account the following example, two tables are created, and the column (`id_a`) of one table (`table_A`) is used in the second table (`table_B`) as a foreign key constraint:
 
-```
+```sql
 CREATE TABLE table_A (id_a INTEGER PRIMARY KEY, name TEXT);
 CREATE TABLE table_B (id_b INTEGER PRIMARY KEY, amount FLOAT8, table_A_id INTEGER REFERENCES table_A (id_a));
 ```
