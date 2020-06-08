@@ -45,18 +45,18 @@ package widget {
             + {abstract} String getDisplayText()
         }
         class LinuxButton {
-            - int displayText
+            - String displayText
 
             + void setDisplayText(String text)
             + String getDisplayText()
         }
 
         class WindowsButton {
-            - int displayText
+            - String displayText
 
             + void setDisplayText(String text)
             + String getDisplayText()
-            - updateWindowsRegistryStringPool
+            - void updateWindowsRegistryStringPool()
         }
     }
 }
