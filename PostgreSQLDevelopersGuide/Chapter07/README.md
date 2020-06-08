@@ -54,8 +54,9 @@ cpu_index_tuple_cost  |   0.005           |
 
 For example to check these parameters the following query can be ran:
 
-```
-SELECT current_setting('seq_page_cost'), current_setting('random_page_cost'), current_setting('cpu_tuple_cost'), current_setting('cpu_operator_cost'), current_setting('cpu_index_tuple_cost');
+```sql
+SELECT current_setting('seq_page_cost'), current_setting('random_page_cost'), current_setting('cpu_tuple_cost'),
+       current_setting('cpu_operator_cost'), current_setting('cpu_index_tuple_cost');
 ```
 
 Parent nodes have the cumulative cost of all of its children.
