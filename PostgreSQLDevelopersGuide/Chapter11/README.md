@@ -8,7 +8,7 @@ The complete list of data wrapper can be fount at [Foreign data wrappers](https:
 
 PostgreSQL uses the following [syntax](https://www.postgresql.org/docs/current/sql-createforeigndatawrapper.html) for creating foreign data wrappers:
 
-```
+```sql
 CREATE FOREIGN DATA WRAPPER name
   [ HANDLER handler_function | NO HANDLER ]
   [ VALIDATOR validator_function | NO VALIDATOR ]
@@ -29,7 +29,7 @@ A foreign data wrapper without `handler_function` cannot be accessed and only a 
 
 There is a need for a C programming source code file that will contain the implementation of handler_function and validator_function. The C programming source should define the handler and validator function as follows:
 
-```
+```sql
 extern Datum my_fdw_handler (PG_FUNCTION_ARGS);
 extern Datum my_fdw_validator (PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1 (my_fdw_handler);
@@ -44,7 +44,7 @@ A _Makefile_ to compile the source code in the C file to generate a library is a
 
 For example, to compile the previously shown C file here is an example of _Makefile_:
 
-```
+```shell
 # Makefile
 MODULE_big = my_fdw
 OBJS = my_fdw.o
@@ -67,7 +67,7 @@ where
 
 A SQL file is needed to map the C handler and validate function to the SQL function. It not only maps the C function with the SQL function, but also creates a foreign data wrapper using the `CREATE FOREIGN DATA WRAPPER` command in the following manner:
 
-```
+```sql
 -- File name=dummy_fdw--1.0.sql
 
 CREATE FUNCTION my_fdw_handler() RETURNS fdw_handler AS 'MODULE_PATHNAME' LANGUAGE C STRICT;
@@ -79,7 +79,7 @@ CREATE FOREIGN DATA WRAPPER my_fdw HANDLER my_fdw_handler VALIDATOR my_fdw_valid
 
 A module or extension control file contains the wrapper version and module library path as shown:
 
-```
+```shell
 #my_fdw.control
 comment = 'Foreign data wrapper for querying a server'
 default_version = '1.0'
@@ -103,7 +103,7 @@ Foreign data wrappers are extensions and can be loaded using [`CREATE EXTENSION`
 
 After loading the extension, it is needed to create a foreign server that typically consists of connection information. Normally, the connection information consists of a remote machine hostname or IP address and target system port number. The user information may be specified in user mapping.
 
-```
+```sql
 CREATE SERVER server_name
   [ TYPE 'server_type' ] [ VERSION 'server_version' ]
   FOREIGN DATA WRAPPER fdw_name
@@ -126,7 +126,7 @@ The following statement creates a server named `my_server` of the `my_fdw` forei
 
 The connection information consists of two parts; one is the target address, for example, host name, IP address ,and port; and the second part is the user information. The `CREATE SERVER` statement covers the target address part and `CREATE USER MAPPING` covers the user information part. The `CREATE USER MAPPING` statement maps the PostgreSQL user to the foreign server user. The syntax for [`CREATE USER MAPPING`](https://www.postgresql.org/docs/current/sql-createusermapping.html) is as follows:
 
-```
+```sql
 CREATE USER MAPPING FOR
   { user_name | USER | CURRENT_USER | PUBLIC }
   SERVER server_name
@@ -141,7 +141,7 @@ Here,
 
 For example:
 
-```
+```sql
 CREATE USER MAPPING FOR postgres SERVER my_server OPTIONS(username 'foo', password 'bar');
 ```
 
@@ -149,7 +149,7 @@ CREATE USER MAPPING FOR postgres SERVER my_server OPTIONS(username 'foo', passwo
 
 After creating the server and user mapping, the next step is to create a foreign table. The [syntax for creating a foreign table](https://www.postgresql.org/docs/current/sql-createforeigntable.html) is as follows:
 
-```
+```sql
 CREATE FOREIGN TABLE [ IF NOT EXISTS ] table_name
   ( [column_namedata_type
   [ OPTIONS ( option 'value' [, ... ] ) ]
@@ -172,7 +172,7 @@ Let’s consider the various parameters mentioned in the preceding syntax:
 
 Here is a simple example to create a user mapping for the `postgres` user:
 
-```
+```sql
 CREATE FOREIGN TABLE my_foreign_table (id INTEGER, name TEXT) SERVER my_server OPTIONS(table_name 'my_remote_table');
 ```
 
@@ -192,7 +192,7 @@ PostgreSQL provides a template to create OUR own foreign data wrapper. But there
 
 2. Create the server using `CREATE SERVER`:
 
-```
+```sql
 CREATE SERVER postgres_server FOREIGN DATA WRAPPER postgres_fdw OPTIONS (host, '127.0.0.1', port '5432', dbname 'postgres');
 ```
 
@@ -226,7 +226,7 @@ This is used to access the files in the server file system and it can be used by
 
 3. Create a foreign table using `CREATE FOREIGN TABLE`:
 
-```
+```sql
 CREATE FOREIGN TABLE logfile (log_id INTEGER, log_detail TEXT, log_date date) SERVER file_svr OPTIONS (filename, 'log.txt', delimiter ',');
 ```
 
