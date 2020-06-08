@@ -174,13 +174,13 @@ The term “Magic Number” does not apply only to numbers. It applies to any to
 
 In general it is a bad idea to have raw numbers in your code. You should hide them behind well-named constants. However some constants are so easy to recognize that they don’t always need a named constant to hide behind so long as they are used in conjunction with very self-explanatory code. i.e.:
 
-```
+```java
 int dailyPay = hourlyRate * 8;
 ```
 
 Also, there are some formulae in which constants are simply better written as raw numbers. i.e.:
 
-```
+```java
 double circumference = radius * Math.PI * 2;
 ```
 
@@ -198,13 +198,13 @@ Enforce design decisions with structure over convention. Naming conventions are 
 
 Boolean logic is hard enough to understand without having to see it in the context of an if or while statement. Extract functions that explain the intent of the conditional.i.e.:
 
-```
+```java
 if (shouldBeDeleted(timer))
 ```
 
 is preferable to
 
-```
+```java
 if (timer.hasExpired() && !timer.isRecurrent())
 ```
 
@@ -212,13 +212,13 @@ if (timer.hasExpired() && !timer.isRecurrent())
 
 When possible, conditionals should be expressed as positives. i.e:
 
-```
+```java
 if (buffer.shouldCompact())
 ```
 
 is preferable to
 
-```
+```java
 if (!buffer.shouldNotCompact())
 ```
 
