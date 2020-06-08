@@ -29,7 +29,7 @@ The method should not invoke methods on objects that are returned by any of the 
 
 This kind of code is often called a train wreck because it looks like a bunch of coupled train cars. Chains of calls like this are generally considered to be sloppy style and should be avoided.
 
-```
+```java
 final String outputDir = ctxt.getOptions().getScratchDir().getAbsolutePath();
 ```
 
@@ -44,10 +44,11 @@ Such hybrids make it hard to add new functions but also make it hard to add new 
 In the previous code snippet, we should not be able to navigate through `ctxt`, `options`, and `scratchDir`.
 
 If `ctxt` is an object, we should be telling it to _do something_; we should not be asking it about its internals. For exampe, if the intent of getting the absolute path of the scratch directory was to create a scratch file of a given name, we could tell the `ctxt` object to do this:
-
+java
 ```
 BufferedOutputStream bos = ctxt.createScratchFileStream(classFileName);
 ```
+
 ## Data Transfer Objects
 
 The quintessential form of a data structure is a class with public variables and no functions. This is sometimes called a data transfer object, or DTO. DTOs are very useful structures, especially when communicating with databases or parsing messages from sockets, and so on.
