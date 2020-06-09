@@ -5,3 +5,4 @@ Structural patterns are concerned with how classes and objects are composed to f
 Rather than composing interfaces or implementations, structural *object* patterns describe ways to compose objects to realize new functionality. The added flexibility of object composition comes from the ability to change the composition at run-time, which is impossible with static class composition.
 
 ## [Adapter](./Adapter)
+## [Bridge](./Bridge)
