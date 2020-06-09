@@ -239,3 +239,24 @@ public final class PlayerBoard {
     }
 }
 ```
+
+### *Object* Adapter
+
+Taking as reference the preivous example, an object adapter variation would only differn in that now `HorseToGunAdapter` does not extends `Horse`, but holds an instance of `Horse`. This means it will be able to adapt, not only instaces of `Horse`, but instances of its subclasses too.
+
+An example could be:
+
+![Class Diagram](./image/code_class_design_object_adapter.png "Class Diagram")
+
+```java
+public class HorseToGunAdapter implements Gun {
+    private final Horse adapted;
+    // ...
+    
+    public HorseToGunAdapter(double firePower) {
+        this.adapted = new Horse((int) firePower);  // this can be replaced by any other means to create a new instance
+                                                    // it can be even received as an argument
+        // ...
+    }
+}
+```
