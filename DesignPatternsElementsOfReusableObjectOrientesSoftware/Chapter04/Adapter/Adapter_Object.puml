@@ -1,0 +1,25 @@
+@startuml
+package animalAPI #DDDDDD {
+    class Horse
+}
+
+package gameAPI #aaceee {
+    interface Gun {
+        + {abstract} double fire(GameObject... targetObjects)
+    }
+}
+
+class HorseToGunAdapter implements Gun {
+    - Horse adapted
+    - double wasteDamage
+    - int firePower
+
+    + HorseToGunAdapter(double firePower)
+    + HorseToGunAdapter()
+    + double fire(GameObject... targetObjects)
+}
+
+HorseToGunAdapter ..* Horse : wraps
+
+hide empty members
+@enduml
