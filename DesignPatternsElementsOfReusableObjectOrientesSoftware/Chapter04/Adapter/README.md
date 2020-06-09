@@ -44,6 +44,14 @@ An object adapter relies on object composition:
 * An object adapter
   - lets a single Adapter work with many Adaptees—that is, the Adaptee itself and all of its subclasses (if any). The Adapter can also add functionality to all Adaptees at once
   - makes it harder to override Adaptee behavior. It will require subclassing Adaptee and making Adapter refer to the subclass rather than the Adaptee itself
+  
+## Related Patterns
+
+*Bridge* has a structure similar to an *object adapter*, but *Bridge* has a different intent: It is meant to separate an interface from its implementation so that they can be varied easily and independently. An *adapter* is meant to change the interface of an existing object.
+
+*Decorator* enhances another object without changing its interface. A decorator is thus more transparent to the application than an *adapter* is. As a consequence, *Decorator* supports recursive composition, which isn't possible with pure adapters.
+
+*Proxy* defines a representative or surrogate for another object and does not change its interface.
 
 ## Example in Java
 
