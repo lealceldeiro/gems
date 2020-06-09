@@ -44,3 +44,198 @@ An object adapter relies on object composition:
 * An object adapter
   - lets a single Adapter work with many Adaptees—that is, the Adaptee itself and all of its subclasses (if any). The Adapter can also add functionality to all Adaptees at once
   - makes it harder to override Adaptee behavior. It will require subclassing Adaptee and making Adapter refer to the subclass rather than the Adaptee itself
+
+## Example in Java
+
+### *Class* Adapter
+
+![Class Diagram](./image/code_class_design_class_adapter.png "Class Diagram")
+
+```java
+package gameboard.animalAPI;
+
+public interface Animal {
+    /**
+     * Walks some steps and dicreases how much more it can walk.
+     *
+     * @param steps Number of steps to walk.
+     */
+    int walk(int steps);
+
+    /**
+     * Make the animal to rest and recover so it can walk more in future.
+     *
+     * @param recoveredSteps Number of steps the animal will be able to walk even more after it rests.
+     */
+    int rest(int recoveredSteps);
+
+    int remainingSteps();
+}
+
+public class Horse implements Animal {
+    private int remainingSteps;
+
+    public Horse(int remainingSteps) {
+        this.remainingSteps = remainingSteps;
+    }
+
+    public Horse() {
+        this(100);
+    }
+
+    @Override
+    public synchronized int walk(int steps) {
+        remainingSteps -= steps;
+        return remainingSteps;
+    }
+
+    @Override
+    public synchronized int rest(int recoveredSteps) {
+        remainingSteps += recoveredSteps;
+        return remainingSteps;
+    }
+
+    @Override
+    public synchronized int remainingSteps() {
+        return remainingSteps;
+    }
+}
+
+package gameboard.gameAPI;
+
+public interface GameObject {
+    /**
+     * Receives some action damage.
+     *
+     * @param damage Amount of damage to receive.
+     * @return A Double indicating how much live is remaining for this object (how much more damage it can take before
+     * being destroyed)
+     */
+    double takeDamage(double damage);
+
+    /**
+     * Receives some life points.
+     *
+     * @param life Amount of life to receive.
+     * @return A Double indicating how much live is remaining for this object (how much more damage it can take before
+     * being destroyed)
+     */
+    double takeLife(double life);
+
+    double remainingLife();
+}
+
+public class GameObjectSoldier implements GameObject {
+    private double life = 100d;
+    private String name;
+
+    public GameObjectSoldier(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public synchronized double takeDamage(double damage) {
+        life -= damage;
+        return life;
+    }
+
+    @Override
+    public synchronized double takeLife(double life) {
+        this.life += life;
+        return this.life;
+    }
+
+    @Override
+    public synchronized double remainingLife() {
+        return life;
+    }
+
+    @Override
+    public String toString() {
+        return "Soldier{name='" + name + "}";
+    }
+}
+
+public interface Gun {
+    /**
+     * Does some damage to every target object taken as argument.
+     *
+     * @param targetObjects Target object fo make damage to.
+     *
+     * @return How much gun power is remaining.
+     */
+    double fire(GameObject... targetObjects);
+}
+
+public class GunBlast implements Gun {
+    private double ammo = 1000;
+    private double blastPower;
+
+    public GunBlast(double blastPower) {
+        this.blastPower = blastPower;
+    }
+
+    public GunBlast() {
+        this(50);
+    }
+
+    @Override
+    public synchronized double fire(GameObject... targetObjects) {
+        int i = 0;
+        while (ammo > 0 && i < targetObjects.length) {
+            targetObjects[i++].takeDamage(blastPower);
+            ammo -= blastPower;
+        }
+        return ammo;
+    }
+}
+
+package gameboard
+
+/**
+ * Adapts a Horse implementation to behave like a Gun. That's it, now instances of this class are guns. See this like a
+ * "War Horse".
+ */
+public class HorseToGunAdapter extends Horse implements Gun {
+    private double wasteDamage;
+    private int firePower;
+
+    public HorseToGunAdapter(double firePower) {
+        super((int) firePower);
+        wasteDamage = firePower % (int)firePower;
+        this.firePower = (int)firePower;
+    }
+
+    public HorseToGunAdapter() {
+        this(100d);
+    }
+
+    @Override
+    public synchronized double fire(GameObject... targetObjects) {
+        int i = 0;
+        while (remainingSteps() > 0 && i < targetObjects.length) {
+            targetObjects[i++].takeDamage(firePower);
+            walk(firePower);
+        }
+        return remainingSteps();
+    }
+}
+
+public final class PlayerBoard {
+
+    public static void main(String[] args) {
+        GameObject[] gameObjects = {
+                new GameObjectSoldier("Brian"),
+                new GameObjectSoldier("John"),
+                new GameObjectSoldier("Smith")
+        };
+
+        Gun gun = new GunBlast();
+        gun.fire(gameObjects);
+
+        HorseToGunAdapter warHorse = new HorseToGunAdapter();
+        warHorse.fire(gameObjects); // adapted
+        warHorse.walk(1);   // original method
+    }
+}
+```
