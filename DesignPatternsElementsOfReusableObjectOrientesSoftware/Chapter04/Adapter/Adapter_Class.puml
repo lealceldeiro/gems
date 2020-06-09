@@ -1,0 +1,71 @@
+@startuml
+package animalAPI #DDDDDD {
+    interface Animal {
+        + {abstract} int walk(int steps)
+        + {abstract} int rest(int recoveredSteps)
+        + {abstract} int remainingSteps()
+    }
+
+    class Horse implements Animal {
+        - int remainingSteps
+
+        + Horse(int remainingSteps)
+        + Horse()
+        + int walk(int steps)
+        + int rest(int recoveredSteps)
+        + int remainingSteps()
+    }
+
+    note bottom of Horse : Class originally not\ndesigned to act as\na game gun
+}
+
+package gameAPI #aaceee {
+    interface GameObject {
+        + {abstract} double takeDamage(double damage)
+        + {abstract} double takeLife(double damage)
+        + {abstract} double remainingLife()
+    }
+
+    class GameObjectSoldier implements GameObject {
+        - double life
+        - String name
+
+        + GameObjectSoldier(String name)
+        + double takeDamage(double damage)
+        + double takeLife(double life)
+        + double remainingLife()
+        + String toString()
+    }
+
+    interface Gun {
+        + {abstract} double fire(GameObject... targetObjects)
+    }
+    class GunBlast implements Gun {
+        - double ammo
+        - double blastPower
+
+        + GunBlast(double blastPower)
+        + GunBlast()
+        + double fire(GameObject... targetObjects)
+    }
+}
+
+class HorseToGunAdapter extends Horse implements Gun {
+    - double wasteDamage
+    - int firePower
+
+    + HorseToGunAdapter(double firePower)
+    + HorseToGunAdapter()
+    + double fire(GameObject... targetObjects)
+}
+
+note top of HorseToGunAdapter : Adapts a <i>Horse</i>\nto act as a <i>Gun</i>
+
+class PlayerBoard
+
+PlayerBoard ..o HorseToGunAdapter
+PlayerBoard ..o Gun
+PlayerBoard ..o GameObject
+
+hide empty members
+@enduml
