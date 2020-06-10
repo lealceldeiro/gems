@@ -4,17 +4,14 @@ package widgetfactory {
         + {abstract} ButtonWidget createButtonWidget()
         + {abstract} ScrollBarWidget createScrollBarWidget()
     }
-    class LinuxWidgetFactory {
+    class LinuxWidgetFactory implements WidgetFactory {
         + ButtonWidget createButtonWidget()
         + ScrollBarWidget createScrollBarWidget()
     }
-    class WindowsWidgetFactory {
+    class WindowsWidgetFactory implements WidgetFactory {
         + ButtonWidget createButtonWidget()
         + ScrollBarWidget createScrollBarWidget()
     }
-
-    WidgetFactory <|-- LinuxWidgetFactory : implements
-    WidgetFactory <|-- WindowsWidgetFactory : implements
 }
 
 package widget {
@@ -23,7 +20,7 @@ package widget {
             + {abstract} void scroll(int toPosition)
             + {abstract} int currentPosition()
         }
-        class LinuxScrollBar {
+        class LinuxScrollBar implements ScrollBarWidget {
             - int currentPosition
             - double blurLevel
 
@@ -31,7 +28,7 @@ package widget {
             + int currentPosition()
             - void updateBlurLevel()
         }
-        class WindowsScrollBar {
+        class WindowsScrollBar implements ScrollBarWidget {
             - int currentPosition
 
             + void scroll(int toPosition)
@@ -44,14 +41,14 @@ package widget {
             + {abstract} void setDisplayText(String text)
             + {abstract} String getDisplayText()
         }
-        class LinuxButton {
+        class LinuxButton implements ButtonWidget {
             - String displayText
 
             + void setDisplayText(String text)
             + String getDisplayText()
         }
 
-        class WindowsButton {
+        class WindowsButton implements ButtonWidget {
             - String displayText
 
             + void setDisplayText(String text)
@@ -60,12 +57,6 @@ package widget {
         }
     }
 }
-
-ScrollBarWidget <|-- LinuxScrollBar : implements
-ButtonWidget <|-- LinuxButton : implements
-
-ScrollBarWidget <|-- WindowsScrollBar : implements
-ButtonWidget <|-- WindowsButton : implements
 
 class FactoryManager {
     - {static} WidgetFactory WIDGET_FACTORY_INSTANCE
@@ -79,10 +70,10 @@ FactoryManager o-- "1..0" WidgetFactory
 
 class Client
 
-Client ..|> FactoryManager : uses
-Client ..|> ButtonWidget : uses
-Client ..|> ScrollBarWidget : uses
-Client ..|> WidgetFactory : uses
+Client .. FactoryManager : uses
+Client ..o ButtonWidget
+Client ..o ScrollBarWidget
+Client ..o WidgetFactory
 
 hide empty members
 @enduml
