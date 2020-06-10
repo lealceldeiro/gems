@@ -17,7 +17,7 @@ abstract class Vehicle {
 
     + {abstract} void move(SpacePoint spacePoint)
 }
-Vehicle ..|> SpacePoint : uses
+Vehicle .. SpacePoint : uses
 
 class Jeep extends Vehicle {
     - long tiresArmor
@@ -25,7 +25,7 @@ class Jeep extends Vehicle {
     + void move(SpacePoint spacePoint)
     - boolean busted()
 }
-Jeep ..|> SpacePoint : uses
+Jeep .. SpacePoint : uses
 
 class Plane extends Vehicle {
     - long bodyArmor
@@ -34,7 +34,7 @@ class Plane extends Vehicle {
     + void move(SpacePoint spacePoint)
     - boolean crashed()
 }
-Plane ..|> SpacePoint : uses
+Plane .. SpacePoint : uses
 
 class Ship extends Vehicle {
     - long coreArmor
@@ -42,7 +42,7 @@ class Ship extends Vehicle {
     + void move(SpacePoint spacePoint)
     - boolean sunk()
 }
-Ship ..|> SpacePoint : uses
+Ship .. SpacePoint : uses
 
 class VehicleCreator {
     + Vehicle createVehicle()
