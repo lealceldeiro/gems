@@ -32,12 +32,12 @@ class GraphicPrototypeFactory {
 }
 
 GraphicPrototypeFactory --o Graphic : creates
-GraphicPrototypeFactory ..|> Bubble : uses
+GraphicPrototypeFactory .. Bubble : uses
 
 class Client
 
-Client ..|> Graphic : uses
-Client ..|> GraphicPrototypeFactory : uses
+Client ..o Graphic
+Client .. GraphicPrototypeFactory : uses
 
 hide empty members
 @enduml
