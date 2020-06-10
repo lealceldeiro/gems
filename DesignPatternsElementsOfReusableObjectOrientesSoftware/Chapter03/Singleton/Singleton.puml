@@ -15,7 +15,7 @@ class ApplicationRegistryHolder {
     - {static} ApplicationRegistry INSTANCE
 }
 
-ApplicationRegistry ..|> ApplicationRegistryHolder : uses
+ApplicationRegistry .. ApplicationRegistryHolder : uses
 
 class Client
 
