@@ -30,7 +30,7 @@ note top: Declares a generic type with a recursive type parameter,\nwhich along 
 class Builder
 note bottom: This uses the <i>simulated self-type idiom</i> as a\nworkaround for the fact that Java lacks a self type
 
-Pizza ..|> Builder : uses it to get toppings
+Pizza .. Builder : uses it to get toppings
 
 class Calzone extends Pizza {
     - boolean sauceInside
@@ -47,7 +47,7 @@ class CalzoneBuilder extends Builder {
     + CalzoneBuilder self()
 }
 
-Calzone ..|> CalzoneBuilder : uses it to get toppings\nand <i>sauceInside</i>
+Calzone .. CalzoneBuilder : uses it to get toppings\nand <i>sauceInside</i>
 
 enum Size {
     + SMALL,
@@ -70,7 +70,7 @@ class NyBuilder extends Builder {
     + NyBuilder self()
 }
 
-NyPizza ..|> NyBuilder : uses it to get toppings\nand <i>size</i>
+NyPizza .. NyBuilder : uses it to get toppings\nand <i>size</i>
 NyPizza "0..*" o-- "1" Size : has
 
 class PizzaClient
