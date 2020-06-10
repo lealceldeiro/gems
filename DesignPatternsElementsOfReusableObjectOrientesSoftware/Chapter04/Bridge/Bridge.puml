@@ -1,0 +1,87 @@
+@startuml
+package graphic {
+    interface Graphic {
+        + {abstract} int getStartX()
+        + {abstract} int getStartY()
+        + {abstract} int getEndX()
+        + {abstract} int getEndY()
+    }
+
+    class Line implements Graphic {
+        - int startX
+        - int startY
+        - int endX
+        - int endY
+
+        + Line(int startX, int startY, int endX, int endY)
+        + int getStartX()
+        + int getStartY()
+        + int getEndX()
+        + int getEndY()
+    }
+}
+
+package lookandfeel {
+    interface LookAndFeel {
+        + {abstract} String name()
+        + {abstract} Graphic draw(int startX, int startY, int endX, int endY)
+    }
+
+    LookAndFeel .. Graphic : uses
+
+    abstract class AbstractLookAndFeel implements LookAndFeel {
+        + AbstractLookAndFeel()
+        + {abstract} String name()
+        + Graphic draw(int startX, int startY, int endX, int endY)
+        # {abstract} void renderPixel(int x, int y)
+    }
+    AbstractLookAndFeel .. Line
+
+    class OceanLookAndFeel extends AbstractLookAndFeel {
+        + OceanLookAndFeel()
+        + String name()
+        # void renderPixel(int x, int y)
+    }
+
+    class DarkLookAndFeel extends AbstractLookAndFeel {
+        + DarkLookAndFeel()
+        + String name()
+        # void renderPixel(int x, int y)
+    }
+}
+
+package windows {
+    interface Windows {
+        + {abstract} void drawRectangle(int topLeftX, int topLeftY, int height, int width)
+        + {abstract} void drawHorizontalLine(int x, int y, int size)
+        + {abstract} void drawVerticalLine(int x, int y, int size)
+    }
+
+    abstract class AbstractWindows implements Windows {
+        # LookAndFeel lookAndFeel
+
+        + AbstractWindows(LookAndFeel lookAndFeel)
+        + void drawRectangle(int topLeftX, int topLeftY, int height, int width)
+        + void drawHorizontalLine(int x, int y, int size)
+        + void drawVerticalLine(int x, int y, int size)
+    }
+
+    AbstractWindows --* LookAndFeel
+
+    class IconWindows extends AbstractWindows {
+        + IconWindows(LookAndFeel lookAndFeel)
+        + void drawBorder(Graphic graphic)
+    }
+    class TransientWindows extends AbstractWindows {
+        + TransientWindows(LookAndFeel lookAndFeel)
+        + void drawCloseBox()
+    }
+}
+
+note "<b>Bridge</b>: Instead of having a <i>OceanWindows</i> and a\n<i>DarkWindows</i> a new indirection is created through\n<i>AbstractLookAndFeel</i>, so the look and feel of the\nwindows in the system vary independently from\nthe specific windows implementations" as BridgeNote
+Windows .. BridgeNote
+BridgeNote .. LookAndFeel
+
+hide empty members
+
+@enduml
