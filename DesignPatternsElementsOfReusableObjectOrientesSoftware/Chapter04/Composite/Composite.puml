@@ -1,0 +1,52 @@
+@startuml
+
+interface FileDirectory {
+    + {abstract} String absolutePath()
+    + {abstract} String name()
+    + {abstract} Collection<FileDirectory> children()
+    + {abstract} boolean addChild(FileDirectory child)
+    + {abstract} boolean removeChild(FileDirectory child)
+    + {abstract} FileDirectory parent()
+    + {abstract} boolean hasChildren()
+    + {abstract} boolean isLeaf()
+}
+
+abstract class AbstractFileDirectory implements FileDirectory {
+    - FileDirectory parent
+    - String name
+    # AbstractFileDirectory(FileDirectory parent, String name)
+    # AbstractFileDirectory(String name)
+    + String absolutePath()
+    + String name()
+    + FileDirectory parent()
+    + void setName(String name)
+}
+
+class Folder extends AbstractFileDirectory {
+    - Collection<FileDirectory> children
+    + Folder(FileDirectory parent, String name)
+    + Folder(String name)
+    + List<FileDirectory> children()
+    + {abstract} boolean addChild(FileDirectory child)
+    + {abstract} boolean removeChild(FileDirectory child)
+    + boolean hasChildren()
+    + boolean isLeaf()
+}
+
+
+class File extends AbstractFileDirectory {
+    + File(FileDirectory parent, String name)
+    + Collection<FileDirectory> children()
+    + boolean addChild()
+    + boolean removeChild()
+    + boolean hasChildren()
+    + boolean isLeaf()
+}
+
+class Client
+
+Client .. FileDirectory
+
+hide empty members
+
+@enduml
