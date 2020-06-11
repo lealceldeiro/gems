@@ -7,3 +7,4 @@ Rather than composing interfaces or implementations, structural *object* pattern
 ## [Adapter](./Adapter)
 ## [Bridge](./Bridge)
 ## [Composite](./Composite)
+## [Decorator](./Decorator)
