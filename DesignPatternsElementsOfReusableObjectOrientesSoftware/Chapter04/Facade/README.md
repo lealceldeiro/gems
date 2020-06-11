@@ -43,3 +43,74 @@ Provide a unified interface to a set of interfaces in a subsystem. Facade define
 *Mediator* is similar to *Facade* in that it abstracts functionality of existing classes. However, Mediator's purpose is to abstract arbitrary communication between colleague objects, often centralizing functionality that doesn't belong in any one of them. In contrast, a facade merely abstracts the interface to subsystem objects to make them easier to use; it doesn't define new functionality, and subsystem classes don't know about it.
 
 Usually only one Facade object is required. Thus Facade objects are often Singletons.
+
+## Example in Java
+
+![Class Diagram](./image/code_class_design.png "Class Diagram")
+
+```java
+interface Application {
+    boolean load();
+    void shutdown();
+}
+
+interface FileDirectory {
+    boolean checkIntegrity();
+}
+
+interface Firmware {
+    void check();
+    void setStartTime();
+    void setShutdownTime();
+}
+
+interface InputReceiver {
+    void open();
+    void read();
+    void close();
+}
+
+public interface OperatingSystem {
+    void startOperatingSystem();
+    void shutDownOperatingSystem();
+}
+
+class DefaultOperatingSystem implements OperatingSystem {
+    private final FileDirectory fileDirectory;
+    private final Collection<Application> applications;
+    private final Firmware firmware;
+    private final InputReceiver inputReceiver;
+
+    // values injected through some available dependency injection management (or using some of the other patterns)
+    DefaultOperatingSystem(FileDirectory fileDirectory, Collection<Application> applications,
+                           Firmware firmware, InputReceiver inputReceiver) {
+        this.fileDirectory = fileDirectory;
+        this.applications = new ArrayList<>(applications);
+        this.firmware = firmware;
+        this.inputReceiver = inputReceiver;
+    }
+
+    @Override
+    public void startOperatingSystem() {
+        firmware.check();
+        firmware.setStartTime();
+
+        fileDirectory.checkIntegrity();
+        applications.forEach(Application::load);
+        inputReceiver.open();
+        inputReceiver.read();
+    }
+
+    @Override
+    public void shutDownOperatingSystem() {
+        inputReceiver.close();
+        applications.forEach(Application::shutdown);
+        fileDirectory.checkIntegrity();
+        firmware.setShutdownTime();
+    }
+}
+
+public interface OperatingSystemFactory {
+    OperatingSystem getTelephoneManager();
+}
+```
