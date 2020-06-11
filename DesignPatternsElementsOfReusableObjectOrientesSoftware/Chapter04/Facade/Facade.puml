@@ -1,0 +1,56 @@
+@startuml
+
+package telephone {
+    interface Application {
+        + {abstract} boolean load()
+        + {abstract} void shutdown()
+    }
+
+    interface FileDirectory {
+        + {abstract} boolean checkIntegrity()
+    }
+
+    interface Firmware {
+        + {abstract} void check()
+        + {abstract} void setStartTime()
+        + {abstract} void setShutdownTime()
+    }
+
+    interface InputReceiver {
+        + {abstract} void open()
+        + {abstract} void read()
+        + {abstract} void close()
+    }
+
+    interface OperatingSystem {
+        + {abstract} void startOperatingSystem()
+        + {abstract} void shutDownOperatingSystem()
+    }
+    note left: Facade
+
+    class DefaultOperatingSystem implements OperatingSystem {
+        + void startOperatingSystem()
+        + void shutDownOperatingSystem()
+    }
+
+    DefaultOperatingSystem "1" --* "1..*" Application
+    DefaultOperatingSystem "1" --* "1..*" FileDirectory
+    DefaultOperatingSystem "1" --* "1" Firmware
+    DefaultOperatingSystem "1" --* "1" InputReceiver
+
+    interface OperatingSystemFactory {
+        + {abstract} OperatingSystem getTelephoneManager()
+    }
+    note right: A factory for getting\n <i>OperatingSystem</i>s
+
+    OperatingSystemFactory .. DefaultOperatingSystem
+    OperatingSystemFactory -- OperatingSystem
+}
+
+class Client
+
+Client ..o OperatingSystemFactory
+Client ..o OperatingSystem
+
+hide empty members
+@enduml
