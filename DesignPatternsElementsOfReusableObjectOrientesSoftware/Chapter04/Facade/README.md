@@ -113,4 +113,17 @@ class DefaultOperatingSystem implements OperatingSystem {
 public interface OperatingSystemFactory {
     OperatingSystem getTelephoneManager();
 }
+
+// --
+
+public class Client {
+    public static void main(String[] args) {
+        OperatingSystemFactory operatingSystemFactory = null;
+        OperatingSystem operatingSystem = operatingSystemFactory.getTelephoneManager();
+
+        operatingSystem.startOperatingSystem();
+        // ... at the end of the day, shutdown
+        operatingSystem.shutDownOperatingSystem();
+    }
+}
 ```
