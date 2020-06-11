@@ -18,7 +18,6 @@ Handle/Body
 
 ## Structure
 
-
 ![Image of the structure for the Bridge Pattern](./image/bridge.png "Structure for the Bridge Pattern")
 
 ## Participants
