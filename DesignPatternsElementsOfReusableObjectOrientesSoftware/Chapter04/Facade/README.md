@@ -10,7 +10,6 @@ Provide a unified interface to a set of interfaces in a subsystem. Facade define
 * there are many dependencies between clients and the implementation classes of an abstraction. Introduce a facade to decouple the subsystem from clients and other subsystems, thereby promoting subsystem independence and portability
 * you want to layer your subsystems. Use a facade to define an entry point to each subsystem level
 
-
 ## Structure
 
 ![Image of the structure for the Facade Pattern](./image/facade.png "Structure for the Facade Pattern")
