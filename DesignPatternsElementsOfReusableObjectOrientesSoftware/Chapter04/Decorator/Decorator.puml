@@ -21,6 +21,8 @@ abstract class WarriorDecorator implements Warrior {
     + String toString()
 }
 
+WarriorDecorator *-- Warrior
+
 class WarriorSwordDecorator extends WarriorDecorator {
     + WarriorSwordDecorator(Warrior decoratedWarrior)
     + int level()
