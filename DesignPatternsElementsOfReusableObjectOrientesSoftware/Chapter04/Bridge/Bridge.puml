@@ -66,7 +66,7 @@ package windows {
         + void drawVerticalLine(int x, int y, int size)
     }
 
-    AbstractWindows --* LookAndFeel
+    AbstractWindows *-- LookAndFeel
 
     class IconWindows extends AbstractWindows {
         + IconWindows(LookAndFeel lookAndFeel)
