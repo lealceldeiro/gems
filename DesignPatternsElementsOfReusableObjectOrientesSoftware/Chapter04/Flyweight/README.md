@@ -51,6 +51,12 @@ Storage savings are a function of several factors:
 
 The *Flyweight* pattern is often combined with the *Composite* pattern to represent a hierarchical structure as a graph with shared leaf nodes. A consequence of sharing is that flyweight leaf nodes cannot store a pointer to their parent. Rather, the parent pointer is passed to the flyweight as part of its extrinsic state. This has a major impact on how the objects in the hierarchy communicate with each other.
 
+## Related Patterns
+
+The *Flyweight* pattern is often combined with the *Composite* pattern to implement a logically hierarchical structure in terms of a directed-acyclic graph with shared leaf nodes.
+
+It's often best to implement *State* and *Strategy* objects as flyweights.
+
 ## Example in Java
 
 ![Class Diagram](./image/code_class_design.png "Class Diagram")
