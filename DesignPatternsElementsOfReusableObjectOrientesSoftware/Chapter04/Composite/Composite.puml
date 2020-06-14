@@ -33,6 +33,7 @@ class Folder extends AbstractFileDirectory {
     + boolean isLeaf()
 }
 
+Folder o-- FileDirectory
 
 class File extends AbstractFileDirectory {
     + File(FileDirectory parent, String name)
