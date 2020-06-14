@@ -19,6 +19,6 @@ ApplicationRegistry .. ApplicationRegistryHolder : uses
 
 class Client
 
-Client --o ApplicationRegistry : has
+Client o-- ApplicationRegistry : has
 
 @enduml
