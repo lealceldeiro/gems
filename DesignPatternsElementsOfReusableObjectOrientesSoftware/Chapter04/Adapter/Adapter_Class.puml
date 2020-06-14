@@ -63,9 +63,9 @@ note top of HorseToGunAdapter : Adapts a <i>Horse</i>\nto act as a <i>Gun</i>
 
 class PlayerBoard
 
-PlayerBoard ..o HorseToGunAdapter
-PlayerBoard ..o Gun
-PlayerBoard ..o GameObject
+PlayerBoard o.. HorseToGunAdapter
+PlayerBoard o.. Gun
+PlayerBoard o.. GameObject
 
 hide empty members
 @enduml
