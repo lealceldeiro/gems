@@ -47,19 +47,19 @@ Ship .. SpacePoint : uses
 class VehicleCreator {
     + Vehicle createVehicle()
 }
-VehicleCreator --o Jeep : creates
+VehicleCreator o-- Jeep : creates
 note right of VehicleCreator : The factory method <i>createVehicle</i> creates\nby default <i>Jeep</i> objects
 
 class PlaneCreator extends VehicleCreator {
     + Vehicle createVehicle()
 }
-PlaneCreator --o Plane : creates
+PlaneCreator o-- Plane : creates
 note top of PlaneCreator : The factory method <i>createVehicle</i>\ncreates <i>Plane</i> objects
 
 class ShipCreator extends VehicleCreator {
     + Vehicle createVehicle()
 }
-ShipCreator --o Ship : creates
+ShipCreator o-- Ship : creates
 note top of ShipCreator : The factory method <i>createVehicle</i>\ncreates <i>Ship</i> objects
 
 hide empty members
