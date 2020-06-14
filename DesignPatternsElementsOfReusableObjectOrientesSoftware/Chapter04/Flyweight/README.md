@@ -33,3 +33,20 @@ THe following diagram show how flyweights are shared:
 * **`Client`**:
   - maintains a reference to flyweight
   - computes or stores the extrinsic state of flyweight(s)
+
+## Collaborations
+
+* State that a flyweight needs to function must be characterized as either intrinsic or extrinsic. Intrinsic state is stored in the `ConcreteFlyweight` object; extrinsic state is stored or computed by `Client` objects. `Client`s pass this state to the flyweight when they invoke its operations.
+* Clients should not instantiate `ConcreteFlyweights` directly. Clients must obtain `ConcreteFlyweight` objects exclusively from the `FlyweightFactory` object to ensure they are shared properly.
+
+## Consequences
+
+Flyweights may introduce run-time costs associated with transferring, finding, and/or computing extrinsic state, especially if it was formerly stored as intrinsic state. However, such costs are offset by space savings, which increase as more flyweights are shared.
+
+Storage savings are a function of several factors:
+
+* the reduction in the total number of instances that comes from sharing
+* the amount of intrinsic state per object
+* whether extrinsic state is computed or stored
+
+The *Flyweight* pattern is often combined with the *Composite* pattern to represent a hierarchical structure as a graph with shared leaf nodes. A consequence of sharing is that flyweight leaf nodes cannot store a pointer to their parent. Rather, the parent pointer is passed to the flyweight as part of its extrinsic state. This has a major impact on how the objects in the hierarchy communicate with each other.
