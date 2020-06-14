@@ -18,7 +18,7 @@ The Flyweight pattern's effectiveness depends heavily on how and where it's used
 
 ![Image of the structure for the Flyweight Pattern](./image/flyweight_structure.png "Structure for the Flyweight Pattern")
 
-THe following diagram show how flyweights are shared:
+The following diagram show how flyweights are shared:
 
 ![Image of how flyweights are shared](./image/flyweight_shared.png "How flyweights are shared")
 
