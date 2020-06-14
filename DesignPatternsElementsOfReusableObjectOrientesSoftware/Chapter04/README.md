@@ -10,3 +10,4 @@ Rather than composing interfaces or implementations, structural *object* pattern
 ## [Decorator](./Decorator)
 ## [Facade](./Facade)
 ## [Flyweight](./Flyweight)
+## [Proxy](./Proxy)
