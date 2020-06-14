@@ -1,0 +1,51 @@
+@startuml
+interface Glyph {
+    + {abstract} void draw(Context context)
+}
+interface Context
+Glyph .. Context
+
+class Character implements Glyph {
+    - char charCode
+
+    + Character(char charCode)
+    + void draw(Context context)
+}
+class Row implements Glyph {
+    - final int number
+
+    + Row(int number)
+    + void draw(Context context)
+}
+class Column implements Glyph {
+    - final int number
+
+    + Column(int number)
+    + void draw(Context context)
+}
+
+Row o-- Glyph : children
+Column o-- Glyph : children
+
+class GlyphFactory {
+    - {static} Map<java.lang.Character, Glyph> characters
+    - {static} Map<Integer, Glyph> columns
+    - {static} Map<Integer, Glyph> rows
+
+    + {static} Glyph getCharacter(char fromChar)
+    + {static} Glyph getColumn(int forColumnNumber)
+    + {static} Glyph getRow(int forRowNumber)
+}
+
+GlyphFactory *-- Character
+GlyphFactory *-- Row
+GlyphFactory *-- Column
+GlyphFactory -- Glyph
+
+class Document
+Document -- GlyphFactory
+Document -- Context
+Document -- Glyph
+
+hide empty members
+@enduml
