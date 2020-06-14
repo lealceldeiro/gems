@@ -31,12 +31,12 @@ class GraphicPrototypeFactory {
     + {static} Graphic createBubbleWidget(String color, double position)
 }
 
-GraphicPrototypeFactory --o Graphic : creates
+GraphicPrototypeFactory o-- Graphic : creates
 GraphicPrototypeFactory .. Bubble : uses
 
 class Client
 
-Client ..o Graphic
+Client o.. Graphic
 Client .. GraphicPrototypeFactory : uses
 
 hide empty members
