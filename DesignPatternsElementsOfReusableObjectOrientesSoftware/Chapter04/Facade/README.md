@@ -117,7 +117,6 @@ public interface OperatingSystemFactory {
 
 public class Client {
     public static void main(String[] args) {
-        OperatingSystemFactory operatingSystemFactory = null;
         OperatingSystem operatingSystem = operatingSystemFactory.getTelephoneManager();
 
         operatingSystem.startOperatingSystem();
