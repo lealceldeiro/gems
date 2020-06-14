@@ -71,9 +71,9 @@ FactoryManager o-- "1..0" WidgetFactory
 class Client
 
 Client .. FactoryManager : uses
-Client ..o ButtonWidget
-Client ..o ScrollBarWidget
-Client ..o WidgetFactory
+Client o.. ButtonWidget
+Client o.. ScrollBarWidget
+Client o.. WidgetFactory
 
 hide empty members
 @enduml
