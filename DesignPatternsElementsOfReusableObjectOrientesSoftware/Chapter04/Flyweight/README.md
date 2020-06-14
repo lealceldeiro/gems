@@ -50,3 +50,102 @@ Storage savings are a function of several factors:
 * whether extrinsic state is computed or stored
 
 The *Flyweight* pattern is often combined with the *Composite* pattern to represent a hierarchical structure as a graph with shared leaf nodes. A consequence of sharing is that flyweight leaf nodes cannot store a pointer to their parent. Rather, the parent pointer is passed to the flyweight as part of its extrinsic state. This has a major impact on how the objects in the hierarchy communicate with each other.
+
+## Example in Java
+
+![Class Diagram](./image/code_class_design.png "Class Diagram")
+
+```java
+interface Context {
+}
+
+interface Glyph {
+    void draw(Context context);
+}
+
+class Character implements Glyph {
+    private final char charCode;    // intrinsic state
+
+    Character(char charCode) {
+        this.charCode = charCode;
+    }
+
+    @Override
+    public void draw(Context context) {
+        // do drawing
+    }
+}
+
+class Column implements Glyph {
+    private final int number;    // intrinsic state
+
+    Column(int number) {
+        this.number = number;
+    }
+
+    @Override
+    public void draw(Context context) {
+        // do drawing
+    }
+}
+
+class Row implements Glyph {
+    private final int number;
+
+    Row(int number) {
+        this.number = number;
+    }
+
+    @Override
+    public void draw(Context context) {
+        // do drawing
+    }
+}
+
+final class GlyphFactory {
+    private static final Map<java.lang.Character, Glyph> characters = new HashMap<>();
+    private static final Map<Integer, Glyph> columns = new HashMap<>();
+    private static final Map<Integer, Glyph> rows = new HashMap<>();
+
+    static Glyph getCharacter(char fromChar) {
+        // reuse existing character object or create it if absent
+        return characters.computeIfAbsent(fromChar, ignored -> new Character(fromChar));
+    }
+
+    static Glyph getColumn(int forColumnNumber) {
+        // reuse existing column object or create it if absent
+        return columns.computeIfAbsent(forColumnNumber, ignored -> new Column(forColumnNumber));
+    }
+
+    static Glyph getRow(int forRowNumber) {
+        // reuse existing row object or create it if absent
+        return rows.computeIfAbsent(forRowNumber, ignored -> new Row(forRowNumber));
+    }
+}
+
+// --
+
+public class Document {
+    public static void main(String[] args) {
+        Glyph documentBody = GlyphFactory.getColumn(0);
+        Glyph firstRow = GlyphFactory.getRow(0);
+        Glyph A = GlyphFactory.getCharacter('A');
+        Glyph B = GlyphFactory.getCharacter('B');
+        Glyph B2 = GlyphFactory.getCharacter('B');
+        Glyph A2 = GlyphFactory.getCharacter('A');
+
+        documentBody.draw(getContextForGlyph(documentBody));
+        firstRow.draw(getContextForGlyph(firstRow));            // a document with a text:
+        A.draw(getContextForGlyph(A));                          // A
+        B.draw(getContextForGlyph(B));                          // B
+        B2.draw(getContextForGlyph(B2));                        // B -- this is a shared object (from the previous B creation)
+        A2.draw(getContextForGlyph(A2));                        // A -- this is a shared object (from the previous A creation)
+    }
+
+    // some auxiliary calculation of the context for each glyp
+    // containing the extrinsic state
+    static Context getContextForGlyph(Glyph glyph) {
+        return new Context() {};
+    }
+}
+```
