@@ -19,7 +19,7 @@ class HorseToGunAdapter implements Gun {
     + double fire(GameObject... targetObjects)
 }
 
-HorseToGunAdapter ..* Horse : wraps
+HorseToGunAdapter *.. Horse : wraps
 
 hide empty members
 @enduml
