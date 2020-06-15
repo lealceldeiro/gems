@@ -1,6 +1,6 @@
 # Part I: Cucumber Fundamentals
 
-## Why Cucumber?
+## Chapter 1: Why Cucumber?
 
 Software teams work best when the developers and business stakeholders are communicating clearly with one another. A great way to do that is to collaboratively specify the work that’s about to be done using automated acceptance tests.
 
@@ -16,7 +16,7 @@ The business-facing parts of a Cucumber test suite, stored in feature files, mus
 
 Under the hood, step definitions translate from the business-facing language of steps into code.
 
-## First Taste
+## Chapter 2: First Taste
 
 ### Step by step
 
@@ -34,4 +34,4 @@ Cucumber tests are expressed using a syntax called Gherkin. Gherkin files are pl
 
 Step definitions are the glue that binds your Cucumber tests to the application you’re testing.
 
-## Gherkin Basics
+## Chapter 3: Gherkin Basics
