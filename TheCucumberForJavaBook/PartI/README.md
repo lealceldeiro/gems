@@ -47,3 +47,17 @@ You can add descriptions and comments to your `.feature` files to turn them into
 Using the `#language:` header, you can write your features in different spoken languages.
 
 ## Chapter 4: Step Definitions: From the Outside
+
+How Cucumber executes a scenario:
+
+![Image of How Cucumber executes a scenario](./image/scenario_execution.png "How Cucumber executes a scenario")
+
+Step definitions provide a mapping from the Gherkin scenarios’ plainlanguage descriptions of user actions into Java code, which simulates those actions.
+
+Step definitions are registered with Cucumber by using `@Given`, `@When`, `@Then`, or one of the aliases for your spoken language.
+
+Step definitions use regular expressions to declare the steps that they can handle. Because regular expressions can contain wildcards, one step definition can handle several different steps.
+
+A step definition communicates its result to Cucumber by raising, or not raising, an exception.
+
+## Chapter 5: Expressive Scenarios
