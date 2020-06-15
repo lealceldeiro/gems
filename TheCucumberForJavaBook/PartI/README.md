@@ -35,3 +35,15 @@ Cucumber tests are expressed using a syntax called Gherkin. Gherkin files are pl
 Step definitions are the glue that binds your Cucumber tests to the application you’re testing.
 
 ## Chapter 3: Gherkin Basics
+
+The core *Gherkin* keywords `Feature`, `Scenario`, `Given`, `When`, and `Then` can be used to describe the behavior your stakeholders want as concrete examples.
+
+There is a fundamental pattern to each Gherkin scenario, with a context (`Given`), an event (`When`), and an outcome (`Then`).
+
+Each scenario must be capable of being run on its own and should not depend on data set up by other scenarios. This means every scenario has to include enough `Given` steps to set up all the data it needs.
+
+You can add descriptions and comments to your `.feature` files to turn them into useful documentation of your system.
+
+Using the `#language:` header, you can write your features in different spoken languages.
+
+## Chapter 4: Step Definitions: From the Outside
