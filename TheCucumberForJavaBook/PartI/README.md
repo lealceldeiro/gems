@@ -75,3 +75,20 @@ You can organize features into subfolders, like chapters in a book.
 Tags allow you to mark up scenarios and features so you select particular sets to run or report on.
 
 ## Chapter 6: Keeping Your Cucumbers Sweet
+
+### Main types of problems that might start to arise
+
+| Symptom                                  | Problem              |
+|------------------------------------------|----------------------|
+| Some of our tests fail randomly          | Flickering scenarios |
+| We keep breaking tests unintentionally   | Flickering scenarios |
+| Our features take too long to run        | Slow features        |
+| Our stakeholders don’t read our features | Bored stakeholders   |
+
+Cucumber features are a valuable asset to any company. Some teams have ripped out and rewritten big parts of their systems, safe in the knowledge that they had a set of accurate, executable specifications to ensure the new solution worked just as well as the original. To those teams, the features were more valuable than the production code itself. If you’re going to invest in writing Cucumber features, you need to protect that investment by caring for them so that they’re as useful as possible to the whole team.
+
+Don’t settle for features that are slow, that fail intermittently, or that are read by only half the team: iron out problems as they happen, and use each problem as a reason to make the tests even better than they were before.
+
+Cucumber might just seem like a testing tool, but at its heart it’s really a collaboration tool. If you make a genuine effort to write features that work as documentation for the nontechnical stakeholders on your team, you’ll find you are forced to talk with them about details that you might never have otherwise made the time to talk about. Those conversations reveal insights about their understanding of the problem, insights that will help you build a much better solution than you would have otherwise.
+
+This is Cucumber’s big secret: the tests and documentation are just a happy side effect; the real value lies in the knowledge you discover during those conversations.
