@@ -61,3 +61,17 @@ Step definitions use regular expressions to declare the steps that they can hand
 A step definition communicates its result to Cucumber by raising, or not raising, an exception.
 
 ## Chapter 5: Expressive Scenarios
+
+Readability should be your number-one goal when writing Gherkin features. Always try to sit together with a stakeholder when you write your scenarios, or at the very least pass them over for feedback once you’ve written them. Keep fine-tuning the language in your scenarios to make them more readable.
+
+Use a Background to factor out repeated steps from a feature and to help tell a story.
+
+Repetitive scenarios can be collapsed into a Scenario Outline.
+
+Steps can be extended with multiline strings or data tables.
+
+You can organize features into subfolders, like chapters in a book.
+
+Tags allow you to mark up scenarios and features so you select particular sets to run or report on.
+
+## Chapter 6: Keeping Your Cucumbers Sweet
