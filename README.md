@@ -20,7 +20,9 @@ Notes from:
 
 ### [Design Patterns - Elements of Reusable Object-Oriented Software](./DesignPatternsElementsOfReusableObjectOrientesSoftware)  <sup><sub>(*Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides*)</sub></sup>
 
-### [The Cucumber for Java Book: Behaviour-Driven Development for Testers and Developers](./TheCucumberForJavaBook)  <sup><sub>(*Seb Rose, Matt Wynne,  Aslak Hellesoy*)</sub></sup>
+### [The Cucumber for Java Book: Behaviour-Driven Development for Testers and Developers](./TheCucumberForJavaBook)  <sup><sub>(*Seb Rose, Matt Wynne, Aslak Hellesoy*)</sub></sup>
+
+### [Specification by Example](./SpecificationByExample)  <sup><sub>(*Gojko Adzic*)</sub></sup>
 
 ### [Java Cookbook: Problems and Solutions for Java Developers](./JavaCookBookProblemsAndSolutions)  <sup><sub>(*Ian F. Darwin*)</sub></sup>
 
