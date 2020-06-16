@@ -48,3 +48,5 @@ Truncation-based cleaning is a slower, brute-force technique that works in multi
 Dependency injection greatly simplifies the management of the graph of objects needed to run the scenarios.
 
 ## Chapter 12: Working with Web Applications
+
+[Selenium WebDriver](https://www.selenium.dev/documentation/en/webdriver/) API is a great tool that can be integrated with Cucumber for implementing tests for web applications.
