@@ -50,3 +50,11 @@ Dependency injection greatly simplifies the management of the graph of objects n
 ## Chapter 12: Working with Web Applications
 
 [Selenium WebDriver](https://www.selenium.dev/documentation/en/webdriver/) API is a great tool that can be integrated with Cucumber for implementing tests for web applications.
+
+## Chapter 13: Keeping Your Features Fast
+
+One of the simplest ways to reduce your Cucumber runtime is to run fewer scenarios. Tag your scenarios, and you can choose a subset of the scenarios to run, covering the area that you’re currently working on. Once the work is checked in, a larger, but still reduced, subset of faster tests might run in our continuous integration (CI) server. Larger subsets might run in subsequent steps of a continuous delivery pipeline, or at scheduled intervals (such as overnight or weekly). Finally, the full set of scenarios could run on demand as part of a release or QA process.
+
+Unit tests are preferable to full-stack tests because they are faster, and when they fail, they give us a clear indication of where we need to go to fix the problem. Additionally, unit tests are often less brittle and easier to understand than full-stack tests.
+
+Using BDD, we encourage the team to specify the application’s behavior in business language.
