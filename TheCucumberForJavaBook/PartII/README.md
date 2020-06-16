@@ -44,3 +44,7 @@ Transaction-based cleaning is preferred because it is fast, but it works only wh
 Truncation-based cleaning is a slower, brute-force technique that works in multiprocess and multithreaded environments.
 
 ## Chapter 11: Simplifying Design with Dependency Injection
+
+Dependency injection greatly simplifies the management of the graph of objects needed to run the scenarios.
+
+## Chapter 12: Working with Web Applications
