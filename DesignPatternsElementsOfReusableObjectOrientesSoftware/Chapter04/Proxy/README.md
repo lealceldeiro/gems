@@ -26,9 +26,9 @@ For instance:
 
 ![Image of the structure for the Proxy Pattern](./image/proxy_structure.png "Structure for the Proxy Pattern")
 
-The following diagram show a possible structure of the proxy at run-time:
+The following diagram shows a possible structure of the proxy at run-time:
 
-![Image of how proxy could be structured at run-time](./image/proxy_runtime.png "How proxy could be structured at runt-time")
+![Image of how proxy could be structured at run-time](./image/proxy_runtime.png "How proxy could be structured at run-time")
 
 ## Participants
 
