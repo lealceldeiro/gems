@@ -14,6 +14,7 @@ interface Handler {
     + {abstract} void handle(Request request)
 }
 Handler -- Request
+AbstractHandler o-- Handler
 
 abstract class AbstractHandler implements Handler {
     - Handler successor
