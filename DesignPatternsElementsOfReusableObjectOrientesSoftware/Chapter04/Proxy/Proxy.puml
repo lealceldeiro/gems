@@ -1,0 +1,30 @@
+@startuml
+
+interface Door {
+    + {abstract} void open()
+    + {abstract} void close()
+}
+
+class RocketDoor implements Door {
+    - double thickness
+    + RocketDoor(double thickness)
+    + void open()
+    + void close()
+}
+
+class SecuredDoor implements Door {
+    - String key
+    - String String visitorKey
+    - Door realDoor
+
+    + SecuredDoor(Door realDoor)
+    + void introduceKey(String key)
+    + void open()
+    + void close()
+}
+
+SecuredDoor o-- Door
+
+hide empty members
+
+@enduml
