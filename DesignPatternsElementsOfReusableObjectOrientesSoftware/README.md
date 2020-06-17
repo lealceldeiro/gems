@@ -6,3 +6,4 @@ Main notes taken from the book [Design Patterns - Elements of Reusable Object-Or
 ## [Chapter 2](./Chapter02): A Case Study
 ## [Chapter 3](./Chapter03): Creational Patterns
 ## [Chapter 4](./Chapter04): Structural Patterns
+## [Chapter 5](./Chapter05): Behavioral Patterns
