@@ -28,7 +28,7 @@ For instance:
 
 The following diagram show a possible structure of the proxy at run-time:
 
-![Image of how proxy could be structured at runt-time](./image/proxy_runtime.png "How proxy could be structured at runt-time")
+![Image of how proxy could be structured at run-time](./image/proxy_runtime.png "How proxy could be structured at runt-time")
 
 ## Participants
 
@@ -60,3 +60,74 @@ The Proxy pattern introduces a level of indirection when accessing an object. Th
 *Adapter*: An adapter provides a different interface to the object it adapts. In contrast, a proxy provides the same interface as its subject. However, a proxy used for access protection might refuse to perform an operation that the subject will perform, so its interface may be effectively a subset of the subject's.
 
 *Decorator*: Although decorators can have similar implementations as proxies, decorators have a different purpose. A decorator adds one or more responsibilities to an object, whereas a proxy controls access to an object.
+
+## Example in Java
+
+![Class Diagram for a protection proxy](./image/code_class_design.png "Class Diagram for a protection proxy")
+
+```java
+public interface Door {
+    void open();
+    void close();
+}
+
+public class RocketDoor implements Door {
+    @Override
+    public void open() {
+        System.out.println("Opening rocket door...");
+    }
+    @Override
+    public void close() {
+        System.out.println("Closing rocket door...");
+    }
+}
+
+public class SecuredDoor implements Door {
+    private String key = "";
+    private String visitorKey = "";
+    private final Door realDoor;
+
+    public SecuredDoor(String key, Door realDoor) {
+        this.key = key;
+        this.realDoor = realDoor;
+    }
+
+    @Override
+    public void open() {
+        if (visitorKey.equals(key)) {
+            realDoor.open();
+        }
+        else {
+            System.out.println("You cannot open this door");
+        }
+    }
+
+    public void introduceKey(String key) {
+        visitorKey = key;
+    }
+
+    @Override
+    public void close() {
+        if (visitorKey.equals(key)) {
+            realDoor.close();
+        }
+        else {
+            System.out.println("You cannot open this door");
+        }
+    }
+}
+
+// --
+
+public final class Client {
+    public static void main(String[] args) {
+        SecuredDoor securedRocketDoor = new SecuredDoor("Secret", new RocketDoor());
+
+        securedRocketDoor.open();                   // You cannot open this door
+
+        securedRocketDoor.introduceKey("Secret");
+        securedRocketDoor.open();                   // Opening rocket door...
+        securedRocketDoor.close();                  // Closing rocket door...
+    }
+}
+```
