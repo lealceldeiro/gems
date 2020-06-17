@@ -1,0 +1,50 @@
+@startuml
+
+interface Request {
+    + {abstract} double amountToHandle()
+}
+
+class SandwichRequest implements Request {
+    - double cost
+    + SandwichRequest(double cost)
+    + double amountToHandle()
+}
+
+interface Handler {
+    + {abstract} void handle(Request request)
+}
+Handler -- Request
+
+abstract class AbstractHandler implements Handler {
+    - Handler successor
+    + AbstractHandler()
+    + AbstractHandler(Handler successor)
+    + void handle(Request request)
+}
+
+class CashHandler extends AbstractHandler {
+    - double cashInMyPocket
+    + CashHandler()
+    + CashHandler(Handler successor)
+    + void handle(Request request)
+}
+
+class CardHandler extends AbstractHandler {
+    - double cardCredit
+    - boolean isActive
+    + CardHandler()
+    + CardHandler(Handler successor)
+    + void handle(Request request)
+}
+
+class BankHandler extends AbstractHandler {
+    - double accountCredit
+    + BankHandler()
+    + BankHandler(Handler successor)
+    + void handle(Request request)
+}
+
+
+
+hide empty members
+@enduml
