@@ -27,3 +27,13 @@ Main notes taken from the book [Specification by Example: How successful teams d
 * Focusing on creating a business-process documentation system should help you avoid the most common long-term maintenance problems with specifications and tests.
 
 ### Chapter 4: Initiating the changes
+
+* *Specification by Example* is a good way to provide development teams with just-in-time specifications, so it’s a key factor for success with short iterations or flow-based development.
+* Handle small chunks of software efficiently to enforce quick turnaround time and feedback.
+* Emphasize effective, efficient communication instead of long, boring documents.
+* Integrate cross-functional teams where testers, analysts, and developers work together to build the right specification of the system.
+* Plan for automation overhead upfront.
+
+## Part 2: Key process patterns
+
+### Chpater 5: Deriving scope from goals
