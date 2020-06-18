@@ -9,3 +9,5 @@ Main notes taken from the book [Specification by Example: How successful teams d
 * *Specification by Example* helps to improve the quality of software products, significantly reduces rework, and enables teams to better align analysis, development, and testing activities.
 * In the long term, *Specification by Example* helps teams create a living documentation system, a relevant and reliable description of the functionality that’s automatically updated with the programming language code.
 * The practices of *Specification by Example* work best with short iterative (Scrum, Extreme Programming [XP]) or flow-based (Kanban) development methods. Some ideas are also applicable to structured development (Rational Unified Process, Waterfall) processes.
+
+## Chapter 2: Key process patterns
