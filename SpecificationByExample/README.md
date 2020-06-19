@@ -37,3 +37,11 @@ Main notes taken from the book [Specification by Example: How successful teams d
 ## Part 2: Key process patterns
 
 ### Chpater 5: Deriving scope from goals
+
+* When you’re given requirements as tasks, push back: Get the information you need to understand the real problem; then collaboratively design the solution.
+* If you can’t avoid getting tasks, ask for high-level examples of how they would be useful—this will help you understand who needs them and why, so you can then design the solution.
+* To derive the appropriate scope, think about the business goal of a milestone and the stakeholders who can contribute or be affected by that milestone.
+* Start with the outputs of a system to get the business users more engaged.
+* Reorganize component teams into teams that can deliver complete features.
+
+### Chapter 6: Specifying collaboratively
