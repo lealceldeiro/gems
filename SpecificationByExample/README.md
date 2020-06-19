@@ -52,3 +52,11 @@ Main notes taken from the book [Specification by Example: How successful teams d
 * The balance between the work done in preparation and the work done during collaboration depends on several factors: the maturity of the product, the level of domain knowledge in the delivery team, typical change request complexity, process bottlenecks, and availability of business users.
 
 ### Chapter 7: Illustrating using examples
+
+* Using a single set of examples consistently from specification through development to testing ensures that everyone has the same understanding of what needs to be delivered.
+* Examples used for illustrating features should be precise, complete, realistic, and easy to understand.
+* Realistic examples help spot inconsistencies and functional gaps faster than implementation.
+* Once you have an initial set of examples, experiment with data and look for alternative ways to test a feature to complete the specification.
+* When examples are complex and there are too many examples or too many factors present, look for missing concepts and try to explain the examples at a higher level of abstraction. Use a set of focused examples to illustrate the new concepts separately.
+
+### Chapter 8: Refining the specification
