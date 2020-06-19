@@ -45,3 +45,10 @@ Main notes taken from the book [Specification by Example: How successful teams d
 * Reorganize component teams into teams that can deliver complete features.
 
 ### Chapter 6: Specifying collaboratively
+
+* *Specification by Example* relies heavily on collaboration between business users and delivery team members.
+* Everyone on the delivery team shares the responsibility for the right specifications. Programmers and testers have to offer input about the technical implementation and the validation aspects.
+* Most teams collaborate on specifications in two phases: Someone works up front to prepare initial examples for a feature, and then those who have a stake in the feature discuss it, adding examples to clarify or complete the specification.
+* The balance between the work done in preparation and the work done during collaboration depends on several factors: the maturity of the product, the level of domain knowledge in the delivery team, typical change request complexity, process bottlenecks, and availability of business users.
+
+### Chapter 7: Illustrating using examples
