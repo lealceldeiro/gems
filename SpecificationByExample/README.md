@@ -60,3 +60,12 @@ Main notes taken from the book [Specification by Example: How successful teams d
 * When examples are complex and there are too many examples or too many factors present, look for missing concepts and try to explain the examples at a higher level of abstraction. Use a set of focused examples to illustrate the new concepts separately.
 
 ### Chapter 8: Refining the specification
+
+* Don’t just use the first set of examples directly; refine the specification from them.
+* To get the most out of the examples, the resulting specification should be precise and testable, self-explanatory, focused, in domain language, and about business functionality.
+* Avoid scripts and talking about software design in specifications.
+* Don’t try to cover every single case. Specifications aren’t replacements for combinatorial regression testing.
+* Start with one example for each important set of cases and add examples that illustrate particular areas of concern to programmers and testers.
+* Define and use the Ubiquitous Language in specifications, software design, and tests.
+
+### Chapter 9: Automating validation without changing specifications
