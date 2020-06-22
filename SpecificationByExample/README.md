@@ -69,3 +69,11 @@ Main notes taken from the book [Specification by Example: How successful teams d
 * Define and use the Ubiquitous Language in specifications, software design, and tests.
 
 ### Chapter 9: Automating validation without changing specifications
+
+* Refined specifications should be automated with as little change as possible.
+* The automation layer should define how something is tested; specifications should define what is to be tested.
+* Use the automation layer to translate between the business language and user interface concepts, APIs, and databases. Create higher-level reusable components for specifications.
+* Automate below the user interface if possible.
+* Don’t rely too much on existing data if you don’t have to.
+
+### Chapter 10: Validating frequently
