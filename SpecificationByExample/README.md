@@ -85,3 +85,12 @@ Main notes taken from the book [Specification by Example: How successful teams d
 * Don’t just disable failing tests—either fix the problems or move the tests to a pack for low-priority regression issues that’s closely monitored.
 
 ### Chapater 11: Evolving a documentation system
+
+* To get the most out of your living documentation system, keep it consistent and make sure that the individual executable specifications are easy to understand and easy to access for everyone, including business users.
+* Evolve the ubiquitous language and use it consistently.
+* As the system evolves, watch out for long specifications or several small ones that explain the same thing with minor variations. Look for concepts at a higher level of abstraction that would make these things easier to explain.
+* Organize the living documentation system into a hierarchy that allows you to easily find all the specifications for the current iteration and any feature that was previously implemented.
+
+## Part 3: Case studies
+
+### Chapter 12: uSwitch
