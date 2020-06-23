@@ -77,3 +77,11 @@ Main notes taken from the book [Specification by Example: How successful teams d
 * Don’t rely too much on existing data if you don’t have to.
 
 ### Chapter 10: Validating frequently
+
+* Validate executable specifications frequently to keep them reliable.
+* Compared to continuous integration with unit tests, the two main challenges for continuous validation are fast feedback and stability.
+* Set up an isolated environment for continuous validation and fully automate deployments to make it more reliable.
+* Look for ways to get faster feedback. Split quick and slow tests, create a pack for current iteration specifications, and divide long-running packs of executable specifications into smaller packs.
+* Don’t just disable failing tests—either fix the problems or move the tests to a pack for low-priority regression issues that’s closely monitored.
+
+### Chapater 11: Evolving a documentation system
