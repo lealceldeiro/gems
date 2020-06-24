@@ -9,3 +9,4 @@ Behavioral object patterns use object composition rather than inheritance. Some 
 Other behavioral object patterns are concerned with encapsulating behavior in an object and delegating requests to it.
 
 ## [Chain of Responsability](./ChainOfResponsability)
+## [Command](./Command)
