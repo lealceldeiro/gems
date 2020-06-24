@@ -55,4 +55,101 @@ Action, Transaction
 ![Class Diagram for Command](./image/code_class_design.png "Class Diagram for Command pattern example")
 
 ```java
+public interface BoardReceiver {
+    void move(int x, int y, String move);
+}
+
+public final class TicTacToeBoardReceiver implements BoardReceiver {
+    private String[][] moves = new String[3][3];
+
+    public void move(int x, int y, String move) {
+        if (moveIsValid(x, y, move)) {
+            makeMove(x, y, move);
+        }
+    }
+
+    private boolean moveIsValid(int x, int y, String move) {
+        // validation implementation goes here
+        return true;
+    }
+
+    private void makeMove(int x, int y, String move) {
+        moves[x][y] = move;
+    }
+}
+
+public interface Command {
+    void execute();
+}
+
+public final class TicTacToeCommand implements Command {
+    private final int x;
+    private final int y;
+    private final String move;
+    private final BoardReceiver boardReceiver;
+
+    public TicTacToeCommand(int x, int y, String move, BoardReceiver boardReceiver) {
+        this.x = x;
+        this.y = y;
+        this.move = move;
+        this.boardReceiver = boardReceiver;
+    }
+
+    @Override
+    public void execute() {
+        boardReceiver.move(x, y, move);
+    }
+}
+
+public final class GameRunner {
+    private static final Logger LOGGER = Logger.getAnonymousLogger();
+
+    private volatile boolean gameStarted;
+    private final BlockingQueue<Command> commands = new LinkedBlockingDeque<>();
+
+    public synchronized void startGame() {
+        gameStarted = true;
+        try {
+            while (gameStarted) {
+                commands.take().execute();
+            }
+        } catch (InterruptedException exception) {
+            LOGGER.log(Level.SEVERE, exception.getLocalizedMessage());
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    public synchronized void stopGame() {
+        gameStarted = false;
+    }
+
+    public void addCommand(Command command) {
+        commands.add(command);
+    }
+}
+
+// --
+
+public final class ClientPlatform {
+    public static void main(String[] args) {
+        GameRunner gameRunner = new GameRunner();
+        gameRunner.startGame();
+
+        BoardReceiver ticTacToeReceiver = new TicTacToeBoardReceiver();
+
+        Command ticTacToeMoveCommand1 = new TicTacToeCommand(0, 0, "X",ticTacToeReceiver);
+        Command ticTacToeMoveCommand2 = new TicTacToeCommand(1, 0, "O",ticTacToeReceiver);
+        Command ticTacToeMoveCommand3 = new TicTacToeCommand(0, 1, "X",ticTacToeReceiver);
+        Command ticTacToeMoveCommand4 = new TicTacToeCommand(1, 1, "O",ticTacToeReceiver);
+        Command ticTacToeMoveCommand5 = new TicTacToeCommand(0, 2, "X",ticTacToeReceiver); // win
+
+        gameRunner.addCommand(ticTacToeMoveCommand1);
+        gameRunner.addCommand(ticTacToeMoveCommand2);
+        gameRunner.addCommand(ticTacToeMoveCommand3);
+        gameRunner.addCommand(ticTacToeMoveCommand4);
+        gameRunner.addCommand(ticTacToeMoveCommand5);
+
+        gameRunner.stopGame();
+    }
+}
 ```
