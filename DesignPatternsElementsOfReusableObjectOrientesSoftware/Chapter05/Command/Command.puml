@@ -1,0 +1,47 @@
+@startuml
+
+interface Command {
+    + {abstract} void execute()
+}
+
+interface BoardReceiver {
+    + {abstract} move(int x, int y, String move)
+}
+
+class TicTacToeBoardReceiver implements BoardReceiver {
+    - String[][] moves
+
+    + move(int x, int y, String move)
+}
+
+class TicTacToeCommand implements Command {
+    - int x
+    - int y
+    - String move
+    - BoardReceiver receiver
+
+    + TicTacToeCommand(int x, int y, BoardReceiver receiver)
+    + execute()
+}
+TicTacToeCommand o.. BoardReceiver
+
+class GameRunner {
+    - boolean gameStarted
+    - BlockingQueue<Command> commands
+
+    + void startGame()
+    + void stopGame()
+    + void addCommand(Command command)
+}
+note top of GameRunner: Invoker
+
+GameRunner o-- Command
+
+class ClientPlatform
+
+ClientPlatform .. TicTacToeBoardReceiver
+ClientPlatform .. TicTacToeCommand
+ClientPlatform o.. GameRunner
+
+hide empty members
+@enduml
