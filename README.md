@@ -24,11 +24,13 @@ Notes from:
 
 ### [Specification by Example](./SpecificationByExample)  <sup><sub>(*Gojko Adzic*)</sub></sup>
 
+### [Java Cookbook: Problems and Solutions for Java Developers](./JavaCookBookProblemsAndSolutions)  <sup><sub>(*Ian F. Darwin*)</sub></sup>
+
+### [The Java Module System](./TheJavaModuleSystem)  <sup><sub>(*Nicolai Parlog*)</sub></sup>
+
 ### [BDD in Action](./BDDInAction)  <sup><sub>(*John Ferguson Smart*)</sub></sup>
 
 ### [Growing Object-Oriented Software, Guided by Tests](./GrowingObjectOrientedSoftwareGuidedByTests)  <sup><sub>(*Steve Freeman, Nat Pryce*)</sub></sup>
-
-### [Java Cookbook: Problems and Solutions for Java Developers](./JavaCookBookProblemsAndSolutions)  <sup><sub>(*Ian F. Darwin*)</sub></sup>
 
 ### [Seroiusly Good Software](./SeriouslyGoodSoftware)  <sup><sub>(*Marco Faella*)</sub></sup>
 
