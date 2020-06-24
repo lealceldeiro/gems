@@ -93,4 +93,10 @@ Main notes taken from the book [Specification by Example: How successful teams d
 
 ## Part 3: Case studies
 
-### Chapter 12: uSwitch
+### Chapter 18: Concluding thoughts
+
+* Collaboration on requirements builds trust between stakeholders and delivery team members
+* Collaboration requires preparation
+* There are many different ways to collaborate
+* Looking at the end goal as business process documentation is a useful model
+* Long-term value comes from living documentation
