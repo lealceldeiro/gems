@@ -12,3 +12,4 @@ Other behavioral object patterns are concerned with encapsulating behavior in an
 ## [Command](./Command)
 ## [Interpreter](./Interpreter)
 ## [Iterator](./Iterator)
+## [Mediator](./Mediator)
