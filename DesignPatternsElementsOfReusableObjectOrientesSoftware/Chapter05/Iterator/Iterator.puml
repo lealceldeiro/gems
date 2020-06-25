@@ -1,0 +1,53 @@
+@startuml
+
+interface Iterator<E> {
+    + {abstract}  boolean hasNext()
+    + {abstract}  E next()
+    + {abstract}  void remove()
+    + {abstract}  void forEachRemaining(Consumer<? super E> action)
+}
+note top of Iterator: Defines the general contract for\nall iterators
+
+interface ListIterator<E> extends Iterator {
+    + {abstract}  boolean hasNext()
+    + {abstract}  E next()
+    + {abstract}  void remove()
+    + {abstract}  void forEachRemaining(Consumer<? super E> action)
+
+    + {abstract} boolean hasPrevious()
+    + {abstract} E previous()
+    + {abstract} int nextIndex()
+    + {abstract} int previousIndex()
+    + {abstract} void remove()
+    + {abstract} void set(E e)
+    + {abstract} void add(E e)
+}
+note bottom of ListIterator: Enhances with new operations\n the contract for iterator (in this\ncase, specifically for lists)
+
+interface List<E> {
+    + {abstract} Iterator<E> iterator()
+    + {abstract} ListIterator<E> listIterator()
+}
+
+abstract class AbstractList<E> implements List {
+    + {abstract} Iterator<E> iterator()
+    + {abstract} ListIterator<E> listIterator()
+}
+
+class ArrayList<E> extends AbstractList {
+    + Iterator<E> iterator()
+    + ListIterator<E> listIterator()
+}
+ArrayList o-- Iterator
+ArrayList o-- ListIterator
+
+class LinkedList<E> extends AbstractList {
+    + Iterator<E> iterator()
+    + ListIterator<E> listIterator()
+}
+LinkedList o-- Iterator
+LinkedList o-- ListIterator
+
+hide empty members
+
+@enduml
