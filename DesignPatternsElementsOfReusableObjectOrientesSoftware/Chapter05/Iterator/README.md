@@ -48,4 +48,15 @@ A `Concretelterator` keeps track of the current object in the aggregate and can 
 ![Class Diagram for Iterator](./image/code_class_design.png "Class Diagram for Iterator pattern example")
 
 ```java
+List<String> stringList = new ArrayList<>();
+stringList.add("Hello");
+stringList.add("world");
+
+stringList.iterator().forEachRemaining(System.out::print);
+
+List<Integer> integerList = new LinkedList<>();
+integerList.add(1);
+integerList.add(2);
+
+integerList.listIterator().forEachRemaining(System.out::print);
 ```
