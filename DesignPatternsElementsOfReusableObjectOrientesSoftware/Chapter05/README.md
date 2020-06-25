@@ -10,3 +10,4 @@ Other behavioral object patterns are concerned with encapsulating behavior in an
 
 ## [Chain of Responsability](./ChainOfResponsability)
 ## [Command](./Command)
+## [Interpreter](./Interpreter)
