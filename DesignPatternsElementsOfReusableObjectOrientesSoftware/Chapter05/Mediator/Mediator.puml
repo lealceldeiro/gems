@@ -1,0 +1,54 @@
+@startuml
+interface ChatApp {
+    + {abstract} void send(String message)
+    + {abstract} void receive(String message)
+}
+
+interface ChatMediator {
+    + {abstract} void notifyNewMessage(ChatApp from, String message)
+    + {abstract} void add(ChatApp... apps)
+}
+
+class DefaultMediator implements ChatMediator {
+    - Collection<ChatApp> apps
+    + DefaultMediator()
+    + DefaultMediator(Collection<ChatApp> apps)
+    + void notifyNewMessage(ChatApp from, String message)
+    + void add(ChatApp... apps)
+}
+DefaultMediator "0..*" o-- "0..*" ChatApp
+
+abstract class AbstractChatApp implements ChatApp {
+    # final ChatMediator mediator
+    + AbstractChatApp(ChatMediator mediator)
+    + {abstract} String getName()
+    + int hashCode()
+    + boolean equals(Object another)
+    + String toString()
+}
+
+AbstractChatApp "0..*" o-- "1" ChatMediator
+
+class Skype extends AbstractChatApp {
+    + Skype(ChatMediator mediator
+    + void send(String message)
+    + void receive(String message)
+    + getName()
+}
+
+class Viber extends AbstractChatApp {
+    + Viber(ChatMediator mediator
+    + void send(String message)
+    + void receive(String message)
+    + getName()
+}
+
+class WhatsApp extends AbstractChatApp {
+    + WhatsApp(ChatMediator mediator
+    + void send(String message)
+    + void receive(String message)
+    + getName()
+}
+
+hide empty members
+@enduml
