@@ -52,4 +52,86 @@ Dependents, Publish-Subscribe
 ![Class Diagram for Observer](./image/code_class_design.png "Class Diagram for Observer pattern example")
 
 ```java
+public class Course {
+    private final String name;
+    private final boolean isTechnical;
+
+    public Course(String name, boolean isTechnical) {
+        this.name = name;
+        this.isTechnical = isTechnical;
+    }
+
+    public boolean isTechnical() {
+        return isTechnical;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Course course = (Course) o;
+        return isTechnical == course.isTechnical() && name.equals(course.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, isTechnical);
+    }
+
+    @Override
+    public String toString() {
+        return "Course{name='" + name + "'" + ", isTechnical=" + isTechnical + "}";
+    }
+}
+
+public class Student {
+    private final String name;
+
+    public Student(String name) {
+        this.name = name;
+    }
+
+    public void onNewPublishedCourse(Course course) {
+        System.out.println(this + " enrolled in " + course);
+    }
+
+    @Override
+    public String toString() {
+        return "Student{name='" + name + "'}";
+    }
+}
+
+public class OnlineAcademy {
+    Collection<Student> students = new ArrayList<>();
+
+    public void enrollStudent(Student student) {
+        students.add(student);
+    }
+
+    public void publishNewCourse(Course course) {
+        students.forEach(student -> student.onNewPublishedCourse(course));
+    }
+}
+
+// --
+
+public final class Runner {
+    public static void main(String[] args) {
+        Student john = new Student("John");
+        Student ana = new Student("Ana");
+
+        OnlineAcademy academy = new OnlineAcademy();
+        academy.enrollStudent(john);
+        academy.enrollStudent(ana);
+
+        academy.publishNewCourse(new Course("Design patterns", true));  // Student{name='John'} enrolled in Course{name='Design patterns', isTechnical=true}
+                                                                        // Student{name='Ana'} enrolled in Course{name='Design patterns', isTechnical=true}
+        academy.publishNewCourse(new Course("Philosophy", false));      // Student{name='John'} enrolled in Course{name='Philosophy', isTechnical=false}
+                                                                        // Student{name='Ana'} enrolled in Course{name='Philosophy', isTechnical=false}
+    }
+}
 ```
