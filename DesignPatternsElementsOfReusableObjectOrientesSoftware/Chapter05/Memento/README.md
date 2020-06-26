@@ -15,7 +15,7 @@ Token
 
 ## Structure
 
-![Image of the structure for the Memento Pattern](./image/mediator.png "Structure for the Memento Pattern")
+![Image of the structure for the Memento Pattern](./image/memento.png "Structure for the Memento Pattern")
 
 ## Participants
 
@@ -52,4 +52,57 @@ Token
 ![Class Diagram for Memento](./image/code_class_design.png "Class Diagram for Memento pattern example")
 
 ```java
+public class EditorMemento {
+    private final String content;
+
+    public EditorMemento(String content) {
+        this.content = content;
+    }
+
+    public String getContent() {
+        return content;
+    }
+}
+
+public class Editor {
+    private String content = "";
+
+    public void typeLine(String moreContent) {
+        content += moreContent + System.lineSeparator();
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public EditorMemento save() {
+        return new EditorMemento(content);
+    }
+
+    public void restore(EditorMemento fromMemento) {
+        content = fromMemento.getContent();
+    }
+}
+
+// --
+
+public class EditorController {
+    public static void main(String[] args) {
+        Editor editor = new Editor();
+        editor.typeLine("Hello");
+        editor.typeLine("World");
+
+        EditorMemento memento = editor.save();
+
+        editor.typeLine("Some more content");
+        System.out.println(editor.getContent());    // Hello
+                                                    // World
+                                                    // Some more content
+
+        editor.restore(memento);
+
+        System.out.println(editor.getContent());    // Hello
+                                                    // World
+    }
+}
 ```
