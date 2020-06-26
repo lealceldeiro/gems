@@ -1,0 +1,24 @@
+@startuml
+class EditorMemento {
+    - String content
+
+    + EditorMemento(String content)
+    + String getContent()
+}
+
+class Editor {
+    - String content
+    + void typeLine(String moreContent)
+    + String getContent()
+    + EditorMemento save()
+    + void restore(EditorMemento fromMemento)
+}
+
+Editor .. EditorMemento
+
+class EditorController
+
+EditorController -- Editor
+EditorController o-- EditorMemento
+hide empty members
+@enduml
