@@ -15,3 +15,4 @@ Other behavioral object patterns are concerned with encapsulating behavior in an
 ## [Mediator](./Mediator)
 ## [Memento](./Memento)
 ## [Observer](./Observer)
+## [State](./State)
