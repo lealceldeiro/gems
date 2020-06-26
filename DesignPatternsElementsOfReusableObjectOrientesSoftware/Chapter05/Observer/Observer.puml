@@ -1,0 +1,27 @@
+@startuml
+class Course {
+    - String name
+    - boolean isTechnical
+    + Course(String name, boolean isTechnical)
+    + String getName()
+    + boolean isTechnical()
+}
+
+class Student {
+    - String name
+    + Student(String name)
+    + void onNewPublishedCourse(Course course)
+}
+Student .. Course
+
+class OnlineAcademy {
+    - Collection<Student> students
+    + void enrollStudent(Student student)
+    + void publishNewCourse(Course course)
+}
+
+OnlineAcademy o-- Student
+OnlineAcademy .. Course
+
+hide empty members
+@enduml
