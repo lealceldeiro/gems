@@ -35,7 +35,7 @@ abstract class AbstractHero implements Hero {
     + void resetHero()
 }
 
-AbstractHero o-- HeroState
+AbstractHero *-- HeroState
 
 class SuperMan extends AbstractHero {
     # Hero self()
