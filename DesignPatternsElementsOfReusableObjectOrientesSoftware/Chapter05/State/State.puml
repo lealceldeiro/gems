@@ -1,0 +1,47 @@
+@startuml
+
+interface HeroState {
+    + {abstract} long getPowerLevel(Hero hero)
+}
+
+class DefaultHeroState implements HeroState{
+    + long getPowerLevel(Hero hero)
+}
+
+class StrongHeroState implements HeroState{
+    + long getPowerLevel(Hero hero)
+}
+
+class WeakHeroState implements HeroState {
+    + long getPowerLevel(Hero hero)
+}
+
+interface Hero {
+    + {abstract} long getPower()
+    + {abstract} long getStrength()
+    + {abstract} void weakenHero()
+    + {abstract} void strengthenHero()
+    + {abstract} void resetHero()
+}
+
+abstract class AbstractHero implements Hero {
+    # HeroState heroState
+    # String name
+    + AbstractHero(String name)
+    + {abstract} long getStrength()
+    # {abstract} Hero self()
+    + void weakenHero()
+    + void strengthenHero()
+    + void resetHero()
+}
+
+AbstractHero o-- HeroState
+
+class SuperMan extends AbstractHero {
+    # Hero self()
+    + SuperMan(String name)
+    + long getStrength()
+}
+
+hide empty members
+@enduml
