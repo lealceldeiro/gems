@@ -16,7 +16,7 @@ Objects for States
 
 ## Structure
 
-![Image of the structure for the State Pattern](./image/memento.png "Structure for the State Pattern")
+![Image of the structure for the State Pattern](./image/state.png "Structure for the State Pattern")
 
 ## Participants
 * **`Context`**
@@ -46,4 +46,98 @@ Objects for States
 ![Class Diagram for State](./image/code_class_design.png "Class Diagram for State pattern example")
 
 ```java
+public interface HeroState {
+    long getPowerLevel(Hero hero);
+}
+
+public class DefaultHeroState implements HeroState {
+    @Override
+    public long getPowerLevel(Hero hero) {
+        return hero.getStrength();
+    }
+}
+
+public class StrongHeroState implements HeroState {
+    @Override
+    public long getPowerLevel(Hero hero) {
+        return hero.getStrength() + 100;
+    }
+}
+
+public class WeakHeroState implements HeroState {
+    @Override
+    public long getPowerLevel(Hero hero) {
+        return hero.getStrength() - 100;
+    }
+}
+
+public interface Hero {
+    long getPower();
+    long getStrength();
+    void weakenHero();
+    void strengthenHero();
+    void resetHero();
+}
+
+public abstract class AbstractHero implements Hero {
+    protected HeroState heroState = new DefaultHeroState();
+    private String name;
+
+    public AbstractHero(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public long getPower() {
+        return heroState.getPowerLevel(self());
+    }
+
+    protected abstract Hero self();
+
+    public void weakenHero() {
+        this.heroState = new WeakHeroState();
+    }
+
+    public void strengthenHero() {
+        this.heroState = new StrongHeroState();
+    }
+
+    public void resetHero() {
+        this.heroState = new DefaultHeroState();
+    }
+}
+
+public class SuperMan extends AbstractHero {
+    public SuperMan(String name) {
+        super(name);
+    }
+
+    @Override
+    protected Hero self() {
+        return this;
+    }
+
+    @Override
+    public long getStrength() {
+        return 150;
+    }
+}
+
+// --
+
+public class Main {
+    public static void main(String[] args) {
+        Hero hero = new SuperMan("S");
+        System.out.println(hero.getPower());    // 150
+
+        hero.weakenHero();
+        System.out.println(hero.getPower());    // 50
+
+        hero.strengthenHero();
+        System.out.println(hero.getPower());    // 250
+
+        hero.resetHero();
+        System.out.println(hero.getPower());    // 150
+    }
+}
 ```
