@@ -13,7 +13,6 @@ Objects for States
 * An object's behavior depends on its state, and it must change its behavior at run-time depending on that state.
 * Operations have large, multipart conditional statements that depend on the object's state. This state is usually represented by one or more enumerated constants. Often, several operations will contain this same conditional structure. The *State* pattern puts each branch of the conditional in a separate class. This lets you treat the object's state as an object in its own right that can vary independently from other objects.
 
-
 ## Structure
 
 ![Image of the structure for the State Pattern](./image/state.png "Structure for the State Pattern")
@@ -42,6 +41,8 @@ Objects for States
 
 * The *Flyweight* pattern explains when and how *State* objects can be shared
 * *State* objects are often *Singletons*
+
+## Example in Java
 
 ![Class Diagram for State](./image/code_class_design.png "Class Diagram for State pattern example")
 
