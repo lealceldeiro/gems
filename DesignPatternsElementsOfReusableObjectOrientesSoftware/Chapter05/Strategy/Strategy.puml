@@ -1,0 +1,35 @@
+@startuml
+interface Sorter<T> {
+    + {abstract} Collection<T> sort(Collection<T> dataset)
+}
+note right of Sorter: <i>Strategy</i> for sorting
+
+class BubbleSorter<T> implements Sorter {
+    + Collection<T> sort(Collection<T> dataset)
+}
+note bottom of BubbleSorter: Sorts elements using <i>Bubble Sort</i>
+
+class QuickSorter<T> implements Sorter {
+    + Collection<T> sort(Collection<T> dataset)
+}
+note bottom of QuickSorter: Sorts elements using <i>Quick Sort</i>
+
+class BookShelve {
+    - Sorter<Book> sorter
+    - Collection<Book> books
+
+    + void sortShelve()
+}
+note left of BookShelve: <i>Context</i>
+
+BookShelve o-- Sorter
+BookShelve o-- Book
+
+class Book implements Comparable {
+    - String name
+    + Book(String name)
+    + int compareTo(Book o)
+}
+
+hide empty members
+@enduml
