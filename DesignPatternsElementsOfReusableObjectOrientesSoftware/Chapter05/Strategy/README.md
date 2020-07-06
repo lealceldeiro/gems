@@ -52,4 +52,45 @@ Policy
 ![Class Diagram for Strategy](./image/code_class_design.png "Class Diagram for Strategy pattern example")
 
 ```java
+public interface Sorter<T> {
+    Collection<T> sort(Collection<T> dataset);
+}
+
+public class BubbleSorter<T> implements Sorter<T> {
+    @Override
+    public Collection<T> sort(Collection<T> dataset) {
+        Collection<T> sortedDataset = dataset; // TODO: implement sorting
+        return sortedDataset;
+    }
+}
+
+public class QuickSorter<T> implements Sorter<T> {
+    @Override
+    public Collection<T> sort(Collection<T> dataset) {
+        Collection<T> sortedDataset = dataset; // TODO: implement sorting
+        return sortedDataset;
+    }
+}
+
+public class Book implements Comparable<Book> {
+    private final String name;
+
+    public Book(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public int compareTo(Book o) {
+        return name.compareTo(o.name);
+    }
+}
+
+public class BookShelve {
+    private Sorter<Book> sorter = new BubbleSorter<>();  // at run-time, the strategy can be change as needed by setting a new sorter from the ones available
+    private Collection<Book> books = new ArrayList<>();
+
+    private void sortShelve() {
+        books = sorter.sort(books);   // sorting using the defined strategy
+    }
+}
 ```
