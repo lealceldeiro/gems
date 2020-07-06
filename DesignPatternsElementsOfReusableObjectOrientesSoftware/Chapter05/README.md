@@ -17,3 +17,4 @@ Other behavioral object patterns are concerned with encapsulating behavior in an
 ## [Observer](./Observer)
 ## [State](./State)
 ## [Strategy](./Strategy)
+## [Template Method](./TemplateMethod)
