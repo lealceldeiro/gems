@@ -53,4 +53,82 @@ It's important for template methods to specify which operations are hooks (may b
 ![Class Diagram for Template Method](./image/code_class_design.png "Class Diagram for Template Method pattern example")
 
 ```java
+public abstract class CarBuilder {
+    void buildCard() {
+        buildBody();
+        buildDoors();
+        buildWindows();
+        buildElectricalComponents();
+        buildMiscellaneous();
+        testCar();
+    }
+
+    protected abstract void buildMiscellaneous();
+
+    protected abstract void buildElectricalComponents();
+
+    protected abstract void buildWindows();
+
+    protected abstract void buildDoors();
+
+    protected abstract void buildBody();
+
+    private void testCar() {
+        System.out.println("Testing!");
+    }
+}
+
+public class ElectronicCarBuilder  extends CarBuilder {
+    @Override
+    protected void buildMiscellaneous() {
+        System.out.println("electronic misc");
+    }
+
+    @Override
+    protected void buildElectricalComponents() {
+        System.out.println("electrical comps");
+    }
+
+    @Override
+    protected void buildWindows() {
+        System.out.println("windows for an electrical car");
+    }
+
+    @Override
+    protected void buildDoors() {
+        System.out.println("cool automatic doors");
+    }
+
+    @Override
+    protected void buildBody() {
+        System.out.println("a great body for an electrical car");
+    }
+}
+
+public class MechanicalCarBuilder extends CarBuilder {
+    @Override
+    protected void buildMiscellaneous() {
+        System.out.println("mechanic misc");
+    }
+
+    @Override
+    protected void buildElectricalComponents() {
+        System.out.println("electric comps for a mechanic car");
+    }
+
+    @Override
+    protected void buildWindows() {
+        System.out.println("windows for a mechanic car");
+    }
+
+    @Override
+    protected void buildDoors() {
+        System.out.println("manual-opening doors");
+    }
+
+    @Override
+    protected void buildBody() {
+        System.out.println("a heavy duty body");
+    }
+}
 ```
