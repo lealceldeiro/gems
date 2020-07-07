@@ -1,0 +1,31 @@
+@startuml
+
+abstract class CarBuilder {
+    + void buildCard()
+    # {abstract} void buildBody()
+    # {abstract} void buildDoors()
+    # {abstract} void buildWindows()
+    # {abstract} void buildElectricalComponents()
+    # {abstract} void buildMiscellaneous()
+    - void testCar()
+}
+note right of CarBuilder: <i>buildBody</i> calls the other methods\nto define the general algorithm
+
+class ElectronicCarBuilder extends CarBuilder {
+    # void buildBody()
+    # void buildDoors()
+    # void buildWindows()
+    # void buildElectricalComponents()
+    # void buildMiscellaneous()
+}
+
+class MechanicCarBuilder extends CarBuilder {
+    # void buildBody()
+    # void buildDoors()
+    # void buildWindows()
+    # void buildElectricalComponents()
+    # void buildMiscellaneous()
+}
+
+hide empty members
+@enduml
