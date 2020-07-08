@@ -24,7 +24,7 @@ Notes from:
 
 ### [Specification by Example](./SpecificationByExample)  <sup><sub>(*Gojko Adzic*)</sub></sup>
 
-### [Java Cookbook: Problems and Solutions for Java Developers](./JavaCookBookProblemsAndSolutions)  <sup><sub>(*Ian F. Darwin*)</sub></sup>
+### **`>`** [Java Cookbook: Problems and Solutions for Java Developers](./JavaCookBookProblemsAndSolutions)  <sup><sub>(*Ian F. Darwin*)</sub></sup>
 
 ### [Java 9 Modularity](./Java9Modularity)  <sup><sub>(*Sander Mak,  Paul Bakker*)</sub></sup>
 
