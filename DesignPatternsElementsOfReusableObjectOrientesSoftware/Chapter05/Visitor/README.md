@@ -12,7 +12,7 @@ Represent an operation to be performed on the elements of an object structure. *
 
 ## Structure
 
-![Image of the structure for the Visitor Pattern](./image/iterator.png "Structure for the Visitor Pattern")
+![Image of the structure for the Visitor Pattern](./image/visitor.png "Structure for the Visitor Pattern")
 
 ## Participants
 
@@ -54,4 +54,64 @@ Represent an operation to be performed on the elements of an object structure. *
 ![Class Diagram for Visitor](./image/code_class_design.png "Class Diagram for Visitor pattern example")
 
 ```java
+public interface Visitor {
+    void visitFootBallGame(Football game);
+    void visitBasketBallGame(Basketball game);
+}
+
+public final class PrinterVisitor implements Visitor {
+
+    @Override
+    public void visitFootBallGame(Football game) {
+        print(String.format("%s: %d", game.getNameOfLeague(), game.getNumberOfPlayedLeagues()));
+    }
+
+    @Override
+    public void visitBasketBallGame(Basketball game) {
+        print(String.format("Cups: %s", game.getNumberOfCups()));
+    }
+
+    private void print(String string) { System.out.println(string); }
+}
+
+public interface Game {
+    void accept(Visitor visitor);
+}
+
+public class Football implements Game {
+    private final String nameOfLeague;
+    private final int numberOfPlayedLeagues;
+
+    public Football(String nameOfLeague, int numberOfPlayedLeagues) {
+        this.nameOfLeague = nameOfLeague;
+        this.numberOfPlayedLeagues = numberOfPlayedLeagues;
+    }
+
+    public String getNameOfLeague() { return nameOfLeague; }
+
+    public int getNumberOfPlayedLeagues() { return numberOfPlayedLeagues; }
+
+    @Override
+    public void accept(Visitor visitor) { visitor.visitFootBallGame(this); }
+}
+
+public class Basketball implements Game {
+    private final int numberOfCoups;
+
+    public Basketball(int numberOfCoups) { this.numberOfCoups = numberOfCoups; }
+
+    public int getNumberOfCups() { return numberOfCoups; }
+
+    @Override
+    public void accept(Visitor visitor) { visitor.visitBasketBallGame(this); }
+}
+
+public final class VideoGame {
+    private VideoGame() {}
+
+    public static void printGames(Iterable<? extends Game> games) {
+        Visitor visitor = new PrinterVisitor();
+        games.forEach(game -> game.accept(visitor));
+    }
+}
 ```
