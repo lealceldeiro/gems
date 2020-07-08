@@ -1,0 +1,45 @@
+@startuml
+interface Visitor {
+    + {abstract} void visitFootBallGame(Football game)
+    + {abstract} void visitBasketBallGame(Basketball game)
+}
+
+class PrinterVisitor implements Visitor {
+    + void visitFootBallGame(Football game)
+    + void visitBasketBallGame(Basketball game)
+}
+
+interface Game {
+    + {abstract} void accept(Visitor visitor)
+}
+Game .. Visitor
+
+class Football implements Game {
+    - String nameOfLeague
+    - int numberOfPlayedLeagues
+
+    + Football(String nameOfLeague, int numberOfPlayedLeagues)
+    + String getNameOfLeague()
+    + int getNumberOfPlayedLeagues()
+    + void accept(Visitor visitor)
+}
+
+class Basketball implements Game {
+    - int numberOfCoups
+
+    + Basketball(int numberOfCoups)
+    + int getNumberOfCups()
+    + void accept(Visitor visitor)
+}
+
+class VideoGame {
+    - VideoGame()
+
+    + {static} void printGames(Iterable<? extends Game> games)
+}
+
+VideoGame o-- Game
+VideoGame o-- Visitor
+
+hide empty members
+@enduml
