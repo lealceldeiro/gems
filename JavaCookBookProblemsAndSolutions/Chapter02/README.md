@@ -1,4 +1,4 @@
-# Chapter 2. Interacting with the Environment
+# Chapter 2: Interacting with the Environment
 
 ## 2.1 Getting Environment Variables
 
