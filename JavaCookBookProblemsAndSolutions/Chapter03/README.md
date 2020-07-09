@@ -12,3 +12,15 @@ You want to break a string apart, either by indexing positions or by using fixed
 For substrings, use the String object’s `substring()` method. For tokenizing, construct a `StringTokenizer` around your string and call its methods `hasMoreTokens()` and `nextToken()`.
 
 Or, use regular expressions.
+
+## 3.2 Putting Strings Together with `StringBuilder`
+
+### Problem
+
+You need to put some String pieces (back) together.
+
+### Solution
+
+Use string concatenation: the `+` operator. The compiler *implicitly* constructs a `StringBuilder` for you and uses its `append()` methods (unless all the string parts are known at compile time).
+
+Better yet, construct and use a `StringBuilder` yourself.
