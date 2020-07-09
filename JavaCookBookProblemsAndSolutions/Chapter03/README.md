@@ -10,3 +10,5 @@ You want to break a string apart, either by indexing positions or by using fixed
 ### Solution
 
 For substrings, use the String object’s `substring()` method. For tokenizing, construct a `StringTokenizer` around your string and call its methods `hasMoreTokens()` and `nextToken()`.
+
+Or, use regular expressions.
