@@ -72,3 +72,13 @@ You need to keep your class files in a common directory, or you’re wrestling w
 ### Solution
 
 Set CLASSPATH to the list of directories and/or JAR files that contain the classes you want.
+
+## 1.12 Getting Readable Stack Traces
+
+### Problem
+
+You’re getting an exception stack trace at runtime, but most of the important parts don’t have line numbers.
+
+### Solution
+
+Be sure you have compiled with debugging enabled.
