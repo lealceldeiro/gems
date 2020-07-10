@@ -24,3 +24,23 @@ You need to put some String pieces (back) together.
 Use string concatenation: the `+` operator. The compiler *implicitly* constructs a `StringBuilder` for you and uses its `append()` methods (unless all the string parts are known at compile time).
 
 Better yet, construct and use a `StringBuilder` yourself.
+
+## 3.3 Processing a String One Character at a Time
+
+### Problem
+
+You want to process the contents of a string, one character at a time.
+
+### Solution
+
+Use a for loop and the String’s `charAt()` or `codePointAt()` method. Or use a “for each” loop and the String’s `toCharArray` method.
+
+## 3.5 Converting Between Unicode Characters and Strings
+
+### Problem
+
+You want to convert between Unicode characters and Strings.
+
+### Solution
+
+Use Java `char` or `String` data types to deal with characters; these intrinsically support Unicode. Print characters as integers to display their raw value if needed.
