@@ -7,3 +7,5 @@ Main notes taken from the book [Java Cookbook: Problems and Solutions for Java D
 [Chapter 2](./Chapter02): Interacting with the Environment
 
 [Chapter 3](./Chapter03): Strings and Things
+
+[Chapter 4](./Chapter04): Pattern Matching with Regular Expressions
