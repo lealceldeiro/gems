@@ -32,6 +32,8 @@ Notes from:
 
 ### [The Java Module System](./TheJavaModuleSystem)  <sup><sub>(*Nicolai Parlog*)</sub></sup>
 
+### [Pro Git](./ProGit)  <sup><sub>(*Scott Chacon and Ben Straub*)</sub></sup>
+
 ### [Java 9 Regular Expressions](./Java9RegularExpressions)  <sup><sub>(*Anubhava Srivastava*)</sub></sup>
 
 ### [Real World Java EE Patterns](./RealWorldJavaEEPatterns)  <sup><sub>(*Adam Bien*)</sub></sup>
