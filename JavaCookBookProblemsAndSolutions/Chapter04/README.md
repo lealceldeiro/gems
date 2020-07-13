@@ -50,3 +50,21 @@ The `Matcher` class provides several methods for replacing just the text that ma
 * `replaceFirst(newString)`: As above but only the first occurence
 * `appendReplacement(StringBuffer, newString)`: Copies up to before the first match, plus the given `newString`
 * `appendTail(StringBuffer)`: Appends text after the last match (normally used after `appendReplacement`)
+
+## 4.7 Controlling Case in Regular Expressions
+
+### Problem
+
+You want to find text regardless of case.
+
+### Solution
+
+Compile the `Pattern` passing in the flags argument `Pattern.CASE_INSENSITIVE` to indicate that matching should be case-independent. If your code might run in different locales, then you should add `Pattern.UNICODE_CASE`. This flag (and others) are passed to the [`Pattern.compile(String regex, int flags)`](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#compile(java.lang.String,%20int)) method, like this:
+
+```java
+Pattern reCaseInsenstiveUnicode = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+reCaseInsenstiveUnicode.matches(input);        // will match case-insensitively
+```
+This flag must be passed when you create the `Pattern` because `Pattern` objects are immutable.
+
+If more than one flag is needed, they can be or’d together using the bitwise *or* operator `|`.
