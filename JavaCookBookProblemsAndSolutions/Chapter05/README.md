@@ -122,3 +122,15 @@ for (int i : data) {
 ```
 
 In addition to `ChoiceFormat`, the same result can be achieved with a `MessageFormat`.
+
+## 5.9 Generating Random Numbers
+
+### Problem
+
+You need to generate pseudorandom numbers in a hurry.
+
+### Solution
+
+Use `java.lang.Math.random()` to generate random numbers. There is no claim that the random values it returns are very good random numbers, however. Like most software-only implementations, these are Pseudorandom Number Generators (PRNGs), meaning that the numbers are not totally random, but devised from an algorithm. That said, they are adequate for casual use.
+
+This method only generates double values. If you need integers, construct a `java.util.Random` (or [ThreadLocalRandom](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ThreadLocalRandom.html) or [SecureRandom](https://docs.oracle.com/javase/8/docs/api/java/security/SecureRandom.html)) object and call its nextInt() method; if you pass it an integer value, this will become the upper bound.
