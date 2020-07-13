@@ -9,3 +9,5 @@ You want to find today’s date and/or time.
 ### Solution
 
 Invoke the appropriate builder to obtain a `LocalDate`, `LocalTime`, or `LocalDateTime` object and call its `toString()` method.
+
+In full-scale applications, it’s recommended to pass a `Clock` instance into all the `now()` methods.
