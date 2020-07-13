@@ -69,3 +69,56 @@ You need to work on a range of integers.
 For a contiguous set, use `IntStream::range` and `rangeClosed`, or the older for loop.
 
 For discontinuous ranges of numbers, use a `java.util.BitSet`.
+
+## 5.8 Formatting with Correct Plurals
+
+### Problem
+
+You’re printing something like *"We used " + n + " items"*, but in English, *“We used 1 items”* is ungrammatical. You want *“We used 1 item”.
+
+### Solution
+
+Use a [`ChoiceFormat`](https://docs.oracle.com/javase/8/docs/api/java/text/ChoiceFormat.html) or a conditional statement.
+
+Use Java’s ternary operator `(condition ? trueValue : falseValue)` in a string concatenation. Both zero and plurals get an “s” appended to the noun in English (“no books, one book, two books”), so we test for `n == 1`.
+
+i.e.:
+
+Given
+
+```java
+double[] limits = { 0, 1, 2 };
+int[] data = { -1, 0, 1, 2, 3 };
+```
+
+`ChoiceFormat` can be used to get a *plurized* format:
+
+```java
+
+String[] formats = { "reviews", "review", "reviews"};
+ChoiceFormat pluralizedFormat = new ChoiceFormat(limits, formats);
+
+for (int i : data) {
+    System.out.println("Found " + i + " " + pluralizedFormat.format(i));  // Found -1 reviews
+                                                                          // Found 0 reviews
+                                                                          // Found 1 review
+                                                                          // Found 2 reviews
+                                                                          // Found 3 reviews
+}
+```
+
+and to get a *quantized* format:
+
+```java
+ChoiceFormat quantizedFormat = new ChoiceFormat("0#no reviews|1#one review|1<many reviews");
+
+for (int i : data) {
+    System.out.println("Found " + quantizedFormat.format(i));             // Found no reviews
+                                                                          // Found no reviews
+                                                                          // Found one review
+                                                                          // Found many reviews
+                                                                          // Found many reviews
+}
+```
+
+In addition to `ChoiceFormat`, the same result can be achieved with a `MessageFormat`.
