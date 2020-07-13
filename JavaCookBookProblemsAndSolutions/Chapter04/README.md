@@ -68,3 +68,23 @@ reCaseInsenstiveUnicode.matches(input);        // will match case-insensitively
 This flag must be passed when you create the `Pattern` because `Pattern` objects are immutable.
 
 If more than one flag is needed, they can be or’d together using the bitwise *or* operator `|`.
+
+## 4.8 Matching Accented, or Composite, Characters
+
+### Problem
+
+You want characters to match regardless of the form in which they are entered.
+
+### Solution
+
+Compile the `Pattern` with the flags argument **`Pattern.CANON_EQ`** for canonical equality.
+
+## 4.9 Matching Newlines in Text
+
+### Problem
+
+You need to match newlines in text.
+
+### Solution
+
+Use `\n` or `\r` in your regex pattern. See also the flags constant `Pattern.MULTILINE`, which makes newlines match as beginning-of-line and end-of-line (`\^` and `$`).
