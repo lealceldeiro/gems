@@ -35,3 +35,18 @@ After a successful call to one of the preceding methods, you can use these infor
 * `start()`, `end()`: Returns the character position in the string of the starting and ending characters that matched.
 * `groupCount()`: Returns the number of parenthesized capture groups, if any; returns 0 if no groups were used.
 * `group(int i)`: Returns the characters matched by group `i` of the current match, if `i` is greater than or equal to zero and less than or equal to the return value of `groupCount()`. Group `0` is the entire match, so `group(0)` (or just `group()`) returns the entire portion of the input that matched.
+
+## 4.4 Replacing the Matched Text
+
+### Problem
+
+Having found some text using a `Pattern`, you want to replace the text with different text, without disturbing the rest of the string.
+
+### Solution
+
+The `Matcher` class provides several methods for replacing just the text that matched the pattern. In all these methods, you pass in the replacement text:
+
+* `replaceAll(newString)`: Replaces all occurrences that matched with the new string
+* `replaceFirst(newString)`: As above but only the first occurence
+* `appendReplacement(StringBuffer, newString)`: Copies up to before the first match, plus the given `newString`
+* `appendTail(StringBuffer)`: Appends text after the last match (normally used after `appendReplacement`)
