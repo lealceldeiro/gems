@@ -61,3 +61,13 @@ You need to add or subtract a fixed period to or from a date.
 ### Solution
 
 Create a past or future date by using a locution such as `Local⁠Date.plus(Period.ofDays(N));`.
+
+## 6.7 Handling Recurring Events
+
+### Problem
+
+You need to deal with recurring dates, for example, the third Wednesday of every month.
+
+### Solution
+
+Use the `TemporalAdjusters` class.
