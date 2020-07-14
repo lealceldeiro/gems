@@ -160,7 +160,7 @@ This heuristic is here to remind us to consider polymorphism before using a `swi
 
 The cases where functions are more volatile than types are relatively rare. So every `switch` statement should be suspect.
 
-There may be no more than one `switch` statement for a given type of selection. The place of other such `switch` statements in the rest of the system.
+There may be no more than one `switch` statement for a given type of selection. The cases in that switch statement must create polymorphic objects that take the place of other such `switch` statements in the rest of the system.
 
 ### G24: Follow Standard Conventions
 
