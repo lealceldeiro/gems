@@ -21,3 +21,13 @@ You want to provide better formatting for date and time objects.
 ### Solution
 
 Use `java.time.format.DateTimeFormatter`.
+
+## 6.3 Converting Among Dates/Times, YMDHMS, and Epoch Seconds
+
+### Problem
+
+You need to convert among dates/times, YMDHMS, epoch seconds, or some other numeric value.
+
+### Solution
+
+Use the appropriate date/time factory or retrieval methods.
