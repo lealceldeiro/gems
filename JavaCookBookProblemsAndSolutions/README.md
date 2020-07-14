@@ -13,3 +13,5 @@ Main notes taken from the book [Java Cookbook: Problems and Solutions for Java D
 [Chapter 5](./Chapter05): Numbers
 
 [Chapter 6](./Chapter06): Dates and Times
+
+[Chapter 7](./Chapter07): Structuring Data with Java
