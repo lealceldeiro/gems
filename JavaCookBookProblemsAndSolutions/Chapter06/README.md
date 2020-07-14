@@ -41,3 +41,13 @@ You need to convert user input into `java.time` objects.
 ### Solution
 
 Use a `parse()` method.
+
+## 6.5 Difference Between Two Dates
+
+### Problem
+
+You need to compute the difference between two dates.
+
+### Solution
+
+Use the static method `Period.between()` to find the difference between two `LocalDates`.
