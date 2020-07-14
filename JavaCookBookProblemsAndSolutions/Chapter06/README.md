@@ -31,3 +31,13 @@ You need to convert among dates/times, YMDHMS, epoch seconds, or some other nume
 ### Solution
 
 Use the appropriate date/time factory or retrieval methods.
+
+## 6.4 Parsing Strings into Dates
+
+### Problem
+
+You need to convert user input into `java.time` objects.
+
+### Solution
+
+Use a `parse()` method.
