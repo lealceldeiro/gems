@@ -146,7 +146,7 @@ If you have to look at the implementation (or documentation) of the function to 
 
 ### G21: Understand the Algorithm
 
-Before you consider yourself to be done with a function, make sure you understand how it works. It is not good enough that it passes all the tests. You must know 10 that the solution is correct.
+Before you consider yourself to be done with a function, make sure you understand how it works. It is not good enough that it passes all the tests. You must know that the solution is correct.
 
 Often the best way to gain this knowledge and understanding is to refactor the function into something that is so clean and expressive that it is obvious how it works.
 
