@@ -71,3 +71,13 @@ You need to deal with recurring dates, for example, the third Wednesday of every
 ### Solution
 
 Use the `TemporalAdjusters` class.
+
+## 6.9 Interfacing with Legacy `Date` and `Calendar` Classes
+
+### Problem
+
+You need to deal with the old Date and Calendar classes.
+
+### Solution
+
+Assuming you have code using the original `java.util.Date` and `java.util.Calendar`, you can convert values as needed using conversion methods.
