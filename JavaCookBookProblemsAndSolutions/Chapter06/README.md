@@ -51,3 +51,13 @@ You need to compute the difference between two dates.
 ### Solution
 
 Use the static method `Period.between()` to find the difference between two `LocalDates`.
+
+## 6.6 Adding to or Subtracting from a Date
+
+### Problem
+
+You need to add or subtract a fixed period to or from a date.
+
+### Solution
+
+Create a past or future date by using a locution such as `Local⁠Date.plus(Period.ofDays(N));`.
