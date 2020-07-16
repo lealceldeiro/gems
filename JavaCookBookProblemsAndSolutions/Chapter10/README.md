@@ -10,6 +10,12 @@ How do I open and read a text file and then either process it a line at a time, 
 
 Use the `Files::lines()` method, which returns a `Stream` of `Strings`.
 
+i.e.:
+
+```java
+Files.lines(Path.of("myFile.txt")).forEach(System.out::println);
+```
+
 Or, use `Files.newBufferedReader()`, `Files.newBufferedWriter()`, `Files.newInputStream()`, and `Files.newOutputStream()`.
 
 Or, construct a `FileReader` or a `FileInputStream`. Once you have that, construct a `BufferedReader`, and use the older `while ((line == readLine()) != null)` pattern.
