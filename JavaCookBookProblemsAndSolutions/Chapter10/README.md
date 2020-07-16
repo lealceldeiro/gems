@@ -36,3 +36,13 @@ while ((line = is.readLine()) != null) {
     System.out.println(line);
 }
 ```
+
+## 10.3 Reading from the Standard Input or from the Console/Controlling Terminal
+
+### Problem
+
+You want to read from the program’s standard input or directly from the program’s controlling terminal or console terminal.
+
+### Solution
+
+For the standard input, read bytes by wrapping a `BufferedInputStream()` around `System.in`. For reading text, use an `InputStreamReader` and a `BufferedReader`. For the console or controlling terminal, use Java’s `System.console()` method to obtain a `Console` object, and use its methods.
