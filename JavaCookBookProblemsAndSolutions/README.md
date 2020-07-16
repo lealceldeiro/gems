@@ -15,3 +15,5 @@ Main notes taken from the book [Java Cookbook: Problems and Solutions for Java D
 [Chapter 6](./Chapter06): Dates and Times
 
 [Chapter 7](./Chapter07): Structuring Data with Java
+
+[Chapter 8](./Chapter08): Object-Oriented Techniques
