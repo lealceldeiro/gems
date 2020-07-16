@@ -46,3 +46,13 @@ You want to read from the program’s standard input or directly from the progra
 ### Solution
 
 For the standard input, read bytes by wrapping a `BufferedInputStream()` around `System.in`. For reading text, use an `InputStreamReader` and a `BufferedReader`. For the console or controlling terminal, use Java’s `System.console()` method to obtain a `Console` object, and use its methods.
+
+## 10.7 Scanning Input with Grammatical Structure
+
+### Problem
+
+You need to parse a file whose structure can be described as grammatical (in the sense of computer languages, not natural languages).
+
+### Solution
+
+Use one of many parser generators.
