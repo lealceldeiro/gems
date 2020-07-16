@@ -55,4 +55,4 @@ You need to parse a file whose structure can be described as grammatical (in the
 
 ### Solution
 
-Use one of many parser generators.
+Use one of many [parser generators](https://java-source.net/open-source/parser-generators).
