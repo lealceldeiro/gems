@@ -90,3 +90,18 @@ You need to create and/or extract from a JAR archive or a file in the well-known
 ### Solution
 
 Use the `ZipFile` and `ZipEntry` classes and the stream classes to which they provide access.
+
+## 10.16 Finding Files in a Filesystem-Neutral Way with `getResource()` and `getResourceAsStream()`
+
+### Problem
+
+You want to load objects or files without referring to their absolute location in the filesystem. You might want to do this for one of the following reasons:
+
+* You are in a server (Java EE) environment.
+* You want to be independent of file paths.
+* You want to read a file in a unit test.
+* You expect users to deploy the resource “somewhere” on the CLASSPATH (possibly even inside a JAR file).
+
+### Solution
+
+Use `getClass()` or `getClassLoader()` and either `getResource()` or `getResourceAsStream()`.
