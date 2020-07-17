@@ -135,3 +135,13 @@ You need to create a file with a unique temporary filename and/or or arrange for
 ### Solution
 
 Use the `java.nio.file.Files createTempFile()` or `createTempDirectory()` method. Use one of several methods to ensure your file is deleted on exit.
+
+## 10.23 Getting the Directory Roots
+
+### Problem
+
+You want to know about the top-level directories, such as `C:\` and `D:\` on Windows.
+
+### Solution
+
+Use the static method `FileSystems.getDefault().getRootDirectories()`, which returns an `Iterable` of `Path` objects, one for each root directory.
