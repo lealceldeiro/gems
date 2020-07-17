@@ -21,3 +21,5 @@ Main notes taken from the book [Java Cookbook: Problems and Solutions for Java D
 [Chapter 9](./Chapter09): Functional Programming Techniques: Functional Interfaces, Streams, and Parallel Collections
 
 [Chapter 10](./Chapter10): Input and Output: Reading, Writing, and Directory Tricks
+
+[Chapter 11](./Chapter11): Data Science and R
