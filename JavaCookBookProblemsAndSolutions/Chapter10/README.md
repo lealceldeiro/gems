@@ -125,3 +125,13 @@ You need to create a new file on disk but not write any data into it; you need t
 ### Solution
 
 For an empty file, use a `java.nio.file.Files` object’s `createFile(Path)` method. Use the Files class’s `createDirectory()` or `createDirectories()` method to create a directory.
+
+## 10.21 Creating a Transient/Temporary File
+
+### Problem
+
+You need to create a file with a unique temporary filename and/or or arrange for a file to be deleted when your program is finished.
+
+### Solution
+
+Use the `java.nio.file.Files createTempFile()` or `createTempDirectory()` method. Use one of several methods to ensure your file is deleted on exit.
