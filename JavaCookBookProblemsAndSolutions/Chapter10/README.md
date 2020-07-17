@@ -70,3 +70,13 @@ Convert the text to or from internal Unicode by specifying a converter when you 
 The `InputStreamReader` and `OutputStreamWriter` constructors are the only places where you can specify the name of an encoding to be used.
 
 > The [native2ascii](https://docs.oracle.com/javase/8/docs/technotes/tools/windows/native2ascii.html) command converts encoded files supported by the Java Runtime Environment (JRE) to files encoded in ASCII, using Unicode escapes (\uxxxx) notation for all characters that are not part of the ASCII character set. This process is required for properties files that contain characters not in ISO-8859-1 character sets. The tool can also perform the reverse conversion.
+
+## 10.14 Reading/Writing Binary Data
+
+### Problem
+
+You need to read or write binary data, as opposed to text.
+
+### Solution
+
+Use a `DataInputStream` or `DataOutputStream`.
