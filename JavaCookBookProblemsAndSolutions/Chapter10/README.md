@@ -105,3 +105,13 @@ You want to load objects or files without referring to their absolute location i
 ### Solution
 
 Use `getClass()` or `getClassLoader()` and either `getResource()` or `getResourceAsStream()`.
+
+## 10.17 Getting File Information: Files and Path
+
+### Problem
+
+You need to know all you can about a given file on disk.
+
+### Solution
+
+Use `java.nio.file.Files` methods.
