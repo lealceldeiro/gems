@@ -145,3 +145,13 @@ You want to know about the top-level directories, such as `C:\` and `D:\` on Win
 ### Solution
 
 Use the static method `FileSystems.getDefault().getRootDirectories()`, which returns an `Iterable` of `Path` objects, one for each root directory.
+
+## 10.24 Using the FileWatcher Service to Get Notified About File Changes
+
+### Problem
+
+You want to be notified when some other application updates one or more of the files in which you are interested.
+
+### Solution
+
+Use the `java.nio.file.FileWatchService` to get notified of changes to files automatically, instead of having to examine the files periodically.
