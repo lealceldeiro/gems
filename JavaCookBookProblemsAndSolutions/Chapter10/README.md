@@ -80,3 +80,13 @@ You need to read or write binary data, as opposed to text.
 ### Solution
 
 Use a `DataInputStream` or `DataOutputStream`.
+
+## 10.15 Reading and Writing JAR or ZIP Archives
+
+### Problem
+
+You need to create and/or extract from a JAR archive or a file in the well-known *ZIP* archive format, as established by PkZip and used by Unix zip/unzip and *WinZip*.
+
+### Solution
+
+Use the `ZipFile` and `ZipEntry` classes and the stream classes to which they provide access.
