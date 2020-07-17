@@ -115,3 +115,13 @@ You need to know all you can about a given file on disk.
 ### Solution
 
 Use `java.nio.file.Files` methods.
+
+## 10.18 Creating a New File or Directory
+
+### Problem
+
+You need to create a new file on disk but not write any data into it; you need to create a directory before you can create files in it.
+
+### Solution
+
+For an empty file, use a `java.nio.file.Files` object’s `createFile(Path)` method. Use the Files class’s `createDirectory()` or `createDirectories()` method to create a directory.
