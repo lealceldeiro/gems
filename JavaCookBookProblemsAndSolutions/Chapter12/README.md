@@ -31,3 +31,13 @@ You want to look up a host’s address name or number or get the address at the 
 ### Solution
 
 Get an `InetAddress` object.
+
+## 12.5 Reading and Writing Textual Data
+
+### Problem
+
+Having connected, you wish to transfer textual data.
+
+### Solution
+
+Construct a `BufferedReader` or `PrintWriter` from the socket’s `getInputStream()` or `getOutputStream()`.
