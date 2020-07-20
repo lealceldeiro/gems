@@ -11,3 +11,13 @@ You need to read from a URL, for example, to connect to a RESTful web service or
 Use the standard Java 11 `HttpClient` or the `URLConnection` class.
 
 This technique applies anytime you need to read from a URL, not just a RESTful web service.
+
+## 12.2 Contacting a Socket Server
+
+### Problem
+
+You need to contact a server using TCP/IP.
+
+### Solution
+
+Just create a `java.net.Socket`, passing the hostname and port number into the constructor.
