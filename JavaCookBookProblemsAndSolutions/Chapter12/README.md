@@ -41,3 +41,11 @@ Having connected, you wish to transfer textual data.
 ### Solution
 
 Construct a `BufferedReader` or `PrintWriter` from the socket’s `getInputStream()` or `getOutputStream()`.
+
+Example:
+
+```java
+BufferedReader reader = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+PrintWriter writer = new PrintWriter(sock.getOutputStream(), true);
+```
+
