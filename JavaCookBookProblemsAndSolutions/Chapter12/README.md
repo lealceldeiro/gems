@@ -45,7 +45,7 @@ Construct a `BufferedReader` or `PrintWriter` from the socket’s `getInputStrea
 Example:
 
 ```java
-BufferedReader reader = new BufferedReader(new InputStreamReader(sock.getInputStream()));
-PrintWriter writer = new PrintWriter(sock.getOutputStream(), true);
+BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
 ```
 
