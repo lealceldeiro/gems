@@ -21,3 +21,13 @@ You need to contact a server using TCP/IP.
 ### Solution
 
 Just create a `java.net.Socket`, passing the hostname and port number into the constructor.
+
+## 12.3 Finding and Reporting Network Addresses
+
+### Problem
+
+You want to look up a host’s address name or number or get the address at the other end of a network connection.
+
+### Solution
+
+Get an `InetAddress` object.
