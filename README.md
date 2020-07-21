@@ -119,3 +119,5 @@ Notes from:
 ### [The Effective Engineer](./TheEffectiveEngineer)  <sup><sub>(*Edmond Lau, Bret Taylor*)</sub></sup>
 
 ### [The Inmates Are Running the Asylum](./TheInmatesAreRunningTheAsylum)  <sup><sub>(*Alan Cooper*)</sub></sup>
+
+### [Skin in the Game](./SkinInTheGame)  <sup><sub>(*Nassim Nicholas Taleb*)</sub></sup>
