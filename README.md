@@ -117,3 +117,5 @@ Notes from:
 ### [Object-Oriented Analysis and Design with Applications](./ObjectOrientedAnalysisAndDesignWithApplications)  <sup><sub>(*Grady Booch, Robert A. Maksimchuk, Michael W. Engle*)</sub></sup>
 
 ### [The Effective Engineer](./TheEffectiveEngineer)  <sup><sub>(*Edmond Lau, Bret Taylor*)</sub></sup>
+
+### [The Inmates Are Running the Asylum](./TheInmatesAreRunningTheAsylum)  <sup><sub>(*Alan Cooper*)</sub></sup>
