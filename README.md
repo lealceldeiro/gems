@@ -121,3 +121,7 @@ Notes from:
 ### [The Inmates Are Running the Asylum](./TheInmatesAreRunningTheAsylum)  <sup><sub>(*Alan Cooper*)</sub></sup>
 
 ### [Skin in the Game](./SkinInTheGame)  <sup><sub>(*Nassim Nicholas Taleb*)</sub></sup>
+
+### [What You Do Is Who You Are](./WhatYouDoIsWhoYouAre)  <sup><sub>(*Ben Horowitz*)</sub></sup>
+
+### [Never Split the Difference](./NeverSplitTheDifference)  <sup><sub>(*Chris Voss, Chris Voss*)</sub></sup>
