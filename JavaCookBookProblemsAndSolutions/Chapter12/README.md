@@ -49,3 +49,29 @@ BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInput
 PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
 ```
 
+## 12.6 Reading and Writing Binary or Serialized Data
+
+### Problem
+
+Having connected, you wish to transfer binary data, either raw binary data or serialized Java objects.
+
+### Solution
+
+For plain binary data, construct a `DataInputStream` or `DataOutputStream` from the socket’s `getInputStream()` or `getOutputStream()`. For serialized Java object data, construct an `ObjectInputStream` or `ObjectOutputStream`.
+
+If the volume of data might be large, insert a buffered stream for efficiency:
+
+```java
+DataInputStream is = new DataInputStream(new BufferedInputStream(sock.getInputStream()));
+DataOutputStream is = new DataOutputStream(new BufferedOutputStream(sock.getOutputStream()));
+```
+
+## 12.7 UDP Datagrams
+
+### Problem
+
+You need to use a datagram connection (UDP) instead of a stream connection (TCP).
+
+### Solution
+
+Use `DatagramSocket` and `DatagramPacket`.
