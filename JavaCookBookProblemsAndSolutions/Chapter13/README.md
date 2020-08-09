@@ -51,3 +51,5 @@ You want to protect your network traffic from malicious modification while the d
 ### Solution
 
 Use the Java Secure Socket Extension, JSSE, to encrypt your traffic.
+
+> You MUST have set up a server certificate or you will get `javax.net.ssl.SSLHandshakeException: no cipher suites in common`
