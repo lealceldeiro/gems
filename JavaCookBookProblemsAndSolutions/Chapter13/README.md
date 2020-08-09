@@ -31,3 +31,13 @@ You need to write a string or binary data to the client.
 ### Solution
 
 Use the `InputStream` and `OutputStream` from the socket.
+
+## 13.4 Returning Object Information Across a Network Connection
+
+### Problem
+
+You need to return an object across a network connection.
+
+### Solution
+
+Create the object you need, and write it using an `ObjectOutputStream` created on top of the socket’s output stream.
