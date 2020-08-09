@@ -11,3 +11,13 @@ You need to write a socket-based server.
 ### Solution
 
 Create a ServerSocket for the given port number.
+
+## 13.2 Finding Network Interfaces
+
+### Problem
+
+You wish to find out about the computer’s networking arrangements.
+
+### Solution
+
+Use the `NetworkInterface` class.
