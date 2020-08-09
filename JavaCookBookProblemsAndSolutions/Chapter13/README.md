@@ -21,3 +21,13 @@ You wish to find out about the computer’s networking arrangements.
 ### Solution
 
 Use the `NetworkInterface` class.
+
+## 13.3 Returning a Response (String or Binary)
+
+### Problem
+
+You need to write a string or binary data to the client.
+
+### Solution
+
+Use the `InputStream` and `OutputStream` from the socket.
