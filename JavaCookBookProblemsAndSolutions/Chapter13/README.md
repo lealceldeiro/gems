@@ -53,3 +53,13 @@ You want to protect your network traffic from malicious modification while the d
 Use the Java Secure Socket Extension, JSSE, to encrypt your traffic.
 
 > You MUST have set up a server certificate or you will get `javax.net.ssl.SSLHandshakeException: no cipher suites in common`
+
+## 13.8 Creating a REST Service with JAX-RS
+
+### Problem
+
+You want to implement a RESTful server by using the provided Java EE/Jakarta EE APIs.
+
+### Solution
+
+Use JAX-RS annotations on a class that provides a service; install it in an enterprise application server.
