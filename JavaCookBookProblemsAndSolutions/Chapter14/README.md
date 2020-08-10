@@ -9,3 +9,12 @@ You want to read and/or write JSON using a full-function JSON API.
 ### Solution
 
 Use Jackson, the full-blown JSON API.
+
+## 14.3 Parsing and Writing JSON with `org.json`
+
+### Problem
+
+You want to read/write JSON using a midsized, widely used JSON API.
+
+### Solution
+Consider using the `org.json` API , also known as JSON-Java; it’s widely used and is also used in Android.
