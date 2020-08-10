@@ -28,3 +28,13 @@ You want to read/write JSON using a midsized, standards-conforming JSON API.
 ### Solution
 
 Consider using JSON-B, the new Java standard (JSR-367).
+
+## 14.5 Finding JSON Elements with JSON Pointer
+
+### Problem
+
+You have a JSON document and want to extract only selected values from it.
+
+### Solution
+
+Use `javax.json`’s implementation of JSON Pointer, the standard API for extracting selected elements from JSON.
