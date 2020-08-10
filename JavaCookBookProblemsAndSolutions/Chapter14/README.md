@@ -18,3 +18,13 @@ You want to read/write JSON using a midsized, widely used JSON API.
 
 ### Solution
 Consider using the `org.json` API , also known as JSON-Java; it’s widely used and is also used in Android.
+
+## 14.4 Parsing and Writing JSON with JSON-B
+
+### Problem
+
+You want to read/write JSON using a midsized, standards-conforming JSON API.
+
+### Solution
+
+Consider using JSON-B, the new Java standard (JSR-367).
