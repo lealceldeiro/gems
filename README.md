@@ -34,6 +34,8 @@ Notes from:
 
 ### [Pro Git](./ProGit)  <sup><sub>(*Scott Chacon and Ben Straub*)</sub></sup>
 
+### [Apache Maven CookBook](./ApacheMavenCookBook)  <sup><sub>(*Raghuram Bharathan*)</sub></sup>
+
 ### [Java 9 Regular Expressions](./Java9RegularExpressions)  <sup><sub>(*Anubhava Srivastava*)</sub></sup>
 
 ### [Real World Java EE Patterns](./RealWorldJavaEEPatterns)  <sup><sub>(*Adam Bien*)</sub></sup>
