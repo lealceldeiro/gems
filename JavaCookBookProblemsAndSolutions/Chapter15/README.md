@@ -59,3 +59,13 @@ Using Maven, the POM file would look like:
 ```
 
 From this POM file, using `mvn package assembly:single` will produce a runnable JAR with all dependencies.
+
+## 15.8 Creating a Smaller Distribution with `jlink`
+
+### Problem
+
+You are distributing your application to end users, and you want to minimize the size of your download.
+
+### Solution
+
+Modularize your application, use `jdeps` to get a complete list of the modules it uses, then use `jlink` to create the *mini-Java*, and distribute that to your users.
