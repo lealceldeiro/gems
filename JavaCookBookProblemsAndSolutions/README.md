@@ -33,3 +33,5 @@ Main notes taken from the book [Java Cookbook: Problems and Solutions for Java D
 [Chapter 15](./Chapter15): Packages and Packaging
 
 [Chapter 16](./Chapter16): Threaded Java
+
+[Chapter 17](./Chapter17): Getting a Class Descriptor
