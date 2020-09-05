@@ -1,3 +1,3 @@
-# Chapter 17: Getting a Class Descriptor
+# Chapter 17: Reflection, or “A Class Named Class”
 
 *nothing interesting (new) to see here*
