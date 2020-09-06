@@ -41,3 +41,13 @@ You need to load a class from a nonstandard location and run its methods.
 ### Solution
 
 Examine the existing loaders such as `java.net.URLClassLoader`. If none is suitable, write and use your own `ClassLoader`.
+
+## 17.6 Constructing a Class from Scratch with JavaCompiler
+
+### Problem
+
+You’d rather construct a class dynamically by generating source code and compiling it.
+
+### Solution
+
+Use the JavaCompiler from `javax.tools`.
