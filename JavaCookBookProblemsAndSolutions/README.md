@@ -35,3 +35,5 @@ Main notes taken from the book [Java Cookbook: Problems and Solutions for Java D
 [Chapter 16](./Chapter16): Threaded Java
 
 [Chapter 17](./Chapter17): Getting a Class Descriptor
+
+[Chapter 18](./Chapter18): Using Java with Other Languages
