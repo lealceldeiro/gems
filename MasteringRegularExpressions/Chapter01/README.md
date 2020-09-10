@@ -20,13 +20,15 @@
 
 **`|`**: *or*, matches any one of several subexpressions
 
-**`()`** (parentheses): matches either expression it separates. Used to limit scope of `|` (plus some more additional uses)
+**`()`** (parentheses): matches either expression it separates. Used to limit scope of `|` and to group multiple characters into larger units to which you can apply quantifiers like question mark and star. With tools that support *backreferencing*, parentheses "remember" the text that the subexpression inside them matches, and the special metasequence `\1` represents that text later in the regular expression, whatever it happens to be at the time. Use `\1`, `\2`, `\3`, etc., to refer to the first, second, third, etc. sets.
+
+Backreferencing is a regular-expression feature that allows you to match new text that is the same as some text matched earlier in the expression.
 
 Ignoring differences in capitalization is not a part of the regular-expression language, but is a related useful feature many tools (and programming languages) provide. *egrep*’s command-line option `-i` tells it to do a case-insensitive match.
 
 Some versions of egrep offer limited support for word recognition: namely the ability to match the boundary of a word (where a word begins or ends). If some version happens to support them, the *metasequences* `\<` and `\>` could be used. You can think of them as word-based versions of `^` and `$` that match the position at the start and end of a word, respectively.
 
-------
+---
 
 **`?`** (question mark): *optional*. It is placed after the character that is allowed to appear at that point in the expression, but whose existence isn’t actually required to still be considered a successful match. It can attach to a parenthesized expression
   - Example: `4(th)?` will match `4th` and `4`
@@ -37,6 +39,13 @@ Some versions of egrep offer limited support for word recognition: namely the ab
 
 `?`, `+` and `*` are called *quantifiers* because they influence the quantity of what they govern.
 
-------
+---
+
+**`{`** <sub><sup>min, max</sup></sub> **`}`**: *interval* quantifier
+  - Example: `{3,12}` matches up to 12 times if possible, but settles for three of the immediately-preceding item
+
+Not many versions of egrep support this notation yet, but many other tools do.
+
+---
 
 Knowing the target text well is an important part of wielding regular expressions effectively.
