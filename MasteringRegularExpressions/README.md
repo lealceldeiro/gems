@@ -6,7 +6,7 @@ Info about this book available at http://regex.info
 
 ## Introduction
 
-**Chapter 1**
+**[Chapter 1](./Chapter01)**: Introduction to Regular Expressions
 
 **Chapter 2**
 
