@@ -26,4 +26,17 @@ Ignoring differences in capitalization is not a part of the regular-expression l
 
 Some versions of egrep offer limited support for word recognition: namely the ability to match the boundary of a word (where a word begins or ends). If some version happens to support them, the *metasequences* `\<` and `\>` could be used. You can think of them as word-based versions of `^` and `$` that match the position at the start and end of a word, respectively.
 
+------
+
+**`?`** (question mark): *optional*. It is placed after the character that is allowed to appear at that point in the expression, but whose existence isn’t actually required to still be considered a successful match. It can attach to a parenthesized expression
+  - Example: `4(th)?` will match `4th` and `4`
+
+**`+`** (plus): *one or more of the immediately-preceding item*
+
+**`*`** (star): *any number, including none, of the immediately-preceding item*
+
+`?`, `+` and `*` are called *quantifiers* because they influence the quantity of what they govern.
+
+------
+
 Knowing the target text well is an important part of wielding regular expressions effectively.
