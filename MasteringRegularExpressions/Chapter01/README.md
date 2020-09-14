@@ -28,6 +28,8 @@ Ignoring differences in capitalization is not a part of the regular-expression l
 
 Some versions of egrep offer limited support for word recognition: namely the ability to match the boundary of a word (where a word begins or ends). If some version happens to support them, the *metasequences* `\<` and `\>` could be used. You can think of them as word-based versions of `^` and `$` that match the position at the start and end of a word, respectively.
 
+Three reasons for using parentheses are constraining alternation, grouping, and capturing.
+
 ---
 
 **`?`** (question mark): *optional*. It is placed after the character that is allowed to appear at that point in the expression, but whose existence isn’t actually required to still be considered a successful match. It can attach to a parenthesized expression.
@@ -50,6 +52,10 @@ Not many versions of egrep support this notation yet, but many other tools do.
 
 **`\`** (backslash): *escape*. Used to "escape" all the normal metacharacters. When a metacharacter is escaped, it loses its special meaning and becomes a literal character.
   - Example: The metasequence to match an actual period is a period preceded by a backslash: `ega\.att\.com` will match `ega.att.com`.
+
+The pairing of `\` and selected non-metacharacters becomes a metasequence with an implementation-defined meaning (for example, `\<` often means “start of word”).
+
+The pairing of `\` and any other character defaults to simply matching the character (that is, the backslash is ignored).
 
 ---
 
