@@ -8,7 +8,7 @@ Info about this book available at http://regex.info
 
 **[Chapter 1](./Chapter01)**: Introduction to Regular Expressions
 
-**[Chapter 2](./Chapter02)**: Extended Introductor y Examples
+**[Chapter 2](./Chapter02)**: Extended Introductory Examples
 
 **Chapter 3**
 
