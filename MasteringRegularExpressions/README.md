@@ -4,6 +4,8 @@ Main notes taken from the book [Mastering Regular Expressions](https://www.amazo
 
 Info about this book available at http://regex.info
 
+For an online Perl interpreter, https://onecompiler.com/perl can be used
+
 ## Introduction
 
 **[Chapter 1](./Chapter01)**: Introduction to Regular Expressions
