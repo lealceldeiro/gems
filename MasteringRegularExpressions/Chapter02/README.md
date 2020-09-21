@@ -26,3 +26,15 @@ Among the more useful shorthands that Perl and many other flavors of regex provi
 `\d`: `[0-9]` , i.e., a digit
 
 `\D`: anything not `\d`, i.e., `[ˆ0-9]`
+
+## Modifying Text with Regular Expressions
+
+*Lookaround* constructs don’t match text, but rather match *positions* within the text. They don't “consume” text.
+
+*Positive lookahead* (one type of lookaround), peeks forward in the text (toward the right) to see if its subexpression can match, and is successful as a regex component if it can. It's specified with the special sequence **`(?=)`**.
+
+*Negative lookahead* is exactly the same but it succeeds if it's expression is not able to match. It's sequence is **`(?!)`**.
+
+*Positive lookbehind* (another type of lookaround), looks back in the text(toward the left) to see if its subexpression can match, and is successful as a regex component if it can. It's given with the special sequence **`(?<=)`**.
+
+*Negative lookbehind* is exactly the same but it succeeds if it's expression is not able to match. It's sequence is **`(?<!)`**.
