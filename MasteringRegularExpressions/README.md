@@ -12,7 +12,7 @@ For an online Perl interpreter, https://onecompiler.com/perl can be used
 
 **[Chapter 2](./Chapter02)**: Extended Introductory Examples
 
-**Chapter 3**
+**[Chapter 3](./Chapter03)**: Over view of Regular Expression Features and Flavors
 
 ## Details
 
