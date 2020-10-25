@@ -60,5 +60,3 @@ The pairing of `\` and any other character defaults to simply matching the chara
 ---
 
 Knowing the target text well is an important part of wielding regular expressions effectively.
-
-## Expanding the Foundation
