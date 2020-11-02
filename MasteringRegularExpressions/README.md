@@ -16,7 +16,7 @@ For an online Perl interpreter, https://onecompiler.com/perl can be used
 
 ## Details
 
-**Chapter 4**
+**[Chapter 4](./Chapter04)**: The Mechanics of Expression Processing
 
 **Chapter 5**
 
