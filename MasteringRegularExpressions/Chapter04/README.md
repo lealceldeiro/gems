@@ -40,3 +40,21 @@ If it takes a long time to finish, it’s an NFA (and if not a Traditional NFA a
 If it finishes quickly, it’s either a DFA or an NFA with some advanced optimization.
 
 If it display a warning message about a stack overflow or long match aborted, it’s an NFA.
+
+## Match Basics
+
+There are only two all-encompassing rules:
+
+- The match that begins earliest (leftmost) wins.
+
+- The standard quantifiers (`*`, `+`, `?`, and `{m,n}`) are greedy.
+
+### Engine Pieces and Parts
+
+- Literal text
+
+- Character classes, dot, Unicode properties, and the like
+
+- Capturing parentheses
+
+- Anchors
