@@ -3,7 +3,7 @@
 
 ### Testing the Engine Type
 
-#### Traditional NFA or not?
+#### Traditional NFA (Nondeterministic Finite Automaton) or not?
 
 If lazy quantifiers are supported, it’s almost certainly a Traditional NFA. i.e.: in Java it can be checked with the following code
 
@@ -16,7 +16,7 @@ if (matcher.find()) {
 
 if only `nfa` matches, it’s a Traditional NFA . If the entire `nfa not` matches, it’s either a POSIX NFA or a DFA.
 
-#### DFA or POSIX NFA?
+#### DFA (Deterministic Finite Automaton) or POSIX NFA?
 
 Capturing parentheses and backreferences are not supported by a DFA, so that can be one hint, but there are systems that are a hybrid mix between the two engine types, and so may end up using a DFA if there are no capturing parentheses.
 
