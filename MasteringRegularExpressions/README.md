@@ -18,7 +18,7 @@ For an online Perl interpreter, https://onecompiler.com/perl can be used
 
 **[Chapter 4](./Chapter04)**: The Mechanics of Expression Processing
 
-**Chapter 5**
+**[Chapter 5](./Chapter05)**: Practical Regex Techniques
 
 **Chapter 6**
 
