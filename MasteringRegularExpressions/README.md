@@ -20,7 +20,7 @@ For an online Perl interpreter, https://onecompiler.com/perl can be used
 
 **[Chapter 5](./Chapter05)**: Practical Regex Techniques
 
-**Chapter 6**
+**[Chapter 6](./Chapter06)**: Crafting an Efficient Expression
 
 ## Tool-Specific Information
 
