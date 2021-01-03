@@ -7,9 +7,9 @@ A smart regex implementation has many ways to optimize how quickly it produces t
 - **Doing something faster**: Some types of operations, such as `\d+` , are so common that the engine might have special-case handling set up to execute them faster than the general engine mechanics would.
 - **Avoiding work** If the engine can decide that some particular operation is unneeded in producing a correct result, or perhaps that some operation can be applied to less text than originally thought, skipping those operations can result in a time savings. For example, a regex beginning with `\A` (start-of-line) can match only when started at the beginning of the string, so if no match is found there, the transmission need not bother checking from other positions.
 
-## The Mechanics of Regex Application
+### The Mechanics of Regex Application
 
-Her e ar e the main steps taken in applying a regular expression to a target string:
+Here are the main steps taken in applying a regular expression to a target string:
 
 - **Regex Compilation** The regex is inspected for errors, and if valid, compiled into an internal form.
 - **Transmission Begins** The transmission “positions” the engine at the start of the target string.
@@ -20,3 +20,36 @@ Her e ar e the main steps taken in applying a regular expression to a target str
 - **Finding a Match** If a match is found, a Traditional NFA “locks in” the current state and reports overall success. On the other hand, a POSIX NFA merely remembers the possible match if it is the longest seen so far, and continues with any saved states still available. Once no more states are left, the longest match that was seen is the one reported.
 - **Transmission Bump-Along** If no match is found, the transmission bumps the engine along to the next character in the text, and the engine applies the regex all over again.
 - **Overall Failure** If no match is found after having applied the engine at every character in the target string (and after the last character as well), overall failure must be reported.
+
+### Pre-Application Optimizations
+
+- Compile caching
+- Pre-check of required character/substring optimization
+- Length-cognizance optimization
+
+### Optimizations with the Transmission
+
+- Start of string/line anchor optimization
+  * This optimization recognizes that any regex that begins with `^` can match only when applied where `^` can match, and so need be applied at those locations only. Similar optimizations involve `\A`, and for repeated matches, `\G`.
+- Implicit-anchor optimization
+  * If a regex begins with `.+` or `.+`, and has no global alternation, an implicit `^` can be prepended to the regex. This allows the start of string/line anchor optimization to be used, which can provide a lot of savings.
+- End of string/line anchor optimization
+  * This optimization recognizes that some regexes ending with `$` or other end anchors have matches that start within a certain number of characters from the end of the string.
+- Initial character/class/substring discrimination optimization
+  * A more generalized version of the pre-check of required character/string optimization, this optimization uses the same information (that any match by the regex must begin with a specific character or literal substring) to let the transmission use a fast substring check so that it need apply the regex only at appropriate spots in the string.
+- Embedded literal string check optimization
+  * This is almost exactly like the initial string discrimination optimization, but is mor e advanced in that it works for literal strings embedded a known distance into any match.
+- Length-cognizance transmission optimization
+
+### Optimizations of the Regex Itself
+- Literal string concatenation optimization
+- Simple quantifier optimization
+- Needless parentheses elimination
+- Needless character class elimination
+- Character following lazy quantifier optimization
+- "Excessive" backtracking detection
+- Exponential (a.k.a., super-linear) short-circuiting
+- State-suppression with possessive quantifiers
+- Small quantifier equivalence
+- Need cognizance
+
