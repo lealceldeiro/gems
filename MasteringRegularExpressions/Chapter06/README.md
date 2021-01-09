@@ -53,3 +53,44 @@ Here are the main steps taken in applying a regular expression to a target strin
 - Small quantifier equivalence
 - Need cognizance
 
+## Techniques for Faster Expressions
+
+### Common Sense Techniques
+
+- Avoid recompiling
+- Use non-capturing parentheses if possible in the situation
+- Don’t add superfluous parentheses
+- Don’t use superfluous character classes
+- Use leading anchors
+
+### Expose Literal Text
+
+- “Factor out” required components from quantifiers. Example: Using `xx+` instead of `x+` exposes `x` as being required. The same logic applies to the rewriting of `-{5,7}` as `------{0,2}`
+- “Factor out” required components from the front of alternation. Example: Using `th(?:is|at)` rather than `(?:this|that)` exposes that `th` is required.
+
+### Expose Anchors
+
+- Expose `^` and `\G` at the front of expressions. Example: `^(?:abc|123)` and  `^abc|^123` are logically the same expression, but many more
+regex engines can apply the *Start of string/line anchor optimization* with the first than the second.
+- Expose `$` at the end of expressions (conceptually the same as the previous one)
+
+### Lazy Versus Greedy: Be Specific
+
+### Split Into Multiple Regular Expressions
+
+### Mimic Initial-Character Discrimination
+
+Example: for `Jan|Feb|...|Dec`, use **`(?=[JFMASOND])(?:`**`Jan|Feb|...|Dec`**`)`** (The leading `[JFMASOND]` represents letters that can begin the month names in
+English).
+
+- Don’t do this with *Tcl*
+- Don’t do this with *PHP*
+
+### Use Atomic Grouping and Possessive Quantifiers
+
+Great care must be taken when applying this optimization.
+
+### Lead the Engine to a Match
+
+- Put the most likely alter native first
+- Distribute into the end of alternation
