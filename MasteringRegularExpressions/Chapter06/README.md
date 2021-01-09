@@ -94,3 +94,6 @@ Great care must be taken when applying this optimization.
 
 - Put the most likely alter native first
 - Distribute into the end of alternation
+  + *This optimization can be dangerous*
+
+## Unrolling the Loop
