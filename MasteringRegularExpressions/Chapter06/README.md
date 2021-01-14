@@ -96,4 +96,8 @@ Great care must be taken when applying this optimization.
 - Distribute into the end of alternation
   + *This optimization can be dangerous*
 
-## Unrolling the Loop
+## C Comments
+
+In the C language, comments begin with `/*` , end with `*/`, and can span across lines, but can’t be nested. (C++, Java, and C# also allow this type of comment).
+
+With modern versions of Perl, we can just use `/\* .*? \*/` to match C comments.
