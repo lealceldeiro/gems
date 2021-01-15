@@ -6,6 +6,8 @@
 
 Certain aspects of the flavor are modified by a variety of match modes, turned on via flags to the various methods and factories, or turned on and off via `(?`*`mods - mods`*`)` and `(?`*`mods - mods`*`:)` modifiers embedded within the regular expression itself.
 
+### Character Shorthands
+
 `\x##` allows exactly two hexadecimal digits, e.g., `\x`**`FC`**`ber` matches `über`
 
 `\a`: **Alert** (e.g., to sound the bell when “printed”) Usually maps to the ASCII <BEL> character, 007 octal
@@ -31,6 +33,8 @@ Certain aspects of the flavor are modified by a variety of match modes, turned o
 `\u####`: **Hex escapes**, example: `\uFFFF`. It allows exactly four hexadecimal digits.
 
 `\cchar`: It's case sensitive, blindly *xor*ing the ordinal value of the following character with `0x40`. This behavior means that, i.e., `\cA` and `\ca` are different.
+
+### Character Classes and Class-Like Constructs
 
 `[]` and `[^]`: Classes (may contain class set operators)
 
@@ -62,3 +66,16 @@ Some of the properties are:
 | \p{P} | \p{Punctuation} – Punctuation characters                                                                                                      |
 | \p{C} | \p{Other} – Catch-all for everything else (rarely used for normal characters)                                                                 |
 
+### Anchors and Other Zero-Width Tests
+
+`^` and `\A`: Start of line/string
+
+`$`, `\z` and `\Z`: End of line/string
+
+`\G` : Start of current match
+
+`\b` and `\B`: Word boundary. The idea of these metacharacters of a “word character” is not the same as that of `\w` and `\W`. The word boundaries understand the properties of Unicode characters, while `\w` and `\W` match only ASCII characters.
+
+`(?=)`, `(?!)`, `(?<=)` and `(?<!)`: Lookaround. Lookahead constructs can employ arbitrary regular expressions, but lookbehind is restricted to subexpressions whose possible matches are finite in length. This means, for example, that `?` is allowed within lookbehind, but `*` and `+` are not.
+
+### Comments and Mode Modifiers
