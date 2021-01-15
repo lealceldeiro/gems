@@ -24,26 +24,41 @@ Certain aspects of the flavor are modified by a variety of match modes, turned o
 
 `\t`: **Normal horizontal tab** Maps to the ASCII <HT> character, 011 octal.
 
-`\0octal`
+`\0octal`: **Octal escape**, example: `\07`, `\077`, `\0377`. It requires a leading zero, followed by one to three octal digits.
 
-`\x##`
+`\x##`: **Hex escapes**, example: `\xFF`
 
-`\u####`
+`\u####`: **Hex escapes**, example: `\uFFFF`. It allows exactly four hexadecimal digits.
 
-`\cchar`
+`\cchar`: It's case sensitive, blindly *xor*ing the ordinal value of the following character with `0x40`. This behavior means that, i.e., `\cA` and `\ca` are different.
 
-`[]` and `[^]: Classes (may contain class set operators)
+`[]` and `[^]`: Classes (may contain class set operators)
 
 `.` (*dot*): Almost any character (various meanings, changes with modes)
 
-`\w`: 
+`\w`: **Part-of-word character**, exactly the same as `[a-zA-Z0-9_]`
 
-`\d`: 
+`\d`: **Digit**, exactly the same as `[0-9]`
 
-`\s`: 
+`\s`: **Whitespace character**, exactly the same as `[ \f\n\r\t\x0B]` (`\x0B` is the little-used ASCII VT character)
 
-`\W`: 
+`\W`: **Non-word character**, exactly the same as `[^\w]`
 
-`\D`: 
+`\D`: **Non-digit**, exactly the same as `[^\d]`
 
-`\S`:
+`\S`: **Non-whitespace character**, exactly the same as `[^\s]`.
+
+`\p{`*`Prop`*`}` and `\P{`*`Prop`*`}`: It support Unicode properties and blocks, and some additional “Java properties.” Unicode scripts are not supported.
+
+Some of the properties are:
+
+| Class | Synonym and description                                                                                                                       |
+|-------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| \p{L} | \p{Letter} – Things considered letters                                                                                                        |
+| \p{M} | \p{Mark} – Various characters that are not meant to appear by themselves, but with other base characters (accent marks, enclosing boxes, ...) |
+| \p{Z} | \p{Separator} – Characters that separate things, but have no visual representation (various kinds of spaces...)                               |
+| \p{S} | \p{Symbol} – Various types of Dingbats and symbols                                                                                            |
+| \p{N} | \p{Number} – Any kind of numeric character                                                                                                    |
+| \p{P} | \p{Punctuation} – Punctuation characters                                                                                                      |
+| \p{C} | \p{Other} – Catch-all for everything else (rarely used for normal characters)                                                                 |
+
