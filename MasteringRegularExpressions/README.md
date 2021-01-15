@@ -24,10 +24,10 @@ For an online Perl interpreter, https://onecompiler.com/perl can be used
 
 ## Tool-Specific Information
 
-**Chapter 7**
+**Chapter 7**: Perl
 
-**Chapter 8**
+**[Chapter 8](./Chapter8)**: Java
 
-**Chapter 9**
+**Chapter 9**: .NET
 
-**Chapter 10**
+**Chapter 10**: PHP
