@@ -90,8 +90,22 @@ Some of the properties are:
 
 `(?`*`mods`*`-`*`mods`*`:)`: Mode-modified spans
 
-From `#` until newline (only when enabled): Comments
+From `#` until newline (only when enabled): Comments (may also be used within a character class)
 
-`\Q`...`\E`: Literal-text mode
+`\Q`...`\E`: Literal-text mode (may also be used within a character class)
 
 ### Grouping and Capturing
+
+`()` `\1` `\2`: Capturing parentheses
+
+`(?:)`: Grouping-only parentheses
+
+`(?>)`: Atomic grouping
+
+`|`: Alternation
+
+`*` `+` `?` `{n}` `{n,}` `{x,y}`: Greedy quantifiers
+
+`*?` `+?` `??` `{n}?` `{n,}?` `{x,y}?`: Lazy quantifiers
+
+`*+` `++` `?+` `{n}+` `{n,}+` `{x,y}+`: Possessive quantifiers
