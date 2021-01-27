@@ -109,3 +109,26 @@ From `#` until newline (only when enabled): Comments (may also be used within a 
 `*?` `+?` `??` `{n}?` `{n,}?` `{x,y}?`: Lazy quantifiers
 
 `*+` `++` `?+` `{n}+` `{n,}+` `{x,y}+`: Possessive quantifiers
+
+
+## Unicode Line Terminators
+
+Java normally considers the following as line terminators:
+
+| Character Codes | Nicknames     | Description                                |
+|-----------------|---------------|--------------------------------------------|
+| U+000A          | LF     `\n`   | ASCII Line Feed (“newline”)                |
+| U+000D          | CR     `\r`   | ASCII Carriage Return                      |
+| U+000D U+000A   | CR/LF  `\r\n` | ASCII Carriage Return / Line Feed sequence |
+| U+0085          | NEL           | Unicode NEXT LINE                          |
+| U+2028          | LS            | Unicode LINE SEPARATOR                     |
+| U+2029          | PS            | Unicode PARAGRAPH SEPARATOR                |
+
+The characters and situations that are treated specially by *dot*, `^`, `$`, and `\Z` change depending on which match modes:
+
+| Match Mode | Affects    | Description                                                                                        |
+|------------|------------|----------------------------------------------------------------------------------------------------|
+| UNIX_LINES | `^ . $ \Z` | Revert to traditional newline-only line-terminator semantics.                                      |
+| MULTILINE  | `^ $`      | Add embedded line terminators to list of locations after which `^` and before which `$` can match. |
+| DOTALL     | `.`        | Line terminators no longer special to dot ; it matches any character.                              |
+
