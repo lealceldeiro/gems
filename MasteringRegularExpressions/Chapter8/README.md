@@ -79,3 +79,19 @@ Some of the properties are:
 `(?=)`, `(?!)`, `(?<=)` and `(?<!)`: Lookaround. Lookahead constructs can employ arbitrary regular expressions, but lookbehind is restricted to subexpressions whose possible matches are finite in length. This means, for example, that `?` is allowed within lookbehind, but `*` and `+` are not.
 
 ### Comments and Mode Modifiers
+
+`(?`*`mods`*`-`*`mods`*`)`: Mode modifiers. Modifiers allowed:
+  - `x`: free-spacing and comments regex mode. Applies even inside character classes. (`x`: on, `-x`: off)
+  - `d`: Changes how *dot* and `^` match (`d`: on, `-d`: off)
+  - `s`: dot-matches-all match mode (`s`: on, `-s`: off)
+  - `m`: enhanced line-anchor match mode. Expands where `^` and `$` can match (`m`: on, `-m`: off)
+  - `i`: case-insensitivity match mode for ASCII characters (`i` on, `-i`: off)
+  - `u`: case-insensitive matching for non-ASCII characters (`u`: on, `-u`: off)
+
+`(?`*`mods`*`-`*`mods`*`:)`: Mode-modified spans
+
+From `#` until newline (only when enabled): Comments
+
+`\Q`...`\E`: Literal-text mode
+
+### Grouping and Capturing
