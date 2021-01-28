@@ -165,3 +165,23 @@ public static void main(String[] args) {
     }
 }
 ```
+
+A regular-expression `Pattern` object is created with `Pattern.compile`. The first argument is a string to be interpreted as a regular expression. The compile-time options can be provided as a second argument.
+
+Here's a snippet that creates a pattern from the string in the variable `myRegex`, to be applied in a case-insensitive manner:
+
+```java
+Pattern pattern = Pattern.compile(myRegex, Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+```
+
+A call to `Pattern.compile` can throw two kinds of exceptions: an invalid regular expression throws `PatternSyntaxException`, and an invalid option value throws `IllegalArgumentException`.
+
+`Pattern#matcher` accepts a single argument: the string to search. It doesn't actually apply the regex, but prepares the pattern to be applied to a specific string. It returns a `Matcher` object.
+
+`Matcher#find()` applies the matcher's regex to the current region of the matcher's target text, returning a `boolean` indicating whether a match is found. If called multiple times, the next match is returned each time. This no-argument form of `find` respects the current region.
+
+`Matcher#find(int offset)` attempts the match starting at that *offset* number of characters from the beginning of the matcher's target text. It throws `IndexOutOfBoundsException` if the offset is negative or larger than the length of the target text. This form does not respect the current region, going so far as to first reset the region to its “whole text” default (when it internally invokes the `reset` method)
+
+`Matcher#matches()` returns a `boolean` indicating whether the matcher's regex exactly matches the current region of the target text.
+
+`Matcher#lookingAt()` returns a `boolean` indicating whether the matcher’s regex matches within the current region of the target text, starting from the beginning of the region. This is similar to the `matches` method except that the entire region doesn’t need to be matched, just the beginning.
