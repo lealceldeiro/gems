@@ -185,3 +185,58 @@ A call to `Pattern.compile` can throw two kinds of exceptions: an invalid regula
 `Matcher#matches()` returns a `boolean` indicating whether the matcher's regex exactly matches the current region of the target text.
 
 `Matcher#lookingAt()` returns a `boolean` indicating whether the matcher’s regex matches within the current region of the target text, starting from the beginning of the region. This is similar to the `matches` method except that the entire region doesn’t need to be matched, just the beginning.
+
+### Querying Match Results
+
+The following matcher methods return information about a successful match. They throw `IllegalStateException` if the matcher’s regex hasn’t yet been applied to its target text, or if the previous application was not successful.
+
+The methods that accept a `num` argument (referring to a set of capturing parentheses) throw `IndexOutOfBoundsException` when an invalid `num` is given.
+
+The `start` and `end` methods, which return character offsets, do so without regard to the region — their return values are offsets from the start of the *text*, not necessarily from the start of the *region*.
+
+`group()` Returns the text matched by the previous regex application.
+
+`groupCount()` returns the number of sets of capturing parentheses in the regex associated with the matcher. Numbers up to this value can be used as the `num` argument to the `group`, `start`, and `end` methods.
+
+`group(int num)` returns the text matched by the `num`<sup>th</sup> set of capturing parentheses, or `null` if that set didn't participate in the match. A num of zero indicates the entire match, so `group(0)` is the same as `group()`.
+
+`start(int num)` returns the absolute *offset*, in characters, from the start of the string to the start of where the `num`<sup>th,</sup> set of capturing parentheses matched. Returns `-1` if the set didn’t participate in the match.
+
+`start()` returns the absolute offset to the start of the overall match. `start()` is the same as `start(0)`
+
+`end(int num)` returns the absolute offset, in characters, from the start of the string to the end of where the `num`<sup>th</sup> set of capturing parentheses matched. Returns `-1` if the set didn’t participate in the match.
+
+`end()` returns the absolute offset to the end of the overall match. `end()` is the same as `end(0)`.
+
+`toMatchResult()` Added in Java 1.5.0, it returns a `MatchResult` object encapsulating data about the most recent match. It has the same `group`, `start`, `end`, and `groupCount` methods, listed above, as the `Matcher` class. A call to `toMatchResult` throws `IllegalStateException` if the matcher hasn't attempted a match yet, or if the previous match attempt was not successful.
+
+Example:
+
+```java
+public static void main(String[] args) {
+    String url = "http://regex.info/blog";
+    String regex = "(?x) ^(https?):// ([^/:]+) (?:(\\d+))?";
+    Matcher matcher = Pattern.compile(regex).matcher(url);
+
+    if (matcher.find()) {
+        System.out.printf(
+                "Overall [%s] (from %s to %s)%nProtocol [%s] (from %s to %s)%nHostname [%s] (from %s to %s)%n",
+                matcher.group(), matcher.start(), matcher.end(), matcher.group(1), matcher.start(1), matcher.end(1), matcher.group(2), matcher.start(2), matcher.end(2)
+        );
+    }
+
+    // Group #3 might not have participated, so we must be careful here
+    if (matcher.group(3) == null)
+        System.out.println("No port; default of '80' is assumed");
+    else {
+        System.out.printf("Port is [%s] (from %s to %s)%n",
+                          matcher.group(3), matcher.start(3), matcher.end(3));
+    }
+}
+
+// prints using Java 8.0.282:
+// Overall [http://regex.info] (from 0 to 17)
+// Protocol [http] (from 0 to 4)
+// Hostname [regex.info] (from 7 to 17)
+// No port; default of ’80’ is assumed
+```
