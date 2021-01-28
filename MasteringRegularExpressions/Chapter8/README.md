@@ -132,3 +132,36 @@ The characters and situations that are treated specially by *dot*, `^`, `$`, and
 | MULTILINE  | `^ $`      | Add embedded line terminators to list of locations after which `^` and before which `$` can match. |
 | DOTALL     | `.`        | Line terminators no longer special to dot ; it matches any character.                              |
 
+## Using [`java.util.regex`](https://docs.oracle.com/javase/8/docs/api/index.html?java/util/regex/package-summary.html)
+
+A `java.util.regex.Pattern` object is, in short, a compiled regular expression that can be applied to any number of strings.
+
+A `java.util.regex.Matcher` object is an individual instance of that regex being applied to a specific target string.
+
+`java.util.regex.MatchResult` encapsulates the data from a successful match. Match data is available from the matcher itself until the next match attempt, but can be saved by extracting it as a `MatchResult`.
+
+`java.util.regex.PatternSyntaxException` is thrown when an attempt is made to use an ill-formed regular expression (one such as `[oops)` that’s not syntactically correct). It extends `java.lang.IllegalAgumentException` and is unchecked.
+
+Example:
+
+```java
+public static void main(String[] args) {
+    String myText = "this is my 1st test string";
+    String myRegex = "\\d+\\w+"; // This provides for `\d+\w+`
+
+    java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(myRegex);
+    java.util.regex.Matcher matcher = pattern.matcher(myText);
+
+    if (matcher.find()) {  // use `find` to launch the actual match attempt
+        // query the results using `group`, `start` and `end`
+        String matchedText = matcher.group();
+        int matchedFrom = matcher.start();
+        int matchedTo = matcher.end();
+
+        System.out.println("Matched [" + matchedText + "] " + "from " + matchedFrom + " to " + matchedTo + ".");
+        // using Java 8.0.282, prints: Matched [1st] from 11 to 14.
+    } else {
+        System.out.println("Didn't match");
+    }
+}
+```
