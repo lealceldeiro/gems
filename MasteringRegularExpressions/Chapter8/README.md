@@ -221,7 +221,9 @@ public static void main(String[] args) {
     if (matcher.find()) {
         System.out.printf(
                 "Overall [%s] (from %s to %s)%nProtocol [%s] (from %s to %s)%nHostname [%s] (from %s to %s)%n",
-                matcher.group(), matcher.start(), matcher.end(), matcher.group(1), matcher.start(1), matcher.end(1), matcher.group(2), matcher.start(2), matcher.end(2)
+                matcher.group(), matcher.start(), matcher.end(),
+                matcher.group(1), matcher.start(1), matcher.end(1),
+                matcher.group(2), matcher.start(2), matcher.end(2)
         );
     }
 
@@ -239,4 +241,36 @@ public static void main(String[] args) {
 // Protocol [http] (from 0 to 4)
 // Hostname [regex.info] (from 7 to 17)
 // No port; default of ’80’ is assumed
+```
+
+In-Place Search and Replace example (replace of the same length): replace (complete) uppercase words by the lowercase words
+
+```java
+public static void main(String[] args) {
+    StringBuilder text = new StringBuilder("It’s SO very RUDE to shout!");
+    Matcher m = Pattern.compile("\\b[\\p{Lu}\\p{Lt}]+\\b").matcher(text);
+    
+    while (m.find()) {
+        text.replace(m.start(), m.end(), m.group().toLowerCase());
+    }
+    System.out.println(text);  // It’s so very rude to shout!
+}
+```
+
+
+In-Place Search and Replace example (replace of different length): replace (complete) uppercase words by the lowercase words
+
+```java
+public static void main(String[] args) {
+    StringBuilder text = new StringBuilder("It’s SO very RUDE to shout!");
+    Matcher m = Pattern.compile("\\b[\\p{Lu}\\p{Lt}]+\\b").matcher( text );
+    int matchPointer = 0;  // First search begins at the start of the string
+    
+    while (m.find(matchPointer)) {
+        matchPointer = m .end();  // Next search starts from where this one ended
+        text.replace(m.start(), m.end(), "<b>" + m.group().toLowerCase() + "</b>");
+        matchPointer += 7;  // Account for having added ’<b>’ and ’</b>’
+    }
+    System.out.println( text );  // It’s <b>so</b> very <b>rude</b> to shout!
+}
 ```
