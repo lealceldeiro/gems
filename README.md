@@ -26,11 +26,11 @@ Notes from:
 
 ### [Java Cookbook: Problems and Solutions for Java Developers](./JavaCookBookProblemsAndSolutions)  <sup><sub>(*Ian F. Darwin*)</sub></sup>
 
-### **`>`** [Mastering Regular Expressions](./MasteringRegularExpressions)  <sup><sub>(*Jeffrey E. F. Friedl*)</sub></sup>
+### [Mastering Regular Expressions](./MasteringRegularExpressions)  <sup><sub>(*Jeffrey E. F. Friedl*)</sub></sup>
+
+### **`>`** [The Java Module System](./TheJavaModuleSystem)  <sup><sub>(*Nicolai Parlog*)</sub></sup>
 
 ### [Java 9 Modularity](./Java9Modularity)  <sup><sub>(*Sander Mak,  Paul Bakker*)</sub></sup>
-
-### [The Java Module System](./TheJavaModuleSystem)  <sup><sub>(*Nicolai Parlog*)</sub></sup>
 
 ### [Pro Git](./ProGit)  <sup><sub>(*Scott Chacon and Ben Straub*)</sub></sup>
 
