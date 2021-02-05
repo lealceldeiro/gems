@@ -21,3 +21,9 @@ Version conflicts arise when two required libraries depend on different, incompa
 **Weak encapsulation across jars**
 
 **Security checks have to be handcrafted**
+
+**Poor startup performance**
+
+**Rigid java runtime**
+
+Before Java 8, there was no way to install a subset of the JRE. All Java installations had support for, for example, XML, SQL, and Swing, which many use cases don’t require.
