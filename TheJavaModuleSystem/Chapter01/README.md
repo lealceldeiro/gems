@@ -54,3 +54,21 @@ See a list of all modules contained in a JDK or JRE: `java --list-modules`
 See a details for a single module: `java --describe-module <module_name>`. i.e.: `java --describe-module java.sql`
 
 A fundamental aspect of the module system is: everything is a module! Or, more precisely, no matter how types and resources are presented to the compiler or the virtual machine, they will end up in a module. Modules are at the heart of the module system. Everything else can ultimately be traced back to them and their name, their declaration of dependencies, and the API they export.
+
+## 1.5 First module
+
+The only thing needed to create a module from a source code is to add a file called `module-info.java`, a module declaration, to the source folder and fill it with the module’s *name*, *dependencies* on other modules, and the *packages that make up its public API*. Example:
+
+```java
+module my.xml.app {
+    requires java.base;  // requiring java.base isn’t actually necessary
+    requires java.xml;
+    exports my.xml.api;
+}
+```
+
+Whenever a module first accesses a type in another module, the JPMS verifies that three requirements are met:
+
+- The accessed type needs to be public.
+- The module owning that type must have exported the package containing it.
+- In the module graph, the accessing module must be connected to the owning one.
