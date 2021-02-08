@@ -72,3 +72,7 @@ Whenever a module first accesses a type in another module, the JPMS verifies tha
 - The accessed type needs to be public.
 - The module owning that type must have exported the package containing it.
 - In the module graph, the accessing module must be connected to the owning one.
+
+
+The coexistence of the class path and the module path and their respective treatment of plain and modular artifacts is the key to incremental migrations of large applications to the module system.
+
