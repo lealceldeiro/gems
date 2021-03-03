@@ -76,3 +76,9 @@ Whenever a module first accesses a type in another module, the JPMS verifies tha
 
 The coexistence of the class path and the module path and their respective treatment of plain and modular artifacts is the key to incremental migrations of large applications to the module system.
 
+## 1.6	Goals of the module system
+
+- Alleviate many of the pain points the current state of affairs is causing
+- It introduces capabilities, new to most developers who haven’t used other module systems, that can further improve the modularization of software
+- Reliable configuration
+- Strong encapsulation
