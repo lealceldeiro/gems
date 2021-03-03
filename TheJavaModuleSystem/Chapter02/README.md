@@ -1,1 +1,3 @@
-# Anatomy of a modular application
+# Chapter 2: Anatomy of a modular application
+
+## 
