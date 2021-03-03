@@ -106,3 +106,9 @@ With the JDK being modularized, we can *cherry-pick the functionality* we need a
 - The JPMS offers no mechanism to search for or download existing modules from a centralized repository or to publish new ones.
 - It’s also not the goal of the JPMS to model a dynamic module graph, where individual artifacts can show up or disappear at run time.
 
+# Summary
+
+- A software system can be visualized as a graph, which often shows (un)desired properties of the system.
+- On the level of JARs, Java used to have no understanding of that graph. This led to various problems, among them JAR hell, manual security, and poor maintainability.
+- The Java Platform Module System exists to make Java understand the JAR graph, which brings artifact-level modularity to the language. The most important goals are reliable configuration and strong encapsulation as well as improved security, maintainability, and performance.
+- This is achieved by introducing modules: basically, JARs with an additional descriptor. The compiler and runtime interpret the described information in order to build the graph of artifact dependencies and provide the promised benefits.
