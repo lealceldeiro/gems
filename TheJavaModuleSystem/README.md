@@ -5,3 +5,6 @@ Main notes taken from the book [The Java Module System](https://www.amazon.com/d
 ## Part 1: Hello, modules
 
 ### [Chapter 1](./Chapter01): First piece of the puzzle
+
+
+### [Chapter 2](./Chapter02): Anatomy of a modular application
