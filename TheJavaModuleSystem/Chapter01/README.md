@@ -82,3 +82,9 @@ The coexistence of the class path and the module path and their respective treat
 - It introduces capabilities, new to most developers who haven’t used other module systems, that can further improve the modularization of software
 - Reliable configuration
 - Strong encapsulation
+
+### 1.6.1	Reliable Configuration: Leaving no Jar Behind
+
+The fact that dependencies can be found missing at launch time, as opposed to only when the first class is needed, is a big win.
+
+Together, this makes a system’s configuration more reliable than it used to be, because only well-formed launch configurations will pass these tests. If they do, the JVM can turn the conceptual dependency graph into a module graph, which replaces the ball of mud with a structured view of the running system, much like we may have it.
