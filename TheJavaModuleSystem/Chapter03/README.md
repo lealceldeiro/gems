@@ -29,3 +29,9 @@ Exported packages: The keyword exports is followed by the name of a package the 
 - Automatic modules — Named modules without a module description (plain JARs on the module path). These are application modules created by the runtime, not a developer.
 - Named modules —The set of explicit modules and automatic modules. These modules have a name, either defined by a descriptor or inferred by the JPMS.
 - Unnamed modules — Modules that aren’t named (class path content) and hence aren’t explicit.
+
+Readability edge: When a module *customer* requires a module *bar* in its declaration, then at run time *customer* will *read bar* or, conversely, *bar* will be readable by *customer*. The connection between the two modules is called a *readability edge*, or *reads edge* for short.
+
+![reads-edge](https://user-images.githubusercontent.com/15990580/111142655-957fdd80-858d-11eb-9bf9-f3f06cef13fa.png)
+
+The module system checks whether the universe of observable modules contains all required dependencies, direct and transitive, and reports an error if something’s missing. There must be no ambiguity: no two artifacts can claim they’re the same module. This is particularly interesting in the case where two versions of the same module are present—because the module system has no concept of versions, it treats this as a duplicate module. Accordingly, it reports an error if it runs into this situation. There must be no static dependency cycles between modules. At run time, it’s possible and even necessary for modules to access each other, but these must not be compile dependencies. Packages should have a unique origin, so no two modules must contain types in the same package. If they do, this is called a split package, and the module system will refuse to compile or launch such configurations. This is particularly interesting in the context of migration because some existing libraries and frameworks split packages on purpose.
