@@ -15,3 +15,11 @@ java
  --module-path mods:libs
  --module monitor
 ```
+
+When an application is being modularized, the module dependencies can be deduced from type dependencies across module boundaries. This makes creating an initial module-dependency graph a straightforward procedure.
+
+The directory structure of a multimodule project can be similar to what it would have been before Java 9, so existing tools and approaches will continue to work.
+
+The module declaration — a `module-info.java` file in the project’s root directory—is the most obvious change that the module system brings to coding. It names the module and declares dependencies as well as the public API. Other than that, the way code is written is virtually unchanged.
+
+The commands `javac`, `jar`, and `java` have been updated to work with modules. The most obvious and relevant change is the module path (command-line option `--module-path` or `-p`). It parallels the class path but is used for modules.
