@@ -8,3 +8,5 @@ Main notes taken from the book [The Java Module System](https://www.amazon.com/d
 
 
 ### [Chapter 2](./Chapter02): Anatomy of a modular application
+
+### [Chapter 3](./Chapter03): Defining modules and their properties
