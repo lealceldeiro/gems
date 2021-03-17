@@ -65,3 +65,9 @@ In nontechnical terms, a module’s public API is everything that can’t be cha
 ### Module path
 
 The module path is a list whose elements are artifacts or directories that contain artifacts. Depending on the OS, module path elements are separated by `:` (Unix-based) or `;` (Windows). It’s used by the module system to locate required modules that aren’t found among the platform modules. Both javac and java as well as other module-related commands can process it — the command-line options are `--module-path` and `-p`.
+
+Only the module path processes artifacts as modules. All platform modules in the current runtime as well as all application modules specified on the command line are called observable, and together they make up the universe of observable modules.
+
+### Annotation processors
+
+Java 9 suggests to separate by concerns and use `--class-path` or `--module-path` for application JARs and `--processor-path` or `--processor-module-path` for processor JARs. For unmodularized JARs, the distinction between the application and processor paths is optional: placing everything on the class path is valid, but for modules it’s binding; processors on the module path won’t be used.
