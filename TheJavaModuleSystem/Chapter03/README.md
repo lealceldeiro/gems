@@ -11,9 +11,13 @@ In addition to the `module` keyword, a declaration starts by giving the module a
 - Globally unique
 - Stable
 
-Dependencies: Dependencies are declared with requires directives, which consist of the keyword followed by a module name. The directive states that the declared module depends on the named one and requires it during compilation and at run time.
+### Dependencies
 
-Exported packages: The keyword exports is followed by the name of a package the module contains. Only exported packages are usable outside the module; all others are strongly encapsulated within it.
+Dependencies are declared with requires directives, which consist of the keyword followed by a module name. The directive states that the declared module depends on the named one and requires it during compilation and at run time.
+
+### Exported packages
+
+The keyword exports is followed by the name of a package the module contains. Only exported packages are usable outside the module; all others are strongly encapsulated within it.
 
 ### Module types
 
@@ -30,7 +34,9 @@ Exported packages: The keyword exports is followed by the name of a package the 
 - Named modules —The set of explicit modules and automatic modules. These modules have a name, either defined by a descriptor or inferred by the JPMS.
 - Unnamed modules — Modules that aren’t named (class path content) and hence aren’t explicit.
 
-Readability edge: When a module *customer* requires a module *bar* in its declaration, then at run time *customer* will *read bar* or, conversely, *bar* will be readable by *customer*. The connection between the two modules is called a *readability edge*, or *reads edge* for short.
+### Readability edge
+
+When a module *customer* requires a module *bar* in its declaration, then at run time *customer* will *read bar* or, conversely, *bar* will be readable by *customer*. The connection between the two modules is called a *readability edge*, or *reads edge* for short.
 
 ![reads-edge](https://user-images.githubusercontent.com/15990580/111142655-957fdd80-858d-11eb-9bf9-f3f06cef13fa.png)
 
@@ -47,3 +53,11 @@ A type `Drink` in a module *bar* is accessible to code in a module *customer* if
 - `Drink` is public.
 - `Drink` belongs to a package that bar exports.
 - *customer* reads *bar*.
+
+### Public API
+
+In nontechnical terms, a module’s public API is everything that can’t be changed without causing compile errors in code that uses it. More technically speaking, a module’s public API consists of the following:
+
+- Names of all public types in exported packages
+- Names and type names of public and protected fields
+- Names, argument type names, and return type names of all public and protected methods (called method signatures)
