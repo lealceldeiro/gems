@@ -39,3 +39,11 @@ The module system checks whether the universe of observable modules contains all
 Launching an application with a missing transitive dependency won’t work. Even if the initial module doesn’t directly depend on it, some other module does, so it will be reported as missing.
 
 A split package occurs when two modules contain types in the same package. Interestingly, the compiler shows an error only if the module under compilation can access the split package in the other module. That means the split package must be exported.
+
+### Accessibility
+
+A type `Drink` in a module *bar* is accessible to code in a module *customer* if all of the following conditions are fulfilled:
+
+- `Drink` is public.
+- `Drink` belongs to a package that bar exports.
+- *customer* reads *bar*.
