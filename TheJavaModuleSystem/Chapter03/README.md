@@ -61,3 +61,7 @@ In nontechnical terms, a module’s public API is everything that can’t be cha
 - Names of all public types in exported packages
 - Names and type names of public and protected fields
 - Names, argument type names, and return type names of all public and protected methods (called method signatures)
+
+### Module path
+
+The module path is a list whose elements are artifacts or directories that contain artifacts. Depending on the OS, module path elements are separated by `:` (Unix-based) or `;` (Windows). It’s used by the module system to locate required modules that aren’t found among the platform modules. Both javac and java as well as other module-related commands can process it — the command-line options are `--module-path` and `-p`.
