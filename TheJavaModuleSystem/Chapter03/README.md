@@ -1,4 +1,4 @@
-# Defining modules and their properties
+# Chapter 3: Defining modules and their properties
 
 Modular JAR and module descriptor: A modular JAR is just a plain JAR, except for one small detail. Its root directory contains a module descriptor: a `module-info.class` file.
 
@@ -71,3 +71,32 @@ Only the module path processes artifacts as modules. All platform modules in the
 ### Annotation processors
 
 Java 9 suggests to separate by concerns and use `--class-path` or `--module-path` for application JARs and `--processor-path` or `--processor-module-path` for processor JARs. For unmodularized JARs, the distinction between the application and processor paths is optional: placing everything on the class path is valid, but for modules it’s binding; processors on the module path won’t be used.
+
+### Module graph
+
+In a module graph, modules (as nodes) are connected according to their dependencies (with directed edges). The edges are the basis for readability. The graph is constructed during module resolution and available at run time via the reflection API.
+
+### `--add-modules`
+
+The option `--add-modules ${modules}`, available on `javac` and `java`, takes a comma-separated list of module names and defines them as root modules beyond the initial module. (Root modules form the initial set of modules from which the module graph is built by resolving their dependencies). This enables users to add modules (and their dependencies) to the module graph that would otherwise not show up because the initial module doesn’t directly or indirectly depend on them.
+
+The `--add-modules` option has three special values: `ALL-DEFAULT`, `ALL-SYSTEM`, and `ALL-MODULE-PATH`. The first two only work at run time and are used for some edge cases. The last one can be useful, though: with it, all modules on the module path become root modules, and hence all of them make it into the module graph.
+
+### `--add-reads`
+
+The compiler-time and run-time option `--add-reads`*`${module}=${targets}`* adds reads edges from *`${module}`* to all modules in the comma-separated list *`${targets}`*. This allows *`${module}`* to access all public types in packages exported by those modules even though it has no requires directives mentioning them. If *`${targets}`* includes `ALL-UNNAMED`, *`${module}`* can read the class-path content.
+
+## Summary
+
+- Modules come in two forms:
+  * The ones shipped with the Java runtime are *platform modules*. They’re merged into a `modules` file in the runtime’s `libs` directory. A JDK also holds them in raw form as JMOD files in the `jmods` directory. Only `java.base`, the base module, is explicitly known to the module system.
+  * Library, framework, and application developers create *modular* JARs, which are plain JARs containing a *module descriptor* `module-info.class`. These are called *application modules*, with the one containing the `main` method being the *initial module*.
+- The module descriptor is compiled from a *module declaration* `module-info.java` that developers (and tools) can edit. It defines a module’s properties:
+  * Its name, which should be globally unique due to the reverse-domain naming scheme
+  * Its dependencies, which are stated with `requires` directives that refer to other modules by name
+  * Its API, which is defined by exporting selected packages with `exports` directives
+- Dependency declarations and the *readability* edges the module system is creating from them are the basis for *reliable configuration*. It’s achieved by making sure, among other things, that all modules are present exactly once and no dependency cycles exist between them. This allows you to catch application-corrupting or crashing problems earlier.
+- Readability edges and package exports together are the basis for *strong encapsulation*. Here the module system ensures that only public types in exported packages are accessible and only to modules that read the exporting one. This prevents accidental dependencies on transitive dependencies and enables you to make sure outside code can’t easily depend on types you designed as being internal to a module.
+- Accessibility limitations apply to reflection as well.
+- The *application modules*, specified on the module path, and the *platform modules*, contained in the runtime, make up the *universe of observable modules*.
+- Module resolution verifies that the configuration is reliable (all dependencies present, no ambiguities, and so on) and results in the module graph — a close representation within the module system of how we all see artifact dependencies. Only modules that make it into the module graph are available at run time.
