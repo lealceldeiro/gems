@@ -46,3 +46,7 @@ The `-source` and `-target` options are used to compile the code to run on an ol
 From Java 9 on, the compiler prevents that common operating error with the `--release` option that sets all three options to the correct value.
 
 JAR isn’t the only format used to deliver Java bytecode. JEE also works with WAR and EAR files. Until the specification is updated to embrace modules, though, it isn’t possible to create modular WARs or EARs.
+
+### 4.5.3 Defining an Entry Point
+
+When `jar` is used to package class files into an archive, a main class can be defined with `--main-class ${class}`, where `${class}` is the fully qualified name (meaning the package name appended with a dot and the class name) of the class with the *main* method. It will be recorded in the module descriptor and used by default as the main class when the module is the initial module for launching an application. `jar --main-class` also sets the manifest’s `Main-Class` entry.
