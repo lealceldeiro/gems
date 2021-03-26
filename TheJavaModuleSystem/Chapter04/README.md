@@ -16,3 +16,11 @@ If code that includes a module declaration is compiled:
 ## 4.3.3	The Asterisk as a Token for the Module Name
 
 The module source path can contain an asterisk (\*). Although it’s commonly interpreted as a wildcard, which in paths usually means “anything in the directory up to the asterisk,” this isn’t the case here. Instead, the asterisk functions as a token that indicates where on the path the module names appear. The rest of the path after the asterisk must point to the directory containing the modules’ packages.
+
+## 4.3.4	Multiple Module Source Path Entries
+
+The module source path lets alternative paths with `{dir1,dir2}` to be defined. Various paths (if they only differ in the name of single path elements) can be unified. Example:
+
+```shell
+--module-source-path "src/*/{share,unix}/classes"
+```
