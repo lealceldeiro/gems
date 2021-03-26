@@ -1,6 +1,6 @@
 # Chapter 5: Running and debugging modular applications
 
-## 5.1	Launching the JVM with modules
+## 5.1	Launching the JVM with Modules
 
 The `java` command has an option `--module ${module}` that specifies the initial module *`${module}`*. Module resolution starts from there, and it’s also the module from which a main class will be launched. Example:
 
@@ -17,3 +17,23 @@ java
     --module-path mods:libs
     --module monitor/monitor.Main
 ```
+### 5.1.3 Passing Parameters to the Application
+
+The JVM puts everything after the initial module into an array of strings (split on space) and passes it to the main method. `--module` should be the last option  process by the JVM all application options shoud be placed behind it.
+
+## 5.2 Loading Resources from Modules
+
+### 5.2.2 Resource Loading on Java 9 and Later
+
+- The methods on `Class`
+  * Within the same module all resources are found. This is true regardless of which packages the module encapsulates.
+  * Across module boundaries:
+    + Resources from a package are by default encapsulated.
+    + Resources from the JAR’s root or from folders whose names can’t be mapped to packages (like META-INF because of the dash) are never encapsulated.
+    + `.class` files are never encapsulated.
+    + If resources are encapsulated, the `getResource` call returns `null`.
+    + The `opens` directive gives reflective access to a package.
+- The methods on `ClassLoader` (they have a different and generally less-useful behavior when it comes to modules)
+- A new class, `java.lang.Module`, also has methods `getResource` and `getResourceAsStream`.
+
+Opening packages to give access to resources invites other code to depend on the module’s internal structure. To avoid that, exposing a type in the public API that can be tasked with loading resources should be considered. Then resource can be rearranged internally as it fits the requirements without breaking other modules.
