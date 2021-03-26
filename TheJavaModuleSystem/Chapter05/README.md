@@ -61,3 +61,75 @@ This is how the module system evaluates the option:
 - Starting from the modules specified to `--limit-modules`, the JPMS determines all their transitive dependencies.
 - If `--add-modules` or `--module` was used, the JPMS adds the specified modules (but not their dependencies).
 - The JPMS uses the resulting set as the universe of observable modules for any further steps (like listing modules or launching the application).
+
+### 5.3.6 Observing the Module System with Log Messages
+
+The module system logs messages into two different mechanisms:
+
+#### Diagnostic messages from the resolver
+
+With the option `--show-module-resolution`, the module system prints messages during module resolution.
+
+#### Unified JVM logging ([Online docs](https://docs.oracle.com/javase/9/tools/java.htm#JSWOR-GUID-BE93ABDC-999C-4CB5-A88B-1994AAAC74D5))
+
+Java 9 introduced a unified logging architecture. It pipes the messages the JVM generates through a single mechanism and allows you to select which messages to show with the intricate command-line option `-Xlog`. Note that this includes neither JDK messages, such as the ones Swing logs, nor the custom application’s messages itself — this is purely about the JVM itself.
+
+**What is unified logging?**
+
+The JVM-internal, unified logging infrastructure is similar to other logging frameworks like Java Util Logging, Log4j, and Logback. It generates textual messages, attaches some metainformation like tags (describing the originating subsystem), a log level (describing the importance of the message), and time stamps, and prints them somewhere.
+
+**Defining which messages should be shown**
+
+The log level and tags can be used to define exactly what the logs should show by defining pairs of `<tag-set>=<level>`, which are called selectors. All tags can be selected with `all`, and the level is optional and defaults to `info`. Example:
+
+```shell
+java -Xlog:all=warning -version
+```
+
+**Defining where messages should go**
+
+The output configuration needs to be put after the selectors (separated by a colon), and it has three possible values:
+
+- `stdout`: The default output. On the console, that’s the terminal window, unless redirected. In IDEs, it’s often shown in its own tab or view.
+- `stderr`: The default error output. On the console, that’s the terminal window, unless redirected. In IDEs it’s usually shown in the same tab/view as stdout, but printed in red.
+- `file=<filename>`: Defines a file to pipe all messages into. Including file= is optional.
+
+Example: `java -Xlog:all=debug:file=application.log -version`
+
+**Defining what messages should say**
+
+Each message consists of text and metainformation. Which of these additional pieces of information the JVM will print is configurable by selecting *decorators*. Example:
+
+`java -Xlog:gc*=debug:stdout:time,uptimemillis,tid -version` will print something like:
+
+`[2021-03-26T17:56:59.888+0200][42ms][771] G1 Service Thread (Periodic GC Task) (run)`
+
+**Configuring the entire logging pipeline**
+
+Formally, the `-Xlog` option has this syntax: `-Xlog:<selectors>:<output>:<decorators>:<output-options>`
+
+**Using Unified Logging to Look into the JPMS**
+
+Example:
+
+```shell
+java
+    -Xlog:module*
+    --module-path mods:libs
+    --dry-run
+    --module monitor
+```
+
+The previous will show something like:
+
+```shell
+...
+[0.046s][info][module,load] java.base location: jrt:/java.base
+[0.129s][info][module,load] jetty.http location: file://${base-dir}/libs/jetty-http-9.4.6.v20170531.jar
+[0.129s][info][module,load] java.xml location: jrt:/java.xml
+[0.129s][info][module,load] websocket.common location: file://${base-dir}/libs/websocket-common-9.4.6.v20170531.jar
+...
+# and many more entries
+```
+
+## 5.4 Java Virtual Machine options
