@@ -12,3 +12,7 @@ If code that includes a module declaration is compiled:
 
 - It must require its dependencies to be able to access the types these dependencies export
 - The required dependencies have to be present
+
+## 4.3.3	The Asterisk as a Token for the Module Name
+
+The module source path can contain an asterisk (\*). Although it’s commonly interpreted as a wildcard, which in paths usually means “anything in the directory up to the asterisk,” this isn’t the case here. Instead, the asterisk functions as a token that indicates where on the path the module names appear. The rest of the path after the asterisk must point to the directory containing the modules’ packages.
