@@ -45,3 +45,4 @@ The `-source` and `-target` options are used to compile the code to run on an ol
 
 From Java 9 on, the compiler prevents that common operating error with the `--release` option that sets all three options to the correct value.
 
+JAR isn’t the only format used to deliver Java bytecode. JEE also works with WAR and EAR files. Until the specification is updated to embrace modules, though, it isn’t possible to create modular WARs or EARs.
