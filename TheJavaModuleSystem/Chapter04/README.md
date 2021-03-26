@@ -50,3 +50,10 @@ JAR isn’t the only format used to deliver Java bytecode. JEE also works with W
 ### 4.5.3 Defining an Entry Point
 
 When `jar` is used to package class files into an archive, a main class can be defined with `--main-class ${class}`, where `${class}` is the fully qualified name (meaning the package name appended with a dot and the class name) of the class with the *main* method. It will be recorded in the module descriptor and used by default as the main class when the module is the initial module for launching an application. `jar --main-class` also sets the manifest’s `Main-Class` entry.
+
+## Summary
+
+- The `javac` command to compile all of a module’s sources, including the declaration, is the same as before Java 9, except that it uses the module path instead of the class path.
+- The module source path (`--module-source-path`) informs the compiler of how the project is structured. This lifts the compiler operation from processing types to processing modules, allowing you to compile a selected module and all its dependencies with a simple option (`--module` or `-m`) instead of listing source files.
+- Modular JARs are just JARs with a module descriptor module-info.class. The jar tool processes them just as well as other class files, so packaging all of them into a JAR requires no new options.
+- Optionally, jar allows the specification of a module’s entry point (with --main-class), which is the class with the main method. This makes launching the module simpler.
