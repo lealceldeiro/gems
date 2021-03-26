@@ -37,3 +37,13 @@ The JVM puts everything after the initial module into an array of strings (split
 - A new class, `java.lang.Module`, also has methods `getResource` and `getResourceAsStream`.
 
 Opening packages to give access to resources invites other code to depend on the module’s internal structure. To avoid that, exposing a type in the public API that can be tasked with loading resources should be considered. Then resource can be rearranged internally as it fits the requirements without breaking other modules.
+
+## 5.3	Debugging Modules and Modular Applications
+
+### 5.3.1 Analyzing Individual Modules
+
+Whereas `jmod describe` and `jar --describe-module` operate on artifacts, `java --describe` operates on modules.
+
+### 5.3.2 validating Sets of Modules
+
+The `java` option `--validate-modules` scans the module path for errors. It reports *duplicate modules* and *split packages* but builds no module graph, so it can’t discover missing modules or dependency cycles. After executing the checks, `java` exits.
