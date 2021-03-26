@@ -24,3 +24,19 @@ The module source path lets alternative paths with `{dir1,dir2}` to be defined. 
 ```shell
 --module-source-path "src/*/{share,unix}/classes"
 ```
+
+### 4.3.5	Setting the Initial Module
+
+Compiling a single module and its dependencies just by naming it no longer requires the source files to compile to be explicitly listed.
+
+The option `--module` can be used to compile a single module and its transitive dependencies without explicitly listing the source files. Example:
+
+```shell
+javac
+    --module-path mods:libs
+    --module-source-path "./*/src/main/java"
+    -d classes
+    --module monitor # Because the initial module 'monitor' depends on all other modules, all of them are built
+```
+
+
