@@ -39,4 +39,9 @@ javac
     --module monitor # Because the initial module 'monitor' depends on all other modules, all of them are built
 ```
 
+## 4.4	Compiler options
+
+The `-source` and `-target` options are used to compile the code to run on an older version of Java. But if the option `-bootclasspath` is not specified the application can crash at runtime because a method call failed (for example). Without that option, the compiler creates bytecode that a JVM with the target version understands (good), but it links against the current version’s core library API (bad). That can create calls to types or methods that didn’t exist in the older JDK version and thus cause runtime errors.
+
+From Java 9 on, the compiler prevents that common operating error with the `--release` option that sets all three options to the correct value.
 
