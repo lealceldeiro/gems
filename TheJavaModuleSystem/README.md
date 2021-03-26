@@ -6,7 +6,6 @@ Main notes taken from the book [The Java Module System](https://www.amazon.com/d
 
 ### [Chapter 1](./Chapter01): First piece of the puzzle
 
-
 ### [Chapter 2](./Chapter02): Anatomy of a modular application
 
 ### [Chapter 3](./Chapter03): Defining modules and their properties
@@ -14,3 +13,7 @@ Main notes taken from the book [The Java Module System](https://www.amazon.com/d
 ### [Chapter 4](./Chapter04): Building modules from source to JAR
 
 ### [Chapter 5](./Chapter05): Running and debugging modular applications
+
+## Part 2:Adapting real-world projects
+
+### [Chapter 6](./Chapter06): Compatibility challenges when moving to Java 9 or later
