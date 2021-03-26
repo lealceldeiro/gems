@@ -44,6 +44,20 @@ Opening packages to give access to resources invites other code to depend on the
 
 Whereas `jmod describe` and `jar --describe-module` operate on artifacts, `java --describe` operates on modules.
 
-### 5.3.2 validating Sets of Modules
+### 5.3.2 Validating Sets of Modules
 
 The `java` option `--validate-modules` scans the module path for errors. It reports *duplicate modules* and *split packages* but builds no module graph, so it can’t discover missing modules or dependency cycles. After executing the checks, `java` exits.
+
+With the `--dry-run` option, the JVM executes the full module resolution, including building a module graph and asserting a reliable configuration, but then stops right before executing the main method.
+
+### 5.3.4 Listing Observable Modules and Dependencies
+
+The option `--list-modules` lists the universe of observable modules. The module system does nothing else and neither resolves modules nor launches the application.
+
+The option `--limit-modules ${modules}` accepts a list of comma-separated module names. It limits the universe of observable modules to the specified ones and their transitive dependencies.
+
+This is how the module system evaluates the option:
+
+- Starting from the modules specified to `--limit-modules`, the JPMS determines all their transitive dependencies.
+- If `--add-modules` or `--module` was used, the JPMS adds the specified modules (but not their dependencies).
+- The JPMS uses the resulting set as the universe of observable modules for any further steps (like listing modules or launching the application).
