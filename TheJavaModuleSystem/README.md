@@ -12,3 +12,5 @@ Main notes taken from the book [The Java Module System](https://www.amazon.com/d
 ### [Chapter 3](./Chapter03): Defining modules and their properties
 
 ### [Chapter 4](./Chapter04): Building modules from source to JAR
+
+### [Chapter 5](./Chapter05): Running and debugging modular applications
