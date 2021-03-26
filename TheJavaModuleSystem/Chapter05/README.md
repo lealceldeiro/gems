@@ -62,6 +62,8 @@ This is how the module system evaluates the option:
 - If `--add-modules` or `--module` was used, the JPMS adds the specified modules (but not their dependencies).
 - The JPMS uses the resulting set as the universe of observable modules for any further steps (like listing modules or launching the application).
 
+The option `--add-modules` can be used to define additional root modules beyond the initial module. If a module isn’t required (for example, because it’s only accessed via reflection), `--add-modules` must be used to make sure it becomes part of the module graph.
+
 ### 5.3.6 Observing the Module System with Log Messages
 
 The module system logs messages into two different mechanisms:
@@ -132,4 +134,4 @@ The previous will show something like:
 # and many more entries
 ```
 
-## 5.4 Java Virtual Machine options
+## 5.4 Java Virtual Machine Options ([Online docs](https://docs.oracle.com/javase/9/tools/java.htm#JSWOR624))
