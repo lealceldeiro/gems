@@ -60,3 +60,15 @@ These are the modules needed to get the same APIs as the three compact profiles:
 - *Compact2 profile*: `java.base`, `java.logging`, `java.scripting`, `java.rmi`, `java.sql`, `java.xml`
 - *Compact3 profile*: `java.base`, `java.logging`, `java.scripting`, `java.rmi`, `java.sql`, `java.xml`, `java.compiler`, `java.instrument`, `java.management`, `java.naming`, `java.prefs`, `java.security.jgss`, `java.security.sasl`, `java.sql.rowset`, `java.xml.crypto`
 
+Instead of relying on a fixed selection, sometimes is better to use `jlink` to create an image with only the platform modules needed.
+
+### 6.4.2 Extension Mechanism Removed
+
+Before Java 9, the extension mechanism let us add classes to the JDK without having to place them on the class path. It loaded them from various directories: from directories named by the system property `java.ext.dirs`, from `lib/ext` in the JRE, or from a platform-specific system-wide directory. Java 9 removes this feature, and the compiler and runtime will exit with an error if the JRE directory exists or the system property is set.
+
+Alternatives are as follows:
+
+- The `java` and `javac` option `--patch-module` injects content into modules.
+- The `java` and `javac` option `--upgrade-module-path` replaces an upgradeable platform module with another one.
+- The extending artifacts can be placed on the class path.
+
