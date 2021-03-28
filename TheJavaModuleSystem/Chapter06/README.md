@@ -45,3 +45,18 @@ Furthermore, the `Class::getResource*` and `ClassLoader::getResource*` methods n
 FileSystem fs = FileSystems.getFileSystem(URI.create("jrt:/"));
 fs.getPath("java.base", "java/lang/String.class"));
 ```
+
+## 6.4 Selecting, replacing, and extending the platform
+
+### 6.4.1	No More Compact Profiles
+
+Compact profiles were created as an interim solution when it became apparent the module system wouldn’t be released with Java 8. With the module system in play, much more flexible run-time images can be created with `jlink`, and compact profiles are no longer needed.
+
+The Java 9+ compiler will hence only accept `-profile` if compiling for Java 8. To compile against a specific selection of modules, the `--limit-modules` option can be used.
+
+These are the modules needed to get the same APIs as the three compact profiles:
+
+- *Compact1 profile*: `java.base`, `java.logging`, `java.scripting`
+- *Compact2 profile*: `java.base`, `java.logging`, `java.scripting`, `java.rmi`, `java.sql`, `java.xml`
+- *Compact3 profile*: `java.base`, `java.logging`, `java.scripting`, `java.rmi`, `java.sql`, `java.xml`, `java.compiler`, `java.instrument`, `java.management`, `java.naming`, `java.prefs`, `java.security.jgss`, `java.security.sasl`, `java.sql.rowset`, `java.xml.crypto`
+
