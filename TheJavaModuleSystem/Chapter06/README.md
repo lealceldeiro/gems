@@ -9,6 +9,10 @@ Classes on the class path in a package that’s distributed with Java are effect
 
 ### 6.1.3 Dropping in Third-party Implementations of JEE Modules
 
+JEE modules are deprecated in Java 9 and removed in Java 11. It's needed to find a third-party dependency that fulfills the app requirements sooner rather than later.
+
+In Java 9 and 10, these modules aren’t resolved by default, which can lead to compile-time and run-time errors. To fix this, either a third-party dependency that implements the same API has to be uses or the JEE module must be made available with `--add-modules`.
+
 Both the compiler and runtime offer the `--upgrade-module-path` option, which accepts a list of directories, formatted like the ones for the module path. When the module system creates the module graph, it searches those directories for artifacts and uses them to replace upgradeable modules. The six JEE modules are always upgradeable:
 
 - `java.activation`
@@ -20,7 +24,7 @@ Both the compiler and runtime offer the `--upgrade-module-path` option, which ac
 
 ## 6.2 Casting to `URLClassLoader`
 
-From Java 9 on, the application class loader is the new type `AppClassLoader` (and its supertype is the also new `BuiltinClassLoader`). That means the occasional `(URLClassLoader) getClass().getClassLoader()` sequence will no longer execute successfully.
+The application class loader is no longer of type `URLClassLoader`, so code like `(URLClassLoader) getClass().getClassLoader()` fails. Solutions are to only rely on the `ClassLoader` API, even if that means a feature must be removed (recommended); create a layer to dynamically load new code (recommended); or hack into the class-loader internals and use `BuiltinClassLoader` or even `AppClassLoader` (not recommended).
 
 ## 6.3 Updated run-time image directory layout
 
@@ -87,3 +91,18 @@ The `-Xbootclasspath` and `-Xbootclasspath/p` options were removed. The followin
 ### 6.4.6 JRE Version Selection Removed
 
 Before Java 9, you could use the `-version:N` option on java (or the corresponding manifest entry) to launch the application with a JRE of version *N*. In Java 9, the feature was removed: the Java launcher quits with an error for the command-line option and prints a warning for the manifest entry while otherwise ignoring it.
+
+Also, tt’s no longer possible to compile for Java 5.
+
+### Java Version
+
+Java’s command-line tools and the system property `java.version` report their version as `9.${MINOR}.${SECURITY}.${PATCH}` (in Java 9) or as `${FEATURE}.${INTERIM}.${UPDATE}.${PATCH}` (in Java 10 and later), meaning on Java `X` they start with `X` instead of `1.x`. A new API `Runtime.Version` makes parsing that property unnecessary.
+
+### Tools removed:
+
+- In Java 9: JavaDB, VisualVM, `hprof`, `jhat`, `java-rmi.exe`, `java-rmi.cgi`, and `native2ascii`
+- In Java 10: `policytool`
+- In Java 11: `idlj`, `orbd`, `schemagen`, `servertool`, `tnameserv`, `wsgen`, `wsimport`, and `xjc`
+- The single underscore is no longer a valid identifier.
+- Each Java version removes deprecated JVM command-line options.
+- Java 9 deprecates the Applet technology and Java Web Start, and Java 11 removes them.
