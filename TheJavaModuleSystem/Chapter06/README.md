@@ -72,3 +72,18 @@ Alternatives are as follows:
 - The `java` and `javac` option `--upgrade-module-path` replaces an upgradeable platform module with another one.
 - The extending artifacts can be placed on the class path.
 
+### 6.4.3 Endorsed Standards Override Mechanism Removed
+
+Before Java 9, the endorsed standards override mechanism let us replace certain APIs with custom implementations. It loaded them from the directories named by the system property java.endorsed.dirs or the lib/endorsed directory in the JRE. Java 9 removes this feature, and the compiler and runtime will exit with an error if the JRE directory exists or the system property is set. The alternatives are the same as for the extension mechanism.
+
+### 6.4.4 Some Boot Class Path Options Removed
+
+The `-Xbootclasspath` and `-Xbootclasspath/p` options were removed. The following options instead should be used instead:
+
+- The `javac` option `--system` specifies an alternate source of system modules.
+- The `javac` option `--release` specifies an alternate platform version.
+- The `java` and `javac` option `--patch-module` injects content into modules in the initial module graph.
+
+### 6.4.6 JRE Version Selection Removed
+
+Before Java 9, you could use the `-version:N` option on java (or the corresponding manifest entry) to launch the application with a JRE of version *N*. In Java 9, the feature was removed: the Java launcher quits with an error for the command-line option and prints a warning for the manifest entry while otherwise ignoring it.
