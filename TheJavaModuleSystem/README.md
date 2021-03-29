@@ -21,3 +21,5 @@ Main notes taken from the book [The Java Module System](https://www.amazon.com/d
 ### [Chapter 7](./Chapter07): Recurring challenges when running on Java 9 or later
 
 ### [Chapter 8](./Chapter08): Incremental modularization of existing projects
+
+### [Chapter 9](./Chapter09): Migration and modularization strategies
