@@ -14,7 +14,7 @@ Main notes taken from the book [The Java Module System](https://www.amazon.com/d
 
 ### [Chapter 5](./Chapter05): Running and debugging modular applications
 
-## Part 2:Adapting real-world projects
+## Part 2: Adapting real-world projects
 
 ### [Chapter 6](./Chapter06): Compatibility challenges when moving to Java 9 or later
 
