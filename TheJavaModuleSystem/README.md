@@ -24,7 +24,7 @@ Main notes taken from the book [The Java Module System](https://www.amazon.com/d
 
 ### [Chapter 9](./Chapter09): Migration and modularization strategies
 
-## Part 2: Advanced module system features
+## Part 3: Advanced module system features
 
 ### [Chapter 10](./Chapter10): Using services to decouple modules
 
