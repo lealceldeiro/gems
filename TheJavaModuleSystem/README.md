@@ -23,3 +23,11 @@ Main notes taken from the book [The Java Module System](https://www.amazon.com/d
 ### [Chapter 8](./Chapter08): Incremental modularization of existing projects
 
 ### [Chapter 9](./Chapter09): Migration and modularization strategies
+
+## Part 2: Advanced module system features
+
+### [Chapter 10](./Chapter10): Using services to decouple modules
+
+## Appendixes
+
+### [Appendix E](./AppendixE): Targeting multiple Java versions with multi-release JARs
