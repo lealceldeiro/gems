@@ -30,6 +30,8 @@ Main notes taken from the book [The Java Module System](https://www.amazon.com/d
 
 ### [Chapter 11](./Chapter11): Refining dependencies and APIs
 
+### [Chapter 12](./Chapter12): Reflection in a modular world
+
 ## Appendixes
 
 ### [Appendix E](./AppendixE): Targeting multiple Java versions with multi-release JARs
