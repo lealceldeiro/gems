@@ -32,6 +32,8 @@ Main notes taken from the book [The Java Module System](https://www.amazon.com/d
 
 ### [Chapter 12](./Chapter12): Reflection in a modular world
 
+### [Chapter 13](./Chapter13): Module versions: What’s possible and what’s not
+
 ## Appendixes
 
 ### [Appendix E](./AppendixE): Targeting multiple Java versions with multi-release JARs
