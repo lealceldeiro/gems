@@ -34,6 +34,8 @@ Main notes taken from the book [The Java Module System](https://www.amazon.com/d
 
 ### [Chapter 13](./Chapter13): Module versions: What’s possible and what’s not
 
+### [Chapter 14](./Chapter14): Customizing runtime images with `jlink`
+
 ## Appendixes
 
 ### [Appendix E](./AppendixE): Targeting multiple Java versions with multi-release JARs
