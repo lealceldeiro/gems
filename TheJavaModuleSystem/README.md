@@ -36,6 +36,8 @@ Main notes taken from the book [The Java Module System](https://www.amazon.com/d
 
 ### [Chapter 14](./Chapter14): Customizing runtime images with `jlink`
 
+### [Chapter 15](./Chapter15): Putting the pieces together
+
 ## Appendixes
 
 ### [Appendix E](./AppendixE): Targeting multiple Java versions with multi-release JARs
