@@ -40,4 +40,6 @@ Main notes taken from the book [The Java Module System](https://www.amazon.com/d
 
 ## Appendixes
 
+### [Appendix A](./AppendixA): Class-path
+
 ### [Appendix E](./AppendixE): Targeting multiple Java versions with multi-release JARs
