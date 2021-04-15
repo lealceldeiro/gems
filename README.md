@@ -30,9 +30,9 @@ Notes from:
 
 ### [Mastering Regular Expressions](./MasteringRegularExpressions)  <sup><sub>(*Jeffrey E. F. Friedl*)</sub></sup>
 
-### **`>`** [The Java Module System](./TheJavaModuleSystem)  <sup><sub>(*Nicolai Parlog*)</sub></sup>
+### [The Java Module System](./TheJavaModuleSystem)  <sup><sub>(*Nicolai Parlog*)</sub></sup>
 
-### [Building Microservices: Designing Fine-Grained Systems](./BuildingMicroservices)  <sup><sub>(*Sam Newman*)</sub></sup>
+### **`>`** [Building Microservices: Designing Fine-Grained Systems](./BuildingMicroservices)  <sup><sub>(*Sam Newman*)</sub></sup>
 
 ### [Microservices in Action](./MicroservicesInAction)  <sup><sub>(*Morgan Bruce*, *Paulo A. Pereira*)</sub></sup>
 
