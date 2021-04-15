@@ -32,6 +32,10 @@ Notes from:
 
 ### **`>`** [The Java Module System](./TheJavaModuleSystem)  <sup><sub>(*Nicolai Parlog*)</sub></sup>
 
+### [Building Microservices: Designing Fine-Grained Systems](./BuildingMicroservices)  <sup><sub>(*Sam Newman*)</sub></sup>
+
+### [Microservices in Action](./MicroservicesInAction)  <sup><sub>(*Morgan Bruce*, *Paulo A. Pereira*)</sub></sup>
+
 ### [Java 9 Modularity](./Java9Modularity)  <sup><sub>(*Sander Mak,  Paul Bakker*)</sub></sup>
 
 ### [Pro Git](./ProGit)  <sup><sub>(*Scott Chacon and Ben Straub*)</sub></sup>
@@ -95,8 +99,6 @@ Notes from:
 ### [Coders at Work: Reflections on the Craft of Programming](./CodersAtWork)  <sup><sub>(*Peter Seibel*)</sub></sup>
 
 ### [Grokking Algorithms](./GrokkingAlgorithms)  <sup><sub>(*Aditya Y. Bhargava*)</sub></sup>
-
-### [Building Microservices: Designing Fine-Grained Systems](./BuildingMicroservices)  <sup><sub>(*Sam Newman*)</sub></sup>
 
 ### [Hibernate Tips: More than 70 solutions to common Hibernate](./HibernateTips)  <sup><sub>(*Thorben Janssen, Steve Ebersole*)</sub></sup>
 
