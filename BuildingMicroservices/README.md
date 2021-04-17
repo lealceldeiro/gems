@@ -29,3 +29,12 @@ Find the right balance between standardizing and enabling autonomy for the teams
 ### Governance
 
 Ensure that the system being implemented fits the technical vision
+
+### Loose Coupling in Terms of Microservices
+
+When services are loosely coupled, a change to one service should not require a change to another. The whole point of a microservice is being able to make a change to one service and deploy it, without needing to change any other part of the system.
+
+### High Cohesion
+
+We want related behavior to sit together, and unrelated behavior to sit elsewhere.
+
