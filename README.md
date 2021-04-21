@@ -36,6 +36,8 @@ Notes from:
 
 ### [Microservices in Action](./MicroservicesInAction)  <sup><sub>(*Morgan Bruce*, *Paulo A. Pereira*)</sub></sup>
 
+### [Implementing Domain-Driven Design](./ImplementingDomainDrivenDesign)  <sup><sub>(*Vaughn Vernon*)</sub></sup>
+
 ### [Java 9 Modularity](./Java9Modularity)  <sup><sub>(*Sander Mak,  Paul Bakker*)</sub></sup>
 
 ### [Pro Git](./ProGit)  <sup><sub>(*Scott Chacon and Ben Straub*)</sub></sup>
