@@ -90,6 +90,8 @@ Notes from:
 
 ### [The Mythical Man-Month](./TheMythicalManMonth)  <sup><sub>(*Frederick P. Brooks Jr.*)</sub></sup>
 
+### [Enterprise Integration Patterns](./EnterpriseIntegrationPatterns)  <sup><sub>(*Gregor Hohpe*, *Bobby Woolf*)</sub></sup>
+
 ### [Refactoring: Improving the Design of Existing Code](./RefactoringImprovingTheDesignOfExistingCode)  <sup><sub>(*Martin Fowler*)</sub></sup>
 
 ### [The Design of Everyday Things](./TheDesignOfEverydayThings)  <sup><sub>(*Don Norman*)</sub></sup>
