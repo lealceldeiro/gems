@@ -89,3 +89,7 @@ It should be made easy for consumers to use the service:
 #### Hide Internal Implementation Detail
 
 Consumers shouldn't be bound to internal implementation. This leads to increased coupling. So any technology that pushes to expose internal representation detail should be avoided.
+
+### Synchronous Versus Asynchronous
+
+These two different modes of communication can enable two different idiomatic styles of collaboration: *request*/*response* or *event-based*.
