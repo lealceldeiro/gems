@@ -68,3 +68,24 @@ Making decisions to model service boundaries along technical seams isn’t alway
 ### Integration
 
 Getting integration right may be the single most important aspect of the technology associated with microservices. When it's well done the microservices retain their autonomy, allowing us to change and release them independent of the whole.
+
+### Choosing an Integration Technology
+
+#### Avoid Breaking Changes
+
+While picking a technology, it should ensures this happens as rarely as possible. For example, if a microservice adds new fields to a piece of data it sends out, existing consumers shouldn’t be impacted.
+
+#### Keep APIs Technology-Agnostic
+
+It is very important to ensure that the APIs used for communication between microservices are kept technology-agnostic. This means avoiding integration technology that dictates what technology stacks we can use to implement the microservices.
+
+#### Service Simple for Consumers
+
+It should be made easy for consumers to use the service:
+
+  - Clients should be allowed full freedom in their technology choice
+  - Providing a client library can ease adoption (sometimes this can come at the cost of increased coupling)
+
+#### Hide Internal Implementation Detail
+
+Consumers shouldn't be bound to internal implementation. This leads to increased coupling. So any technology that pushes to expose internal representation detail should be avoided.
