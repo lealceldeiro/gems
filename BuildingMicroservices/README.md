@@ -64,3 +64,7 @@ If our systems are decomposed along the bounded contexts that represent our doma
 ### The Technical Boundary
 
 Making decisions to model service boundaries along technical seams isn’t always wrong. However, it should be the secondary driver for finding these seams, not the primary one.
+
+### Integration
+
+Getting integration right may be the single most important aspect of the technology associated with microservices. When it's well done the microservices retain their autonomy, allowing us to change and release them independent of the whole.
