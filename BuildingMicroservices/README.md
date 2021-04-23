@@ -141,3 +141,7 @@ These are the choices that are most likely to ensure the microservices remain as
   - Prefer choreography over orchestration.
   - Avoid breaking changes and the need to version by understanding Postel’s Law and using [tolerant readers](https://martinfowler.com/bliki/TolerantReader.html).
   - Think of user interfaces as compositional layers.
+
+## Chapter 5
+
+[SchemaSpy](http://schemaspy.sourceforge.net/) (which can generate graphical representations of the relationships between tables) can be used to see the database-level constraints, for example to be able to tell if the database enforces a foreign key relationship from one table to an item in another table.
