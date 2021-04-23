@@ -93,3 +93,27 @@ Consumers shouldn't be bound to internal implementation. This leads to increased
 ### Synchronous Versus Asynchronous
 
 These two different modes of communication can enable two different idiomatic styles of collaboration: *request*/*response* or *event-based*.
+
+### Versioning
+
+The best way to reduce the impact of making breaking changes is to avoid making them in the first place.
+
+Another key to deferring a breaking change is to encourage good behavior in the clients, and avoid them binding too tightly to the services in the first place.
+
+It’s crucial to make sure changes that will break consumers are detected as soon as possible.
+
+#### Semantic Versioning
+
+With semantic versioning, each version number is in the form `MAJOR.MINOR.PATCH`. When the `MAJOR` number increments, it means that backward incompatible changes have been made. When `MINOR` increments, new functionality has been added that should be backward compatible. Finally, a change to `PATCH` states that bug fixes have been made to existing functionality.
+
+#### Coexist Different Endpoints
+
+If introducing a breaking interface change cannot be avoided, the next step is to limit the impact. What must be avoided is to force consumers to upgrade in lock-step with the updated service, as maintaining the ability to release microservices independently of each other is the target goal.
+
+One approach to handle this is to make both the old and new interfaces coexist in the same running service. So if a breaking change is released, then a new version of the service that exposes both the old and new versions of the endpoint must be deployed.
+
+This allows the new microservice to be usable as soon as possible, along with the new interface, but give time for consumers to move over. Once all of the consumers are no longer using the old endpoint, it can be removed along with any associated code.
+
+#### Multiple Concurrent Service Versions
+
+Another versioning solution often cited is to have different versions of the service live at once, and for older consumers to route their traffic to the newer version.
