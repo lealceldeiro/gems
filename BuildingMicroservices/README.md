@@ -4,6 +4,8 @@ Main notes taken from the book [Building Microservices: Designing Fine-Grained S
 
 Errata: https://www.oreilly.com/catalog/errata.csp?isbn=9781491950357
 
+## Chapter 2
+
 Here are, what may be seen as the core responsibilities of the software architect:
 
 ### Vision
@@ -29,6 +31,8 @@ Find the right balance between standardizing and enabling autonomy for the teams
 ### Governance
 
 Ensure that the system being implemented fits the technical vision
+
+## Chapter 3
 
 ### Loose Coupling in Terms of Microservices
 
@@ -64,6 +68,8 @@ If our systems are decomposed along the bounded contexts that represent our doma
 ### The Technical Boundary
 
 Making decisions to model service boundaries along technical seams isn’t always wrong. However, it should be the secondary driver for finding these seams, not the primary one.
+
+## Chapter 4
 
 ### Integration
 
@@ -125,3 +131,13 @@ User interfaces should be thought as compositional layers—places where there a
 #### Constraints
 
 Constraints are the different forms in which the users interact with the system. On a desktop web application, for example, the constraints considered may be what browser visitors are using, or their resolution.
+
+### As a Summary
+
+These are the choices that are most likely to ensure the microservices remain as decoupled as possible from their other collaborators:
+
+  - Avoid database integration at all costs.
+  - Understand the trade-offs between REST and RPC, but strongly consider REST as a good starting point for request/response integration.
+  - Prefer choreography over orchestration.
+  - Avoid breaking changes and the need to version by understanding Postel’s Law and using [tolerant readers](https://martinfowler.com/bliki/TolerantReader.html).
+  - Think of user interfaces as compositional layers.
