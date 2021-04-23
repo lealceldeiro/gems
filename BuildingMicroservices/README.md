@@ -117,3 +117,11 @@ This allows the new microservice to be usable as soon as possible, along with th
 #### Multiple Concurrent Service Versions
 
 Another versioning solution often cited is to have different versions of the service live at once, and for older consumers to route their traffic to the newer version.
+
+### UI
+
+User interfaces should be thought as compositional layers—places where there are together the various strands of the offered capabilities.
+
+#### Constraints
+
+Constraints are the different forms in which the users interact with the system. On a desktop web application, for example, the constraints considered may be what browser visitors are using, or their resolution.
