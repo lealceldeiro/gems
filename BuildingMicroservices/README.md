@@ -145,3 +145,19 @@ These are the choices that are most likely to ensure the microservices remain as
 ## Chapter 5
 
 [SchemaSpy](http://schemaspy.sourceforge.net/) (which can generate graphical representations of the relationships between tables) can be used to see the database-level constraints, for example to be able to tell if the database enforces a foreign key relationship from one table to an item in another table.
+
+## Chapter 6
+
+Deploying a monolithic application is a fairly straightforward process. Microservices, with their interdependence, are completely different.
+
+If the deployment process is not approached properly, it’s one of those areas where the complexity makes the microservices architecture not worthy.
+
+### Continuous Integration (CI)
+
+CI has a number of benefits:
+
+  - There's some level of fast feedback as to the quality of the code.
+  - It allows the creation of the binary artifacts to be automated.
+  - All the code required to build the artifact is itself version controlled, so the artifact can be re-created if needed.
+  - Also, there's some level of traceability from a deployed artifact back to the code.
+  - Depending on the capabilities of the CI tool itself, the tests that were run on the code and artifact can be seen too.
