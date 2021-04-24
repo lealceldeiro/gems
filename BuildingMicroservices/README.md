@@ -161,3 +161,7 @@ CI has a number of benefits:
   - All the code required to build the artifact is itself version controlled, so the artifact can be re-created if needed.
   - Also, there's some level of traceability from a deployed artifact back to the code.
   - Depending on the capabilities of the CI tool itself, the tests that were run on the code and artifact can be seen too.
+
+### Continuous Delivery (CD)
+
+CD is the approach whereby teams get constant feedback on the production readiness of each and every check-in, and furthermore treat each and every check-in as a release candidate.
