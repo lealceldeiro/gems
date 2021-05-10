@@ -186,3 +186,9 @@ Being able to use a platform like AWS will give you huge benefits when it comes 
 ![Types of Tests Diagram](https://user-images.githubusercontent.com/15990580/117636560-9c8c2c00-b189-11eb-88b9-19fc3bc0c2cd.png)
 
 
+### As a Summary
+
+- Optimize for fast feedback, and separate types of tests accordingly.
+- Avoid the need for end-to-end tests wherever possible by using consumer-driven contracts (a useful tool may be [Pact](https://github.com/pact-foundation)).
+- Use consumer-driven contracts to provide focus points for conversations between teams.
+- Try to understand the trade-off between putting more efforts into testing and detecting issues faster in production (optimizing for *Mean Time Between Failures* versus *Mean Time To Recover*).
