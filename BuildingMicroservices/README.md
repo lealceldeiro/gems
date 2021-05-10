@@ -165,3 +165,16 @@ CI has a number of benefits:
 ### Continuous Delivery (CD)
 
 CD is the approach whereby teams get constant feedback on the production readiness of each and every check-in, and furthermore treat each and every check-in as a release candidate.
+
+
+### As a Summary
+
+The focus should be on maintaining the ability to release one service independently from another, and making sure that whatever technology is selected, it supports this.
+
+It should be prefered to have a single repository per microservice, but more importantly there should be one CI build per microservice if they're going to be deployed separately.
+
+If possible, there should be a single-service per host/container.
+
+A culture of automation is key to managing everything.
+
+Being able to use a platform like AWS will give you huge benefits when it comes to automation.
