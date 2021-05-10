@@ -178,3 +178,11 @@ If possible, there should be a single-service per host/container.
 A culture of automation is key to managing everything.
 
 Being able to use a platform like AWS will give you huge benefits when it comes to automation.
+
+## Chapter 7
+
+### Types of Tests
+
+![Types of Tests Diagram](https://user-images.githubusercontent.com/15990580/117636560-9c8c2c00-b189-11eb-88b9-19fc3bc0c2cd.png)
+
+
