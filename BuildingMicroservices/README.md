@@ -192,3 +192,23 @@ Being able to use a platform like AWS will give you huge benefits when it comes 
 - Avoid the need for end-to-end tests wherever possible by using consumer-driven contracts (a useful tool may be [Pact](https://github.com/pact-foundation)).
 - Use consumer-driven contracts to provide focus points for conversations between teams.
 - Try to understand the trade-off between putting more efforts into testing and detecting issues faster in production (optimizing for *Mean Time Between Failures* versus *Mean Time To Recover*).
+
+
+## Chapter 8
+
+For each service:
+
+- Inbound response time should be tracked at a bare minimum. Once that's done, a follow with error rates must be done and then application-level metrics should be impemented.
+- The health of all downstream responses should be tracked at a bare minimum, including the response time of downstream calls, and at best tracking error rates. Libraries like Hystrix can help here.
+- How and where metrics are collected should be standardized.
+- Logs should be stored in a standard location and in a standard format if possible. Aggregation is a pain if every service uses a different layout!
+- The underlying operating system should be monitored so rogue processes can be tracked down and capacity planning be done.
+
+For the system:
+
+- Host-level metrics like CPU together with application-level metrics should be aggregated.
+- Metric storage tool should allow for aggregation at a system or service level, and drill down to individual hosts.
+- Metric storage tool should allow to maintain data long enough to understand trends in the system.
+- A single, queryable tool for aggregating and storing logs should be available.
+- Standardizing on the use of correlation IDs should be strongly considered.
+- What requires a call to action should be understood, and alerting and dashboards should be structureed accordingly.
