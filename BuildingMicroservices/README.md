@@ -212,3 +212,14 @@ For the system:
 - A single, queryable tool for aggregating and storing logs should be available.
 - Standardizing on the use of correlation IDs should be strongly considered.
 - What requires a call to action should be understood, and alerting and dashboards should be structureed accordingly.
+
+
+## Chapter 9
+
+Having a system decomposed into finer-grained services gives us many more options as to how to solve a problem. Not only can having microservices potentially reduce the impact of any given breach, but it also gives us more ability to trade off the overhead of more complex and secure approaches where data is sensitive, and a lighter-weight approach when the risks are lower.
+
+Once the threat levels of different parts of the system are understood, a sense of when to consider security during transit, at rest, or not at all, should start to be gotten.
+
+The importance of defense in depth should be well understood, operating systems should be kept patched, and it's never a good idea to implement an own cryptography! - standard (well tested and reviewed ones) should be used instead.
+
+A general overview of security for browser-based applications can be reviewed at [Open Web Application Security Project (OWASP)](https://owasp.org/).
