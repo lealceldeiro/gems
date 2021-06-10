@@ -223,3 +223,24 @@ Once the threat levels of different parts of the system are understood, a sense 
 The importance of defense in depth should be well understood, operating systems should be kept patched, and it's never a good idea to implement an own cryptography! - standard (well tested and reviewed ones) should be used instead.
 
 A general overview of security for browser-based applications can be reviewed at [Open Web Application Security Project (OWASP)](https://owasp.org/).
+
+## Chpater 12
+
+### Principles of Microservices
+
+- Small autonomus services
+  * Modeled Around Business Concepts
+    + Bounded contexts should be used to define potential domain boundaries
+  * Culture of Automation
+    + Automated testing is essential
+    + Deploy the same way everywhere
+    + Continuous delivery
+    + Environment definitions help to specify the differences from one environment to another
+  * Hide Internal Implementation Details
+    + Services should hide their databases
+    + Technology-agnostic APIs should be chosen when possible
+  * Decentralize All the Things
+    + Teams own their services
+    + Teams should be aligned to the organization
+  * Independently Deployable
+  
