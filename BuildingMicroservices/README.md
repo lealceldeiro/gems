@@ -243,4 +243,10 @@ A general overview of security for browser-based applications can be reviewed at
     + Teams own their services
     + Teams should be aligned to the organization
   * Independently Deployable
-  
+  * Isolate Failure
+    + Timeouts are set appropriately
+    + When and how to use bulkheads and circuit breakers
+  * Highly Observable
+    + Semantic monitoring
+    + Aggregate logs and stats
+    + Correlation IDs
