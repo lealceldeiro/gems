@@ -34,6 +34,10 @@ Notes from:
 
 ### **`>`** [Building Microservices: Designing Fine-Grained Systems](./BuildingMicroservices)  <sup><sub>(*Sam Newman*)</sub></sup>
 
+### [Docker Deep Dive](./DockerDeepDive)  <sup><sub>(*Nigel Poulton*)</sub></sup>
+
+### [The Kubernetes Book](./TheKubernetesBook)  <sup><sub>(*Nigel Poulton*)</sub></sup>
+
 ### [Microservices in Action](./MicroservicesInAction)  <sup><sub>(*Morgan Bruce*, *Paulo A. Pereira*)</sub></sup>
 
 ### [Implementing Domain-Driven Design](./ImplementingDomainDrivenDesign)  <sup><sub>(*Vaughn Vernon*)</sub></sup>
