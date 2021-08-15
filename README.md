@@ -32,7 +32,9 @@ Notes from:
 
 ### [The Java Module System](./TheJavaModuleSystem)  <sup><sub>(*Nicolai Parlog*)</sub></sup>
 
-### **`>`** [Building Microservices: Designing Fine-Grained Systems](./BuildingMicroservices)  <sup><sub>(*Sam Newman*)</sub></sup>
+### [Building Microservices: Designing Fine-Grained Systems](./BuildingMicroservices)  <sup><sub>(*Sam Newman*)</sub></sup>
+
+### **`>`** [Stratospheric](./Stratospheric)  <sup><sub>(*Tom Hombergs*, *Björn Wilmsmann*, and *Philip Riecks*)</sub></sup>
 
 ### [Docker Deep Dive](./DockerDeepDive)  <sup><sub>(*Nigel Poulton*)</sub></sup>
 
