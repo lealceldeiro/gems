@@ -66,6 +66,8 @@ Notes from:
 
 ### [Clean Architecture: A Craftsman's Guide to Software Structure and Design](./CleanArchitecture)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
+### [Get Your Hands Dirty on Clean Architecture](./GetYourHandsDirtyOnCleanArchitecture)  <sup><sub>(*Tom Hombergs*)</sub></sup>
+
 ### [Concurrent Programming in Java<sup><sub>TM</sub></sup>: Design Principles and Patterns](./ConcurrentProgrammingInJava)  <sup><sub>(*Doug Lea*)</sub></sup>
 
 ### [Working Effectively with Legacy Code](./WorkingEffectivelyWithLegacyCode)  <sup><sub>(*Michael Feathers*)</sub></sup>
