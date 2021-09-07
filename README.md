@@ -145,3 +145,5 @@ Notes from:
 ### [What You Do Is Who You Are](./WhatYouDoIsWhoYouAre)  <sup><sub>(*Ben Horowitz*)</sub></sup>
 
 ### [Never Split the Difference](./NeverSplitTheDifference)  <sup><sub>(*Chris Voss, Chris Voss*)</sub></sup>
+
+### [Taming Thymeleaf](./TamingThymeleaf)  <sup><sub>(*Wim Deblauwe*)</sub></sup>
