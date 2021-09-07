@@ -62,3 +62,11 @@ A local stack can be started using the following command. It and exposes the AWS
 ```shell
 docker run -p 4566:4566 -e SERVICES=s3 localstack/localstack:0.12.2
 ```
+
+### 10. Building User Registration and Login with Amazon Cognito
+
+**Amazon Cognito Terminology**
+
+A **User Pool** acts as a user directory where we can store and manage user information. Each *User Pool* comes with sign-up and sign-in functionality. This includes a web interface to sign in that we can customize and configure, for example with additional social logins (Google, GitHub, etc.) or multi-factor authentication.
+
+A **User Pool App Client** is associated with a *User Pool* and has permission to call unauthenticated API operations like signing in or registering users. Therefore, every *App Client* requires a client ID and an optional secret.
