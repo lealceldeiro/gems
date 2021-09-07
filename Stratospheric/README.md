@@ -52,3 +52,7 @@ A workflow run, finally, is an instance of a workflow that has run or is current
 **AWS-Specific Configuration**
 
 The [AWS SDK for Java](https://aws.amazon.com/sdk-for-java/) offers several solutions for configuring access to our AWS account, such as using environment variables, a property file, or loading them from the [Amazon EC2 Instance Metadata Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html). Technically speaking, they are implementations of the `AWSCredentialsProvider` interface that are part of the `aws-java-sdk-core` dependency.
+
+### 9. Local Development
+
+A [LocalStack](https://github.com/localstack/localstack) is a fully functional local AWS stack cloud.
