@@ -56,3 +56,9 @@ The [AWS SDK for Java](https://aws.amazon.com/sdk-for-java/) offers several solu
 ### 9. Local Development
 
 A [LocalStack](https://github.com/localstack/localstack) is a fully functional local AWS stack cloud.
+
+A local stack can be started using the following command. It and exposes the AWS S3 service on port `4566` (`0.12.2` can be replaced with a more recent version)
+
+```shell
+docker run -p 4566:4566 -e SERVICES=s3 localstack/localstack:0.12.2
+```
