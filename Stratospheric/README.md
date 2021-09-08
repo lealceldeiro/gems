@@ -70,3 +70,5 @@ docker run -p 4566:4566 -e SERVICES=s3 localstack/localstack:0.12.2
 A **User Pool** acts as a user directory where we can store and manage user information. Each *User Pool* comes with sign-up and sign-in functionality. This includes a web interface to sign in that we can customize and configure, for example with additional social logins (Google, GitHub, etc.) or multi-factor authentication.
 
 A **User Pool App Client** is associated with a *User Pool* and has permission to call unauthenticated API operations like signing in or registering users. Therefore, every *App Client* requires a client ID and an optional secret.
+
+With an **Identity Pool**, we can map a user from an *Identity Provider* to an *IAM role*. This allows us to give users access AWS resources based on their IAM permissions. Since the users of the Todo app don’t need IAM roles to use the app, an Identity Pool is not relevant in this case.
