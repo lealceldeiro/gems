@@ -80,3 +80,13 @@ With an **Identity Pool**, we can map a user from an *Identity Provider* to an *
 - User Pool client name
 - User Pool client ID
 - User Pool client secret
+
+### 11. Connecting to a Database with Amazon RDS
+
+Amazon Relational Database Service (RDS) is the AWS service for running and managing relational databases.
+
+Apart from PostgreSQL, MySQL, MariaDB, Oracle Database, and Microsoft SQL Server, RDS also supports Amazon’s own [Aurora](https://aws.amazon.com/rds/aurora/) database technology. Aurora is a MySQL and PostgreSQL-compatible RDBMS specifically designed with requirements of highly scalable cloud applications in mind.
+
+RDS allows us to create and manage relational databases on AWS using its common tools and techniques such as .
+
+In addition to using tools as the AWS CLI, IAM, and CDK to integrate the database into our AWS environment, we can manage the database through the [Amazon RDS Management Console](https://console.aws.amazon.com/rds).
