@@ -98,3 +98,17 @@ In addition to using tools as the AWS CLI, IAM, and CDK to integrate the databas
 AWS SQS is a fully managed messaging service. We can use this service to pass messages between different parts of our system in a highly scalable fashion. It allows point-to-point communication where only one receiver will handle the message at a given time. AWS SQS can further help us integrate or decouple components in a distributed architecture.
 
 Scalability, durability, and reliability of our processing with SQS depend on the queue type. AWS offers two different SQS types: FIFO and Standard.
+
+**Dead-Letter Queues**
+
+Each AWS SQS message has a `ReceiveCount` attribute that stores a counter and tracks how often the message has been consumed already. As part of the queue configuration, we can define a `maxReceiveCount` to specify how many processing attempts our messages have until they’re moved to a dead-letter queue.
+
+A dead-letter queue is just another AWS SQS queue that stores unprocessable messages. The type of this queue has to match the type of source queue. In other words, a FIFO queue can only target a FIFO queue as a dead-letter queue. DLQs are optional, so we can define AWS SQS queues without specifying a DLQ.
+
+It's a general best practice to create a DLQ for each of our processing queues due to several reasons:
+
+- It helps to analyze and debug error scenarios.
+- We isolate problematic messages for further investigations.
+- We reduce the load on our system if there are multiple (if not thousands) of unprocessable messages.
+- We get improved observability, as we can define alarms for our dead-letter queues to detect failures early.
+- We don’t block the message processing by consuming the same faulty message over and over.
