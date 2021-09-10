@@ -90,3 +90,11 @@ Apart from PostgreSQL, MySQL, MariaDB, Oracle Database, and Microsoft SQL Server
 RDS allows us to create and manage relational databases on AWS using its common tools and techniques such as .
 
 In addition to using tools as the AWS CLI, IAM, and CDK to integrate the database into our AWS environment, we can manage the database through the [Amazon RDS Management Console](https://console.aws.amazon.com/rds).
+
+### 12. Sharing Todos with Amazon SQS and Amazon SES
+
+**Introduction to AWS SQS**
+
+AWS SQS is a fully managed messaging service. We can use this service to pass messages between different parts of our system in a highly scalable fashion. It allows point-to-point communication where only one receiver will handle the message at a given time. AWS SQS can further help us integrate or decouple components in a distributed architecture.
+
+Scalability, durability, and reliability of our processing with SQS depend on the queue type. AWS offers two different SQS types: FIFO and Standard.
