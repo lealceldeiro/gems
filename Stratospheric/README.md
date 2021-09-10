@@ -112,3 +112,10 @@ It's a general best practice to create a DLQ for each of our processing queues d
 - We reduce the load on our system if there are multiple (if not thousands) of unprocessable messages.
 - We get improved observability, as we can define alarms for our dead-letter queues to detect failures early.
 - We don’t block the message processing by consuming the same faulty message over and over.
+
+The Spring Cloud AWS Messaging module (`'org.springframework.cloud:spring-cloud-starter-aws-messaging'`) comes with the following features for both AWS SQS and AWS SNS:
+
+- Annotation-driven listener/notification endpoints.
+- Integration with the Spring Messaging API (fully for SQS, partially for SNS).
+- Serialization support for messages (which SQS only knows as strings).
+- Convenient access via QueueMessagingTemplate (SQS) and NotificationMessagingTemplate (SNS).
