@@ -119,3 +119,7 @@ The Spring Cloud AWS Messaging module (`'org.springframework.cloud:spring-cloud-
 - Integration with the Spring Messaging API (fully for SQS, partially for SNS).
 - Serialization support for messages (which SQS only knows as strings).
 - Convenient access via QueueMessagingTemplate (SQS) and NotificationMessagingTemplate (SNS).
+
+**Introduction to AWS SES**
+
+[AWS SES (Simple Email Service)](https://docs.aws.amazon.com/ses/index.html) is an email sending and receiving service. With AWS SES, we take advantage of years of email infrastructure experience at Amazon.
