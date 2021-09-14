@@ -127,3 +127,11 @@ The Spring Cloud AWS Messaging module (`'org.springframework.cloud:spring-cloud-
 **Verifying a Domain**
 
 To send emails with AWS SES, we have to verify each identity (domain name) that we’re going to use as part of “From”, “Source”, “Sender”, or “Return-Path” to avoid unauthorized usage.
+
+### 13. Push Notifications with Amazon MQ
+
+The term *push notifications* usually refers to a backend server pushing information to a client rather than the client itself initiating a request - or pulling - to get information from the server.
+
+A common design pattern for implementing such behavior is the observer pattern: multiple *observers* subscribe to a *subject* or *observable*, which in turn will notify each of its subscribers once there’s an update available.
+
+This pattern allows us to have an `n:m` relationship between *publishers* and *subscribers* with multiple publishers publishing messages to a *topic* or *channel* and multiple subscribers receiving messages from that topic.
