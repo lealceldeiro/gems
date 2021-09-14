@@ -135,3 +135,21 @@ The term *push notifications* usually refers to a backend server pushing informa
 A common design pattern for implementing such behavior is the observer pattern: multiple *observers* subscribe to a *subject* or *observable*, which in turn will notify each of its subscribers once there’s an update available.
 
 This pattern allows us to have an `n:m` relationship between *publishers* and *subscribers* with multiple publishers publishing messages to a *topic* or *channel* and multiple subscribers receiving messages from that topic.
+
+**AWS Services for Implementing Push Notifications**
+
+- [Amazon Pinpoint](https://aws.amazon.com/pinpoint/): It offers email, SMS, push, or voice push notifications.
+
+- [Amazon IoT (Core)](https://aws.amazon.com/iot-core/): While it's targeted at the use case of allowing physical objects to communicate with each other on the Internet of Things, one of the protocols used to do so is WebSocket. In theory, there’s nothing that prevents us from using Amazon IoT (hence using it WebSocket mechanims) even though we don’t have physical objects communicating with each other but rather browser clients and the people using these clients.
+
+- [Amazon Simple Notification Service (Amazon SNS)](https://aws.amazon.com/sns/): it's a fully managed messaging service for both application-to-application (A2A) and application-to-person (A2P) communication. It’s a managed service that provides message delivery from publishers to subscribers. This only allows us to send messages to the subscriber endpoint types:
+    * HTTP/HTTPS
+    * email
+    * Amazon Kinesis Data Firehose
+    * Amazon SQS
+    * a custom AWS Lambda function
+    * a platform application endpoint
+    * SMS
+- [Amazon Simple Queue Service (SQS)](https://aws.amazon.com/sqs/): It's a fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications.
+- [Amazon MQ](https://aws.amazon.com/amazon-mq/): It's a managed message broker service for Apache ActiveMQ and RabbitMQ that makes it easy to set up and operate message brokers on AWS.
+
