@@ -123,3 +123,7 @@ The Spring Cloud AWS Messaging module (`'org.springframework.cloud:spring-cloud-
 **Introduction to AWS SES**
 
 [AWS SES (Simple Email Service)](https://docs.aws.amazon.com/ses/index.html) is an email sending and receiving service. With AWS SES, we take advantage of years of email infrastructure experience at Amazon.
+
+**Verifying a Domain**
+
+To send emails with AWS SES, we have to verify each identity (domain name) that we’re going to use as part of “From”, “Source”, “Sender”, or “Return-Path” to avoid unauthorized usage.
