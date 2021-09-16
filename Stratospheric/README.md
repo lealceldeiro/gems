@@ -180,3 +180,9 @@ NoSQL database system promise a property called eventual consistency, which can 
 - Event stream data: DynamoDB keeps a record of item-level changes made in the last 24 hours. Using Amazon Kinesis Data Streams for DynamoDB we can capture these changes and persist them, e.g. for logging or data analysis purposes.
 - Encryption and automated backups: By default, DynamoDB automatically creates backups and encrypts data at rest. We can also create and restore full backups of our DynamoDB tables on demand.
 - Time-to-live (TTL): This DynamoDB feature allows us to define a table column containing [individual expiration times for each item](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/howitworks-ttl.html). When the value defined in this column (as a UNIX Epoch timestamp) is less than the current timestamp the entry will be deleted automatically with no further business logic required.
+
+**Two main principles for designing NoSQL schemas**
+
+- Don’t design your schema until you know the specific queries you want it to respond to.
+- Use as few tables as possible and try to keep related data together (described as [single-table-design](https://www.alexdebrie.com/posts/dynamodb-single-table/)).
+
