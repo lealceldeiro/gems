@@ -153,3 +153,30 @@ This pattern allows us to have an `n:m` relationship between *publishers* and *s
 - [Amazon Simple Queue Service (SQS)](https://aws.amazon.com/sqs/): It's a fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications.
 - [Amazon MQ](https://aws.amazon.com/amazon-mq/): It's a managed message broker service for Apache ActiveMQ and RabbitMQ that makes it easy to set up and operate message brokers on AWS.
 
+### 14. Tracing User Actions with Amazon DynamoDB
+
+**CAP Theorem**
+
+The CAP theorem (or “Brewer’s theorem” after computer scientist Eric Brewer) states that a distributed system can only make two of these three guarantees simultaneously:
+
+- Consistency: Every node in a distributed system responds with the most recent data for a specific request. If an update is currently in progress the system will block the request until the update has finished.
+
+- Availability: Every request receives a response, even if that request contains out-of-date data.
+
+- Partition tolerance: The system continues to operate even if one or more nodes fail or messages have been dropped.
+
+While RDBMS focus on data being consistent and available, NoSQL database systems emphasize data availability and fault tolerance.
+
+RDBMS guarantee ACID (Atomicity, Consistency, Isolation, Durability) constraints while NoSQL database systems only guarantee data availability and fault tolerance.
+
+NoSQL database system promise a property called eventual consistency, which can be summarised by the acronym BASE (Basically available, Soft state, Eventual consistency)
+
+**Benefits of DynamoDB**
+
+- It can be used as both a key-value store and a document database.
+- These data storage patterns are most suitable for situations where we either have very simple data structures such as lookup tables (key-value store) or highly unstructured, even somewhat unpredictable ones (document database).
+- Performance and scalability: DynamoDB can handle more than 10 trillion requests per day with up to 20 million requests per second. We can have DynamoDB automatically replicate our data across different AWS regions, too.
+- Access control: DynamoDB allows for [fine-grained control](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/specifying-conditions.html) over who can access which data entries from our DynamoDB tables. We can even define subsets of attributes to be visible only to specific IAM users, groups, or roles.
+- Event stream data: DynamoDB keeps a record of item-level changes made in the last 24 hours. Using Amazon Kinesis Data Streams for DynamoDB we can capture these changes and persist them, e.g. for logging or data analysis purposes.
+- Encryption and automated backups: By default, DynamoDB automatically creates backups and encrypts data at rest. We can also create and restore full backups of our DynamoDB tables on demand.
+- Time-to-live (TTL): This DynamoDB feature allows us to define a table column containing [individual expiration times for each item](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/howitworks-ttl.html). When the value defined in this column (as a UNIX Epoch timestamp) is less than the current timestamp the entry will be deleted automatically with no further business logic required.
