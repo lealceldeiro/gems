@@ -186,3 +186,12 @@ NoSQL database system promise a property called eventual consistency, which can 
 - Don’t design your schema until you know the specific queries you want it to respond to.
 - Use as few tables as possible and try to keep related data together (described as [single-table-design](https://www.alexdebrie.com/posts/dynamodb-single-table/)).
 
+## Part III: Production Readiness with AWS
+
+### 15. Structured Logging with Amazon CloudWatch
+
+A *log stream* is a stream of log events that is emitted by a certain component.
+
+Log streams are aggregated into *log groups*.
+
+*CloudWatch Insights* is a service that provides a UI and a powerful query language to search through one or more log groups.
