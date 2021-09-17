@@ -34,9 +34,9 @@ Notes from:
 
 ### [Building Microservices: Designing Fine-Grained Systems](./BuildingMicroservices)  <sup><sub>(*Sam Newman*)</sub></sup>
 
-### **`>`** [Stratospheric](./Stratospheric)  <sup><sub>(*Tom Hombergs*, *Björn Wilmsmann*, and *Philip Riecks*)</sub></sup>
+### [Stratospheric](./Stratospheric)  <sup><sub>(*Tom Hombergs*, *Björn Wilmsmann*, and *Philip Riecks*)</sub></sup>
 
-### [Docker Deep Dive](./DockerDeepDive)  <sup><sub>(*Nigel Poulton*)</sub></sup>
+### **`>`** [Docker Deep Dive](./DockerDeepDive)  <sup><sub>(*Nigel Poulton*)</sub></sup>
 
 ### [The Kubernetes Book](./TheKubernetesBook)  <sup><sub>(*Nigel Poulton*)</sub></sup>
 
