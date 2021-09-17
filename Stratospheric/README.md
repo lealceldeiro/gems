@@ -293,3 +293,12 @@ Key metrics to monitor:
 - `Invocations`: The number of total invocations for a function.
 - `Duration`: The amount of time in milliseconds for an invocation.
 - `Errors`: The number of invocations that result in an error.
+
+### 17. Alerting with Amazon CloudWatch
+
+With Amazon CloudWatch, we can create two types of alarms:
+
+- *Metric alarms*: We continuously evaluate a single CloudWatch metric or the result of a mathematical expression based on up to ten CloudWatch metrics.
+- *Composite alarms*: We consider the state of several alarms and define a logical expression on them (for example ALARM("alarm-a") AND (ALARM("alarm-b") OR ALARM("alarm-c))).
+
+Once an alarm transitions into a new state, we can trigger automatic actions with Amazon CloudWatch.
