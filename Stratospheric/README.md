@@ -195,3 +195,101 @@ A *log stream* is a stream of log events that is emitted by a certain component.
 Log streams are aggregated into *log groups*.
 
 *CloudWatch Insights* is a service that provides a UI and a powerful query language to search through one or more log groups.
+
+### 16. Metrics with Amazon CloudWatch
+
+**Amazon ECS**
+
+
+Key metrics to monitor:
+
+- `CPUUtilization`: The percentage of CPU units used by the cluster or a service in the cluster.
+- `MemoryUtilization`: The percentage of main memory (RAM) used by the cluster or a service in the cluster.
+
+**AWS ELB**
+
+AWS Elastic Load Balancing is the main entry point from the internet to our application. When debugging a scenario where requests don’t arrive at our backend, it’s important to look at the ELB metrics.
+
+Key metrics to monitor:
+
+- `HTTPCode_ELB_2XX_Count` (and *3XX*, *4XX*, *5XX*): The number of HTTP response codes returned by the load balancer.
+- `TargetResponseTime`: The time elapsed, in seconds, after the request leaves the load balancer until a response from the target is received.
+- `RequestCount`: The number of requests processed over IPv4 and IPv6.
+
+**Amazon Cognito**
+
+With Amazon Cognito as the identity provider, we can track and monitor the sign-ins and sign-ups per UserPool client.
+
+Key metrics to monitor:
+
+- `SignUpSuccess`: The number of successful user registration requests for a particular user pool.
+- `SignInSuccess`: The number of successful user authentication requests made to a particular user pool.
+
+**Amazon SQS*
+
+Amazon SQS provides several metrics for inspecting the approximate queue size and the age of the oldest message. This helps with understanding if there’s an issue with our processing.Furthermore, it’s important to keep track of the number of messages inside our dead-letter queue to identify failed message consumption.
+
+Key metrics to monitor:
+
+- `NumberOfMessagesReceived`: The number of messages returned by calls to the `ReceiveMessage` action.
+- `NumberOfMessagesDeleted`: The number of messages deleted from a queue.
+- `ApproximateAgeOfOldestMessage`: The approximate age of the oldest non-deleted message in a queue.
+- `ApproximateNumberOfMessagesVisible`: The number of messages available for retrieval from a queue.
+
+**Amazon RDS**
+
+Monitoring the database helps to either disqualify or identify the database as the possible performance bottleneck.
+
+Key metrics to monitor:
+
+- `CPUUtilization`: The percentage of CPU utilization.
+- `ReadIOPS`: The average number of disk read I/O operations per second.
+- `WriteIOPS`: The average number of disk write I/O operations per second.
+- `DatabaseConnections`: The number of database connections currently in use.
+- `FreeStorageSpace`: The amount of available storage space on disk.
+
+**Amazon DynamoDB**
+
+With Amazon DynamoDB, we have to keep track of how we utilize the configured read and write capacity. We need to spring into action if we see constant throttle events because we exceed our configured capacity.
+
+Key metrics to monitor:
+
+- `ReadThrottleEvents`: The number of requests that exceed the provisioned read capacity units for a table or a global secondary index.
+- `WriteThrottleEvents`: The number of requests that exceed the provisioned write capacity units for a table or a global secondary index.
+
+**Amazon SES**
+
+Deliverability and bounce rates are key metrics to monitor when sending emails. Just because our application successfully sent an email to a user doesn’t mean the message arrived in their inbox.
+
+Key metrics to monitor:
+
+- `Delivery`: The number of successfully delivered emails to the recipient’s email server.
+- `Reputation.BounceRate`: The bounce rate for our account. This includes both hard (the email address doesn’t exist), and soft (the recipient’s address is temporarily unable to receive messages) bounces.
+- `Send`: The number of send email attempts from our account.
+
+**Amazon MQ**
+
+Key metrics to monitor:
+
+- `CpuUtilization`: The percentage of allocated Amazon EC2 compute units that the broker currently uses.
+- `MessageCount`: The total number of ready and unacknowledged messages in the queues.
+- `TotalMessageCount`: The number of messages stored on the broker.
+- `TotalConsumerCount`: The number of message consumers subscribed to destinations on the current broker.
+- `CurrentConnectionsCount`: The current number of active connections on the current broker.
+
+**Amazon S3**
+
+Key metrics to monitor:
+
+- `BucketSizeBytes`: The amount of data in bytes stored in a bucket.
+- `NumberOfObjects`: The number of objects stored in a bucket for all storage classes
+
+**AWS Lambda**
+
+As this is a crucial part of our CI/CD pipeline, we should keep a close look at the outcome of the Lambda invocations. A Lambda might fail due to an error or a timeout, and as a result, we won’t be able to deploy to production.
+
+Key metrics to monitor:
+
+- `Invocations`: The number of total invocations for a function.
+- `Duration`: The amount of time in milliseconds for an invocation.
+- `Errors`: The number of invocations that result in an error.
