@@ -18,6 +18,14 @@ This URL (replacing `account-ID-or-alias` in this URL with a user account ID) wi
 
 Amazon have their own comprehensive guide on [Security best practices in IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)
 
+### 5 First steps with CDK
+
+Example of deployment with a SDK app:
+
+```shell
+cdk deploy --app "./mvnw -e -q compile exec:java -Dexec.mainClass=com.example.myapp.CdkApp" -c accountId=1111112222 -c environmentName=staging -c region=eu-west-1 -c applicationName=com.example.myapp --force --require-approval never
+```
+
 ### 7. Building a Continuous Deployment Pipeline
 
 **GitHub Actions Concepts***
