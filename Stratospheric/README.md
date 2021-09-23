@@ -26,6 +26,8 @@ Example of deployment with a SDK app:
 cdk deploy --app "./mvnw -e -q compile exec:java -Dexec.mainClass=com.example.myapp.CdkApp" -c accountId=1111112222 -c environmentName=staging -c region=eu-west-1 -c applicationName=com.example.myapp --force --require-approval never
 ```
 
+Where each argument after `-c ` is a "context variable".
+
 ### 7. Building a Continuous Deployment Pipeline
 
 **GitHub Actions Concepts***
