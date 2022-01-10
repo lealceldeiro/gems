@@ -52,8 +52,7 @@ These modular boundaries then become excellent candidates for microservices. In 
 
 ### Premature Decomposition
 
-Prematurely decomposing a system into microservices can be costly, especially if developers/architects are new to the domain. In many ways, having an exist‐
-ing codebase wanted to be decomposed into microservices is much easier than trying to go to microservices from the beginning.
+Prematurely decomposing a system into microservices can be costly, especially if developers/architects are new to the domain. In many ways, having an existing codebase wanted to be decomposed into microservices is much easier than trying to go to microservices from the beginning.
 
 ### Business Capabilities
 
