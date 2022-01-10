@@ -197,7 +197,7 @@ Being able to use a platform like AWS will give you huge benefits when it comes 
 
 For each service:
 
-- Inbound response time should be tracked at a bare minimum. Once that's done, a follow with error rates must be done and then application-level metrics should be impemented.
+- Inbound response time should be tracked at a bare minimum. Once that's done, a follow with error rates must be done and then application-level metrics should be implemented.
 - The health of all downstream responses should be tracked at a bare minimum, including the response time of downstream calls, and at best tracking error rates. Libraries like Hystrix can help here.
 - How and where metrics are collected should be standardized.
 - Logs should be stored in a standard location and in a standard format if possible. Aggregation is a pain if every service uses a different layout!
