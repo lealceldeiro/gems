@@ -40,6 +40,8 @@ Notes from:
 
 ### [The Kubernetes Book](./TheKubernetesBook)  <sup><sub>(*Nigel Poulton*)</sub></sup>
 
+### [Software Craftsman, The: Professionalism, Pragmatism, Pride](./SoftwareCraftsman)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+
 ### [Microservices in Action](./MicroservicesInAction)  <sup><sub>(*Morgan Bruce*, *Paulo A. Pereira*)</sub></sup>
 
 ### [Implementing Domain-Driven Design](./ImplementingDomainDrivenDesign)  <sup><sub>(*Vaughn Vernon*)</sub></sup>
