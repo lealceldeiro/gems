@@ -38,9 +38,11 @@ Notes from:
 
 ### **`>`** [Docker Deep Dive](./DockerDeepDive)  <sup><sub>(*Nigel Poulton*)</sub></sup>
 
+### [Software Craftsman, The: Professionalism, Pragmatism, Pride](./SoftwareCraftsman)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+
 ### [The Kubernetes Book](./TheKubernetesBook)  <sup><sub>(*Nigel Poulton*)</sub></sup>
 
-### [Software Craftsman, The: Professionalism, Pragmatism, Pride](./SoftwareCraftsman)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+### [Clean Craftsmanship](./CleanCraftsmanship)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
 ### [Microservices in Action](./MicroservicesInAction)  <sup><sub>(*Morgan Bruce*, *Paulo A. Pereira*)</sub></sup>
 
