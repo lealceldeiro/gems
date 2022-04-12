@@ -153,3 +153,5 @@ Notes from:
 ### [Never Split the Difference](./NeverSplitTheDifference)  <sup><sub>(*Chris Voss, Chris Voss*)</sub></sup>
 
 ### [Taming Thymeleaf](./TamingThymeleaf)  <sup><sub>(*Wim Deblauwe*)</sub></sup>
+
+### [Effective Software Testing](./EffectiveSoftwareTesting)  <sup><sub>(*Maurício Aniche*)</sub></sup>
