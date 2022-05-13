@@ -38,11 +38,25 @@ Notes from:
 
 ### **`>`** [Docker Deep Dive](./DockerDeepDive)  <sup><sub>(*Nigel Poulton*)</sub></sup>
 
+### [Clean Craftsmanship](./CleanCraftsmanship)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+
+### [Clean Architecture: A Craftsman's Guide to Software Structure and Design](./CleanArchitecture)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+
+### [Agile Software Development: Principles, Patterns, and Practices](./AgileSoftwareDevelopment)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+
+### [Clean Agile: Back to Basics](./CleanAgile)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+
+### [The Clean Coder: A Code of Conduct for Professional Programmers](./TheCleanCoder)  <sup><sub>(*Robert Martin*)</sub></sup>
+
+### [Get Your Hands Dirty on Clean Architecture](./GetYourHandsDirtyOnCleanArchitecture)  <sup><sub>(*Tom Hombergs*)</sub></sup>
+
 ### [Software Craftsman, The: Professionalism, Pragmatism, Pride](./SoftwareCraftsman)  <sup><sub>(*Sandro Mancuso*)</sub></sup>
 
-### [The Kubernetes Book](./TheKubernetesBook)  <sup><sub>(*Nigel Poulton*)</sub></sup>
+### [Seroiusly Good Software](./SeriouslyGoodSoftware)  <sup><sub>(*Marco Faella*)</sub></sup>
 
-### [Clean Craftsmanship](./CleanCraftsmanship)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+### [Agile Java <sup><sub>TM</sub></sup>: Crafting Code with Test-Driven Development](./AgileJavaCraftingCodeWithTestDrivenDevelopment)  <sup><sub>(*Jeff Langr*)</sub></sup>
+
+### [The Kubernetes Book](./TheKubernetesBook)  <sup><sub>(*Nigel Poulton*)</sub></sup>
 
 ### [Microservices in Action](./MicroservicesInAction)  <sup><sub>(*Morgan Bruce*, *Paulo A. Pereira*)</sub></sup>
 
@@ -66,13 +80,7 @@ Notes from:
 
 ### [Growing Object-Oriented Software, Guided by Tests](./GrowingObjectOrientedSoftwareGuidedByTests)  <sup><sub>(*Steve Freeman, Nat Pryce*)</sub></sup>
 
-### [Seroiusly Good Software](./SeriouslyGoodSoftware)  <sup><sub>(*Marco Faella*)</sub></sup>
-
 ### [Spring 5 Recipes: A Problem-Solution Approach](./Spring5Recipes)  <sup><sub>(*Marten Deinum*)</sub></sup>
-
-### [Clean Architecture: A Craftsman's Guide to Software Structure and Design](./CleanArchitecture)  <sup><sub>(*Robert C. Martin*)</sub></sup>
-
-### [Get Your Hands Dirty on Clean Architecture](./GetYourHandsDirtyOnCleanArchitecture)  <sup><sub>(*Tom Hombergs*)</sub></sup>
 
 ### [Concurrent Programming in Java<sup><sub>TM</sub></sup>: Design Principles and Patterns](./ConcurrentProgrammingInJava)  <sup><sub>(*Doug Lea*)</sub></sup>
 
@@ -82,21 +90,15 @@ Notes from:
 
 ### [Reality Is Broken](./RealityIsBroken) <sup><sub>(*JANE McGONIGAL*)</sub></sup>
 
-### [Agile Java <sup><sub>TM</sub></sup>: Crafting Code with Test-Driven Development](./AgileJavaCraftingCodeWithTestDrivenDevelopment)  <sup><sub>(*Jeff Langr*)</sub></sup>
-
 ### [Implementation Patterns](./ImplementationPatterns)  <sup><sub>(*Kent Beck*)</sub></sup>
 
 ### [Java Performance: In-depth Advice for Tuning and Programming Java](./JavaPerformanceAdviceForTuningAndProgramming)  <sup><sub>(*Scott Oaks*)</sub></sup>
-
-### [Agile Software Development: Principles, Patterns, and Practices](./AgileSoftwareDevelopment)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
 ### [Java Generics and Collections](./JavaGenericsAndCollections)  <sup><sub>(*Maurice Naftalin, Philip Wadler*)</sub></sup>
 
 ### [UML For Java <sup><sub>TM</sub></sup> Programmers](./UmlForJavaProgrammers)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
 ### [Head First Design Patterns](./HeadFirstDesignPatterns)  <sup><sub>(*Eric Freeman, Bert Bates,  Kathy Sierra, Elisabeth Robson*)</sub></sup>
-
-### [Clean Agile: Back to Basics](./CleanAgile)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
 ### [Patterns of Enterprise Application Architecture](./PatternsofEnterpriseApplicationArchitecture)  <sup><sub>(*Martin Fowler*)</sub></sup>
 
@@ -109,8 +111,6 @@ Notes from:
 ### [Refactoring: Improving the Design of Existing Code](./RefactoringImprovingTheDesignOfExistingCode)  <sup><sub>(*Martin Fowler*)</sub></sup>
 
 ### [The Design of Everyday Things](./TheDesignOfEverydayThings)  <sup><sub>(*Don Norman*)</sub></sup>
-
-### [The Clean Coder: A Code of Conduct for Professional Programmers](./TheCleanCoder)  <sup><sub>(*Robert Martin*)</sub></sup>
 
 ### [Domain-Driven Design](./DomainDrivenDesign)  <sup><sub>(*Eric Evans*)</sub></sup>
 
