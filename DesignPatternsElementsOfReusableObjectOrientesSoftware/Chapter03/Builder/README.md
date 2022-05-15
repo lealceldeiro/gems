@@ -21,7 +21,7 @@ Separate the construction of a complex object from its representation so that th
   - defines and keeps track of the representation it creates
   - provides an interface for retrieving the product
 * **`Director`**: constructs an object using the Builder interface
-* **`Product``**:
+* **`Product`**:
   - represents the complex object under construction. `ConcreteBuilder` builds the product's internal representation and defines the process by which it's assembled
   - includes classes that define the constituent parts, including interfaces for assembling the parts into the final result
 
