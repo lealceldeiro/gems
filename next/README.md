@@ -1,0 +1,29 @@
+## Next
+
+*In no particular order*:
+
+[https://www.amazon.com/dp/B082WRYJJM](https://www.amazon.com/dp/B082WRYJJM)
+
+[https://www.amazon.com/DevOps-Advanced-Methods-Strategies-Using-ebook/dp/B085BTZKBN](https://www.amazon.com/dp/B085BTZKBN)
+
+[https://www.amazon.com/dp/0135166314](https://www.amazon.com/dp/0135166314)
+
+https://www.amazon.com/dp/1337102075
+
+https://www.amazon.com/dp/1838827692
+
+https://www.amazon.com/dp/0134841522
+
+https://www.amazon.com/dp/0137871074
+
+https://www.amazon.com/dp/026254332X
+
+https://www.amazon.com/dp/1491963417
+
+https://www.amazon.com/dp/1492062413
+
+https://www.amazon.com/dp/B09H7NPJJK
+
+https://www.amazon.com/dp/0134437705
+
+https://www.amazon.com/dp/1484274989
