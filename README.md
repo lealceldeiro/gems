@@ -155,3 +155,5 @@ Notes from:
 ### [Taming Thymeleaf](./TamingThymeleaf)  <sup><sub>(*Wim Deblauwe*)</sub></sup>
 
 ### [Effective Software Testing](./EffectiveSoftwareTesting)  <sup><sub>(*Maurício Aniche*)</sub></sup>
+
+### [Next](./next)
