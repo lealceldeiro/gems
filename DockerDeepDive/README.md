@@ -59,3 +59,17 @@ the SHA256 digests.
 - `docker manifest inspect`: show the manifest list of any image stored on Docker Hub
 - `docker buildx` is a Docker CLI plugin that extends the Docker CLI to support multi-arch builds
 - `docker image rm`: delete images
+
+### Chapter 7: Containers
+
+- `docker container run` is the command used to start new containers.
+- `Ctrl-PQ` will detach your shell from the terminal of a container and leave the container running (UP) in the
+background.
+- `docker container ls` lists all containers in the running (UP) state. If you add the -a flag you will also see
+containers in the stopped (Exited) state.
+- `docker container exec` runs a new process inside a running container. It’s useful for attaching the shell of your
+Docker host to a terminal inside a running container.
+- `docker container stop` will stop a running container and put it in the Exited (0) state.
+- `docker container start` will restart a stopped (Exited) container.
+- `docker container rm` will delete a stopped container.
+- `docker container inspect` will show you detailed configuration and runtime information about a container.
