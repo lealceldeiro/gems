@@ -163,4 +163,6 @@ Notes from:
 
 ### [Effective Software Testing](./EffectiveSoftwareTesting)  <sup><sub>(*Maurício Aniche*)</sub></sup>
 
+### [Beyond Coding: How Children Learn Human Values through Programming](./BeyondCoding)  <sup><sub>(*Marina Umaschi Bers*)</sub></sup>
+
 ### [Next](./next)
