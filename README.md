@@ -1,8 +1,13 @@
 # Gems
 
-This is not intented to be used as an official reference of any kind. It is only intended to be used as a memo for myself after reading some great books which I think deserve to be kept at hand. This repo is public only because I think many people may find it useful as a summary, but, if you want to really learn about these topics, consider reading the linked books.
+This is not intented to be used as an official reference of any kind. It is only intended to be used as a memo for
+myself after reading some great books which I think deserve to be kept at hand. This repo is public only because I think
+many people may find it useful as a summary, but, if you want to really learn about these topics, consider reading the
+linked books.
 
-<sup>If you're the co/author of any of these books and consider the content of this repository (https://github.com/lealceldeiro/gems/) doesn't comply with your work's copyright policy, please get in touch with me: lealceldeiro@gmail.com</sup>
+<sup>If you're the co/author of any of these books and consider the content of this repository
+(https://github.com/lealceldeiro/gems/) doesn't comply with your work's copyright policy, please get in touch with me:
+lealceldeiro@gmail.com</sup>
 
 ## Content
 
@@ -37,6 +42,8 @@ Notes from:
 ### [Stratospheric](./Stratospheric)  <sup><sub>(*Tom Hombergs*, *Björn Wilmsmann*, and *Philip Riecks*)</sub></sup>
 
 ### **`>`** [Docker Deep Dive](./DockerDeepDive)  <sup><sub>(*Nigel Poulton*)</sub></sup>
+
+### [Core Java: Advanced Features](./CoreJavaAdvancedFeatures)  <sup><sub>(*Cay Horstmann*)</sub></sup>
 
 ### [Clean Craftsmanship](./CleanCraftsmanship)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
