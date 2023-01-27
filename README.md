@@ -179,4 +179,8 @@ Notes from:
 
 ### [Postgresql: Up and Running: A Practical Guide to the Advanced Open Source Database](./PostgresqlUpRunningPracticalGuideAdvancedOpenSourceDatabase)  <sup><sub>(*Regina Obe*, *Leo Hsu*)</sub></sup>
 
-### [Next](./next)
+
+### [Mastering Professional Scrum: A Practitioners Guide to Overcoming Challenges and Maximizing the Benefits of Agility](./MastProfScrPractGuideOvercChallengesMaxBenefitAgility)  <sup><sub>(*Stephanie Ockerman*, *Simon Reindl*)</sub></sup>
+
+
+### [Programming Logic & Design, Comprehensive](./ProgrammingLogicDesignComprehensive)  <sup><sub>(*Joyce Farrell*)</sub></sup>
