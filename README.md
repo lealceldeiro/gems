@@ -175,4 +175,6 @@ Notes from:
 
 ### [Advanced Algorithms and Data Structures](./AdvancedAlgorithmsAndDataStructures)  <sup><sub>(*Marcello La Rocca*)</sub></sup>
 
+### [97 Things Every Data Engineer Should Know](./97ThingsEveryDataEngineerShouldKnow)  <sup><sub>(*Tobias Macey*)</sub></sup>
+
 ### [Next](./next)
