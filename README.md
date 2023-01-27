@@ -177,4 +177,6 @@ Notes from:
 
 ### [97 Things Every Data Engineer Should Know](./97ThingsEveryDataEngineerShouldKnow)  <sup><sub>(*Tobias Macey*)</sub></sup>
 
+### [Postgresql: Up and Running: A Practical Guide to the Advanced Open Source Database](./PostgresqlUpRunningPracticalGuideAdvancedOpenSourceDatabase)  <sup><sub>(*Regina Obe*, *Leo Hsu*)</sub></sup>
+
 ### [Next](./next)
