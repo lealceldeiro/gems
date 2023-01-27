@@ -173,4 +173,6 @@ Notes from:
 
 ### [Expert Oracle Database Architecture: Techniques and Solutions for High Performance and Productivity](./ExpertOracleDatabaseArchitectureTechniquesSolutionsHighPerformanceProductivity)  <sup><sub>(*Darl Kuhn*, *Thomas Kyte*)</sub></sup>
 
+### [Advanced Algorithms and Data Structures](./AdvancedAlgorithmsAndDataStructures)  <sup><sub>(*Marcello La Rocca*)</sub></sup>
+
 ### [Next](./next)
