@@ -171,4 +171,6 @@ Notes from:
 
 ### [The Kubernetes Bible: The definitive guide to deploying and managing Kubernetes across major cloud platforms](./TheKubernetesBibleTheGefinitiveGuideToDeployingAndManagingKubernetesAcrossMajorCloudPlatforms)  <sup><sub>(*Nassim Kebbani*, *Piotr Tylenda*, *Russ McKendrick*)</sub></sup>
 
+### [Expert Oracle Database Architecture: Techniques and Solutions for High Performance and Productivity](./ExpertOracleDatabaseArchitectureTechniquesSolutionsHighPerformanceProductivity)  <sup><sub>(*Darl Kuhn*, *Thomas Kyte*)</sub></sup>
+
 ### [Next](./next)
