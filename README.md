@@ -165,4 +165,10 @@ Notes from:
 
 ### [Beyond Coding: How Children Learn Human Values through Programming](./BeyondCoding)  <sup><sub>(*Marina Umaschi Bers*)</sub></sup>
 
+### [Advanced API Security: OAuth 2.0 and Beyond](./AdvancedAPISecurityOAuth20andBeyond)  <sup><sub>(*Prabath Siriwardena*)</sub></sup>
+
+### [The DevOps Handbook: How to Create World-Class Agility, Reliability, & Security in Technology Organizations](./TheDevOpsHandbookHowCreateWorldClassAgilityReliabilitySecurityTechnologyOrganizations)  <sup><sub>(*Gene Kim*, *Jez Humble*, *Patrick Debois*, *John Willis*, *Nicole Forsgren*)</sub></sup>
+
+### [The Kubernetes Bible: The definitive guide to deploying and managing Kubernetes across major cloud platforms](./TheKubernetesBibleTheGefinitiveGuideToDeployingAndManagingKubernetesAcrossMajorCloudPlatforms)  <sup><sub>(*Nassim Kebbani*, *Piotr Tylenda*, *Russ McKendrick*)</sub></sup>
+
 ### [Next](./next)

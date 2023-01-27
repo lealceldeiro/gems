@@ -2,13 +2,9 @@
 
 *In no particular order*:
 
-[https://www.amazon.com/dp/B082WRYJJM](https://www.amazon.com/dp/B082WRYJJM)
-
 [https://www.amazon.com/DevOps-Advanced-Methods-Strategies-Using-ebook/dp/B085BTZKBN](https://www.amazon.com/dp/B085BTZKBN)
 
 https://www.amazon.com/dp/1337102075
-
-https://www.amazon.com/dp/1838827692
 
 https://www.amazon.com/dp/0134841522
 
