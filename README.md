@@ -7,7 +7,7 @@ linked books.
 
 <sup>If you're the co/author of any of these books and consider the content of this repository
 (https://github.com/lealceldeiro/gems/) doesn't comply with your work's copyright policy, please get in touch with me:
-lealceldeiro@gmail.com</sup>
+[helloasiel@pm.me](mailto:helloasiel@pm.me)</sup>
 
 ## Content
 
