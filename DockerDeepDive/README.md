@@ -121,3 +121,39 @@ they be on the same network (service discovery is network-scoped).
 - `docker network create`: Creates new Docker networks
 - `docker network prune`: Deletes all unused networks on a Docker host
 - `docker network rm`: Deletes specific networks on a Docker host
+
+### 12: Docker overlay networking
+
+- `docker service ps`: list docker services
+
+### 13: Volumes and persistent data
+
+Every Docker container is created by adding a thin read-write layer on top of the read-only image it’s based on.
+
+The writable container layer exists in the filesystem of the Docker host, and it can be called various names. These
+include _local storage_, _ephemeral storage_, and _graphdriver storage_.
+
+It’s typically located on the Docker host in these locations:
+
+- Linux Docker hosts: `/var/lib/docker/<storage-driver>/...`
+- Windows Docker hosts: `C:\ProgramData\Docker\windowsfilter\...`
+
+When running Docker in production on Linux, you’ll need to make sure you match the right storage driver with the Linux
+distribution on the Docker host. The following list can be used as a guide:
+
+- _Red Hat Enterprise Linux_: Use the `overlay2` driver with modern versions of RHEL running Docker 17.06 or higher. Use
+the `devicemapper` driver with older versions. This applies to Oracle Linux and other Red Hat related upstream and
+downstream distros.
+- _Ubuntu_: Use the `overlay2` or `aufs` drivers. If you’re using a Linux 4.x kernel or higher you should go with
+`overlay2`.
+- _SUSE Linux Enterprise Server_: Use the `btrfs` storage driver.
+- _Windows_: Windows only has one driver, and it is configured by default.
+
+Volumes are the recommended way to persist data in containers. There are three major reasons for this:
+
+- Volumes are independent objects that are not tied to the lifecycle of a container
+- Volumes can be mapped to specialized external storage systems
+- Volumes enable multiple containers on different Docker hosts to access and share the same data
+
+All volumes created with the local driver get their own directory under `/var/lib/docker/volumes on Linux`, and
+`C:\ProgramData\Docker\volumes on Windows`.
