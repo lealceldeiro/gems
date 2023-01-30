@@ -155,5 +155,18 @@ Volumes are the recommended way to persist data in containers. There are three m
 - Volumes can be mapped to specialized external storage systems
 - Volumes enable multiple containers on different Docker hosts to access and share the same data
 
-All volumes created with the local driver get their own directory under `/var/lib/docker/volumes on Linux`, and
-`C:\ProgramData\Docker\volumes on Windows`.
+All volumes created with the local driver get their own directory under `/var/lib/docker/volumes` on Linux, and
+`C:\ProgramData\Docker\volumes` on Windows.
+
+A major concern with any configuration that shares a single volume among multiple containers is data corruption.
+
+#### Commands
+
+- `docker volume create`: create a new volumes. By default, volumes are created with the local driver, but the -d flag
+can be used to specify a different driver.
+- `docker volume ls`: list all volumes on the local Docker host.
+- `docker volume inspect`: show detailed volume information.
+- `docker volume prune`: delete all volumes that are not in use by a container or service replica. Use with caution!
+- `docker volume rm`: delete specific volumes that are not in use.
+- `docker plugin install`: install new volume plugins from Docker Hub.
+- `docker plugin ls`: list all plugins installed on a Docker host.
