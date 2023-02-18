@@ -170,3 +170,23 @@ can be used to specify a different driver.
 - `docker volume rm`: delete specific volumes that are not in use.
 - `docker plugin install`: install new volume plugins from Docker Hub.
 - `docker plugin ls`: list all plugins installed on a Docker host.
+
+### 14: Deploying apps with Docker Stacks
+
+Stacks are the native Docker solution for deploying and managing cloud-native microservices applications with multiple
+services.
+
+They're baked into the Docker engine, and offer a simple declarative interface for deploying and managing the entire
+lifecycle of an application.
+
+When Docker stops a container, it issues a `SIGTERM` to the application process with PID 1 inside the container. The
+application then has a 10-second grace period to perform any clean-up operations. If it doesn't handle the signal, it
+will be forcibly terminated after 10 seconds with a `SIGKILL`. The `stop_grace_period` property overrides this 10-second
+grace period.
+
+- `docker stack deploy` is the command for deploying and updating stacks of services defined in a stack file (usually
+called `docker-stack.yml`).
+- `docker stack ls` lists all stacks on the Swarm, including how many services they have.
+- `docker stack ps` gives detailed information about a deployed stack. It accepts the name of the stack as its main
+argument, lists which node each replica is running on, and shows _desired state_ and _current state_.
+- `docker stack rm` deletes a stack from the Swarm. It does not ask for confirmation before deleting the stack.
