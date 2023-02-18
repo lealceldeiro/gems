@@ -190,3 +190,38 @@ called `docker-stack.yml`).
 - `docker stack ps` gives detailed information about a deployed stack. It accepts the name of the stack as its main
 argument, lists which node each replica is running on, and shows _desired state_ and _current state_.
 - `docker stack rm` deletes a stack from the Swarm. It does not ask for confirmation before deleting the stack.
+
+### 15: Security in Docker
+
+**Docker Swarm Mode** is secure by default.
+
+**Docker Content Trust (DCT)** lets you sign your images and verify the integrity and publisher of images you consume.
+
+**Image security scanning** analyses images, detects known vulnerabilities, and provides detailed reports.
+
+**Docker secrets** are a way to securely share sensitive data and are first-class objects in Docker. They’re stored in
+the encrypted cluster store, encrypted in-flight when delivered to containers, stored in in-memory filesystems when in
+use, and operate a least-privilege model.
+
+Docker works with the major Linux security technologies as well as providing its own extensive and growing set of
+security technologies. While the Linux security technologies tend to be complex, the native Docker security technologies
+tend to be simple.
+
+A container is a collection of namespaces packaged and ready to use.
+
+Namespaces are about isolation, control groups (_cgroups_) are about setting limits.
+
+You can inspect a node’s client certificate on Linux nodes with the following command:
+
+```shell
+sudo openssl x509 \
+-in /var/lib/docker/swarm/certificates/swarm-node.crt \
+-text
+```
+
+The Subject data in the output uses the standard `O`, `OU`, and `CN` fields to specify the Swarm ID, the node’s role,
+and the node ID.
+
+- The Organization (`O`) field stores the Swarm ID
+- The Organizational Unit (`OU`) field stores the node’s role in the swarm
+- The Canonical Name (`CN`) field stores the node’s crypto ID.
