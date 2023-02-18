@@ -41,9 +41,9 @@ Notes from:
 
 ### [Stratospheric](./Stratospheric)  <sup><sub>(*Tom Hombergs*, *Björn Wilmsmann*, and *Philip Riecks*)</sub></sup>
 
-### **`>`** [Docker Deep Dive](./DockerDeepDive)  <sup><sub>(*Nigel Poulton*)</sub></sup>
+### [Docker Deep Dive](./DockerDeepDive)  <sup><sub>(*Nigel Poulton*)</sub></sup>
 
-### [Core Java: Advanced Features](./CoreJavaAdvancedFeatures)  <sup><sub>(*Cay Horstmann*)</sub></sup>
+### **`>`** [Core Java: Advanced Features](./CoreJavaAdvancedFeatures)  <sup><sub>(*Cay Horstmann*)</sub></sup>
 
 ### [Clean Craftsmanship](./CleanCraftsmanship)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
