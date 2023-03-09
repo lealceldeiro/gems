@@ -49,6 +49,8 @@ Notes from:
 
 ### [SQL Antipatterns, Volume 1: Avoiding the Pitfalls of Database Programming 1st Edition](./SQLAntipatternsVolume1)  <sup><sub>(*Bill Karwin*)</sub></sup>
 
+### [Think like a CTO](./ThinkLikeCTO)  <sup><sub>(*Allan Williamson*)</sub></sup>
+
 ### [Clean Architecture: A Craftsman's Guide to Software Structure and Design](./CleanArchitecture)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
 ### [Agile Software Development: Principles, Patterns, and Practices](./AgileSoftwareDevelopment)  <sup><sub>(*Robert C. Martin*)</sub></sup>
@@ -181,8 +183,6 @@ Notes from:
 
 ### [Postgresql: Up and Running: A Practical Guide to the Advanced Open Source Database](./PostgresqlUpRunningPracticalGuideAdvancedOpenSourceDatabase)  <sup><sub>(*Regina Obe*, *Leo Hsu*)</sub></sup>
 
-
 ### [Mastering Professional Scrum: A Practitioners Guide to Overcoming Challenges and Maximizing the Benefits of Agility](./MastProfScrPractGuideOvercChallengesMaxBenefitAgility)  <sup><sub>(*Stephanie Ockerman*, *Simon Reindl*)</sub></sup>
-
 
 ### [Programming Logic & Design, Comprehensive](./ProgrammingLogicDesignComprehensive)  <sup><sub>(*Joyce Farrell*)</sub></sup>
