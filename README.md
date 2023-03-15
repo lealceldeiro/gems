@@ -45,6 +45,8 @@ Notes from:
 
 ### **`>`** [Core Java: Advanced Features](./CoreJavaAdvancedFeatures)  <sup><sub>(*Cay Horstmann*)</sub></sup>
 
+### [Master Apache JMeter - From Load Testing to DevOps](./MasterApacheJmeterFromLoadTestToDevOps)  <sup><sub>(*Antonio Gomes Rodrigues*, *Bruno Demion (Milamber)*, and *Philippe Mouawad)*)</sub></sup>
+
 ### [Clean Craftsmanship](./CleanCraftsmanship)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
 ### [SQL Antipatterns, Volume 1: Avoiding the Pitfalls of Database Programming 1st Edition](./SQLAntipatternsVolume1)  <sup><sub>(*Bill Karwin*)</sub></sup>
