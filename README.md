@@ -45,7 +45,7 @@ Notes from:
 
 ### **`>`** [Core Java: Advanced Features](./CoreJavaAdvancedFeatures)  <sup><sub>(*Cay Horstmann*)</sub></sup>
 
-### [Master Apache JMeter - From Load Testing to DevOps](./MasterApacheJmeterFromLoadTestToDevOps)  <sup><sub>(*Antonio Gomes Rodrigues*, *Bruno Demion (Milamber)*, and *Philippe Mouawad)*)</sub></sup>
+### **`>`** [Pro Apache JMeter: Web Application Performance Testing](./ProApacheJMeterWebApplicationPerformanceTesting)  <sup><sub>(*Sai Matam*, *Jagdeep Jain*)</sub></sup>
 
 ### [Clean Craftsmanship](./CleanCraftsmanship)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
