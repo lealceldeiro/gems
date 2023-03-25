@@ -251,3 +251,16 @@ Example:
 ```shell
 jmeter -n -t TestPlanFile.jmx -l TestRunResults.jtl
 ```
+
+### JMeter in Server Mode
+
+To run JMeter in server mode, use: `jmeter-server`
+
+## JMeter WorkBench
+
+(Not available in recent versions - the "Test plan" serves as workbench)
+
+JMeter's WorkBench provides a temporary workspace to store test elements, including a thread group. When the JMeter
+GUI starts, it is pre-populated with an empty test plan and an empty WorkBench. When JMeter is configured as a proxy,
+it can record the browser activity in the WorkBench. Users can then copy/paste recorded requests from the WorkBench
+into the test plan.
