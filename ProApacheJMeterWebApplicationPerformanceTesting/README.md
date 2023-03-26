@@ -347,3 +347,80 @@ element is allowed to complete, but the newer elements are not executed once the
 
 The Throughput Controller controls the number of executions of its child elements. This is a misnomer, as it does not
 control the throughput; the Constant Throughput Timer should be used for that.
+
+Example, in a _Thread Group_, configured to loop `10` times, if there's a child HTTP Request `A` and another child
+element _Throughput Controller_, configured with a `3` as the _Total Executions_ value, and with a sub element
+HTTP Request `B`; when the test is run, HTTP Request `A` will run 10 times and HTTP Request `B` will run 3 times only.
+Their execution should be something like:
+
+`A`, `B`,`A`, `B`,`A`, `B`, `A`, `A`, `A`, `A`, `A`, `A`, `A`
+
+#### Once Only Controller
+
+Once Only Controller executes its child elements only once per thread. This is typically used to perform logins or
+another use-case that’s needed only once for a user session. There is no configuration for this Once Only Controller.
+The Once Only Controller should be a child element of the thread group or Loop Controller. Otherwise, the behavior is
+not defined.
+
+#### Interleave Controller
+
+The Interleave Controller executes only one of its child elements per loop iteration. Each time it iterates, it picks
+the next child element in sequence.
+
+A child controller is considered a sub-controller. By default, a sub-controller, including all its children, is treated
+as a single unit. If the _Ignore Sub-Controller Blocks_ checkbox is enabled, the grouping implied by the sub-controller
+is ignored and the child elements of the sub-controller are treated as the direct child elements of the Interleave
+Controller.
+
+The Interleave Controller is used to distribute the requests among a set of URLs.
+
+#### Random Controller
+
+The Random Controller is similar to the Interleave Controller except that the order of interleaving is random instead
+of sequential. The configuration is just like the Interleave Controller.
+
+#### Random Order Controller
+
+The Random Order Controller executes all its child elements but in random order. There is no other configuration for
+this controller.
+
+#### Switch Controller
+
+The Switch Controller is analogous to the switch/case programming construct. The Switch Controller executes only one
+of its child elements after matching the element’s name with the configured Switch value. If the Switch value is an
+integer, it executes the child element based on the sequence number (The sequence number starts at 0).
+
+#### ForEach Controller
+
+The ForEach Controller has one or more child elements over which it iterates. It can be configured with the following
+parameters. For each iteration, the ForEach Controller performs the following:
+
+- Forms a sequence number by incrementing the Start Index for loop (Exclusive) option.
+- Forms the name of a user defined variable by concatenating the Input Variable Prefix, "_" and the sequence number.
+- Sets the Output Variable Name to the value obtained by looking up the user defined variable. This Output Variable
+Name is then available to the child elements.
+
+The number of iterations is equal to the difference between the Start index and End index. If the Start index and the
+End index have not been specified, JMeter can figure those out by looking at the user defined variables, starting with
+the Input Variable Prefix string. Such variables need to be in numerical sequence. Any break in the sequence will cause
+ForEach Controller to finish.
+
+If the Add "_" Before Number? checkbox is not checked, then "_" is not used in forming the name of the user defined
+variable.
+
+Input Variable Prefix and Output Variable Name are required parameters. If you omit them, there is no error checking,
+not even a log message. JMeter will simply stop execution without warning.
+
+#### If Controller
+
+The If Controller is useful for decision/branching logic. The configuration is simple, with only two checkboxes.
+
+The Interpret Condition as Variable Expression? checkbox indicates whether the expression is evaluated as a JavaScript
+expression (the default) or as a variable expression (compared with the string "true").
+
+The Evaluate for All Children? checkbox indicates whether the condition should be evaluated before processing each of
+the child elements. If it’s not checked, the condition is evaluated only when it is encountered for the first time.
+
+If the condition expression has a syntax error or if the variable is not found, JMeter will simply stop execution
+without any error popping up. If you have not selected the Interpret Condition as Variable Expression flag, a few DEBUG
+logs are generated.
