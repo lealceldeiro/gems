@@ -64,7 +64,7 @@ how the application responds to load spikes.
 
 ### Load Tests
 
-A load test is a kind of performance test that’s performed at the specified load level. So ideally, we would like to
+A load test is a kind of performance test that's performed at the specified load level. So ideally, we would like to
 perform load tests at varying load levels to note the behavior of the application.
 
 ### Peak Load Tests
@@ -424,3 +424,48 @@ the child elements. If it’s not checked, the condition is evaluated only when 
 If the condition expression has a syntax error or if the variable is not found, JMeter will simply stop execution
 without any error popping up. If you have not selected the Interpret Condition as Variable Expression flag, a few DEBUG
 logs are generated.
+
+### Timers
+
+Timers are used to simulate natural delays of users while performing some actions on web pages, introduced by the
+natural flow of the uses cases (i.e.: the time required for the user to provide some input, read the information, etc.).
+
+They are used to introduce a delay or pause before a sampler is run.
+
+In a test plan, even if a timer is placed after the samplers, it will run before the sampler. If the timer is a child
+element of a sampler, it will apply only to that sampler. Otherwise, it will apply to all the samplers in that scope.
+If multiple timers are in scope, all the timers will apply before a sampler is executed.
+
+#### Constant Timer
+
+The Constant Timer introduces a specified delay before the samplers in its scope are executed. The only configuration
+is the delay that is needed.
+
+#### Gaussian Random Timer
+
+The Gaussian Random Timer introduces a delay according to the Gaussian Distribution (also called the bell curve).
+
+#### Uniform Random Timer
+
+The delay introduced by the Uniform Random Timer has two parts:
+
+- Constant Delay: Fixed and equal to the configured value.
+- Random Delay: Varies between zero and the configured value.
+
+The actual delay will range between the Constant Delay and the Constant Delay plus the Random Delay. As the term
+"uniform" indicates, the delay varies within its range with equal probability.
+
+#### Constant Throughput Timer
+
+The Constant Throughput Timer calculates and introduces delays between samplers to keep the throughput at the
+configured value.
+
+#### Synchronizing Timer
+
+The Synchronizing Timer blocks threads and releases them all at once, thus creating a large load at the same instant.
+This is very helpful to test how the application handles simultaneous requests.
+
+### Sampler
+
+The Sampler is a component that's used to send requests to the application being tested. If the test plan has more than
+one sampler, they will be executed in the order they are defined in the test plan tree.
