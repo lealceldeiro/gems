@@ -272,6 +272,19 @@ into the test plan.
 The test plan is the root element of the JMeter test. It is a container that holds JMeter components like the
 thread group, logic controller, sampler, listener, timer, assertion, and config element.
 
+#### Configuration
+
+- **User Defined Variables**: These are defined by using name/value pair(s).
+- **Run Thread Groups Consecutively (i.e. Run Groups One at a Time)**: A test plan can have more than one thread group.
+If this checkbox is enabled, then the thread groups are executed one after the other. If this checkbox is not enabled
+(the default), the thread groups are executed in parallel.
+- **Run tearDown Thread Groups After Shutdown of Main Threads**: If this checkbox is selected, then tearDown thread
+groups executes after the test has finished executing its regular thread group. It is used for doing things post test
+execution for reporting purposes or performing cleanup operations.
+- **Functional Test Mode (i.e. Save Response Data and Sampler Data)**: If this checkbox is selected, then sampler
+requests and response data are saved in the listeners. This allows you to verify that the test is working as expected.
+The use of this feature is not recommended as it impact the performance of the test execution itself.
+
 ### Thread Group
 
 The Thread Group element is the starting point of execution. All elements can be the child elements of a test plan or
@@ -469,3 +482,120 @@ This is very helpful to test how the application handles simultaneous requests.
 
 The Sampler is a component that's used to send requests to the application being tested. If the test plan has more than
 one sampler, they will be executed in the order they are defined in the test plan tree.
+
+Some examples of samplers are:
+
+- Access Log Sampler
+- AJP/1.3 Sampler
+- BeanShell Sampler
+- BSF Sampler
+- Debug Sampler
+- FTP Request
+- HTTP Request
+- Java Request
+- JDBC Request
+- JMS Point-to-Point
+- JMS Publisher
+- JMS Subscriber
+- JSR233 Sampler
+- JUnit Request
+- LDAP Extended Request
+- LDAP Request
+- Mail Reader Sampler
+- OS Process Sampler
+- SMTP Sampler
+- SOAP/XML-RPC Request
+- TCP Sampler
+- Test Action
+
+Each of the samplers generates one or more sample results (the exception is Test Action). These results have various
+attributes, such as success/fail/elapsed time, etc., which are viewed by using various listeners.
+
+With each sampler, you should use assertions to make sure that the sampler is working as per your requirements. For
+example, you would use response assertions for the HTTP request to check for status 200.
+
+### Assertions
+
+The primary purpose of assertions is to validate the server response and decide if the test passed or failed. The
+response to a sampler contains code to indicate success or error. But this is at the protocol level.
+
+JMeter assertions provides a mechanism to validate the content of the response. The specific JMeter assertions you use
+depend on the response format. The validation check is configurable based on the assertions type. JMeter assertions can
+be a child element of a test plan, thread group, controller, or sampler. Assertions will apply to all the samplers
+under the scope of its parent.
+
+Assertions are used to validate the test script. Since they consume CPU and memory resources, you should remove or
+disable them before running the performance test to gather statistics.
+
+### Listener
+
+Listeners capture and process the response from the server. Performance testing requires two kinds of listeners.
+
+During the test script development, you need to capture and display the entire server response for verifying that the
+output meets the functional specifications. When the performance test scripts are executed, you need the aggregate
+results and metrics for the duration of the test execution.
+
+You also need listeners to be able to store these results into an external file for later use.
+
+Listeners consume memory and CPU time to perform I/O and to process the results and generate reports. In
+Manager/Worker (Main/Secondary, or in legacy literature "Master"/"Slave") mode, it is important to choose the right
+listeners and as few as possible, because slave nodes will write data back to the master node and overall it will slow
+down processing or dry out memory.
+
+### Post-Processors
+
+#### Regular Expression Extractor
+
+The Regular Expression Extractor is used to extract useful information (mostly values of variables to be used in
+successive requests) from the response of a sampler. If it is added as a child to a thread group, then the Regular
+Expression Extractor is applied to all the child samplers.
+
+### Properties and Variables
+
+JMeter has the concept of defining and using name/value pairs. JMeter utilizes this concept for both properties and
+variables.
+
+Properties are defined in `jmeter.properties` file, JSR223 script, or passed on the command line. They're shared across
+the thread groups.
+
+`__P()` can be used to get the value of a property.
+
+Variables are defined using JSR223 script or CSV Data Config component in a thread group. They're local to the thread
+group in which it is defined.
+
+User defined variables (UDV) are defined using the user defined variable section in the test plan component.
+
+Each UDV gets copied as a variable into each of the thread groups at the start of the test execution, after which, it
+behaves like a variable specific to the thread group.
+
+`${ }` can be used to get the value.
+
+#### Using the Command Line to Initialize Properties
+
+To create some user defined variables and used them later in the tests, by replacing their values when the tests run
+from the command line (non-GUI mode), do the following:
+
+- Create the user defined variable with a name and its value pointing to a property value
+- Optionally define a default value with comma (`,`) and the default value, in case the property is not provided
+from the command line, i.e.:
+  * variable name: `protocol`
+  * value: `${__P(protocol,http)}`
+- Use the user defined variable `protocol` as usual in the component by referencing it (i.e.: `${protocol}`)
+- When running the tests, provide the property value with `-J`, i.e.:
+
+```shell
+jmeter -n -t TestPlanFile.jmx -Jprotocol=https -l test-run.log
+```
+
+
+## JMeter Best Practices
+
+### JMeter Using Maven
+
+The [`com.lazerycode.jmeter:jmeter-maven-plugin`](https://github.com/jmeter-maven-plugin/jmeter-maven-plugin) can be
+used to run JMeter tests as part of a project build.
+
+### Passing Variables Across Thread Groups
+
+Sometimes, there is a need to pass information from one thread group to another. We can achieve this by setting the
+JMeter Property value in one thread group and using its value in the other thread group.
