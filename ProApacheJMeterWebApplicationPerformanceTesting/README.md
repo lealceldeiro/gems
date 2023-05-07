@@ -576,17 +576,16 @@ To create some user defined variables and used them later in the tests, by repla
 from the command line (non-GUI mode), do the following:
 
 - Create the user defined variable with a name and its value pointing to a property value
-- Optionally define a default value with comma (`,`) and the default value, in case the property is not provided
-from the command line, i.e.:
+- Optionally define it with a default value by using comma (`,`), in case the property is not provided from the command
+line, i.e.:
   * variable name: `protocol`
   * value: `${__P(protocol,http)}`
 - Use the user defined variable `protocol` as usual in the component by referencing it (i.e.: `${protocol}`)
 - When running the tests, provide the property value with `-J`, i.e.:
 
 ```shell
-jmeter -n -t TestPlanFile.jmx -Jprotocol=https -l test-run.log
+jmeter -n -t TestPlanFile.jmx -Jprotocol=https -l test-run.jtl
 ```
-
 
 ## JMeter Best Practices
 
@@ -599,3 +598,17 @@ used to run JMeter tests as part of a project build.
 
 Sometimes, there is a need to pass information from one thread group to another. We can achieve this by setting the
 JMeter Property value in one thread group and using its value in the other thread group.
+
+
+## Troubleshooting JMeter
+
+### Log Level
+
+By default, the JMeter logging level is set to `INFO`. However, you can change this to one of the following values:
+`FATAL_ERROR`, `ERROR`, `WARN`, `INFO`, and `DEBUG`.
+
+Use the `-L` option on the command line to specify the log level at the package level, i.e.:
+
+```shell
+jmeter -Llog_level.jmeter.engine=DEBU
+```
