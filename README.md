@@ -45,7 +45,7 @@ Notes from:
 
 ### **`>`** [Core Java: Advanced Features](./CoreJavaAdvancedFeatures)  <sup><sub>(*Cay Horstmann*)</sub></sup>
 
-### **`>`** [Pro Apache JMeter: Web Application Performance Testing](./ProApacheJMeterWebApplicationPerformanceTesting)  <sup><sub>(*Sai Matam*, *Jagdeep Jain*)</sub></sup>
+### [Pro Apache JMeter: Web Application Performance Testing](./ProApacheJMeterWebApplicationPerformanceTesting)  <sup><sub>(*Sai Matam*, *Jagdeep Jain*)</sub></sup>
 
 ### [Clean Craftsmanship](./CleanCraftsmanship)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
