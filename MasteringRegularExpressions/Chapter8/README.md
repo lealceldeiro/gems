@@ -76,7 +76,7 @@ Some of the properties are:
 
 `\b` and `\B`: Word boundary. The idea of these metacharacters of a “word character” is not the same as that of `\w` and `\W`. The word boundaries understand the properties of Unicode characters, while `\w` and `\W` match only ASCII characters.
 
-`(?=)`, `(?!)`, `(?<=)` and `(?<!)`: Lookaround. Lookahead constructs can employ arbitrary regular expressions, but lookbehind is restricted to subexpressions whose possible matches are finite in length. This means, for example, that `?` is allowed within lookbehind, but `*` and `+` are not.
+`(?=)` and `(?!)`, `(?<=)` and `(?<!)`: Lookaround. Lookahead constructs (`(?=)` and `(?!)`) can employ arbitrary regular expressions, but lookbehind (`(?<=)` and `(?<!)`) is restricted to subexpressions whose possible matches are finite in length. This means, for example, that `?` is allowed within lookbehind, but `*` and `+` are not.
 
 ### Comments and Mode Modifiers
 
