@@ -610,5 +610,5 @@ By default, the JMeter logging level is set to `INFO`. However, you can change t
 Use the `-L` option on the command line to specify the log level at the package level, i.e.:
 
 ```shell
-jmeter -Llog_level.jmeter.engine=DEBU
+jmeter -Llog_level.jmeter.engine=DEBUG
 ```
