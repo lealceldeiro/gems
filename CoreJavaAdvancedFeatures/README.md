@@ -201,3 +201,43 @@ The total number of records is the length divided by the size of each record.
 long nbytes = in.length(); // length in bytes
 int nrecords = (int) (nbytes / RECORD_SIZE);
 ```
+
+To save serializable objects data, you first need to open an `ObjectOutputStream` object:
+
+```java
+var out = new ObjectOutputStream(new FileOutputStream("employee.dat"));
+```
+
+Now, to save an object, simply use the `writeObject` method of the `ObjectOutputStream` class:
+
+```java
+var harry = new Employee("Harry Hacker", 50000, 1989, 10, 1);
+var boss = new Manager("Carl Cracker", 80000, 1987, 12, 15);
+out.writeObject(harry);
+out.writeObject(boss);
+```
+
+To read the objects back in, first get an `ObjectInputStream` object:
+
+```java
+var in = new ObjectInputStream(new FileInputStream("employee.dat"));
+```
+
+Then, retrieve the objects in the same order in which they were written, using the readObject method:
+
+```java
+var e1 = (Employee) in.readObject();
+var e2 = (Employee) in.readObject();
+```
+
+Any class that needs to be saved to an output stream, must implement the `Serializable` interface:
+
+```java
+class Employee implements Serializable { }
+```
+
+Object serialization saves object data in a particular file format. Studying the data format is extremely helpful for
+gaining insight into the object serialization process.
+
+Just like a constructor, the `readObject` method operates on partially initialized objects. If you call a non-final
+method inside `readObject` that is overridden in a subclass, it may access uninitialized data.
