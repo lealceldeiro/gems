@@ -241,3 +241,61 @@ gaining insight into the object serialization process.
 
 Just like a constructor, the `readObject` method operates on partially initialized objects. If you call a non-final
 method inside `readObject` that is overridden in a subclass, it may access uninitialized data.
+
+The `Files` class can be used to remove or rename a file, or to find out when a file was last modified.
+
+A `Path` is a sequence of directory names, optionally followed by a file name.
+
+The `Path` interface has many useful methods for taking paths apart. Examples:
+
+```java
+Path p = Path.of("/home", "fred", "myprog.properties");
+Path parent = p.getParent();                                // the path /home/fred
+Path file = p.getFileName();                                // the path myprog.properties
+Path root = p.getRoot();                                    // the path /
+```
+
+The `Files` class makes quick work of common file operations. For example, you can easily read the entire contents of a
+file as a byte array, string, list of lines, or stream of lines:
+
+```java
+byte[] bytes = Files.readAllBytes(path);
+String content = Files.readString(path, charset);
+List<String> lines = Files.readAllLines(path, charset);
+Stream<String> lineStream = Files.lines(path, charset);
+```
+
+For writing:
+
+```java
+Files.write(path, bytes);
+Files.writeString(path, content, charset);
+Path.write(path, lines, charset);
+```
+
+To append to a given file:
+
+```java
+Files.write(path, content, charset, StandardOpenOption.APPEND);
+```
+
+Yield the position of the first byte where the file contents differ:
+
+```java
+long pos = Files.mismatch(path1, path2);
+```
+
+Get the MIME type of a file such as "text/html" or "image/png":
+
+```java
+String mimeType = Files.probeContentType(path);
+```
+
+The following methods allow you to interact with an API that uses the classic input/output streams or readers/writers:
+
+```java
+InputStream in = Files.newInputStream(path);
+OutputStream out = Files.newOutputStream(path);
+Reader in = Files.newBufferedReader(path, charset);
+Writer out = Files.newBufferedWriter(path, charset);
+```
