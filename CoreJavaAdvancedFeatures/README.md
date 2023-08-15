@@ -299,3 +299,49 @@ OutputStream out = Files.newOutputStream(path);
 Reader in = Files.newBufferedReader(path, charset);
 Writer out = Files.newBufferedWriter(path, charset);
 ```
+
+`Files.createDirectory(path);` creates a new directory, and all but the last component in the path must already exist.
+
+To create intermediate directories as well, use `Files.createDirectories(path);`
+
+Copy a file from one location to another: `Files.copy(fromPath, toPath);`
+
+Move a file (that is, copy and delete the original): `Files.move(fromPath, toPath);`
+
+Overwrite an existing target and copy all file attributes:
+
+```java
+Files.copy(fromPath, toPath, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
+```
+
+Specify that a move should be atomic (either the move completed successfully, or the source continues to be present):
+
+```java
+Files.move(fromPath, toPath, StandardCopyOption.ATOMIC_MOVE);
+```
+
+Delete a file: `Files.delete(path);` (throws an exception if the file doesn't exist)
+
+While `boolean deleted = Files.deleteIfExists(path);` doesn't fail if the directory doesn't exist.
+
+The deletion methods can also be used to remove an empty directory.
+
+Get the number of bytes in a file: `long fileSize = Files.size(path);`
+
+Get a `Stream<Path>` that reads the entries of a directory: `Files.list`. The directory is read lazily and it does not
+enter subdirectories. Since reading a directory involves a system resource that needs to be closed, it should be used
+with a `try` block.
+
+```java
+try (Stream<Path> entries = Files.list(pathToDirectory)) {
+    // ...
+}
+```
+
+Process all descendants of a directory: `Files.walk`.
+
+```java
+try (Stream<Path> entries = Files.walk(pathToRoot)) {
+   // Contains all descendants, visited in depth-first order
+}
+```
