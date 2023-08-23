@@ -345,3 +345,21 @@ try (Stream<Path> entries = Files.walk(pathToRoot)) {
    // Contains all descendants, visited in depth-first order
 }
 ```
+
+The `java.util.zip` package contains a class `CRC32` that computes the checksum of a sequence of bytes. Example:
+
+```java
+public static long checksum(Path filename) throws IOException {
+   try (InputStream in = Files.newInputStream(filename)) {
+      var crc = new CRC32();
+      boolean done = false;
+
+      while (!done) {
+         int c = in.read();
+         if (c == -1) done = true;
+         else crc.update(c);
+      }
+      return crc.getValue();
+   }
+}
+```
