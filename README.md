@@ -47,7 +47,7 @@ Notes from:
 
 ### [Pro Apache JMeter: Web Application Performance Testing](./ProApacheJMeterWebApplicationPerformanceTesting)  <sup><sub>(*Sai Matam*, *Jagdeep Jain*)</sub></sup>
 
-### [Clean Craftsmanship](./CleanCraftsmanship)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+### **`>`** [Clean Craftsmanship](./CleanCraftsmanship)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
 ### [SQL Antipatterns, Volume 1: Avoiding the Pitfalls of Database Programming 1st Edition](./SQLAntipatternsVolume1)  <sup><sub>(*Bill Karwin*)</sub></sup>
 
