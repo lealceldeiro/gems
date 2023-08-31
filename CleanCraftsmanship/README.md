@@ -33,6 +33,33 @@ the system behaves as specified.
 
 ### Chapter 2: Test-Driven Development
 
+The essence of TDD entails the discipline to do the following:
+
+- Create a test suite that enables refactoring and is trusted to the extent that passage implies deployability.
+That is, if the test suite passes, the system can be deployed.
+- Create production code that is decoupled enough to be testable and refactorable.
+- Create an extremely short-cycle feedback loop that maintains the task of writing programs with a stable rhythm and
+productivity.
+- Create tests and production code that are sufficiently decoupled from each other so as to allow convenient
+maintenance of both, without the impediment of replicating changes between the two.
+
+### The Three Laws of TDD
+
+1. The First Law: Write no production code until you have first written a test that fails due to the lack of that
+production code.
+2. The Second Law: Write no more of a test than is sufficient to fail or fail to compile. Resolve the failure by
+writing some production code.
+3. The Third Law: Write no more production code than will resolve the currently failing test. Once the test passes,
+write more test code.
+
+Benefits of applying these three laws:
+
+- You will spend more time writing code that works and less time debugging code that doesn't.
+- You will produce a set of nearly perfect low-level documentation.
+- It is fun—or at least motivating.
+- You will produce a test suite that will give you the confidence to deploy.
+- You will create less-coupled designs.
+
 ## Part I: Standards
 
 ## Part I: Ethics
