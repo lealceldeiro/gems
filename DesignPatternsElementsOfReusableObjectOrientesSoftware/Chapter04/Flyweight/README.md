@@ -148,7 +148,7 @@ public class Document {
         A2.draw(getContextForGlyph(A2));                        // A -- this is a shared object (from the previous A creation)
     }
 
-    // some auxiliary calculation of the context for each glyp
+    // some auxiliary calculation of the context for each glyph
     // containing the extrinsic state
     static Context getContextForGlyph(Glyph glyph) {
         return new Context() {};
