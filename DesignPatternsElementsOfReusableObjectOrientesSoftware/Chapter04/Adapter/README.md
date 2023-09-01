@@ -28,8 +28,8 @@ An object adapter relies on object composition:
 
 * **`Target`**: defines the domain-specific interface that Client uses
 * **`Client`**: collaborates with objects conforming to the Target interface
-* **`Adaptec`**: defines an existing interface that needs adapting
-* **`Adapter`**: adapts the interface of Adaptec to the Target interface
+* **`Adaptee`**: defines an existing interface that needs adapting
+* **`Adapter`**: adapts the interface of Adaptee to the Target interface
 
 ## Collaborations
 
