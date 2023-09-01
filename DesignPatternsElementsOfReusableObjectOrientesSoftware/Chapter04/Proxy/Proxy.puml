@@ -14,7 +14,7 @@ class RocketDoor implements Door {
 
 class SecuredDoor implements Door {
     - String key
-    - String String visitorKey
+    - String visitorKey
     - Door realDoor
 
     + SecuredDoor(Door realDoor)
