@@ -36,21 +36,21 @@ the system behaves as specified.
 The essence of TDD entails the discipline to do the following:
 
 - Create a test suite that enables refactoring and is trusted to the extent that passage implies deployability.
-That is, if the test suite passes, the system can be deployed.
+  That is, if the test suite passes, the system can be deployed.
 - Create production code that is decoupled enough to be testable and refactorable.
 - Create an extremely short-cycle feedback loop that maintains the task of writing programs with a stable rhythm and
-productivity.
+  productivity.
 - Create tests and production code that are sufficiently decoupled from each other so as to allow convenient
-maintenance of both, without the impediment of replicating changes between the two.
+  maintenance of both, without the impediment of replicating changes between the two.
 
 ### The Three Laws of TDD
 
 1. The First Law: Write no production code until you have first written a test that fails due to the lack of that
-production code.
+   production code.
 2. The Second Law: Write no more of a test than is sufficient to fail or fail to compile. Resolve the failure by
-writing some production code.
+   writing some production code.
 3. The Third Law: Write no more production code than will resolve the currently failing test. Once the test passes,
-write more test code.
+   write more test code.
 
 Benefits of applying these three laws:
 
@@ -59,6 +59,26 @@ Benefits of applying these three laws:
 - It is fun—or at least motivating.
 - You will produce a test suite that will give you the confidence to deploy.
 - You will create less-coupled designs.
+
+### The fourth law
+
+Refactoring: First you write a small amount of failing test code. Then you write a small amount of passing production
+code. Then you clean up the mess you just made.
+
+Rule 1: Write the test that forces you to write the code you already know you want to write.
+
+Rule 2: Make it fail. Make it pass. Clean it up.
+
+Rule 3: Don't go for the gold.
+
+> When you go for the gold too early, you tend to miss all the details around the outside. Also, you tend to miss
+> the simplifying opportunities that those ancillary details provide.
+
+Rule 4: Write the simplest, most specific, the most *absurdly simple starting point* test that will fail.
+
+Rule 5: Generalize where possible.
+
+> As the tests get more specific, the code gets more generic.
 
 ## Part I: Standards
 
