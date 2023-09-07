@@ -80,6 +80,21 @@ Rule 5: Generalize where possible.
 
 > As the tests get more specific, the code gets more generic.
 
+**Stairstep tests**
+
+Some tests are written just to force us to create classes or functions or other structures that we’re going to need.
+Sometimes these tests are so simple that they assert nothing. Other times they assert something very naive. Often
+these tests are superseded by more comprehensive tests later and can be safely deleted. We call these kinds of tests
+_stairstep tests_ because they are like stairs that allow us to incrementally increase the complexity to the
+appropriate level.
+
+**Misplaced responsibility**
+
+A design flaw in which the function that claims to perform a computation does not actually perform the computation.
+The computation is performed elsewhere.
+
+Rule 6: When the code feels wrong, fix the design before proceeding.
+
 ## Part I: Standards
 
 ## Part I: Ethics
