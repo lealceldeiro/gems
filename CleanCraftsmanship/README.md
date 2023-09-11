@@ -43,7 +43,7 @@ The essence of TDD entails the discipline to do the following:
 - Create tests and production code that are sufficiently decoupled from each other so as to allow convenient
   maintenance of both, without the impediment of replicating changes between the two.
 
-### The Three Laws of TDD
+#### The Three Laws of TDD
 
 1. The First Law: Write no production code until you have first written a test that fails due to the lack of that
    production code.
@@ -60,7 +60,7 @@ Benefits of applying these three laws:
 - You will produce a test suite that will give you the confidence to deploy.
 - You will create less-coupled designs.
 
-### The fourth law
+#### The fourth law
 
 Refactoring: First you write a small amount of failing test code. Then you write a small amount of passing production
 code. Then you clean up the mess you just made.
@@ -94,6 +94,15 @@ A design flaw in which the function that claims to perform a computation does no
 The computation is performed elsewhere.
 
 Rule 6: When the code feels wrong, fix the design before proceeding.
+
+### Chapter 3: Advanced TDD
+
+Rule 7: Exhaust the current simpler case before testing the next more complex case.
+
+Rule 8: If you must implement too much to get the current test to pass, delete that test and write a simpler test
+that you can more easily pass.
+
+Rule 9: Follow a deliberate and incremental pattern that covers the test space.
 
 ## Part I: Standards
 
