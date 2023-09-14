@@ -1,0 +1,14 @@
+@startuml
+object "Test Doubles" as testDoubles
+object Dummy
+object Stub
+object Spy
+object Mock
+object Fake
+
+testDoubles <|-- Dummy
+Dummy <|-- Stub
+Stub <|-- Spy
+Spy <|-- Mock
+testDoubles <|-- Fake
+@enduml

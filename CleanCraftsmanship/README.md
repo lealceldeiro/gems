@@ -104,6 +104,36 @@ that you can more easily pass.
 
 Rule 9: Follow a deliberate and incremental pattern that covers the test space.
 
+Test doubles form a type hierarchy:
+
+Dummies are the simplest. Stubs are dummies, spies are stubs, and mocks are spies. Fakes stand alone.
+
+![Image of the Test Doubles type hierarchy](./test_doubles.png "Test Doubles type hierarchy")
+
+Rule 10: Don’t include things in your tests that your tests don’t need.
+
+Rule 11: Don’t use production data in your tests.
+
+A dummy is an implementation that does nothing. Every method of the interface is implemented to do nothing. If a method
+returns a value, then the value returned by the dummy will be as close as possible to null or zero.
+
+A stub is a dummy that returns test-specific values in order to drive the system under test through the pathways being
+tested.
+
+A spy also returns test-specific values in order to drive the system under test through desired pathways. However,
+a spy remembers what was done to it and allows the test to ask about it.
+
+A mock is a spy and returns test-specific values in order to drive the system under test through desired pathways,
+and it remembers what was done to it. However, a mock also knows what to expect and will pass or fail the test on the
+basis of those expectations. In other words, the test assertions are written into the mock.
+
+A fake is a different kind of test double entirely. A fake is a simulator. It is a test double that implements some
+kind of rudimentary business rules (usually, by having some canned behavior/responses codede in its logic) so that the
+tests that use that fake can select how the fake behaves.
+
+_The TDD uncertainty principle_: To the extent you demand certainty, your tests will be inflexible. To the extent you
+demand flexible tests, you will have diminished certainty.
+
 ## Part I: Standards
 
 ## Part I: Ethics
