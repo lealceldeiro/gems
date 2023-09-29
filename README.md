@@ -137,8 +137,6 @@ Notes from:
 
 ### [Database Design for Mere Mortals](./DatabaseDesignForMereMortals)  <sup><sub>(*Michael J. Hernandez*)</sub></sup>
 
-### [TCP/IP Illustrated, Volume 1: The Protocols](./TCPIPIllustratedVolume1)  <sup><sub>(*Kevin R. Fall, W. Richard Stevens*)</sub></sup>
-
 ### [The Complete Software Developer's Career Guide](./TheCompleteSoftwareDevelopersCareerGuide)  <sup><sub>(*John Sonmez*)</sub></sup>
 
 ### [The Pragmatic Programmer](./ThePragmaticProgrammer)  <sup><sub>(*David Thomas, Andrew Hunt*)</sub></sup>
@@ -188,3 +186,7 @@ Notes from:
 ### [Mastering Professional Scrum: A Practitioners Guide to Overcoming Challenges and Maximizing the Benefits of Agility](./MastProfScrPractGuideOvercChallengesMaxBenefitAgility)  <sup><sub>(*Stephanie Ockerman*, *Simon Reindl*)</sub></sup>
 
 ### [Programming Logic & Design, Comprehensive](./ProgrammingLogicDesignComprehensive)  <sup><sub>(*Joyce Farrell*)</sub></sup>
+
+### [Designing Data-Intensive Applications](./DesigningDataIntensiveApplications)  <sup><sub>(*Martin Kleppmann*)</sub></sup>
+
+### [TCP/IP Illustrated, Volume 1: The Protocols](./TCPIPIllustratedVolume1)  <sup><sub>(*Kevin R. Fall, W. Richard Stevens*)</sub></sup>
