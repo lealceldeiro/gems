@@ -134,6 +134,19 @@ tests that use that fake can select how the fake behaves.
 _The TDD uncertainty principle_: To the extent you demand certainty, your tests will be inflexible. To the extent you
 demand flexible tests, you will have diminished certainty.
 
+### Chapter 4: Test Design
+
+Rules for testing databases:
+
+- 1: Don't test databases (test the queries).
+- 2: Decouple the database from the business rules.
+
+Rules for testing GUIs:
+
+- Don’t test GUIs.
+- Test everything but the GUI.
+- The GUI is smaller than you think it is.
+
 ## Part I: Standards
 
 ## Part I: Ethics
