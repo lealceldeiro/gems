@@ -67,6 +67,9 @@ Operations A and B are _atomic_ with respect to each other if, from the perspect
 
 We refer collectively to check-then-act and read-modify-write sequences as _compound actions_: sequences of operations that must be executed atomically in order to remain thread-safe.
 
+When a single element of state is added to a stateless class, the resulting class will be thread-safe if the state is
+entirely managed by a thread-safe object.
+
 Where practical, use existing thread-safe objects, like `AtomicLong`, to manage your class’s state. It is simpler to reason about the possible states and state transitions for existing thread-safe objects than it is for arbitrary state variables, and this makes it easier to maintain and verify thread safety.
 
 ## 2.3 Locking
