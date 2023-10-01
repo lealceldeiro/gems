@@ -42,7 +42,7 @@ You can use volatile variables only when all the following criteria are met:
 * Writes to the variable do not depend on its current value, or you can ensure hat only a single thread ever
   updates the value;
 * The variable does not participate in invariants with other state variables; and
-* ocking is not required for any other reason while the variable is being accessed.
+* Locking is not required for any other reason while the variable is being accessed.
 
 ## 3.2 Publication and escape
 
@@ -63,7 +63,7 @@ Passing an object to an alien method must also be considered publishing that obj
 will actually be invoked, you don’t know that the alien method won’t publish the object or retain a reference to it
 that might later be used from another thread.
 
-An object or its internal state is also published when an inner class instance is pusblished, because the inner
+An object or its internal state is also published when an inner class instance is published, because the inner
 class instances contain a hidden reference to the enclosing instance. i.e.:
 
 ```java
