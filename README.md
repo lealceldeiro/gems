@@ -1,6 +1,6 @@
 # Gems
 
-This is not intented to be used as an official reference of any kind. It is only intended to be used as a memo for
+This is not intended to be used as an official reference of any kind. It is only intended to be used as a memo for
 myself after reading some great books which I think deserve to be kept at hand. This repo is public only because I think
 many people may find it useful as a summary, but, if you want to really learn about these topics, consider reading the
 linked books.
@@ -48,6 +48,12 @@ Notes from:
 ### [Pro Apache JMeter: Web Application Performance Testing](./ProApacheJMeterWebApplicationPerformanceTesting)  <sup><sub>(*Sai Matam*, *Jagdeep Jain*)</sub></sup>
 
 ### **`>`** [Clean Craftsmanship](./CleanCraftsmanship)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+
+### [Designing Data-Intensive Applications](./DesigningDataIntensiveApplications)  <sup><sub>(*Martin Kleppmann*)</sub></sup>
+
+### [Building Event-Driven Microservices](./BuildingEventDrivenMicroservices)  <sup><sub>(*Adam Bellemare*)</sub></sup>
+
+### [Kafka: The Definitive Guide](./KafkaTheDefinitiveGuide)  <sup><sub>(*Gwen Shapira*, *Todd Palino*, *Rajini Sivaram*, *Krit Petty*)</sub></sup>
 
 ### [SQL Antipatterns, Volume 1: Avoiding the Pitfalls of Database Programming 1st Edition](./SQLAntipatternsVolume1)  <sup><sub>(*Bill Karwin*)</sub></sup>
 
@@ -186,7 +192,5 @@ Notes from:
 ### [Mastering Professional Scrum: A Practitioners Guide to Overcoming Challenges and Maximizing the Benefits of Agility](./MastProfScrPractGuideOvercChallengesMaxBenefitAgility)  <sup><sub>(*Stephanie Ockerman*, *Simon Reindl*)</sub></sup>
 
 ### [Programming Logic & Design, Comprehensive](./ProgrammingLogicDesignComprehensive)  <sup><sub>(*Joyce Farrell*)</sub></sup>
-
-### [Designing Data-Intensive Applications](./DesigningDataIntensiveApplications)  <sup><sub>(*Martin Kleppmann*)</sub></sup>
 
 ### [TCP/IP Illustrated, Volume 1: The Protocols](./TCPIPIllustratedVolume1)  <sup><sub>(*Kevin R. Fall, W. Richard Stevens*)</sub></sup>
