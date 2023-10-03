@@ -49,17 +49,17 @@ Notes from:
 
 ### **`>`** [Clean Craftsmanship](./CleanCraftsmanship)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
+### [Clean Architecture: A Craftsman's Guide to Software Structure and Design](./CleanArchitecture)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+
 ### [Designing Data-Intensive Applications](./DesigningDataIntensiveApplications)  <sup><sub>(*Martin Kleppmann*)</sub></sup>
 
 ### [Building Event-Driven Microservices](./BuildingEventDrivenMicroservices)  <sup><sub>(*Adam Bellemare*)</sub></sup>
 
 ### [Kafka: The Definitive Guide](./KafkaTheDefinitiveGuide)  <sup><sub>(*Gwen Shapira*, *Todd Palino*, *Rajini Sivaram*, *Krit Petty*)</sub></sup>
 
-### [SQL Antipatterns, Volume 1: Avoiding the Pitfalls of Database Programming 1st Edition](./SQLAntipatternsVolume1)  <sup><sub>(*Bill Karwin*)</sub></sup>
+### [Software Architecture: The Hard Parts](./SoftwareArchitectureTheHardParts)  <sup><sub>(*Neal Ford*, *Mark Richards*, *Pramod Sadalage*, *Zhamak Dehghani*)</sub></sup>
 
-### [Think like a CTO](./ThinkLikeCTO)  <sup><sub>(*Allan Williamson*)</sub></sup>
-
-### [Clean Architecture: A Craftsman's Guide to Software Structure and Design](./CleanArchitecture)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+### [Get Your Hands Dirty on Clean Architecture](./GetYourHandsDirtyOnCleanArchitecture)  <sup><sub>(*Tom Hombergs*)</sub></sup>
 
 ### [Agile Software Development: Principles, Patterns, and Practices](./AgileSoftwareDevelopment)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
@@ -67,13 +67,15 @@ Notes from:
 
 ### [The Clean Coder: A Code of Conduct for Professional Programmers](./TheCleanCoder)  <sup><sub>(*Robert Martin*)</sub></sup>
 
-### [Get Your Hands Dirty on Clean Architecture](./GetYourHandsDirtyOnCleanArchitecture)  <sup><sub>(*Tom Hombergs*)</sub></sup>
-
 ### [Software Craftsman, The: Professionalism, Pragmatism, Pride](./SoftwareCraftsman)  <sup><sub>(*Sandro Mancuso*)</sub></sup>
+
+### [SQL Antipatterns, Volume 1: Avoiding the Pitfalls of Database Programming 1st Edition](./SQLAntipatternsVolume1)  <sup><sub>(*Bill Karwin*)</sub></sup>
 
 ### [Seroiusly Good Software](./SeriouslyGoodSoftware)  <sup><sub>(*Marco Faella*)</sub></sup>
 
 ### [Agile Java <sup><sub>TM</sub></sup>: Crafting Code with Test-Driven Development](./AgileJavaCraftingCodeWithTestDrivenDevelopment)  <sup><sub>(*Jeff Langr*)</sub></sup>
+
+### [Think like a CTO](./ThinkLikeCTO)  <sup><sub>(*Allan Williamson*)</sub></sup>
 
 ### [The Kubernetes Book](./TheKubernetesBook)  <sup><sub>(*Nigel Poulton*)</sub></sup>
 
