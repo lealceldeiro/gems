@@ -1,6 +1,6 @@
 # Java Concurrency in Practice
 
-Main notes taken from the book [Java Concurrency in Practice ](https://jcip.net/)
+Main notes taken from the book [Java Concurrency in Practice](https://jcip.net/)
 
 ## [Chapter 1](./Chapter01): Introduction
 
