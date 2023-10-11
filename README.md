@@ -49,13 +49,21 @@ Notes from:
 
 ### **`>`** [Clean Craftsmanship](./CleanCraftsmanship)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
-### [Clean Architecture: A Craftsman's Guide to Software Structure and Design](./CleanArchitecture)  <sup><sub>(*Robert C. Martin*)</sub></sup>
-
 ### [Designing Data-Intensive Applications](./DesigningDataIntensiveApplications)  <sup><sub>(*Martin Kleppmann*)</sub></sup>
 
 ### [Building Event-Driven Microservices](./BuildingEventDrivenMicroservices)  <sup><sub>(*Adam Bellemare*)</sub></sup>
 
 ### [Kafka: The Definitive Guide](./KafkaTheDefinitiveGuide)  <sup><sub>(*Gwen Shapira*, *Todd Palino*, *Rajini Sivaram*, *Krit Petty*)</sub></sup>
+
+### [The Kubernetes Book](./TheKubernetesBook)  <sup><sub>(*Nigel Poulton*)</sub></sup>
+
+### [Expert Oracle Database Architecture: Techniques and Solutions for High Performance and Productivity](./ExpertOracleDatabaseArchitectureTechniquesSolutionsHighPerformanceProductivity)  <sup><sub>(*Darl Kuhn*, *Thomas Kyte*)</sub></sup>
+
+### [Google Cloud Platform in Action](./GoogleCloudPlatformInAction)  <sup><sub>(*JJ Geewax*)</sub></sup>
+
+### [Google Cloud Cookbook](./GoogleCloudCookbook)  <sup><sub>(*Rui Costa*, *Drew Hodun*)</sub></sup>
+
+### [Clean Architecture: A Craftsman's Guide to Software Structure and Design](./CleanArchitecture)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
 ### [Software Architecture: The Hard Parts](./SoftwareArchitectureTheHardParts)  <sup><sub>(*Neal Ford*, *Mark Richards*, *Pramod Sadalage*, *Zhamak Dehghani*)</sub></sup>
 
@@ -76,8 +84,6 @@ Notes from:
 ### [Agile Java <sup><sub>TM</sub></sup>: Crafting Code with Test-Driven Development](./AgileJavaCraftingCodeWithTestDrivenDevelopment)  <sup><sub>(*Jeff Langr*)</sub></sup>
 
 ### [Think like a CTO](./ThinkLikeCTO)  <sup><sub>(*Allan Williamson*)</sub></sup>
-
-### [The Kubernetes Book](./TheKubernetesBook)  <sup><sub>(*Nigel Poulton*)</sub></sup>
 
 ### [Microservices in Action](./MicroservicesInAction)  <sup><sub>(*Morgan Bruce*, *Paulo A. Pereira*)</sub></sup>
 
@@ -182,8 +188,6 @@ Notes from:
 ### [The DevOps Handbook: How to Create World-Class Agility, Reliability, & Security in Technology Organizations](./TheDevOpsHandbookHowCreateWorldClassAgilityReliabilitySecurityTechnologyOrganizations)  <sup><sub>(*Gene Kim*, *Jez Humble*, *Patrick Debois*, *John Willis*, *Nicole Forsgren*)</sub></sup>
 
 ### [The Kubernetes Bible: The definitive guide to deploying and managing Kubernetes across major cloud platforms](./TheKubernetesBibleTheGefinitiveGuideToDeployingAndManagingKubernetesAcrossMajorCloudPlatforms)  <sup><sub>(*Nassim Kebbani*, *Piotr Tylenda*, *Russ McKendrick*)</sub></sup>
-
-### [Expert Oracle Database Architecture: Techniques and Solutions for High Performance and Productivity](./ExpertOracleDatabaseArchitectureTechniquesSolutionsHighPerformanceProductivity)  <sup><sub>(*Darl Kuhn*, *Thomas Kyte*)</sub></sup>
 
 ### [Advanced Algorithms and Data Structures](./AdvancedAlgorithmsAndDataStructures)  <sup><sub>(*Marcello La Rocca*)</sub></sup>
 
