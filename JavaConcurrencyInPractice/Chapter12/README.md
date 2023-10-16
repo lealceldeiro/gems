@@ -193,7 +193,7 @@ confidence than you could with any single approach.
 Taking the time to have someone else review the code is almost always worthwhile
 
 It not only can it find errors, but it often improves the quality of comments describing the implementation details,
-thus reducing future maintenence cost and risk.
+thus reducing future maintenance cost and risk.
 
 ### 12.4.2 Static analysis tools
 
