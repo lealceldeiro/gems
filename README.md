@@ -49,7 +49,7 @@ Notes from:
 
 ### **`>`** [Clean Craftsmanship](./CleanCraftsmanship)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
-### [Designing Data-Intensive Applications](./DesigningDataIntensiveApplications)  <sup><sub>(*Martin Kleppmann*)</sub></sup>
+### **`>`** [Designing Data-Intensive Applications](./DesigningDataIntensiveApplications)  <sup><sub>(*Martin Kleppmann*)</sub></sup>
 
 ### [Building Event-Driven Microservices](./BuildingEventDrivenMicroservices)  <sup><sub>(*Adam Bellemare*)</sub></sup>
 
@@ -79,7 +79,7 @@ Notes from:
 
 ### [SQL Antipatterns, Volume 1: Avoiding the Pitfalls of Database Programming 1st Edition](./SQLAntipatternsVolume1)  <sup><sub>(*Bill Karwin*)</sub></sup>
 
-### [Seroiusly Good Software](./SeriouslyGoodSoftware)  <sup><sub>(*Marco Faella*)</sub></sup>
+### [Seriously Good Software](./SeriouslyGoodSoftware)  <sup><sub>(*Marco Faella*)</sub></sup>
 
 ### [Agile Java <sup><sub>TM</sub></sup>: Crafting Code with Test-Driven Development](./AgileJavaCraftingCodeWithTestDrivenDevelopment)  <sup><sub>(*Jeff Langr*)</sub></sup>
 
