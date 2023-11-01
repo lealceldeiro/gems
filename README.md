@@ -81,6 +81,8 @@ Notes from:
 
 ### [Tidy First?](./TidyFirst)  <sup><sub>(*Kent Beck*)</sub></sup>
 
+### [Test Driven Development: By Example](./TestDrivenDevelopmentByExample)  <sup><sub>(*Kent Beck*)</sub></sup>
+
 ### [Seriously Good Software](./SeriouslyGoodSoftware)  <sup><sub>(*Marco Faella*)</sub></sup>
 
 ### [Agile Java <sup><sub>TM</sub></sup>: Crafting Code with Test-Driven Development](./AgileJavaCraftingCodeWithTestDrivenDevelopment)  <sup><sub>(*Jeff Langr*)</sub></sup>
