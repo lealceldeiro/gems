@@ -49,13 +49,13 @@ Notes from:
 
 ### **`>`** [Clean Craftsmanship](./CleanCraftsmanship)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
-### **`>`** [Designing Data-Intensive Applications](./DesigningDataIntensiveApplications)  <sup><sub>(*Martin Kleppmann*)</sub></sup>
+### [Designing Data-Intensive Applications](./DesigningDataIntensiveApplications)  <sup><sub>(*Martin Kleppmann*)</sub></sup>
 
-### [Building Event-Driven Microservices](./BuildingEventDrivenMicroservices)  <sup><sub>(*Adam Bellemare*)</sub></sup>
+### **`>`** [The Kubernetes Book](./TheKubernetesBook)  <sup><sub>(*Nigel Poulton*)</sub></sup>
 
 ### [Kafka: The Definitive Guide](./KafkaTheDefinitiveGuide)  <sup><sub>(*Gwen Shapira*, *Todd Palino*, *Rajini Sivaram*, *Krit Petty*)</sub></sup>
 
-### [The Kubernetes Book](./TheKubernetesBook)  <sup><sub>(*Nigel Poulton*)</sub></sup>
+### [Building Event-Driven Microservices](./BuildingEventDrivenMicroservices)  <sup><sub>(*Adam Bellemare*)</sub></sup>
 
 ### [Expert Oracle Database Architecture: Techniques and Solutions for High Performance and Productivity](./ExpertOracleDatabaseArchitectureTechniquesSolutionsHighPerformanceProductivity)  <sup><sub>(*Darl Kuhn*, *Thomas Kyte*)</sub></sup>
 
