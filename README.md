@@ -51,7 +51,7 @@ Notes from:
 
 ### [Designing Data-Intensive Applications](./DesigningDataIntensiveApplications)  <sup><sub>(*Martin Kleppmann*)</sub></sup>
 
-### **`>`** [Quick Start Kubernetes](./QuickStartKubernetes)  <sup><sub>(*Nigel Poulton*)</sub></sup>
+### [Quick Start Kubernetes](./QuickStartKubernetes)  <sup><sub>(*Nigel Poulton*)</sub></sup>
 
 ### **`>`** [The Kubernetes Book](./TheKubernetesBook)  <sup><sub>(*Nigel Poulton*)</sub></sup>
 
