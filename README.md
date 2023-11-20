@@ -1,11 +1,14 @@
 # Gems
 
-This is not intended to be used as an official reference of any kind. It is only intended to be used as a memo for
-myself after reading some great books which I think deserve to be kept at hand. This repo is public only because I think
-many people may find it useful as a summary, but, if you want to really learn about these topics, consider reading the
-linked books.
+This repository is intended to be used as a memo for myself after reading some books which I think deserve to be kept at
+hand.
 
-<sup>If you're the co/author of any of these books and consider the content of this repository
+It is public only because I think many people may find it useful as a summary or as a reading list to be considered,
+but, if you want to really learn about these topics, consider reading the linked books.
+
+However, the content here is not intended to be used as an official reference of any kind.
+
+<sup>If you're the co/author of some of these books and consider the content of this repository
 (https://github.com/lealceldeiro/gems/) doesn't comply with your work's copyright policy, please get in touch with me:
 [helloasiel@pm.me](mailto:helloasiel@pm.me)</sup>
 
@@ -99,7 +102,7 @@ Notes from:
 
 ### [Implementing Domain-Driven Design](./ImplementingDomainDrivenDesign)  <sup><sub>(*Vaughn Vernon*)</sub></sup>
 
-### [Java 9 Modularity](./Java9Modularity)  <sup><sub>(*Sander Mak,  Paul Bakker*)</sub></sup>
+### [Java 9 Modularity](./Java9Modularity)  <sup><sub>(*Sander Mak, Paul Bakker*)</sub></sup>
 
 ### [Pro Git](./ProGit)  <sup><sub>(*Scott Chacon and Ben Straub*)</sub></sup>
 
