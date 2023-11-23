@@ -74,6 +74,8 @@ Notes from:
 
 ### [Get Your Hands Dirty on Clean Architecture](./GetYourHandsDirtyOnCleanArchitecture)  <sup><sub>(*Tom Hombergs*)</sub></sup>
 
+### [Strategic Monoliths and Microservices](./StrategicMonolithsAndMicroservices)  <sup><sub>(*Vaughn Vernon, *Jaskula Tomasz*)</sub></sup>
+
 ### [Agile Software Development: Principles, Patterns, and Practices](./AgileSoftwareDevelopment)  <sup><sub>(*Robert C. Martin*)</sub></sup>
 
 ### [Clean Agile: Back to Basics](./CleanAgile)  <sup><sub>(*Robert C. Martin*)</sub></sup>
