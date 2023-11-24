@@ -90,6 +90,8 @@ Notes from:
 
 ### [The Software Engineer's Guidebook](./TheSoftwareEngineersGuidebook)  <sup><sub>(*Gergely Orosz*)</sub></sup>
 
+### [Building a Second Brain](./BuildingASecondBrain)  <sup><sub>(*Tiago Forte*)</sub></sup>
+
 ### [Test Driven Development: By Example](./TestDrivenDevelopmentByExample)  <sup><sub>(*Kent Beck*)</sub></sup>
 
 ### [Seriously Good Software](./SeriouslyGoodSoftware)  <sup><sub>(*Marco Faella*)</sub></sup>
