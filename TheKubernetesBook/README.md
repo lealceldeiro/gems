@@ -102,4 +102,66 @@ Two major components to service discovery:
 
 Kubernetes uses its internal DNS as a service registry.
 
-All Kubernetes Services automatically register their details with DNS.
+All Kubernetes Services automatically register their details with DNS, and all containers are pre-configured to use the
+cluster DNS for service discovery.
+
+The cluster DNS resolves Service names to ClusterIPs. These are stable virtual IPs on a special network called the
+_service network_. Although there are no routes to this network, the `kube-proxy` configures all cluster nodes to
+redirect traffic destined for the service network to Pod IPs on the Pod network.
+
+----
+
+Persistent volume subsystem: Kubernetes storage subsystem.
+
+_Container Storage Interface (CSI)_ is an open standard aimed at providing a clean storage interface for container
+orchestrators such as Kubernetes.
+
+- Persistent Volumes (PV): mapped to external storage assets
+- Persistent Volume Claims (PVC): authorizes applications (Pods) to use PVs
+- Storage Classes (SC): dynamically creates physical back-end storage resources that get automatically mapped to
+  Persistent Volumes (PV)
+
+Each provider (a.k.a. provisioner) needs a CSI plugin to expose their storage assets to Kubernetes. The plugin
+usually runs as a set of Pods in the `kube-system` Namespace.
+
+Access modes for volumes:
+
+- ReadWriteOnce (RWO): the PV can only be bound as R/W by a single PVC
+- ReadWriteMany (RWM): the PV can be bound as R/W by multiple PVCs
+- ReadOnlyMany (ROM): the PV can be bound as R/O by multiple PVCs
+
+----
+
+ConfigMaps and Secrets are the Kubernetes native way of decoupling applications and config data.
+
+They’re both first-class object in the Kubernetes API and can be created and manipulated with `kubectl apply`,
+`kubectl get`, and `kubectl describe` commands.
+
+ConfigMaps are designed for application configuration parameters and even entire configuration files, whereas Secrets
+are designed for sensitive configuration data.
+
+Both can be injected into containers at run-time via various constructs, with volumes being the preferred method,
+as they allow updates to eventually be reflected in running containers.
+
+Secrets are not encrypted in the cluster store, not encrypted in-flight on the network, and not encrypted when surfaced
+in a container.
+
+----
+
+`StatefulSet`s are for applications that need Pods to be predictable and long-lived.
+
+`StatefulSet`s guarantee:
+
+- Predictable and persistent Pod names
+- Predictable and persistent DNS hostnames
+- Predictable and persistent volume bindings
+
+Example: failed Pods managed by a _StatefulSet_ will be replaced by new Pods with the exact same Pod name, the exact
+same DNS hostname, and the exact same volumes. This is true even if the replacement Pod is started on a different
+cluster node. The same is not true of Pods managed by a _Deployment_.
+
+Usually, rollbacks in replicas managed by `StatefulSet`s require manual attention.
+
+Each Pod replica spawned by a StatefulSet gets a predictable and persistent name, DNS hostname, and unique set of
+volumes. These stay with the Pod for its entire lifecycle, including failures, restarts, scaling, and other scheduling
+operations. In fact, StatefulSet Pod names are integral to scaling operations and connecting to storage volumes.
