@@ -162,6 +162,31 @@ cluster node. The same is not true of Pods managed by a _Deployment_.
 
 Usually, rollbacks in replicas managed by `StatefulSet`s require manual attention.
 
-Each Pod replica spawned by a StatefulSet gets a predictable and persistent name, DNS hostname, and unique set of
+Each Pod replica spawned by a `StatefulSet` gets a predictable and persistent name, DNS hostname, and unique set of
 volumes. These stay with the Pod for its entire lifecycle, including failures, restarts, scaling, and other scheduling
 operations. In fact, StatefulSet Pod names are integral to scaling operations and connecting to storage volumes.
+
+----
+
+All requests to the API server include credentials and pass through authentication, authorization, and admission
+control. The connection between the client and the API server is also secured with TLS.
+
+The authentication layer is responsible for validating the identity of requests. Client certificates are commonly used,
+and integration with AD and other IAM services is recommended for production clusters. Kubernetes does not have its own
+identity database, meaning it doesn't store or manage user accounts.
+
+The authorization layer checks whether the authenticated user is authorized to carry out the action in the request.
+This layer is also pluggable and the most common module is RBAC, which is enabled on most Kubernetes clusters and has
+been stable/GA since Kubernetes 1.8.
+
+It's a least-privilege deny-by-default system. Meaning, all actions are denied by default, and specific actions are
+enabled by creating allow rules.
+
+Kubernetes doesn't support deny rules, it only supports _allow rules_.
+
+Admission control kicks in after authorization and is responsible for enforcing policies.
+
+Types of admission controllers:
+
+- Mutating: check for compliance and can modify requests
+- Validating: check for policy compliance but cannot modify requests
