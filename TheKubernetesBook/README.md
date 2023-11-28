@@ -190,3 +190,13 @@ Types of admission controllers:
 
 - Mutating: check for compliance and can modify requests
 - Validating: check for policy compliance but cannot modify requests
+
+----
+
+Kubernetes is API centric, and the API is exposed internally and externally via the API server.
+
+The API server runs as a control plane service, and all internal and external clients interact with each other and
+the API, via the API server.
+
+The API itself is a modern resource-based RESTful API that accepts CRUD-style operations via uniform HTTP methods such
+as `POST`, `GET`, `PUT`, `PATCH`, and `DELETE`.
