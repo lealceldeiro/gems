@@ -56,9 +56,9 @@ Notes from:
 
 ### [Quick Start Kubernetes](./QuickStartKubernetes)  <sup><sub>(*Nigel Poulton*)</sub></sup>
 
-### **`>`** [The Kubernetes Book](./TheKubernetesBook)  <sup><sub>(*Nigel Poulton*)</sub></sup>
+### [The Kubernetes Book](./TheKubernetesBook)  <sup><sub>(*Nigel Poulton*)</sub></sup>
 
-### [Kafka: The Definitive Guide](./KafkaTheDefinitiveGuide)  <sup><sub>(*Gwen Shapira*, *Todd Palino*, *Rajini Sivaram*, *Krit Petty*)</sub></sup>
+### **`>`** [Kafka: The Definitive Guide](./KafkaTheDefinitiveGuide)  <sup><sub>(*Gwen Shapira*, *Todd Palino*, *Rajini Sivaram*, *Krit Petty*)</sub></sup>
 
 ### [Building Event-Driven Microservices](./BuildingEventDrivenMicroservices)  <sup><sub>(*Adam Bellemare*)</sub></sup>
 
