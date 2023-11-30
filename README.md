@@ -1,217 +1,213 @@
-# Gems
-
-This repository is intended to be used as a memo for myself after reading some books which I think deserve to be kept at
-hand.
+This collection of notes is intended to be used as a memo for myself after reading some books which I think deserve to
+be kept at hand.
 
 It is public only because I think many people may find it useful as a summary or as a reading list to be considered,
 but, if you want to really learn about these topics, consider reading the linked books.
 
-However, the content here is not intended to be used as an official reference of any kind.
+The content here is not intended to be used as an official reference.
 
 <sup>If you're the co/author of some of these books and consider the content of this repository
-(https://github.com/lealceldeiro/gems/) doesn't comply with your work's copyright policy, please get in touch with me:
-[helloasiel@pm.me](mailto:helloasiel@pm.me)</sup>
+(`https://github.com/lealceldeiro/gems/`) doesn't comply with your work's copyright policy, please get in touch with me:
+[gems@leal.slmail.me](mailto:gems@leal.slmail.me)</sup>
 
-## Content
+## Books
 
-Notes from:
+### [Effective Java](./EffectiveJava3rdEdition)  <sup><sub>(Joshua J. Bloch)</sub></sup>
 
-### [Effective Java](./EffectiveJava3rdEdition)  <sup><sub>(*Joshua J. Bloch*)</sub></sup>
-
-### [Java Concurrency in Practice](./JavaConcurrencyInPractice)  <sup><sub>(*Brian Goetz, Tim Peierls, Joshua Bloch, Joseph Bowbeer, David Holmes, Doug Lea*)</sub></sup>
+### [Java Concurrency in Practice](./JavaConcurrencyInPractice)  <sup><sub>(Brian Goetz, Tim Peierls, Joshua Bloch, Joseph Bowbeer, David Holmes, Doug Lea)</sub></sup>
  
-### [PostgreSQL Developer's Guide](./PostgreSQLDevelopersGuide)  <sup><sub>(*Ibrar Ahmed, Asif Fayyaz, Amjad Shahzad*)</sub></sup>
+### [PostgreSQL Developer's Guide](./PostgreSQLDevelopersGuide)  <sup><sub>(Ibrar Ahmed, Asif Fayyaz, Amjad Shahzad)</sub></sup>
   
-### [Spring Boot 2 Recipes: A Problem-Solution Approach](./SpringBoot2Recipes)  <sup><sub>(*Marten Deinum*)</sub></sup>
+### [Spring Boot 2 Recipes: A Problem-Solution Approach](./SpringBoot2Recipes)  <sup><sub>(Marten Deinum)</sub></sup>
 
-### [Clean Code: A Handbook of Agile Software Craftsmanship](./CleanCode)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+### [Clean Code: A Handbook of Agile Software Craftsmanship](./CleanCode)  <sup><sub>(Robert C. Martin)</sub></sup>
 
-### [High-Performance Java Persistence](./HighPerformanceJavaPersistence)  <sup><sub>(*Vlad Mihalcea*)</sub></sup>
+### [High-Performance Java Persistence](./HighPerformanceJavaPersistence)  <sup><sub>(Vlad Mihalcea)</sub></sup>
 
-### [Design Patterns - Elements of Reusable Object-Oriented Software](./DesignPatternsElementsOfReusableObjectOrientesSoftware)  <sup><sub>(*Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides*)</sub></sup>
+### [Design Patterns - Elements of Reusable Object-Oriented Software](./DesignPatternsElementsOfReusableObjectOrientesSoftware)  <sup><sub>(Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides)</sub></sup>
 
-### [The Cucumber for Java Book: Behaviour-Driven Development for Testers and Developers](./TheCucumberForJavaBook)  <sup><sub>(*Seb Rose, Matt Wynne, Aslak Hellesoy*)</sub></sup>
+### [The Cucumber for Java Book: Behaviour-Driven Development for Testers and Developers](./TheCucumberForJavaBook)  <sup><sub>(Seb Rose, Matt Wynne, Aslak Hellesoy)</sub></sup>
 
-### [Specification by Example](./SpecificationByExample)  <sup><sub>(*Gojko Adzic*)</sub></sup>
+### [Specification by Example](./SpecificationByExample)  <sup><sub>(Gojko Adzic)</sub></sup>
 
-### [Java Cookbook: Problems and Solutions for Java Developers](./JavaCookBookProblemsAndSolutions)  <sup><sub>(*Ian F. Darwin*)</sub></sup>
+### [Java Cookbook: Problems and Solutions for Java Developers](./JavaCookBookProblemsAndSolutions)  <sup><sub>(Ian F. Darwin)</sub></sup>
 
-### [Mastering Regular Expressions](./MasteringRegularExpressions)  <sup><sub>(*Jeffrey E. F. Friedl*)</sub></sup>
+### [Mastering Regular Expressions](./MasteringRegularExpressions)  <sup><sub>(Jeffrey E. F. Friedl)</sub></sup>
 
-### [The Java Module System](./TheJavaModuleSystem)  <sup><sub>(*Nicolai Parlog*)</sub></sup>
+### [The Java Module System](./TheJavaModuleSystem)  <sup><sub>(Nicolai Parlog)</sub></sup>
 
-### [Building Microservices: Designing Fine-Grained Systems](./BuildingMicroservices)  <sup><sub>(*Sam Newman*)</sub></sup>
+### [Building Microservices: Designing Fine-Grained Systems](./BuildingMicroservices)  <sup><sub>(Sam Newman)</sub></sup>
 
-### [Stratospheric](./Stratospheric)  <sup><sub>(*Tom Hombergs*, *Björn Wilmsmann*, and *Philip Riecks*)</sub></sup>
+### [Stratospheric](./Stratospheric)  <sup><sub>(Tom Hombergs, Björn Wilmsmann, and Philip Riecks)</sub></sup>
 
-### [Docker Deep Dive](./DockerDeepDive)  <sup><sub>(*Nigel Poulton*)</sub></sup>
+### [Docker Deep Dive](./DockerDeepDive)  <sup><sub>(Nigel Poulton)</sub></sup>
 
-### **`>`** [Core Java: Advanced Features](./CoreJavaAdvancedFeatures)  <sup><sub>(*Cay Horstmann*)</sub></sup>
+### `>` [Core Java: Advanced Features](./CoreJavaAdvancedFeatures)  <sup><sub>(Cay Horstmann)</sub></sup>
 
-### [Pro Apache JMeter: Web Application Performance Testing](./ProApacheJMeterWebApplicationPerformanceTesting)  <sup><sub>(*Sai Matam*, *Jagdeep Jain*)</sub></sup>
+### [Pro Apache JMeter: Web Application Performance Testing](./ProApacheJMeterWebApplicationPerformanceTesting)  <sup><sub>(Sai Matam, Jagdeep Jain)</sub></sup>
 
-### **`>`** [Clean Craftsmanship](./CleanCraftsmanship)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+### `>` [Clean Craftsmanship](./CleanCraftsmanship)  <sup><sub>(Robert C. Martin)</sub></sup>
 
-### [Designing Data-Intensive Applications](./DesigningDataIntensiveApplications)  <sup><sub>(*Martin Kleppmann*)</sub></sup>
+### [Designing Data-Intensive Applications](./DesigningDataIntensiveApplications)  <sup><sub>(Martin Kleppmann)</sub></sup>
 
-### [Quick Start Kubernetes](./QuickStartKubernetes)  <sup><sub>(*Nigel Poulton*)</sub></sup>
+### [Quick Start Kubernetes](./QuickStartKubernetes)  <sup><sub>(Nigel Poulton)</sub></sup>
 
-### [The Kubernetes Book](./TheKubernetesBook)  <sup><sub>(*Nigel Poulton*)</sub></sup>
+### [The Kubernetes Book](./TheKubernetesBook)  <sup><sub>(Nigel Poulton)</sub></sup>
 
-### **`>`** [Kafka: The Definitive Guide](./KafkaTheDefinitiveGuide)  <sup><sub>(*Gwen Shapira*, *Todd Palino*, *Rajini Sivaram*, *Krit Petty*)</sub></sup>
+### `>` [Kafka: The Definitive Guide](./KafkaTheDefinitiveGuide)  <sup><sub>(Gwen Shapira, Todd Palino, Rajini Sivaram, Krit Petty)</sub></sup>
 
-### [Building Event-Driven Microservices](./BuildingEventDrivenMicroservices)  <sup><sub>(*Adam Bellemare*)</sub></sup>
+### [Building Event-Driven Microservices](./BuildingEventDrivenMicroservices)  <sup><sub>(Adam Bellemare)</sub></sup>
 
-### [Expert Oracle Database Architecture: Techniques and Solutions for High Performance and Productivity](./ExpertOracleDatabaseArchitectureTechniquesSolutionsHighPerformanceProductivity)  <sup><sub>(*Darl Kuhn*, *Thomas Kyte*)</sub></sup>
+### [Expert Oracle Database Architecture: Techniques and Solutions for High Performance and Productivity](./ExpertOracleDatabaseArchitectureTechniquesSolutionsHighPerformanceProductivity)  <sup><sub>(Darl Kuhn, Thomas Kyte)</sub></sup>
 
-### [Google Cloud Platform in Action](./GoogleCloudPlatformInAction)  <sup><sub>(*JJ Geewax*)</sub></sup>
+### [Google Cloud Platform in Action](./GoogleCloudPlatformInAction)  <sup><sub>(JJ Geewax)</sub></sup>
 
-### [Google Cloud Cookbook](./GoogleCloudCookbook)  <sup><sub>(*Rui Costa*, *Drew Hodun*)</sub></sup>
+### [Google Cloud Cookbook](./GoogleCloudCookbook)  <sup><sub>(Rui Costa, Drew Hodun)</sub></sup>
 
-### [Clean Architecture: A Craftsman's Guide to Software Structure and Design](./CleanArchitecture)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+### [Clean Architecture: A Craftsman's Guide to Software Structure and Design](./CleanArchitecture)  <sup><sub>(Robert C. Martin)</sub></sup>
 
-### [Software Architecture: The Hard Parts](./SoftwareArchitectureTheHardParts)  <sup><sub>(*Neal Ford*, *Mark Richards*, *Pramod Sadalage*, *Zhamak Dehghani*)</sub></sup>
+### [Software Architecture: The Hard Parts](./SoftwareArchitectureTheHardParts)  <sup><sub>(Neal Ford, Mark Richards, Pramod Sadalage, Zhamak Dehghani)</sub></sup>
 
-### [Get Your Hands Dirty on Clean Architecture](./GetYourHandsDirtyOnCleanArchitecture)  <sup><sub>(*Tom Hombergs*)</sub></sup>
+### [Get Your Hands Dirty on Clean Architecture](./GetYourHandsDirtyOnCleanArchitecture)  <sup><sub>(Tom Hombergs)</sub></sup>
 
-### [Strategic Monoliths and Microservices](./StrategicMonolithsAndMicroservices)  <sup><sub>(*Vaughn Vernon, *Jaskula Tomasz*)</sub></sup>
+### [Strategic Monoliths and Microservices](./StrategicMonolithsAndMicroservices)  <sup><sub>(Vaughn Vernon, Jaskula Tomasz)</sub></sup>
 
-### [Agile Software Development: Principles, Patterns, and Practices](./AgileSoftwareDevelopment)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+### [Agile Software Development: Principles, Patterns, and Practices](./AgileSoftwareDevelopment)  <sup><sub>(Robert C. Martin)</sub></sup>
 
-### [Clean Agile: Back to Basics](./CleanAgile)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+### [Clean Agile: Back to Basics](./CleanAgile)  <sup><sub>(Robert C. Martin)</sub></sup>
 
-### [The Clean Coder: A Code of Conduct for Professional Programmers](./TheCleanCoder)  <sup><sub>(*Robert Martin*)</sub></sup>
+### [The Clean Coder: A Code of Conduct for Professional Programmers](./TheCleanCoder)  <sup><sub>(Robert Martin)</sub></sup>
 
-### [Software Craftsman, The: Professionalism, Pragmatism, Pride](./SoftwareCraftsman)  <sup><sub>(*Sandro Mancuso*)</sub></sup>
+### [Software Craftsman, The: Professionalism, Pragmatism, Pride](./SoftwareCraftsman)  <sup><sub>(Sandro Mancuso)</sub></sup>
 
-### [SQL Antipatterns, Volume 1: Avoiding the Pitfalls of Database Programming 1st Edition](./SQLAntipatternsVolume1)  <sup><sub>(*Bill Karwin*)</sub></sup>
+### [SQL Antipatterns, Volume 1: Avoiding the Pitfalls of Database Programming 1st Edition](./SQLAntipatternsVolume1)  <sup><sub>(Bill Karwin)</sub></sup>
 
-### [Tidy First?](./TidyFirst)  <sup><sub>(*Kent Beck*)</sub></sup>
+### [Tidy First?](./TidyFirst)  <sup><sub>(Kent Beck)</sub></sup>
 
-### [The Software Engineer's Guidebook](./TheSoftwareEngineersGuidebook)  <sup><sub>(*Gergely Orosz*)</sub></sup>
+### [The Software Engineer's Guidebook](./TheSoftwareEngineersGuidebook)  <sup><sub>(Gergely Orosz)</sub></sup>
 
-### [Building a Second Brain](./BuildingASecondBrain)  <sup><sub>(*Tiago Forte*)</sub></sup>
+### [Building a Second Brain](./BuildingASecondBrain)  <sup><sub>(Tiago Forte)</sub></sup>
 
-### [Test Driven Development: By Example](./TestDrivenDevelopmentByExample)  <sup><sub>(*Kent Beck*)</sub></sup>
+### [Test Driven Development: By Example](./TestDrivenDevelopmentByExample)  <sup><sub>(Kent Beck)</sub></sup>
 
-### [Seriously Good Software](./SeriouslyGoodSoftware)  <sup><sub>(*Marco Faella*)</sub></sup>
+### [Seriously Good Software](./SeriouslyGoodSoftware)  <sup><sub>(Marco Faella)</sub></sup>
 
-### [Agile Java <sup><sub>TM</sub></sup>: Crafting Code with Test-Driven Development](./AgileJavaCraftingCodeWithTestDrivenDevelopment)  <sup><sub>(*Jeff Langr*)</sub></sup>
+### [Agile Java <sup><sub>TM</sub></sup>: Crafting Code with Test-Driven Development](./AgileJavaCraftingCodeWithTestDrivenDevelopment)  <sup><sub>(Jeff Langr)</sub></sup>
 
-### [Think like a CTO](./ThinkLikeCTO)  <sup><sub>(*Allan Williamson*)</sub></sup>
+### [Think like a CTO](./ThinkLikeCTO)  <sup><sub>(Allan Williamson)</sub></sup>
 
-### [Microservices in Action](./MicroservicesInAction)  <sup><sub>(*Morgan Bruce*, *Paulo A. Pereira*)</sub></sup>
+### [Microservices in Action](./MicroservicesInAction)  <sup><sub>(Morgan Bruce, Paulo A. Pereira)</sub></sup>
 
-### [Amazon Web Services in Action](./AmazonWebServicesInAction)  <sup><sub>(*Andreas Wittig*, *Michael Wittig*)</sub></sup>
+### [Amazon Web Services in Action](./AmazonWebServicesInAction)  <sup><sub>(Andreas Wittig, Michael Wittig)</sub></sup>
 
-### [Implementing Domain-Driven Design](./ImplementingDomainDrivenDesign)  <sup><sub>(*Vaughn Vernon*)</sub></sup>
+### [Implementing Domain-Driven Design](./ImplementingDomainDrivenDesign)  <sup><sub>(Vaughn Vernon)</sub></sup>
 
-### [Java 9 Modularity](./Java9Modularity)  <sup><sub>(*Sander Mak, Paul Bakker*)</sub></sup>
+### [Java 9 Modularity](./Java9Modularity)  <sup><sub>(Sander Mak, Paul Bakker)</sub></sup>
 
-### [Pro Git](./ProGit)  <sup><sub>(*Scott Chacon and Ben Straub*)</sub></sup>
+### [Pro Git](./ProGit)  <sup><sub>(Scott Chacon and Ben Straub)</sub></sup>
 
-### [Apache Maven CookBook](./ApacheMavenCookBook)  <sup><sub>(*Raghuram Bharathan*)</sub></sup>
+### [Apache Maven CookBook](./ApacheMavenCookBook)  <sup><sub>(Raghuram Bharathan)</sub></sup>
 
-### [Gradle in Action](./GradleInAction)  <sup><sub>(*Benjamin Muschko*)</sub></sup>
+### [Gradle in Action](./GradleInAction)  <sup><sub>(Benjamin Muschko)</sub></sup>
 
-### [Java 9 Regular Expressions](./Java9RegularExpressions)  <sup><sub>(*Anubhava Srivastava*)</sub></sup>
+### [Java 9 Regular Expressions](./Java9RegularExpressions)  <sup><sub>(Anubhava Srivastava)</sub></sup>
 
-### [Real World Java EE Patterns](./RealWorldJavaEEPatterns)  <sup><sub>(*Adam Bien*)</sub></sup>
+### [Real World Java EE Patterns](./RealWorldJavaEEPatterns)  <sup><sub>(Adam Bien)</sub></sup>
 
-### [BDD in Action](./BDDInAction)  <sup><sub>(*John Ferguson Smart*)</sub></sup>
+### [BDD in Action](./BDDInAction)  <sup><sub>(John Ferguson Smart)</sub></sup>
 
-### [Growing Object-Oriented Software, Guided by Tests](./GrowingObjectOrientedSoftwareGuidedByTests)  <sup><sub>(*Steve Freeman, Nat Pryce*)</sub></sup>
+### [Growing Object-Oriented Software, Guided by Tests](./GrowingObjectOrientedSoftwareGuidedByTests)  <sup><sub>(Steve Freeman, Nat Pryce)</sub></sup>
 
-### [Spring 5 Recipes: A Problem-Solution Approach](./Spring5Recipes)  <sup><sub>(*Marten Deinum*)</sub></sup>
+### [Spring 5 Recipes: A Problem-Solution Approach](./Spring5Recipes)  <sup><sub>(Marten Deinum)</sub></sup>
 
-### [Concurrent Programming in Java<sup><sub>TM</sub></sup>: Design Principles and Patterns](./ConcurrentProgrammingInJava)  <sup><sub>(*Doug Lea*)</sub></sup>
+### [Concurrent Programming in Java<sup><sub>TM</sub></sup>: Design Principles and Patterns](./ConcurrentProgrammingInJava)  <sup><sub>(Doug Lea)</sub></sup>
 
-### [Working Effectively with Legacy Code](./WorkingEffectivelyWithLegacyCode)  <sup><sub>(*Michael Feathers*)</sub></sup>
+### [Working Effectively with Legacy Code](./WorkingEffectivelyWithLegacyCode)  <sup><sub>(Michael Feathers)</sub></sup>
 
-### [Modern Java in Action](./Java8InAction)  <sup><sub>(*Raoul-Gabriel Urma, Mario Fusco, and Alan Mycroft*)</sub></sup>
+### [Modern Java in Action](./Java8InAction)  <sup><sub>(Raoul-Gabriel Urma, Mario Fusco, and Alan Mycroft)</sub></sup>
 
-### [Reality Is Broken](./RealityIsBroken) <sup><sub>(*JANE McGONIGAL*)</sub></sup>
+### [Reality Is Broken](./RealityIsBroken) <sup><sub>(JANE McGONIGAL)</sub></sup>
 
-### [Implementation Patterns](./ImplementationPatterns)  <sup><sub>(*Kent Beck*)</sub></sup>
+### [Implementation Patterns](./ImplementationPatterns)  <sup><sub>(Kent Beck)</sub></sup>
 
-### [Java Performance: In-depth Advice for Tuning and Programming Java](./JavaPerformanceAdviceForTuningAndProgramming)  <sup><sub>(*Scott Oaks*)</sub></sup>
+### [Java Performance: In-depth Advice for Tuning and Programming Java](./JavaPerformanceAdviceForTuningAndProgramming)  <sup><sub>(Scott Oaks)</sub></sup>
 
-### [Java Generics and Collections](./JavaGenericsAndCollections)  <sup><sub>(*Maurice Naftalin, Philip Wadler*)</sub></sup>
+### [Java Generics and Collections](./JavaGenericsAndCollections)  <sup><sub>(Maurice Naftalin, Philip Wadler)</sub></sup>
 
-### [UML For Java <sup><sub>TM</sub></sup> Programmers](./UmlForJavaProgrammers)  <sup><sub>(*Robert C. Martin*)</sub></sup>
+### [UML For Java <sup><sub>TM</sub></sup> Programmers](./UmlForJavaProgrammers)  <sup><sub>(Robert C. Martin)</sub></sup>
 
-### [Head First Design Patterns](./HeadFirstDesignPatterns)  <sup><sub>(*Eric Freeman, Bert Bates,  Kathy Sierra, Elisabeth Robson*)</sub></sup>
+### [Head First Design Patterns](./HeadFirstDesignPatterns)  <sup><sub>(Eric Freeman, Bert Bates,  Kathy Sierra, Elisabeth Robson)</sub></sup>
 
-### [Patterns of Enterprise Application Architecture](./PatternsofEnterpriseApplicationArchitecture)  <sup><sub>(*Martin Fowler*)</sub></sup>
+### [Patterns of Enterprise Application Architecture](./PatternsofEnterpriseApplicationArchitecture)  <sup><sub>(Martin Fowler)</sub></sup>
 
-### [Programming Pearls](./ProgrammingPearls)  <sup><sub>(*Jon Bentley*)</sub></sup>
+### [Programming Pearls](./ProgrammingPearls)  <sup><sub>(Jon Bentley)</sub></sup>
 
-### [The Mythical Man-Month](./TheMythicalManMonth)  <sup><sub>(*Frederick P. Brooks Jr.*)</sub></sup>
+### [The Mythical Man-Month](./TheMythicalManMonth)  <sup><sub>(Frederick P. Brooks Jr.)</sub></sup>
 
-### [Enterprise Integration Patterns](./EnterpriseIntegrationPatterns)  <sup><sub>(*Gregor Hohpe*, *Bobby Woolf*)</sub></sup>
+### [Enterprise Integration Patterns](./EnterpriseIntegrationPatterns)  <sup><sub>(Gregor Hohpe, Bobby Woolf)</sub></sup>
 
-### [Refactoring: Improving the Design of Existing Code](./RefactoringImprovingTheDesignOfExistingCode)  <sup><sub>(*Martin Fowler*)</sub></sup>
+### [Refactoring: Improving the Design of Existing Code](./RefactoringImprovingTheDesignOfExistingCode)  <sup><sub>(Martin Fowler)</sub></sup>
 
-### [The Design of Everyday Things](./TheDesignOfEverydayThings)  <sup><sub>(*Don Norman*)</sub></sup>
+### [The Design of Everyday Things](./TheDesignOfEverydayThings)  <sup><sub>(Don Norman)</sub></sup>
 
-### [Domain-Driven Design](./DomainDrivenDesign)  <sup><sub>(*Eric Evans*)</sub></sup>
+### [Domain-Driven Design](./DomainDrivenDesign)  <sup><sub>(Eric Evans)</sub></sup>
 
-### [Coders at Work: Reflections on the Craft of Programming](./CodersAtWork)  <sup><sub>(*Peter Seibel*)</sub></sup>
+### [Coders at Work: Reflections on the Craft of Programming](./CodersAtWork)  <sup><sub>(Peter Seibel)</sub></sup>
 
-### [Grokking Algorithms](./GrokkingAlgorithms)  <sup><sub>(*Aditya Y. Bhargava*)</sub></sup>
+### [Grokking Algorithms](./GrokkingAlgorithms)  <sup><sub>(Aditya Y. Bhargava)</sub></sup>
 
-### [Hibernate Tips: More than 70 solutions to common Hibernate](./HibernateTips)  <sup><sub>(*Thorben Janssen, Steve Ebersole*)</sub></sup>
+### [Hibernate Tips: More than 70 solutions to common Hibernate](./HibernateTips)  <sup><sub>(Thorben Janssen, Steve Ebersole)</sub></sup>
 
-### [Soft Skills: The software developer's life manual](./SoftSkills)  <sup><sub>(*John Sonmez*)</sub></sup>
+### [Soft Skills: The software developer's life manual](./SoftSkills)  <sup><sub>(John Sonmez)</sub></sup>
 
-### [Database Design for Mere Mortals](./DatabaseDesignForMereMortals)  <sup><sub>(*Michael J. Hernandez*)</sub></sup>
+### [Database Design for Mere Mortals](./DatabaseDesignForMereMortals)  <sup><sub>(Michael J. Hernandez)</sub></sup>
 
-### [The Complete Software Developer's Career Guide](./TheCompleteSoftwareDevelopersCareerGuide)  <sup><sub>(*John Sonmez*)</sub></sup>
+### [The Complete Software Developer's Career Guide](./TheCompleteSoftwareDevelopersCareerGuide)  <sup><sub>(John Sonmez)</sub></sup>
 
-### [The Pragmatic Programmer](./ThePragmaticProgrammer)  <sup><sub>(*David Thomas, Andrew Hunt*)</sub></sup>
+### [The Pragmatic Programmer](./ThePragmaticProgrammer)  <sup><sub>(David Thomas, Andrew Hunt)</sub></sup>
 
-### [The Art of Agile Development](./TheArtOfAgileDevelopment)  <sup><sub>(*James Shore, Shane Warden*)</sub></sup>
+### [The Art of Agile Development](./TheArtOfAgileDevelopment)  <sup><sub>(James Shore, Shane Warden)</sub></sup>
 
-### [Zero Bugs and Program Faster](./ZeroBugsAndProgramFaster)  <sup><sub>(*Kate Thompson*)</sub></sup>
+### [Zero Bugs and Program Faster](./ZeroBugsAndProgramFaster)  <sup><sub>(Kate Thompson)</sub></sup>
 
-### [Essential Scrum](./EssentialScrum)  <sup><sub>(*Kenneth S. Rubin*)</sub></sup>
+### [Essential Scrum](./EssentialScrum)  <sup><sub>(Kenneth S. Rubin)</sub></sup>
 
-### [Scrum: The Art of Doing Twice the Work in Half the Time](./ScrumTheArtOfDoingTwiceTheWorkInHalfTheTime)  <sup><sub>(*Jeff Sutherland, J.J. Sutherland*)</sub></sup>
+### [Scrum: The Art of Doing Twice the Work in Half the Time](./ScrumTheArtOfDoingTwiceTheWorkInHalfTheTime)  <sup><sub>(Jeff Sutherland, J.J. Sutherland)</sub></sup>
 
-### [The Deadline: A Novel About Project Management](./TheDeadlineANovelAboutProjectManagement)  <sup><sub>(*Tom DeMarco*)</sub></sup>
+### [The Deadline: A Novel About Project Management](./TheDeadlineANovelAboutProjectManagement)  <sup><sub>(Tom DeMarco)</sub></sup>
 
-### [Object-Oriented Analysis and Design with Applications](./ObjectOrientedAnalysisAndDesignWithApplications)  <sup><sub>(*Grady Booch, Robert A. Maksimchuk, Michael W. Engle*)</sub></sup>
+### [Object-Oriented Analysis and Design with Applications](./ObjectOrientedAnalysisAndDesignWithApplications)  <sup><sub>(Grady Booch, Robert A. Maksimchuk, Michael W. Engle)</sub></sup>
 
-### [The Effective Engineer](./TheEffectiveEngineer)  <sup><sub>(*Edmond Lau, Bret Taylor*)</sub></sup>
+### [The Effective Engineer](./TheEffectiveEngineer)  <sup><sub>(Edmond Lau, Bret Taylor)</sub></sup>
 
-### [The Inmates Are Running the Asylum](./TheInmatesAreRunningTheAsylum)  <sup><sub>(*Alan Cooper*)</sub></sup>
+### [The Inmates Are Running the Asylum](./TheInmatesAreRunningTheAsylum)  <sup><sub>(Alan Cooper)</sub></sup>
 
-### [Skin in the Game](./SkinInTheGame)  <sup><sub>(*Nassim Nicholas Taleb*)</sub></sup>
+### [Skin in the Game](./SkinInTheGame)  <sup><sub>(Nassim Nicholas Taleb)</sub></sup>
 
-### [What You Do Is Who You Are](./WhatYouDoIsWhoYouAre)  <sup><sub>(*Ben Horowitz*)</sub></sup>
+### [What You Do Is Who You Are](./WhatYouDoIsWhoYouAre)  <sup><sub>(Ben Horowitz)</sub></sup>
 
-### [Never Split the Difference](./NeverSplitTheDifference)  <sup><sub>(*Chris Voss, Chris Voss*)</sub></sup>
+### [Never Split the Difference](./NeverSplitTheDifference)  <sup><sub>(Chris Voss, Chris Voss)</sub></sup>
 
-### [Taming Thymeleaf](./TamingThymeleaf)  <sup><sub>(*Wim Deblauwe*)</sub></sup>
+### [Taming Thymeleaf](./TamingThymeleaf)  <sup><sub>(Wim Deblauwe)</sub></sup>
 
-### [Effective Software Testing](./EffectiveSoftwareTesting)  <sup><sub>(*Maurício Aniche*)</sub></sup>
+### [Effective Software Testing](./EffectiveSoftwareTesting)  <sup><sub>(Maurício Aniche)</sub></sup>
 
-### [Beyond Coding: How Children Learn Human Values through Programming](./BeyondCoding)  <sup><sub>(*Marina Umaschi Bers*)</sub></sup>
+### [Beyond Coding: How Children Learn Human Values through Programming](./BeyondCoding)  <sup><sub>(Marina Umaschi Bers)</sub></sup>
 
-### [Advanced API Security: OAuth 2.0 and Beyond](./AdvancedAPISecurityOAuth20andBeyond)  <sup><sub>(*Prabath Siriwardena*)</sub></sup>
+### [Advanced API Security: OAuth 2.0 and Beyond](./AdvancedAPISecurityOAuth20andBeyond)  <sup><sub>(Prabath Siriwardena)</sub></sup>
 
-### [The DevOps Handbook: How to Create World-Class Agility, Reliability, & Security in Technology Organizations](./TheDevOpsHandbookHowCreateWorldClassAgilityReliabilitySecurityTechnologyOrganizations)  <sup><sub>(*Gene Kim*, *Jez Humble*, *Patrick Debois*, *John Willis*, *Nicole Forsgren*)</sub></sup>
+### [The DevOps Handbook: How to Create World-Class Agility, Reliability, & Security in Technology Organizations](./TheDevOpsHandbookHowCreateWorldClassAgilityReliabilitySecurityTechnologyOrganizations)  <sup><sub>(Gene Kim, Jez Humble, Patrick Debois, John Willis, Nicole Forsgren)</sub></sup>
 
-### [The Kubernetes Bible: The definitive guide to deploying and managing Kubernetes across major cloud platforms](./TheKubernetesBibleTheGefinitiveGuideToDeployingAndManagingKubernetesAcrossMajorCloudPlatforms)  <sup><sub>(*Nassim Kebbani*, *Piotr Tylenda*, *Russ McKendrick*)</sub></sup>
+### [The Kubernetes Bible: The definitive guide to deploying and managing Kubernetes across major cloud platforms](./TheKubernetesBibleTheGefinitiveGuideToDeployingAndManagingKubernetesAcrossMajorCloudPlatforms)  <sup><sub>(Nassim Kebbani, Piotr Tylenda, Russ McKendrick)</sub></sup>
 
-### [Advanced Algorithms and Data Structures](./AdvancedAlgorithmsAndDataStructures)  <sup><sub>(*Marcello La Rocca*)</sub></sup>
+### [Advanced Algorithms and Data Structures](./AdvancedAlgorithmsAndDataStructures)  <sup><sub>(Marcello La Rocca)</sub></sup>
 
-### [97 Things Every Data Engineer Should Know](./97ThingsEveryDataEngineerShouldKnow)  <sup><sub>(*Tobias Macey*)</sub></sup>
+### [97 Things Every Data Engineer Should Know](./97ThingsEveryDataEngineerShouldKnow)  <sup><sub>(Tobias Macey)</sub></sup>
 
-### [Postgresql: Up and Running: A Practical Guide to the Advanced Open Source Database](./PostgresqlUpRunningPracticalGuideAdvancedOpenSourceDatabase)  <sup><sub>(*Regina Obe*, *Leo Hsu*)</sub></sup>
+### [Postgresql: Up and Running: A Practical Guide to the Advanced Open Source Database](./PostgresqlUpRunningPracticalGuideAdvancedOpenSourceDatabase)  <sup><sub>(Regina Obe, Leo Hsu)</sub></sup>
 
-### [Mastering Professional Scrum: A Practitioners Guide to Overcoming Challenges and Maximizing the Benefits of Agility](./MastProfScrPractGuideOvercChallengesMaxBenefitAgility)  <sup><sub>(*Stephanie Ockerman*, *Simon Reindl*)</sub></sup>
+### [Mastering Professional Scrum: A Practitioners Guide to Overcoming Challenges and Maximizing the Benefits of Agility](./MastProfScrPractGuideOvercChallengesMaxBenefitAgility)  <sup><sub>(Stephanie Ockerman, Simon Reindl)</sub></sup>
 
-### [Programming Logic & Design, Comprehensive](./ProgrammingLogicDesignComprehensive)  <sup><sub>(*Joyce Farrell*)</sub></sup>
+### [Programming Logic & Design, Comprehensive](./ProgrammingLogicDesignComprehensive)  <sup><sub>(Joyce Farrell)</sub></sup>
 
-### [TCP/IP Illustrated, Volume 1: The Protocols](./TCPIPIllustratedVolume1)  <sup><sub>(*Kevin R. Fall, W. Richard Stevens*)</sub></sup>
+### [TCP/IP Illustrated, Volume 1: The Protocols](./TCPIPIllustratedVolume1)  <sup><sub>(Kevin R. Fall, W. Richard Stevens)</sub></sup>
