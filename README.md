@@ -1,3 +1,7 @@
+[![GitHub Repo stars](https://img.shields.io/github/stars/lealceldeiro/gems?style=social&logo=github&cacheSeconds=259200)](https://github.com/lealceldeiro/gems/)
+
+----
+
 This collection of notes is intended to be used as a memo for myself after reading some books which I think deserve to
 be kept at hand.
 
