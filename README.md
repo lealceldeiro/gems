@@ -215,3 +215,7 @@ The content here is not intended to be used as an official reference.
 ### [Programming Logic & Design, Comprehensive](./ProgrammingLogicDesignComprehensive)  <sup><sub>(Joyce Farrell)</sub></sup>
 
 ### [TCP/IP Illustrated, Volume 1: The Protocols](./TCPIPIllustratedVolume1)  <sup><sub>(Kevin R. Fall, W. Richard Stevens)</sub></sup>
+
+### [TCP/IP Illustrated: The Implementation, Vol. 2](./TCPIPIllustratedVolume2)  <sup><sub>(W. Richard Stevens)</sub></sup>
+
+### [TCP/IP Illustrated: v. 3: TCP for Transactions, HTTP, NNTP and the Unix Domain Protocols](./TCPIPIllustratedVolume3)  <sup><sub>(W. Richard Stevens)</sub></sup>
