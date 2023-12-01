@@ -195,7 +195,7 @@ Source code at https://github.com/jbloch/effective-java-3e-source-code
   Set<?> s = (Set<?>) o;
   // Wildcard type
   ...
-}
+  }
 ```
 
 ### Item 27: Eliminate unchecked warnings
