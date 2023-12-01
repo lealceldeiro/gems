@@ -4,3 +4,7 @@
 @import "{{ site.theme }}";
 
 /* custom style of imports here */
+
+div.inner {
+    width: 80%;
+}
