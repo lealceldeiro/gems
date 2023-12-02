@@ -11,8 +11,9 @@ only the Kafka image is actually needed when the version 2.8 or later of Apache 
 The following example uses [bitnami/kafka](https://hub.docker.com/r/bitnami/kafka) and is based in that official
 documentation examples.
 
-1. Create a Docker network (see [networking](https://docs.docker.com/network/)). This is to get the Apache Kafka server
-   running inside the container accessed by another Apache Kafka client, running inside another container.
+- **Create a Docker network** (see [networking](https://docs.docker.com/network/)). This is to get the Apache Kafka
+  server
+  running inside the container accessed by another Apache Kafka client, running inside another container.
 
 > This is because containers attached to the same network can communicate with each other using the container name as
 > the hostname.
@@ -21,7 +22,7 @@ documentation examples.
 docker network create app-tier --driver bridge
 ```
 
-2. Launch the Apache Kafka server instance from a docker container
+- **Launch the Apache Kafka server** instance from a docker container
 
 > Use the `--network app-tier` argument to run the docker command to attach the Apache Kafka container to the `app-tier`
 > network.
@@ -37,7 +38,7 @@ docker run -d --name kafka-server --hostname kafka-server --network app-tier \
     bitnami/kafka:latest
 ```
 
-3. Launch an Apache Kafka client instance from another container and list topics
+- **Launch an Apache Kafka client** instance from another container and list topics
 
 > This new container instance running the client will connect to the server created in the previous step
 
@@ -45,21 +46,23 @@ docker run -d --name kafka-server --hostname kafka-server --network app-tier \
 docker run -it --rm --network app-tier bitnami/kafka:latest kafka-topics.sh --bootstrap-server kafka-server:9092 --list
 ```
 
-4. Create a topic
+> At this point there should not be any topics displayed
+
+- **Create a topic**
 
 ```shell
 docker run -it --rm --network app-tier bitnami/kafka:latest kafka-topics.sh --bootstrap-server kafka-server:9092 \
     --create --replication-factor 1 --partitions 1 --topic topic1
 ```
 
-5. Verify the previously created topic
+- **Verify the previously created topic**
 
 ```shell
 docker run -it --rm --network app-tier bitnami/kafka:latest kafka-topics.sh --bootstrap-server kafka-server:9092 \
     --describe --topic topic1
 ```
 
-6. Produce messages to the previously created topic
+- **Produce messages** to the previously created topic
 
 ```shell
 docker run -it --rm --network app-tier \
@@ -69,7 +72,7 @@ docker run -it --rm --network app-tier \
 > When the console waits for input (symbol `>` visible) enter some message and hit enter (once for every message).
 > To finish producing messages do `Ctrl` + `C` (`^C`)
 
-6. Consume messages from the previously created topic
+- **Consume messages** from the previously created topic
 
 ```shell
 docker run -it --rm --network app-tier \
