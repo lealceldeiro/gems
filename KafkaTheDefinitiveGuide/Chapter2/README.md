@@ -27,8 +27,7 @@ docker network create app-tier --driver bridge
 > network.
 
 ```shell
-docker run -d --name kafka-server --hostname kafka-server \
-    --network app-tier \
+docker run -d --name kafka-server --hostname kafka-server --network app-tier \
     -e KAFKA_CFG_NODE_ID=0 \
     -e KAFKA_CFG_PROCESS_ROLES=controller,broker \
     -e KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093 \
@@ -53,12 +52,33 @@ docker run -it --rm --network app-tier bitnami/kafka:latest kafka-topics.sh --bo
     --create --replication-factor 1 --partitions 1 --topic topic1
 ```
 
-4. Verify the previously created topic
+5. Verify the previously created topic
 
 ```shell
 docker run -it --rm --network app-tier bitnami/kafka:latest kafka-topics.sh --bootstrap-server kafka-server:9092 \
-    --describe --topic test_topic
+    --describe --topic topic1
 ```
+
+6. Produce messages to the previously created topic
+
+```shell
+docker run -it --rm --network app-tier \
+    bitnami/kafka:latest kafka-console-producer.sh --bootstrap-server kafka-server:9092 --topic topic1
+```
+
+> When the console waits for input (symbol `>` visible) enter some message and hit enter (once for every message).
+> To finish producing messages do `Ctrl` + `C` (`^C`)
+
+6. Consume messages from the previously created topic
+
+```shell
+docker run -it --rm --network app-tier \
+    bitnami/kafka:latest kafka-console-consumer.sh --bootstrap-server kafka-server:9092 \
+    --topic topic1 --from-beginning
+```
+
+> When the console waits for input (symbol `>` visible) enter some message and hit enter (once for every message).
+> To finish producing messages do `Ctrl` + `C` (`^C`)
 
 <details>
 <summary>Docker run info</summary>
