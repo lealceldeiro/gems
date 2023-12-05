@@ -80,9 +80,6 @@ docker run -it --rm --network app-tier \
     --topic topic1 --from-beginning
 ```
 
-> When the console waits for input (symbol `>` visible) enter some message and hit enter (once for every message).
-> To finish producing messages do `Ctrl` + `C` (`^C`)
-
 <details>
 <summary>Docker run info</summary>
 See https://docs.docker.com/engine/reference/commandline/run/ for more details.
