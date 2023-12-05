@@ -94,14 +94,14 @@ the container.
 
 ### General Broker Parameters
 
-- broker.id: it must be unique for each broker within a single Kafka cluster
-- listeners: defined as `<protocol>://<hostname>:<port>`, i.e.: `PLAINTEXT://localhost:9092,SSL://:9091`
-- zookeeper.connect: location of the ZooKeeper used for storing the broker metadata in the format `hostname:port/path`
-- log.dirs: comma-separated list of paths on disk where all the message log segments are persisted
-- num.recovery.threads.per.data.dir: number of recovery threads per log directory
-- auto.create.topics.enable: whether to create (or not) automatically topics under certain conditions
-- auto.leader.rebalance.enable: this config can be specified to ensure leadership is balanced as much as possible
-- delete.topic.enable: this config can be set to prevent arbitrary deletions of topics (false: disabling topic deletion)
+- `broker.id`: it must be unique for each broker within a single Kafka cluster
+- `listeners`: defined as `<protocol>://<hostname>:<port>`, i.e.: `PLAINTEXT://localhost:9092,SSL://:9091`
+- `zookeeper.connect`: location of the ZooKeeper used for storing the broker metadata in the format `hostname:port/path`
+- `log.dirs`: comma-separated list of paths on disk where all the message log segments are persisted
+- `num.recovery.threads.per.data.dir`: number of recovery threads per log directory
+- `auto.create.topics.enable`: whether to create (or not) automatically topics under certain conditions
+- `auto.leader.rebalance.enable`: this config can be specified to ensure leadership is balanced as much as possible
+- `delete.topic.enable`: this config can be set to prevent arbitrary deletions of topics (false: disabling topic deletion)
 
 ### Selecting Hardware
 
