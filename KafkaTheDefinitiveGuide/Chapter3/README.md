@@ -63,3 +63,44 @@ Some of the parameters that have a significant impact on memory use, performance
   valid values are `snappy`, `gzip`, `lz4`, and `zstd`
 - `batch.size`: controls the amount of memory **in bytes** used for each batch when batching multiple messages together
   by the producer before sending them to the broker
+
+## Serializers
+
+### Apache Avro
+
+Apache Avro is a language-neutral data serialization format.
+
+Generating Avro classes can be done either using the `avro-tools.jar` or the Avro Maven plugin, both part of Apache
+Avro ([see docs](https://avro.apache.org/docs/current/getting-started-java/)).
+
+## Partitions
+
+When partitioning keys is important, the easiest solution is to create topics with sufficient partitions, see
+[How to Choose the Number of Topics/Partitions in a Kafka Cluster?](https://www.confluent.io/blog/how-choose-number-topics-partitions-kafka-cluster/)
+
+## Headers
+
+Records can also include headers. Record headers give us the ability to add some metadata about the Kafka record,
+without adding any extra information to the key/value pair of the record itself.
+
+## Interceptors
+
+Interceptors can help us to modify the behavior of our Kafka client application without modifying its code.
+
+Common use cases for producer interceptors include capturing monitoring and tracing information; enhancing the message
+with standard headers, especially for lineage tracking purposes; and redacting sensitive information.
+
+## Quotas and Throttling
+
+Kafka brokers have the ability to limit the rate at which messages are produced and consumed. This is done via the
+quota mechanism. Kafka has three quota types: produce, consume, and request.
+
+Produce and consume quotas limit the rate at which clients can send and receive data, measured in bytes per second.
+Request quotas limit the percentage of time the broker spends processing client requests.
+
+When a client reaches its quota, the broker will start throttling the client’s requests to prevent it from exceeding
+the quota. This means that the broker will delay responses to client requests; in most clients this will automatically
+reduce the request rate (since the number of in-flight requests is limited) and bring the client traffic down to a level
+allowed by the quota. To protect the broker from misbehaved clients sending additional requests while being throttled,
+the broker will also mute the communication channel with the client for the period of time needed to achieve compliance
+with the quota.
