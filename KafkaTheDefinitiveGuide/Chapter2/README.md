@@ -38,6 +38,9 @@ docker run -d --name kafka-server --hostname kafka-server --network app-tier \
     bitnami/kafka:latest
 ```
 
+> After, the container is (created) and ran the first time, then, in subsequent runs only this is required, to start
+> the container: `docker container start kafka-server`
+
 - **Launch an Apache Kafka client** instance from another container and list topics
 
 > This new container instance running the client will connect to the server created in the previous step
