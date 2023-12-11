@@ -28,25 +28,33 @@ docker network create app-tier --driver bridge
 > network.
 
 ```shell
-docker run -d --name kafka-server --hostname kafka-server --network app-tier \
+docker run -d -p 9094:9094 --name kafka-server --hostname kafka-server --network app-tier \
     -e KAFKA_CFG_NODE_ID=0 \
     -e KAFKA_CFG_PROCESS_ROLES=controller,broker \
-    -e KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093 \
-    -e KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT \
+    -e KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:9094 \
+    -e KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://:9092,EXTERNAL://localhost:9094 \
+    -e KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT \
     -e KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka-server:9093 \
     -e KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER \
-    bitnami/kafka:latest
+    bitnami/kafka:3.6.1
 ```
 
-> After, the container is (created) and ran the first time, then, in subsequent runs only this is required, to start
-> the container: `docker container start kafka-server`
+> The following parameters are optional in this minimal setup, and are only required if the server will be accessed from
+> the same local machine by another app running from the host machine.
+> - `-p 9094:9094`
+> - `EXTERNAL://:9094` in `KAFKA_CFG_LISTENERS`
+> - `-e KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://:9092,EXTERNAL://localhost:9094 \`
+> - and, `EXTERNAL:PLAINTEXT` in `KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP`
+>
+> Also, after, the container is (created) and ran the first time, then, in subsequent runs only this is required, to
+> start the container: `docker container start kafka-server`
 
 - **Launch an Apache Kafka client** instance from another container and list topics
 
 > This new container instance running the client will connect to the server created in the previous step
 
 ```shell
-docker run -it --rm --network app-tier bitnami/kafka:latest kafka-topics.sh --bootstrap-server kafka-server:9092 --list
+docker run -it --rm --network app-tier bitnami/kafka:3.6.1 kafka-topics.sh --bootstrap-server kafka-server:9092 --list
 ```
 
 > At this point there should not be any topics displayed
@@ -54,14 +62,14 @@ docker run -it --rm --network app-tier bitnami/kafka:latest kafka-topics.sh --bo
 - **Create a topic**
 
 ```shell
-docker run -it --rm --network app-tier bitnami/kafka:latest kafka-topics.sh --bootstrap-server kafka-server:9092 \
+docker run -it --rm --network app-tier bitnami/kafka:3.6.1 kafka-topics.sh --bootstrap-server kafka-server:9092 \
     --create --replication-factor 1 --partitions 1 --topic topic1
 ```
 
 - **Verify the previously created topic**
 
 ```shell
-docker run -it --rm --network app-tier bitnami/kafka:latest kafka-topics.sh --bootstrap-server kafka-server:9092 \
+docker run -it --rm --network app-tier bitnami/kafka:3.6.1 kafka-topics.sh --bootstrap-server kafka-server:9092 \
     --describe --topic topic1
 ```
 
@@ -69,7 +77,7 @@ docker run -it --rm --network app-tier bitnami/kafka:latest kafka-topics.sh --bo
 
 ```shell
 docker run -it --rm --network app-tier \
-    bitnami/kafka:latest kafka-console-producer.sh --bootstrap-server kafka-server:9092 --topic topic1
+    bitnami/kafka:3.6.1 kafka-console-producer.sh --bootstrap-server kafka-server:9092 --topic topic1
 ```
 
 > When the console waits for input (symbol `>` visible) enter some message and hit enter (once for every message).
@@ -79,7 +87,7 @@ docker run -it --rm --network app-tier \
 
 ```shell
 docker run -it --rm --network app-tier \
-    bitnami/kafka:latest kafka-console-consumer.sh --bootstrap-server kafka-server:9092 \
+    bitnami/kafka:3.6.1 kafka-console-consumer.sh --bootstrap-server kafka-server:9092 \
     --topic topic1 --from-beginning
 ```
 
@@ -104,7 +112,8 @@ the container.
 - `num.recovery.threads.per.data.dir`: number of recovery threads per log directory
 - `auto.create.topics.enable`: whether to create (or not) automatically topics under certain conditions
 - `auto.leader.rebalance.enable`: this config can be specified to ensure leadership is balanced as much as possible
-- `delete.topic.enable`: this config can be set to prevent arbitrary deletions of topics (false: disabling topic deletion)
+- `delete.topic.enable`: this config can be set to prevent arbitrary deletions of topics (false: disabling topic
+  deletion)
 
 ### Selecting Hardware
 
