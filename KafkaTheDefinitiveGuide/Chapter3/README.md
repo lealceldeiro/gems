@@ -1,5 +1,10 @@
 # CHAPTER 3: Kafka Producers: Writing Messages to Kafka
 
+## Source code
+
+The source code of a sample Java Kafka Producer, based on the content from this chapter, can be found
+[here](https://github.com/lealceldeiro/kafkaproducer).
+
 ## Producer Overview
 
 Messages to Kafka are produced by creating a `ProducerRecord`, which includes
