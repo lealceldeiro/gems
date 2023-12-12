@@ -68,6 +68,8 @@ The content here is not intended to be used as an official reference.
 
 ### [Google Cloud Cookbook](./GoogleCloudCookbook)  <sup><sub>(Rui Costa, Drew Hodun)</sub></sup>
 
+### [Patterns of Enterprise Application Architecture](./PatternsofEnterpriseApplicationArchitecture)  <sup><sub>(Martin Fowler)</sub></sup>
+
 ### [Clean Architecture: A Craftsman's Guide to Software Structure and Design](./CleanArchitecture)  <sup><sub>(Robert C. Martin)</sub></sup>
 
 ### [Fundamentals of Software Architecture: An Engineering Approach](./FundamentalsOfSoftwareArchitectureAnEngineeringApproach)  <sup><sub>(Neal Ford, Mark Richards)</sub></sup>
@@ -143,8 +145,6 @@ The content here is not intended to be used as an official reference.
 ### [UML For Java <sup><sub>TM</sub></sup> Programmers](./UmlForJavaProgrammers)  <sup><sub>(Robert C. Martin)</sub></sup>
 
 ### [Head First Design Patterns](./HeadFirstDesignPatterns)  <sup><sub>(Eric Freeman, Bert Bates,  Kathy Sierra, Elisabeth Robson)</sub></sup>
-
-### [Patterns of Enterprise Application Architecture](./PatternsofEnterpriseApplicationArchitecture)  <sup><sub>(Martin Fowler)</sub></sup>
 
 ### [Programming Pearls](./ProgrammingPearls)  <sup><sub>(Jon Bentley)</sub></sup>
 
