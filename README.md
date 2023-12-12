@@ -70,6 +70,8 @@ The content here is not intended to be used as an official reference.
 
 ### [Clean Architecture: A Craftsman's Guide to Software Structure and Design](./CleanArchitecture)  <sup><sub>(Robert C. Martin)</sub></sup>
 
+### [Fundamentals of Software Architecture: An Engineering Approach](./FundamentalsOfSoftwareArchitectureAnEngineeringApproach)  <sup><sub>(Neal Ford, Mark Richards)</sub></sup>
+
 ### [Software Architecture: The Hard Parts](./SoftwareArchitectureTheHardParts)  <sup><sub>(Neal Ford, Mark Richards, Pramod Sadalage, Zhamak Dehghani)</sub></sup>
 
 ### [Get Your Hands Dirty on Clean Architecture](./GetYourHandsDirtyOnCleanArchitecture)  <sup><sub>(Tom Hombergs)</sub></sup>
