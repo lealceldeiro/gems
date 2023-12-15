@@ -7,3 +7,5 @@ Main notes taken from the book [Kafka: The Definitive Guide: Real-Time Data and 
 [CHAPTER 2:  Installing Kafka](./Chapter2)
 
 [CHAPTER 3: Kafka Producers: Writing Messages to Kafka](./Chapter3)
+
+[CHAPTER 4: Kafka Consumers: Reading Data from Kafka](./Chapter4)
