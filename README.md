@@ -200,6 +200,8 @@ The content here is not intended to be used as an official reference.
 
 ### [Effective Software Testing](./EffectiveSoftwareTesting)  <sup><sub>(Maurício Aniche)</sub></sup>
 
+### [100 Java Mistakes and How to Avoid Them](./JavaMistakesAndHowAvoidThem)  <sup><sub>(Tagir Valeev)</sub></sup>
+
 ### [Beyond Coding: How Children Learn Human Values through Programming](./BeyondCoding)  <sup><sub>(Marina Umaschi Bers)</sub></sup>
 
 ### [Advanced API Security: OAuth 2.0 and Beyond](./AdvancedAPISecurityOAuth20andBeyond)  <sup><sub>(Prabath Siriwardena)</sub></sup>
