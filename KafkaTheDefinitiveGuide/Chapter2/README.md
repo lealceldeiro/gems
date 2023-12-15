@@ -39,6 +39,9 @@ docker run -d -p 9094:9094 --name kafka-server --hostname kafka-server --network
     bitnami/kafka:3.6.1
 ```
 
+To create a cluster (with more than one broker) see
+[Setting up an Apache Kafka cluster](https://github.com/bitnami/containers/blob/main/bitnami/kafka/README.md#setting-up-a-apache-kafka-cluster)
+
 > The following parameters are optional in this minimal setup, and are only required if the server will be accessed from
 > the same local machine by another app running from the host machine.
 > - `-p 9094:9094`
