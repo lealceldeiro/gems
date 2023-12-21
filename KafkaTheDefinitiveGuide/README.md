@@ -11,3 +11,5 @@ Main notes taken from the book [Kafka: The Definitive Guide: Real-Time Data and 
 [CHAPTER 4: Kafka Consumers: Reading Data from Kafka](./Chapter4)
 
 [CHAPTER 5: Managing Apache Kafka Programmatically](./Chapter5)
+
+[CHAPTER 6: Kafka Internals](./Chapter6)
