@@ -13,3 +13,13 @@ Main notes taken from the book [Kafka: The Definitive Guide: Real-Time Data and 
 [CHAPTER 5: Managing Apache Kafka Programmatically](./Chapter5)
 
 [CHAPTER 6: Kafka Internals](./Chapter6)
+
+[CHAPTER 7: Reliable Data Delivery](./Chapter7)
+
+[CHAPTER 8: Exactly-Once Semantics](./Chapter8)
+
+[CHAPTER 9: Building Data Pipelines](./Chapter9)
+
+[CHAPTER 10: Cross-Cluster Data Mirroring](./Chapter10)
+
+[CHAPTER 11: Securing Kafka](./Chapter11)
