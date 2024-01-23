@@ -12,7 +12,7 @@ The content here is not intended to be used as an official reference.
 
 <sup>If you're the co/author of some of these books and consider the content of this repository
 (`https://github.com/lealceldeiro/gems/`) doesn't comply with your work's copyright policy, please get in touch with me:
-[gems@leal.slmail.me](mailto:gems@leal.slmail.me)</sup>
+[asiel@lealceldeiro.com](mailto:asiel@lealceldeiro.com)</sup>
 
 ## Books
 
