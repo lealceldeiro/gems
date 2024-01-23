@@ -84,7 +84,8 @@ docker run -it --rm --network app-tier \
 ```
 
 > When the console waits for input (symbol `>` visible) enter some message and hit enter (once for every message).
-> To finish producing messages do `Ctrl` + `C` (`^C`)
+> To finish producing messages send an end-of-file (EOF) character to close the client. In most common terminals,
+> this is done with `Control` + `D` (`^D`). If that doesn't work, then do `Ctrl` + `C` (`^C`)
 
 - **Consume messages** from the previously created topic
 
