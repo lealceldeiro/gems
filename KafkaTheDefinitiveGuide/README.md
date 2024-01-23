@@ -23,3 +23,5 @@ Main notes taken from the book [Kafka: The Definitive Guide: Real-Time Data and 
 [CHAPTER 10: Cross-Cluster Data Mirroring](./Chapter10)
 
 [CHAPTER 11: Securing Kafka](./Chapter11)
+
+[CHAPTER 12: Administering Kafka](./Chapter12)
