@@ -2,6 +2,11 @@
 
 ----
 
+**NOTICE**: New notes live now at [https://lealceldeiro.com/booknotes.html](https://lealceldeiro.com/booknotes.html).
+Older notes will stay here.
+
+----
+
 [![GitHub Repo stars](https://img.shields.io/github/stars/lealceldeiro/gems?style=social&logo=github&cacheSeconds=259200)](https://github.com/lealceldeiro/gems/)
 
 ----
